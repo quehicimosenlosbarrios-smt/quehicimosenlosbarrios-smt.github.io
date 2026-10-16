@@ -1,0 +1,1209 @@
+intervencion,direccion,barrio,latitud,longitud,id_cuadra
+Pavimentación,Calle 1 al 100,Barrio 1-A,-26.781911,-65.262151,C-0001
+Pavimentación,Calle 1 al 100,Barrio 1-A,-26.783113,-65.262113,C-0001
+Pavimentación,Calle 1 al 200,Barrio 1-A,-26.783113,-65.262113,C-0002
+Pavimentación,Calle 1 al 200,Barrio 1-A,-26.784316,-65.262074,C-0002
+Pavimentación,Calle 2 al 100,Barrio 1-A,-26.78946,-65.257778,C-0003
+Pavimentación,Calle 2 al 100,Barrio 1-A,-26.79067,-65.257708,C-0003
+Pavimentación,Calle 2 al 200,Barrio 1-A,-26.79067,-65.257708,C-0004
+Pavimentación,Calle 2 al 200,Barrio 1-A,-26.79188,-65.257637,C-0004
+Pavimentación,Calle 2 al 300,Barrio 1-A,-26.79188,-65.257637,C-0005
+Pavimentación,Calle 2 al 300,Barrio 1-A,-26.79309,-65.257567,C-0005
+Repavimentación,Calle 3 al 100,Barrio 1-A,-26.787027,-65.264508,C-0006
+Repavimentación,Calle 3 al 100,Barrio 1-A,-26.786928,-65.263346,C-0006
+Luminarias,Calle 65 736,Barrio 1-A,-26.790172,-65.266834,
+Luminarias,Calle 53 2476,Barrio 1-A,-26.784404,-65.258748,
+Luminarias,Calle 58 567,Barrio 1-A,-26.795719,-65.256312,
+Luminarias,Calle 34 455,Barrio 1-A,-26.787395,-65.270604,
+Luminarias,Calle 39 1524,Barrio 1-A,-26.792841,-65.259962,
+Luminarias,Calle 53 2341,Barrio 1-A,-26.783179,-65.261076,
+Luminarias,Calle 27 1901,Barrio 1-A,-26.796883,-65.255582,
+Luminarias,Calle 55 819,Barrio 1-A,-26.789746,-65.26656,
+Bacheo,Calle 45 1826,Barrio 1-A,-26.792662,-65.258066,
+Bacheo,Calle 50 2019,Barrio 1-A,-26.791829,-65.258945,
+Bacheo,Calle 51 448,Barrio 1-A,-26.791438,-65.262576,
+Arbolado,Calle 36 2214,Barrio 1-A,-26.790601,-65.259646,
+Arbolado,Calle 62 882,Barrio 1-A,-26.793247,-65.264695,
+Arbolado,Calle 20 2094,Barrio 1-A,-26.797146,-65.264038,
+Limpieza de canales,Calle 72 138,Barrio 1-A,-26.790908,-65.270698,
+Pavimentación,Calle 4 al 100,Barrio 1-B,-26.795985,-65.246299,C-0007
+Pavimentación,Calle 4 al 100,Barrio 1-B,-26.796175,-65.245356,C-0007
+Pavimentación,Calle 4 al 200,Barrio 1-B,-26.796175,-65.245356,C-0008
+Pavimentación,Calle 4 al 200,Barrio 1-B,-26.796366,-65.244414,C-0008
+Repavimentación,Calle 5 al 100,Barrio 1-B,-26.788869,-65.249942,C-0009
+Repavimentación,Calle 5 al 100,Barrio 1-B,-26.789044,-65.248963,C-0009
+Repavimentación,Calle 6 al 100,Barrio 1-B,-26.790678,-65.245382,C-0010
+Repavimentación,Calle 6 al 100,Barrio 1-B,-26.791921,-65.245326,C-0010
+Repavimentación,Calle 6 al 200,Barrio 1-B,-26.791921,-65.245326,C-0011
+Repavimentación,Calle 6 al 200,Barrio 1-B,-26.793164,-65.245269,C-0011
+Repavimentación,Calle 7 al 100,Barrio 1-B,-26.794029,-65.249252,C-0012
+Repavimentación,Calle 7 al 100,Barrio 1-B,-26.794216,-65.248302,C-0012
+Repavimentación,Calle 7 al 200,Barrio 1-B,-26.794216,-65.248302,C-0013
+Repavimentación,Calle 7 al 200,Barrio 1-B,-26.794403,-65.247351,C-0013
+Repavimentación,Calle 7 al 300,Barrio 1-B,-26.794403,-65.247351,C-0014
+Repavimentación,Calle 7 al 300,Barrio 1-B,-26.79459,-65.246401,C-0014
+Repavimentación,Calle 7 al 400,Barrio 1-B,-26.79459,-65.246401,C-0015
+Repavimentación,Calle 7 al 400,Barrio 1-B,-26.794778,-65.24545,C-0015
+Repavimentación,Calle 8 al 100,Barrio 1-B,-26.790941,-65.244603,C-0016
+Repavimentación,Calle 8 al 100,Barrio 1-B,-26.792186,-65.244552,C-0016
+Repavimentación,Calle 9 al 100,Barrio 1-B,-26.785626,-65.250627,C-0017
+Repavimentación,Calle 9 al 100,Barrio 1-B,-26.786853,-65.250536,C-0017
+Repavimentación,Calle 9 al 200,Barrio 1-B,-26.786853,-65.250536,C-0018
+Repavimentación,Calle 9 al 200,Barrio 1-B,-26.788081,-65.250445,C-0018
+Repavimentación,Calle 9 al 300,Barrio 1-B,-26.788081,-65.250445,C-0019
+Repavimentación,Calle 9 al 300,Barrio 1-B,-26.789308,-65.250354,C-0019
+Repavimentación,Calle 9 al 400,Barrio 1-B,-26.789308,-65.250354,C-0020
+Repavimentación,Calle 9 al 400,Barrio 1-B,-26.790536,-65.250263,C-0020
+Repavimentación,Calle 10 al 100,Barrio 1-B,-26.789347,-65.250441,C-0021
+Repavimentación,Calle 10 al 100,Barrio 1-B,-26.789523,-65.249466,C-0021
+Repavimentación,Calle 10 al 200,Barrio 1-B,-26.789523,-65.249466,C-0022
+Repavimentación,Calle 10 al 200,Barrio 1-B,-26.789699,-65.24849,C-0022
+Luminarias,Calle 25 494,Barrio 1-B,-26.795953,-65.243693,
+Luminarias,Calle 78 1423,Barrio 1-B,-26.79023,-65.247676,
+Luminarias,Calle 44 2232,Barrio 1-B,-26.785088,-65.243699,
+Luminarias,Calle 32 962,Barrio 1-B,-26.782709,-65.242827,
+Luminarias,Calle 78 2364,Barrio 1-B,-26.793646,-65.249172,
+Refugios,Calle 77 1586,Barrio 1-B,-26.790648,-65.238956,
+Refugios,Calle 20 1476,Barrio 1-B,-26.788688,-65.244609,
+Bacheo,Calle 31 332,Barrio 1-B,-26.788046,-65.248219,
+Bacheo,Calle 73 1401,Barrio 1-B,-26.786301,-65.245427,
+Bacheo,Calle 32 1597,Barrio 1-B,-26.793039,-65.248069,
+Bacheo,Calle 14 818,Barrio 1-B,-26.789126,-65.251331,
+Bacheo,Calle 74 771,Barrio 1-B,-26.786703,-65.247927,
+Arbolado,Calle 25 1957,Barrio 1-B,-26.781151,-65.249008,
+Arbolado,Calle 39 850,Barrio 1-B,-26.783499,-65.238763,
+Arbolado,Calle 35 1224,Barrio 1-B,-26.784246,-65.243388,
+Arbolado,Calle 74 289,Barrio 1-B,-26.78161,-65.251776,
+Arbolado,Calle 15 1217,Barrio 1-B,-26.794703,-65.245266,
+Arbolado,Calle 72 1537,Barrio 1-B,-26.782483,-65.239962,
+Arbolado,Calle 54 821,Barrio 1-B,-26.783367,-65.246034,
+Arbolado,Calle 39 1362,Barrio 1-B,-26.782547,-65.239973,
+Limpieza de canales,Calle 36 2404,Barrio 1-B,-26.792599,-65.247614,
+Limpieza de canales,Calle 23 445,Barrio 1-B,-26.78527,-65.248203,
+Limpieza de canales,Calle 13 1143,Barrio 1-B,-26.787503,-65.246363,
+Limpieza de canales,Calle 78 1015,Barrio 1-B,-26.791524,-65.24257,
+Limpieza de canales,Calle 2 577,Barrio 1-B,-26.788464,-65.24448,
+Pavimentación,Calle 11 al 100,Barrio 1-C,-26.807827,-65.264208,C-0023
+Pavimentación,Calle 11 al 100,Barrio 1-C,-26.807815,-65.263061,C-0023
+Pavimentación,Calle 12 al 100,Barrio 1-C,-26.804422,-65.257582,C-0024
+Pavimentación,Calle 12 al 100,Barrio 1-C,-26.806273,-65.257722,C-0024
+Luminarias,Calle 70 1570,Barrio 1-C,-26.813942,-65.256612,
+Bacheo,Calle 33 2032,Barrio 1-C,-26.814744,-65.263096,
+Bacheo,Calle 51 289,Barrio 1-C,-26.818461,-65.264733,
+Bacheo,Calle 55 1199,Barrio 1-C,-26.803933,-65.261397,
+Bacheo,Calle 18 381,Barrio 1-C,-26.825875,-65.264349,
+Arbolado,Calle 69 2174,Barrio 1-C,-26.823007,-65.262249,
+Arbolado,Calle 25 2022,Barrio 1-C,-26.811877,-65.270185,
+Limpieza de canales,Calle 49 1551,Barrio 1-C,-26.811344,-65.266488,
+Repavimentación,Calle 13 al 100,Barrio 1-D,-26.818249,-65.243739,C-0025
+Repavimentación,Calle 13 al 100,Barrio 1-D,-26.818023,-65.242738,C-0025
+Repavimentación,Calle 13 al 200,Barrio 1-D,-26.818023,-65.242738,C-0026
+Repavimentación,Calle 13 al 200,Barrio 1-D,-26.817798,-65.241736,C-0026
+Repavimentación,Calle 13 al 300,Barrio 1-D,-26.817798,-65.241736,C-0027
+Repavimentación,Calle 13 al 300,Barrio 1-D,-26.817573,-65.240735,C-0027
+Repavimentación,Calle 13 al 400,Barrio 1-D,-26.817573,-65.240735,C-0028
+Repavimentación,Calle 13 al 400,Barrio 1-D,-26.817347,-65.239733,C-0028
+Luminarias,Calle 49 1810,Barrio 1-D,-26.80253,-65.242804,
+Luminarias,Calle 71 1377,Barrio 1-D,-26.811514,-65.240548,
+Luminarias,Calle 17 1824,Barrio 1-D,-26.813043,-65.245094,
+Luminarias,Calle 23 1835,Barrio 1-D,-26.812676,-65.250369,
+Luminarias,Calle 60 135,Barrio 1-D,-26.824855,-65.249475,
+Luminarias,Calle 31 1815,Barrio 1-D,-26.814617,-65.244414,
+Luminarias,Calle 41 954,Barrio 1-D,-26.804052,-65.242775,
+Luminarias,Calle 52 1329,Barrio 1-D,-26.804646,-65.24519,
+Luminarias,Calle 32 782,Barrio 1-D,-26.823242,-65.249414,
+Luminarias,Calle 16 2465,Barrio 1-D,-26.822912,-65.249696,
+Luminarias,Calle 34 927,Barrio 1-D,-26.807443,-65.24159,
+Luminarias,Calle 75 1237,Barrio 1-D,-26.809667,-65.242781,
+Luminarias,Calle 71 140,Barrio 1-D,-26.81687,-65.250841,
+Luminarias,Calle 53 1345,Barrio 1-D,-26.818233,-65.242905,
+Refugios,Calle 9 2150,Barrio 1-D,-26.819907,-65.247343,
+Refugios,Calle 40 2082,Barrio 1-D,-26.819983,-65.24709,
+Bacheo,Calle 23 430,Barrio 1-D,-26.812942,-65.251534,
+Bacheo,Calle 12 344,Barrio 1-D,-26.804083,-65.240763,
+Bacheo,Calle 28 1329,Barrio 1-D,-26.807723,-65.249573,
+Bacheo,Calle 14 1377,Barrio 1-D,-26.802769,-65.241553,
+Bacheo,Calle 36 375,Barrio 1-D,-26.807298,-65.242345,
+Bacheo,Calle 75 138,Barrio 1-D,-26.824235,-65.247271,
+Bacheo,Calle 41 361,Barrio 1-D,-26.82135,-65.252216,
+Bacheo,Calle 23 2214,Barrio 1-D,-26.816551,-65.251585,
+Bacheo,Calle 44 845,Barrio 1-D,-26.819078,-65.244628,
+Bacheo,Calle 1 1511,Barrio 1-D,-26.815629,-65.244197,
+Bacheo,Calle 53 972,Barrio 1-D,-26.806709,-65.240951,
+Bacheo,Calle 74 885,Barrio 1-D,-26.817928,-65.244171,
+Bacheo,Calle 53 2217,Barrio 1-D,-26.819118,-65.243582,
+Bacheo,Calle 78 141,Barrio 1-D,-26.813308,-65.240793,
+Arbolado,Calle 18 1278,Barrio 1-D,-26.810118,-65.244143,
+Arbolado,Calle 24 282,Barrio 1-D,-26.809845,-65.242664,
+Arbolado,Calle 69 959,Barrio 1-D,-26.809652,-65.239162,
+Limpieza de canales,Calle 2 1914,Barrio 1-D,-26.815233,-65.248404,
+Limpieza de canales,Calle 79 1618,Barrio 1-D,-26.803188,-65.240975,
+Limpieza de canales,Calle 46 1083,Barrio 1-D,-26.804358,-65.240761,
+Pavimentación,Calle 14 al 100,Barrio 2-A,-26.789403,-65.23152,C-0029
+Pavimentación,Calle 14 al 100,Barrio 2-A,-26.790659,-65.231582,C-0029
+Pavimentación,Calle 14 al 200,Barrio 2-A,-26.790659,-65.231582,C-0030
+Pavimentación,Calle 14 al 200,Barrio 2-A,-26.791915,-65.231644,C-0030
+Pavimentación,Calle 14 al 300,Barrio 2-A,-26.791915,-65.231644,C-0031
+Pavimentación,Calle 14 al 300,Barrio 2-A,-26.793171,-65.231705,C-0031
+Luminarias,Calle 62 1614,Barrio 2-A,-26.789259,-65.23418,
+Luminarias,Calle 9 756,Barrio 2-A,-26.785667,-65.225326,
+Luminarias,Calle 66 1071,Barrio 2-A,-26.796953,-65.224183,
+Luminarias,Calle 66 355,Barrio 2-A,-26.788323,-65.229092,
+Luminarias,Calle 79 2223,Barrio 2-A,-26.788367,-65.228447,
+Luminarias,Calle 56 1073,Barrio 2-A,-26.781383,-65.227964,
+Refugios,Calle 46 826,Barrio 2-A,-26.797766,-65.227674,
+Refugios,Calle 77 1505,Barrio 2-A,-26.796746,-65.230399,
+Refugios,Calle 33 540,Barrio 2-A,-26.785775,-65.223528,
+Bacheo,Calle 1 1233,Barrio 2-A,-26.785349,-65.22384,
+Bacheo,Calle 43 1433,Barrio 2-A,-26.794194,-65.225257,
+Bacheo,Calle 17 1875,Barrio 2-A,-26.789021,-65.230756,
+Bacheo,Calle 51 1752,Barrio 2-A,-26.798371,-65.233173,
+Bacheo,Calle 52 1513,Barrio 2-A,-26.793142,-65.229063,
+Bacheo,Calle 53 1140,Barrio 2-A,-26.794959,-65.229491,
+Bacheo,Calle 38 884,Barrio 2-A,-26.799667,-65.235088,
+Limpieza de canales,Calle 13 2424,Barrio 2-A,-26.786158,-65.232894,
+Pavimentación,Calle 15 al 100,Barrio 2-B,-26.784682,-65.211684,C-0032
+Pavimentación,Calle 15 al 100,Barrio 2-B,-26.785949,-65.211732,C-0032
+Pavimentación,Calle 15 al 200,Barrio 2-B,-26.785949,-65.211732,C-0033
+Pavimentación,Calle 15 al 200,Barrio 2-B,-26.787215,-65.21178,C-0033
+Pavimentación,Calle 15 al 300,Barrio 2-B,-26.787215,-65.21178,C-0034
+Pavimentación,Calle 15 al 300,Barrio 2-B,-26.788482,-65.211827,C-0034
+Pavimentación,Calle 15 al 400,Barrio 2-B,-26.788482,-65.211827,C-0035
+Pavimentación,Calle 15 al 400,Barrio 2-B,-26.789749,-65.211875,C-0035
+Pavimentación,Calle 16 al 100,Barrio 2-B,-26.790664,-65.214199,C-0036
+Pavimentación,Calle 16 al 100,Barrio 2-B,-26.791919,-65.214283,C-0036
+Repavimentación,Calle 17 al 100,Barrio 2-B,-26.784322,-65.214593,C-0037
+Repavimentación,Calle 17 al 100,Barrio 2-B,-26.785574,-65.214691,C-0037
+Repavimentación,Calle 18 al 100,Barrio 2-B,-26.794001,-65.215862,C-0038
+Repavimentación,Calle 18 al 100,Barrio 2-B,-26.793941,-65.214781,C-0038
+Repavimentación,Calle 18 al 200,Barrio 2-B,-26.793941,-65.214781,C-0039
+Repavimentación,Calle 18 al 200,Barrio 2-B,-26.79388,-65.2137,C-0039
+Luminarias,Calle 7 1895,Barrio 2-B,-26.784328,-65.214488,
+Luminarias,Calle 27 299,Barrio 2-B,-26.794055,-65.21601,
+Luminarias,Calle 32 1273,Barrio 2-B,-26.792965,-65.20961,
+Luminarias,Calle 78 1930,Barrio 2-B,-26.780116,-65.212092,
+Luminarias,Calle 52 2214,Barrio 2-B,-26.787312,-65.209852,
+Luminarias,Calle 66 1476,Barrio 2-B,-26.785159,-65.212963,
+Luminarias,Calle 7 1642,Barrio 2-B,-26.792648,-65.206021,
+Luminarias,Calle 1 2050,Barrio 2-B,-26.780937,-65.213957,
+Luminarias,Calle 7 623,Barrio 2-B,-26.783411,-65.216468,
+Luminarias,Calle 39 264,Barrio 2-B,-26.781234,-65.212592,
+Luminarias,Calle 13 581,Barrio 2-B,-26.792543,-65.214103,
+Luminarias,Calle 1 864,Barrio 2-B,-26.782491,-65.207183,
+Luminarias,Calle 36 658,Barrio 2-B,-26.793404,-65.207628,
+Luminarias,Calle 2 1785,Barrio 2-B,-26.791308,-65.208577,
+Luminarias,Calle 52 473,Barrio 2-B,-26.784154,-65.207679,
+Luminarias,Calle 9 1541,Barrio 2-B,-26.79565,-65.210672,
+Luminarias,Calle 7 790,Barrio 2-B,-26.794499,-65.205914,
+Luminarias,Calle 49 1827,Barrio 2-B,-26.786919,-65.213115,
+Luminarias,Calle 36 1215,Barrio 2-B,-26.78158,-65.206061,
+Luminarias,Calle 23 1582,Barrio 2-B,-26.796078,-65.204739,
+Luminarias,Calle 5 1173,Barrio 2-B,-26.796948,-65.2167,
+Luminarias,Calle 48 2053,Barrio 2-B,-26.786378,-65.205633,
+Luminarias,Calle 68 615,Barrio 2-B,-26.792943,-65.210863,
+Refugios,Calle 59 877,Barrio 2-B,-26.787448,-65.214983,
+Bacheo,Calle 71 1129,Barrio 2-B,-26.781798,-65.210339,
+Bacheo,Calle 24 2159,Barrio 2-B,-26.782816,-65.212851,
+Bacheo,Calle 50 1777,Barrio 2-B,-26.781985,-65.205292,
+Bacheo,Calle 69 366,Barrio 2-B,-26.790658,-65.210454,
+Bacheo,Calle 74 640,Barrio 2-B,-26.791489,-65.212055,
+Bacheo,Calle 67 1151,Barrio 2-B,-26.79402,-65.212842,
+Bacheo,Calle 53 1518,Barrio 2-B,-26.793118,-65.2155,
+Bacheo,Calle 48 2179,Barrio 2-B,-26.788056,-65.210412,
+Bacheo,Calle 17 2083,Barrio 2-B,-26.787559,-65.217791,
+Bacheo,Calle 52 558,Barrio 2-B,-26.794555,-65.208545,
+Bacheo,Calle 48 1026,Barrio 2-B,-26.781725,-65.206005,
+Bacheo,Calle 50 210,Barrio 2-B,-26.790401,-65.218769,
+Bacheo,Calle 74 2354,Barrio 2-B,-26.781103,-65.215174,
+Bacheo,Calle 7 2152,Barrio 2-B,-26.779981,-65.20839,
+Bacheo,Calle 73 523,Barrio 2-B,-26.792185,-65.205563,
+Bacheo,Calle 74 2248,Barrio 2-B,-26.791913,-65.216769,
+Bacheo,Calle 79 1546,Barrio 2-B,-26.79619,-65.209744,
+Arbolado,Calle 45 2292,Barrio 2-B,-26.78577,-65.205586,
+Limpieza de canales,Calle 51 1109,Barrio 2-B,-26.793513,-65.210075,
+Limpieza de canales,Calle 28 561,Barrio 2-B,-26.796259,-65.209742,
+Limpieza de canales,Calle 75 557,Barrio 2-B,-26.78595,-65.215181,
+Limpieza de canales,Calle 67 478,Barrio 2-B,-26.78711,-65.218426,
+Limpieza de canales,Calle 66 1326,Barrio 2-B,-26.793545,-65.219048,
+Pavimentación,Calle 19 al 100,Barrio 2-C,-26.817394,-65.232146,C-0040
+Pavimentación,Calle 19 al 100,Barrio 2-C,-26.818865,-65.232221,C-0040
+Pavimentación,Calle 19 al 200,Barrio 2-C,-26.818865,-65.232221,C-0041
+Pavimentación,Calle 19 al 200,Barrio 2-C,-26.820335,-65.232297,C-0041
+Pavimentación,Calle 19 al 300,Barrio 2-C,-26.820335,-65.232297,C-0042
+Pavimentación,Calle 19 al 300,Barrio 2-C,-26.821806,-65.232372,C-0042
+Pavimentación,Calle 20 al 100,Barrio 2-C,-26.813856,-65.23224,C-0043
+Pavimentación,Calle 20 al 100,Barrio 2-C,-26.813963,-65.231293,C-0043
+Pavimentación,Calle 20 al 200,Barrio 2-C,-26.813963,-65.231293,C-0044
+Pavimentación,Calle 20 al 200,Barrio 2-C,-26.814071,-65.230346,C-0044
+Pavimentación,Calle 20 al 300,Barrio 2-C,-26.814071,-65.230346,C-0045
+Pavimentación,Calle 20 al 300,Barrio 2-C,-26.814178,-65.229399,C-0045
+Pavimentación,Calle 20 al 400,Barrio 2-C,-26.814178,-65.229399,C-0046
+Pavimentación,Calle 20 al 400,Barrio 2-C,-26.814286,-65.228452,C-0046
+Pavimentación,Calle 21 al 100,Barrio 2-C,-26.812179,-65.230779,C-0047
+Pavimentación,Calle 21 al 100,Barrio 2-C,-26.813681,-65.230846,C-0047
+Pavimentación,Calle 21 al 200,Barrio 2-C,-26.813681,-65.230846,C-0048
+Pavimentación,Calle 21 al 200,Barrio 2-C,-26.815184,-65.230913,C-0048
+Repavimentación,Calle 22 al 100,Barrio 2-C,-26.809065,-65.235503,C-0049
+Repavimentación,Calle 22 al 100,Barrio 2-C,-26.809084,-65.234579,C-0049
+Repavimentación,Calle 22 al 200,Barrio 2-C,-26.809084,-65.234579,C-0050
+Repavimentación,Calle 22 al 200,Barrio 2-C,-26.809103,-65.233655,C-0050
+Repavimentación,Calle 22 al 300,Barrio 2-C,-26.809103,-65.233655,C-0051
+Repavimentación,Calle 22 al 300,Barrio 2-C,-26.809122,-65.232731,C-0051
+Luminarias,Calle 65 2120,Barrio 2-C,-26.819092,-65.229088,
+Luminarias,Calle 10 431,Barrio 2-C,-26.822487,-65.231031,
+Luminarias,Calle 15 1431,Barrio 2-C,-26.810718,-65.227081,
+Luminarias,Calle 7 1295,Barrio 2-C,-26.805064,-65.234847,
+Luminarias,Calle 53 1495,Barrio 2-C,-26.812674,-65.235149,
+Luminarias,Calle 58 1663,Barrio 2-C,-26.803101,-65.226588,
+Luminarias,Calle 60 1917,Barrio 2-C,-26.823444,-65.228939,
+Luminarias,Calle 5 411,Barrio 2-C,-26.807837,-65.22664,
+Luminarias,Calle 5 2319,Barrio 2-C,-26.80928,-65.234027,
+Luminarias,Calle 45 2490,Barrio 2-C,-26.811392,-65.235403,
+Luminarias,Calle 21 449,Barrio 2-C,-26.815294,-65.23487,
+Luminarias,Calle 78 1989,Barrio 2-C,-26.80507,-65.232329,
+Luminarias,Calle 57 1530,Barrio 2-C,-26.823016,-65.228632,
+Luminarias,Calle 55 2289,Barrio 2-C,-26.821028,-65.22999,
+Luminarias,Calle 67 1024,Barrio 2-C,-26.812445,-65.224756,
+Luminarias,Calle 65 900,Barrio 2-C,-26.816685,-65.232662,
+Luminarias,Calle 12 588,Barrio 2-C,-26.804971,-65.234683,
+Refugios,Calle 55 183,Barrio 2-C,-26.817904,-65.231588,
+Refugios,Calle 72 1376,Barrio 2-C,-26.813611,-65.223665,
+Refugios,Calle 61 630,Barrio 2-C,-26.818503,-65.23323,
+Refugios,Calle 15 1041,Barrio 2-C,-26.816569,-65.233572,
+Refugios,Calle 65 645,Barrio 2-C,-26.807431,-65.227712,
+Bacheo,Calle 6 133,Barrio 2-C,-26.81668,-65.230665,
+Bacheo,Calle 45 1631,Barrio 2-C,-26.820183,-65.226935,
+Bacheo,Calle 66 241,Barrio 2-C,-26.815758,-65.226307,
+Bacheo,Calle 7 735,Barrio 2-C,-26.809895,-65.228513,
+Arbolado,Calle 6 2467,Barrio 2-C,-26.814417,-65.236104,
+Arbolado,Calle 21 183,Barrio 2-C,-26.819069,-65.232672,
+Arbolado,Calle 24 1956,Barrio 2-C,-26.813887,-65.229099,
+Arbolado,Calle 34 690,Barrio 2-C,-26.809435,-65.234228,
+Arbolado,Calle 20 1849,Barrio 2-C,-26.810196,-65.234497,
+Limpieza de canales,Calle 6 2041,Barrio 2-C,-26.816268,-65.225672,
+Limpieza de canales,Calle 38 2210,Barrio 2-C,-26.824765,-65.22716,
+Limpieza de canales,Calle 5 700,Barrio 2-C,-26.808084,-65.22744,
+Repavimentación,Calle 23 al 100,Barrio 2-D,-26.822384,-65.214865,C-0052
+Repavimentación,Calle 23 al 100,Barrio 2-D,-26.822022,-65.21354,C-0052
+Repavimentación,Calle 23 al 200,Barrio 2-D,-26.822022,-65.21354,C-0053
+Repavimentación,Calle 23 al 200,Barrio 2-D,-26.82166,-65.212215,C-0053
+Repavimentación,Calle 23 al 300,Barrio 2-D,-26.82166,-65.212215,C-0054
+Repavimentación,Calle 23 al 300,Barrio 2-D,-26.821298,-65.210891,C-0054
+Repavimentación,Calle 24 al 100,Barrio 2-D,-26.802697,-65.217169,C-0055
+Repavimentación,Calle 24 al 100,Barrio 2-D,-26.804366,-65.217119,C-0055
+Repavimentación,Calle 24 al 200,Barrio 2-D,-26.804366,-65.217119,C-0056
+Repavimentación,Calle 24 al 200,Barrio 2-D,-26.806034,-65.217069,C-0056
+Repavimentación,Calle 25 al 100,Barrio 2-D,-26.810333,-65.206741,C-0057
+Repavimentación,Calle 25 al 100,Barrio 2-D,-26.811817,-65.20659,C-0057
+Repavimentación,Calle 25 al 200,Barrio 2-D,-26.811817,-65.20659,C-0058
+Repavimentación,Calle 25 al 200,Barrio 2-D,-26.8133,-65.206439,C-0058
+Repavimentación,Calle 25 al 300,Barrio 2-D,-26.8133,-65.206439,C-0059
+Repavimentación,Calle 25 al 300,Barrio 2-D,-26.814783,-65.206288,C-0059
+Repavimentación,Calle 26 al 100,Barrio 2-D,-26.805955,-65.211636,C-0060
+Repavimentación,Calle 26 al 100,Barrio 2-D,-26.807522,-65.211531,C-0060
+Repavimentación,Calle 26 al 200,Barrio 2-D,-26.807522,-65.211531,C-0061
+Repavimentación,Calle 26 al 200,Barrio 2-D,-26.809088,-65.211425,C-0061
+Repavimentación,Calle 26 al 300,Barrio 2-D,-26.809088,-65.211425,C-0062
+Repavimentación,Calle 26 al 300,Barrio 2-D,-26.810654,-65.21132,C-0062
+Luminarias,Calle 18 2390,Barrio 2-D,-26.82034,-65.206807,
+Refugios,Calle 48 750,Barrio 2-D,-26.82098,-65.217971,
+Refugios,Calle 51 1240,Barrio 2-D,-26.808179,-65.204357,
+Refugios,Calle 58 567,Barrio 2-D,-26.804764,-65.21397,
+Refugios,Calle 39 1881,Barrio 2-D,-26.816047,-65.210525,
+Refugios,Calle 75 2091,Barrio 2-D,-26.816843,-65.205945,
+Bacheo,Calle 27 770,Barrio 2-D,-26.804254,-65.212953,
+Bacheo,Calle 45 1458,Barrio 2-D,-26.822835,-65.210723,
+Bacheo,Calle 65 1294,Barrio 2-D,-26.803191,-65.217286,
+Bacheo,Calle 71 992,Barrio 2-D,-26.809378,-65.204216,
+Bacheo,Calle 57 771,Barrio 2-D,-26.81572,-65.208276,
+Bacheo,Calle 2 902,Barrio 2-D,-26.802511,-65.209717,
+Bacheo,Calle 53 640,Barrio 2-D,-26.812796,-65.211416,
+Bacheo,Calle 20 2018,Barrio 2-D,-26.802702,-65.207166,
+Bacheo,Calle 44 1324,Barrio 2-D,-26.815076,-65.203969,
+Bacheo,Calle 18 2077,Barrio 2-D,-26.819095,-65.204117,
+Bacheo,Calle 5 857,Barrio 2-D,-26.822126,-65.214032,
+Bacheo,Calle 70 2223,Barrio 2-D,-26.817071,-65.204721,
+Bacheo,Calle 51 2216,Barrio 2-D,-26.807481,-65.215504,
+Bacheo,Calle 36 1122,Barrio 2-D,-26.809332,-65.208267,
+Bacheo,Calle 67 1170,Barrio 2-D,-26.813437,-65.213652,
+Bacheo,Calle 48 271,Barrio 2-D,-26.807218,-65.211747,
+Bacheo,Calle 17 1717,Barrio 2-D,-26.805763,-65.216346,
+Bacheo,Calle 72 753,Barrio 2-D,-26.810639,-65.210467,
+Bacheo,Calle 71 890,Barrio 2-D,-26.80266,-65.206123,
+Bacheo,Calle 74 2335,Barrio 2-D,-26.815211,-65.204398,
+Bacheo,Calle 49 1037,Barrio 2-D,-26.81624,-65.217359,
+Bacheo,Calle 54 2208,Barrio 2-D,-26.806509,-65.205702,
+Bacheo,Calle 53 2028,Barrio 2-D,-26.807909,-65.207336,
+Arbolado,Calle 11 565,Barrio 2-D,-26.80862,-65.209519,
+Arbolado,Calle 18 1254,Barrio 2-D,-26.817382,-65.217407,
+Limpieza de canales,Calle 72 1818,Barrio 2-D,-26.804056,-65.205554,
+Limpieza de canales,Calle 43 1851,Barrio 2-D,-26.821599,-65.219466,
+Pavimentación,Calle 27 al 100,Barrio 3-A,-26.785291,-65.189722,C-0063
+Pavimentación,Calle 27 al 100,Barrio 3-A,-26.78667,-65.189631,C-0063
+Luminarias,Calle 1 989,Barrio 3-A,-26.794246,-65.186102,
+Luminarias,Calle 53 1593,Barrio 3-A,-26.787234,-65.191603,
+Luminarias,Calle 73 262,Barrio 3-A,-26.796964,-65.190257,
+Luminarias,Calle 36 785,Barrio 3-A,-26.79679,-65.20038,
+Luminarias,Calle 2 1725,Barrio 3-A,-26.782875,-65.185857,
+Luminarias,Calle 38 281,Barrio 3-A,-26.782141,-65.19594,
+Luminarias,Calle 25 829,Barrio 3-A,-26.787352,-65.18834,
+Luminarias,Calle 22 1206,Barrio 3-A,-26.785224,-65.200985,
+Luminarias,Calle 21 1825,Barrio 3-A,-26.785959,-65.192307,
+Luminarias,Calle 67 816,Barrio 3-A,-26.789403,-65.199932,
+Luminarias,Calle 1 2072,Barrio 3-A,-26.785376,-65.195686,
+Luminarias,Calle 46 2454,Barrio 3-A,-26.784243,-65.192084,
+Luminarias,Calle 26 192,Barrio 3-A,-26.781207,-65.193764,
+Luminarias,Calle 75 2371,Barrio 3-A,-26.786625,-65.192188,
+Luminarias,Calle 51 2369,Barrio 3-A,-26.793439,-65.189893,
+Luminarias,Calle 76 1908,Barrio 3-A,-26.797034,-65.187086,
+Luminarias,Calle 46 2216,Barrio 3-A,-26.795044,-65.190265,
+Luminarias,Calle 67 1400,Barrio 3-A,-26.795988,-65.191593,
+Luminarias,Calle 11 112,Barrio 3-A,-26.795964,-65.201118,
+Luminarias,Calle 57 1795,Barrio 3-A,-26.786522,-65.19534,
+Luminarias,Calle 19 1928,Barrio 3-A,-26.789875,-65.192335,
+Luminarias,Calle 35 769,Barrio 3-A,-26.779831,-65.198889,
+Luminarias,Calle 53 1319,Barrio 3-A,-26.793217,-65.1877,
+Luminarias,Calle 70 290,Barrio 3-A,-26.779604,-65.194753,
+Refugios,Calle 44 908,Barrio 3-A,-26.783038,-65.202132,
+Refugios,Calle 15 446,Barrio 3-A,-26.780679,-65.200198,
+Bacheo,Calle 65 123,Barrio 3-A,-26.789981,-65.196533,
+Bacheo,Calle 43 1375,Barrio 3-A,-26.79463,-65.187363,
+Bacheo,Calle 20 290,Barrio 3-A,-26.789444,-65.186736,
+Bacheo,Calle 7 506,Barrio 3-A,-26.792354,-65.198982,
+Bacheo,Calle 48 795,Barrio 3-A,-26.783957,-65.186741,
+Bacheo,Calle 23 1275,Barrio 3-A,-26.783311,-65.200227,
+Bacheo,Calle 64 1143,Barrio 3-A,-26.788945,-65.201004,
+Bacheo,Calle 22 1493,Barrio 3-A,-26.793303,-65.187395,
+Bacheo,Calle 45 2409,Barrio 3-A,-26.790631,-65.201494,
+Bacheo,Calle 70 285,Barrio 3-A,-26.793504,-65.200797,
+Bacheo,Calle 3 1237,Barrio 3-A,-26.791536,-65.197456,
+Bacheo,Calle 28 621,Barrio 3-A,-26.797285,-65.198001,
+Bacheo,Calle 50 1185,Barrio 3-A,-26.779722,-65.194067,
+Bacheo,Calle 56 1560,Barrio 3-A,-26.797253,-65.199576,
+Bacheo,Calle 25 1807,Barrio 3-A,-26.788127,-65.19005,
+Bacheo,Calle 70 1677,Barrio 3-A,-26.786691,-65.193082,
+Bacheo,Calle 35 2063,Barrio 3-A,-26.780902,-65.192441,
+Bacheo,Calle 48 1677,Barrio 3-A,-26.795564,-65.188309,
+Bacheo,Calle 54 601,Barrio 3-A,-26.78399,-65.200747,
+Bacheo,Calle 39 745,Barrio 3-A,-26.780074,-65.19796,
+Bacheo,Calle 14 1716,Barrio 3-A,-26.789843,-65.194221,
+Bacheo,Calle 80 345,Barrio 3-A,-26.781931,-65.20092,
+Bacheo,Calle 25 2127,Barrio 3-A,-26.789468,-65.191463,
+Bacheo,Calle 69 1020,Barrio 3-A,-26.788072,-65.19169,
+Arbolado,Calle 63 1714,Barrio 3-A,-26.791748,-65.201122,
+Arbolado,Calle 70 781,Barrio 3-A,-26.782697,-65.195397,
+Arbolado,Calle 29 606,Barrio 3-A,-26.791747,-65.197961,
+Arbolado,Calle 71 124,Barrio 3-A,-26.792511,-65.187545,
+Arbolado,Calle 5 1923,Barrio 3-A,-26.783011,-65.19155,
+Arbolado,Calle 3 1410,Barrio 3-A,-26.782842,-65.192085,
+Arbolado,Calle 50 483,Barrio 3-A,-26.794029,-65.194588,
+Arbolado,Calle 44 2435,Barrio 3-A,-26.797646,-65.196243,
+Arbolado,Calle 11 1458,Barrio 3-A,-26.786278,-65.194224,
+Arbolado,Calle 52 2377,Barrio 3-A,-26.796027,-65.196088,
+Arbolado,Calle 48 1399,Barrio 3-A,-26.796982,-65.196875,
+Limpieza de canales,Calle 20 1339,Barrio 3-A,-26.787294,-65.199601,
+Limpieza de canales,Calle 40 1579,Barrio 3-A,-26.798172,-65.194531,
+Limpieza de canales,Calle 56 1788,Barrio 3-A,-26.789515,-65.195637,
+Limpieza de canales,Calle 36 2203,Barrio 3-A,-26.788331,-65.196961,
+Limpieza de canales,Calle 49 1812,Barrio 3-A,-26.784593,-65.189988,
+Limpieza de canales,Calle 50 1807,Barrio 3-A,-26.789965,-65.192992,
+Limpieza de canales,Calle 8 2021,Barrio 3-A,-26.785603,-65.190263,
+Limpieza de canales,Calle 75 177,Barrio 3-A,-26.791981,-65.194319,
+Pavimentación,Calle 28 al 100,Barrio 3-B,-26.788326,-65.18067,C-0064
+Pavimentación,Calle 28 al 100,Barrio 3-B,-26.789695,-65.180615,C-0064
+Pavimentación,Calle 28 al 200,Barrio 3-B,-26.789695,-65.180615,C-0065
+Pavimentación,Calle 28 al 200,Barrio 3-B,-26.791063,-65.180561,C-0065
+Pavimentación,Calle 28 al 300,Barrio 3-B,-26.791063,-65.180561,C-0066
+Pavimentación,Calle 28 al 300,Barrio 3-B,-26.792432,-65.180506,C-0066
+Luminarias,Calle 12 500,Barrio 3-B,-26.793968,-65.177335,
+Luminarias,Calle 36 2296,Barrio 3-B,-26.786176,-65.170845,
+Luminarias,Calle 30 560,Barrio 3-B,-26.784151,-65.171739,
+Luminarias,Calle 30 1423,Barrio 3-B,-26.794177,-65.172069,
+Luminarias,Calle 80 1117,Barrio 3-B,-26.786743,-65.170032,
+Luminarias,Calle 58 579,Barrio 3-B,-26.796168,-65.180612,
+Luminarias,Calle 3 477,Barrio 3-B,-26.792481,-65.173939,
+Luminarias,Calle 13 1786,Barrio 3-B,-26.786302,-65.179457,
+Luminarias,Calle 19 444,Barrio 3-B,-26.781852,-65.179194,
+Luminarias,Calle 79 118,Barrio 3-B,-26.782217,-65.175281,
+Luminarias,Calle 19 1869,Barrio 3-B,-26.788906,-65.175839,
+Luminarias,Calle 59 956,Barrio 3-B,-26.786214,-65.181338,
+Luminarias,Calle 49 720,Barrio 3-B,-26.797407,-65.17744,
+Luminarias,Calle 40 851,Barrio 3-B,-26.794847,-65.182201,
+Luminarias,Calle 37 1736,Barrio 3-B,-26.799842,-65.18107,
+Luminarias,Calle 18 348,Barrio 3-B,-26.797447,-65.178196,
+Luminarias,Calle 6 2213,Barrio 3-B,-26.791915,-65.176166,
+Luminarias,Calle 47 1967,Barrio 3-B,-26.790522,-65.172853,
+Luminarias,Calle 14 232,Barrio 3-B,-26.78852,-65.177729,
+Luminarias,Calle 69 2002,Barrio 3-B,-26.785474,-65.175082,
+Luminarias,Calle 7 881,Barrio 3-B,-26.792973,-65.174795,
+Luminarias,Calle 63 449,Barrio 3-B,-26.787426,-65.174606,
+Luminarias,Calle 74 1946,Barrio 3-B,-26.797896,-65.179565,
+Refugios,Calle 76 912,Barrio 3-B,-26.79456,-65.177557,
+Refugios,Calle 28 655,Barrio 3-B,-26.782527,-65.176952,
+Refugios,Calle 34 181,Barrio 3-B,-26.798234,-65.175174,
+Refugios,Calle 30 972,Barrio 3-B,-26.787145,-65.182628,
+Refugios,Calle 71 865,Barrio 3-B,-26.797086,-65.176167,
+Refugios,Calle 7 1569,Barrio 3-B,-26.781439,-65.18058,
+Refugios,Calle 68 2105,Barrio 3-B,-26.791239,-65.181273,
+Refugios,Calle 48 504,Barrio 3-B,-26.795194,-65.174792,
+Bacheo,Calle 71 2162,Barrio 3-B,-26.78983,-65.179366,
+Bacheo,Calle 76 864,Barrio 3-B,-26.786625,-65.174377,
+Bacheo,Calle 15 1105,Barrio 3-B,-26.795749,-65.170686,
+Bacheo,Calle 3 2443,Barrio 3-B,-26.783089,-65.182213,
+Bacheo,Calle 68 115,Barrio 3-B,-26.789797,-65.176768,
+Bacheo,Calle 69 2197,Barrio 3-B,-26.796957,-65.177011,
+Bacheo,Calle 41 850,Barrio 3-B,-26.790832,-65.182132,
+Bacheo,Calle 14 1384,Barrio 3-B,-26.791654,-65.174645,
+Bacheo,Calle 29 2483,Barrio 3-B,-26.790002,-65.181582,
+Bacheo,Calle 67 2286,Barrio 3-B,-26.784102,-65.177143,
+Arbolado,Calle 77 2268,Barrio 3-B,-26.783893,-65.181881,
+Arbolado,Calle 31 1991,Barrio 3-B,-26.795294,-65.17344,
+Arbolado,Calle 47 1927,Barrio 3-B,-26.788323,-65.176618,
+Arbolado,Calle 16 2458,Barrio 3-B,-26.789496,-65.177932,
+Arbolado,Calle 13 1882,Barrio 3-B,-26.797999,-65.180408,
+Arbolado,Calle 20 1218,Barrio 3-B,-26.782172,-65.171265,
+Arbolado,Calle 23 1425,Barrio 3-B,-26.790717,-65.18069,
+Arbolado,Calle 39 686,Barrio 3-B,-26.785842,-65.170726,
+Arbolado,Calle 60 398,Barrio 3-B,-26.784916,-65.177098,
+Limpieza de canales,Calle 55 1261,Barrio 3-B,-26.794734,-65.175086,
+Limpieza de canales,Calle 1 2382,Barrio 3-B,-26.794837,-65.172495,
+Limpieza de canales,Calle 68 1017,Barrio 3-B,-26.794944,-65.18157,
+Limpieza de canales,Calle 28 1535,Barrio 3-B,-26.784306,-65.177461,
+Repavimentación,Calle 29 al 100,Barrio 3-C,-26.813223,-65.191132,C-0067
+Repavimentación,Calle 29 al 100,Barrio 3-C,-26.814765,-65.191225,C-0067
+Repavimentación,Calle 30 al 100,Barrio 3-C,-26.803193,-65.195457,C-0068
+Repavimentación,Calle 30 al 100,Barrio 3-C,-26.803424,-65.194326,C-0068
+Repavimentación,Calle 30 al 200,Barrio 3-C,-26.803424,-65.194326,C-0069
+Repavimentación,Calle 30 al 200,Barrio 3-C,-26.803655,-65.193195,C-0069
+Repavimentación,Calle 30 al 300,Barrio 3-C,-26.803655,-65.193195,C-0070
+Repavimentación,Calle 30 al 300,Barrio 3-C,-26.803886,-65.192065,C-0070
+Repavimentación,Calle 30 al 400,Barrio 3-C,-26.803886,-65.192065,C-0071
+Repavimentación,Calle 30 al 400,Barrio 3-C,-26.804117,-65.190934,C-0071
+Luminarias,Calle 32 2329,Barrio 3-C,-26.818839,-65.193848,
+Luminarias,Calle 54 491,Barrio 3-C,-26.816265,-65.196572,
+Luminarias,Calle 73 1592,Barrio 3-C,-26.811628,-65.189541,
+Luminarias,Calle 4 2056,Barrio 3-C,-26.81577,-65.189482,
+Luminarias,Calle 62 430,Barrio 3-C,-26.801882,-65.196695,
+Luminarias,Calle 52 326,Barrio 3-C,-26.813913,-65.188396,
+Luminarias,Calle 24 406,Barrio 3-C,-26.82102,-65.188078,
+Luminarias,Calle 37 1210,Barrio 3-C,-26.803611,-65.192652,
+Luminarias,Calle 42 1929,Barrio 3-C,-26.802017,-65.196153,
+Luminarias,Calle 55 1416,Barrio 3-C,-26.819297,-65.198274,
+Luminarias,Calle 49 1227,Barrio 3-C,-26.815263,-65.194579,
+Luminarias,Calle 25 1431,Barrio 3-C,-26.812584,-65.188426,
+Luminarias,Calle 18 1984,Barrio 3-C,-26.802091,-65.195492,
+Luminarias,Calle 59 1448,Barrio 3-C,-26.822188,-65.191238,
+Luminarias,Calle 29 1811,Barrio 3-C,-26.810252,-65.196415,
+Luminarias,Calle 72 132,Barrio 3-C,-26.816537,-65.196052,
+Refugios,Calle 45 1639,Barrio 3-C,-26.805093,-65.199079,
+Bacheo,Calle 69 1841,Barrio 3-C,-26.812906,-65.193943,
+Bacheo,Calle 74 2079,Barrio 3-C,-26.8095,-65.195861,
+Bacheo,Calle 33 2420,Barrio 3-C,-26.809456,-65.198987,
+Bacheo,Calle 75 1425,Barrio 3-C,-26.816527,-65.187958,
+Bacheo,Calle 68 756,Barrio 3-C,-26.812329,-65.190003,
+Bacheo,Calle 74 1306,Barrio 3-C,-26.825619,-65.188241,
+Arbolado,Calle 76 2196,Barrio 3-C,-26.823613,-65.192137,
+Arbolado,Calle 21 1776,Barrio 3-C,-26.810115,-65.18917,
+Arbolado,Calle 70 310,Barrio 3-C,-26.810818,-65.196979,
+Arbolado,Calle 38 456,Barrio 3-C,-26.810637,-65.196065,
+Arbolado,Calle 46 1878,Barrio 3-C,-26.803571,-65.186734,
+Arbolado,Calle 9 996,Barrio 3-C,-26.811411,-65.195883,
+Arbolado,Calle 12 1852,Barrio 3-C,-26.8229,-65.192746,
+Arbolado,Calle 50 2244,Barrio 3-C,-26.805114,-65.185963,
+Arbolado,Calle 38 2165,Barrio 3-C,-26.818059,-65.187079,
+Arbolado,Calle 59 2180,Barrio 3-C,-26.808054,-65.191237,
+Arbolado,Calle 76 2184,Barrio 3-C,-26.806227,-65.191446,
+Arbolado,Calle 27 1872,Barrio 3-C,-26.804107,-65.18703,
+Limpieza de canales,Calle 54 661,Barrio 3-C,-26.813358,-65.19162,
+Limpieza de canales,Calle 37 200,Barrio 3-C,-26.807015,-65.187092,
+Repavimentación,Calle 31 al 100,Barrio 3-D,-26.814281,-65.175926,C-0072
+Repavimentación,Calle 31 al 100,Barrio 3-D,-26.815896,-65.176028,C-0072
+Repavimentación,Calle 31 al 200,Barrio 3-D,-26.815896,-65.176028,C-0073
+Repavimentación,Calle 31 al 200,Barrio 3-D,-26.81751,-65.176129,C-0073
+Repavimentación,Calle 31 al 300,Barrio 3-D,-26.81751,-65.176129,C-0074
+Repavimentación,Calle 31 al 300,Barrio 3-D,-26.819125,-65.176231,C-0074
+Luminarias,Calle 47 2279,Barrio 3-D,-26.80512,-65.182028,
+Luminarias,Calle 33 610,Barrio 3-D,-26.810871,-65.181676,
+Luminarias,Calle 42 1223,Barrio 3-D,-26.815079,-65.170918,
+Luminarias,Calle 58 406,Barrio 3-D,-26.821861,-65.18061,
+Luminarias,Calle 54 800,Barrio 3-D,-26.818767,-65.172777,
+Luminarias,Calle 33 2012,Barrio 3-D,-26.820532,-65.179983,
+Luminarias,Calle 36 1916,Barrio 3-D,-26.822955,-65.182974,
+Luminarias,Calle 60 671,Barrio 3-D,-26.819734,-65.178968,
+Luminarias,Calle 6 938,Barrio 3-D,-26.816696,-65.18219,
+Luminarias,Calle 2 2406,Barrio 3-D,-26.81842,-65.179795,
+Luminarias,Calle 26 1824,Barrio 3-D,-26.8079,-65.180102,
+Luminarias,Calle 34 2152,Barrio 3-D,-26.821307,-65.176422,
+Luminarias,Calle 16 1355,Barrio 3-D,-26.826441,-65.182934,
+Luminarias,Calle 43 2421,Barrio 3-D,-26.815956,-65.17602,
+Luminarias,Calle 53 1287,Barrio 3-D,-26.820408,-65.178022,
+Luminarias,Calle 32 916,Barrio 3-D,-26.803879,-65.173175,
+Luminarias,Calle 41 1988,Barrio 3-D,-26.807414,-65.172521,
+Luminarias,Calle 73 137,Barrio 3-D,-26.803937,-65.172402,
+Bacheo,Calle 45 1138,Barrio 3-D,-26.808408,-65.181435,
+Bacheo,Calle 43 1096,Barrio 3-D,-26.817845,-65.177109,
+Bacheo,Calle 79 1488,Barrio 3-D,-26.818339,-65.17976,
+Bacheo,Calle 1 2069,Barrio 3-D,-26.805892,-65.171565,
+Bacheo,Calle 49 816,Barrio 3-D,-26.819035,-65.176324,
+Bacheo,Calle 30 443,Barrio 3-D,-26.815359,-65.175195,
+Bacheo,Calle 43 655,Barrio 3-D,-26.81978,-65.181489,
+Bacheo,Calle 72 127,Barrio 3-D,-26.813691,-65.180686,
+Arbolado,Calle 33 1797,Barrio 3-D,-26.814064,-65.179598,
+Arbolado,Calle 58 993,Barrio 3-D,-26.824012,-65.171946,
+Arbolado,Calle 23 1079,Barrio 3-D,-26.814695,-65.178073,
+Arbolado,Calle 35 1869,Barrio 3-D,-26.823038,-65.180655,
+Arbolado,Calle 55 246,Barrio 3-D,-26.816463,-65.183156,
+Arbolado,Calle 32 293,Barrio 3-D,-26.81357,-65.182733,
+Arbolado,Calle 8 760,Barrio 3-D,-26.816197,-65.17379,
+Limpieza de canales,Calle 37 1279,Barrio 3-D,-26.806024,-65.170873,
+Limpieza de canales,Calle 14 1915,Barrio 3-D,-26.820289,-65.173031,
+Limpieza de canales,Calle 48 603,Barrio 3-D,-26.823826,-65.171614,
+Limpieza de canales,Calle 1 1958,Barrio 3-D,-26.824491,-65.184634,
+Limpieza de canales,Calle 20 1804,Barrio 3-D,-26.811192,-65.173033,
+Limpieza de canales,Calle 79 1983,Barrio 3-D,-26.825316,-65.184223,
+Limpieza de canales,Calle 16 2199,Barrio 3-D,-26.806962,-65.179668,
+Limpieza de canales,Calle 15 2102,Barrio 3-D,-26.806052,-65.173111,
+Limpieza de canales,Calle 20 1209,Barrio 3-D,-26.815221,-65.172206,
+Limpieza de canales,Calle 56 471,Barrio 3-D,-26.817551,-65.180486,
+Limpieza de canales,Calle 56 787,Barrio 3-D,-26.809938,-65.175478,
+Limpieza de canales,Calle 31 365,Barrio 3-D,-26.810319,-65.179569,
+Limpieza de canales,Calle 74 621,Barrio 3-D,-26.808191,-65.178916,
+Pavimentación,Calle 32 al 100,Barrio 4-A,-26.83586,-65.264317,C-0075
+Pavimentación,Calle 32 al 100,Barrio 4-A,-26.835851,-65.263289,C-0075
+Pavimentación,Calle 32 al 200,Barrio 4-A,-26.835851,-65.263289,C-0076
+Pavimentación,Calle 32 al 200,Barrio 4-A,-26.835842,-65.262261,C-0076
+Pavimentación,Calle 33 al 100,Barrio 4-A,-26.836467,-65.264046,C-0077
+Pavimentación,Calle 33 al 100,Barrio 4-A,-26.837572,-65.264026,C-0077
+Pavimentación,Calle 33 al 200,Barrio 4-A,-26.837572,-65.264026,C-0078
+Pavimentación,Calle 33 al 200,Barrio 4-A,-26.838677,-65.264005,C-0078
+Pavimentación,Calle 33 al 300,Barrio 4-A,-26.838677,-65.264005,C-0079
+Pavimentación,Calle 33 al 300,Barrio 4-A,-26.839782,-65.263985,C-0079
+Pavimentación,Calle 34 al 100,Barrio 4-A,-26.834358,-65.266611,C-0080
+Pavimentación,Calle 34 al 100,Barrio 4-A,-26.834379,-65.265611,C-0080
+Pavimentación,Calle 34 al 200,Barrio 4-A,-26.834379,-65.265611,C-0081
+Pavimentación,Calle 34 al 200,Barrio 4-A,-26.8344,-65.264612,C-0081
+Pavimentación,Calle 34 al 300,Barrio 4-A,-26.8344,-65.264612,C-0082
+Pavimentación,Calle 34 al 300,Barrio 4-A,-26.834422,-65.263612,C-0082
+Repavimentación,Calle 35 al 100,Barrio 4-A,-26.839977,-65.265813,C-0083
+Repavimentación,Calle 35 al 100,Barrio 4-A,-26.84112,-65.265829,C-0083
+Repavimentación,Calle 35 al 200,Barrio 4-A,-26.84112,-65.265829,C-0084
+Repavimentación,Calle 35 al 200,Barrio 4-A,-26.842263,-65.265844,C-0084
+Repavimentación,Calle 35 al 300,Barrio 4-A,-26.842263,-65.265844,C-0085
+Repavimentación,Calle 35 al 300,Barrio 4-A,-26.843407,-65.26586,C-0085
+Repavimentación,Calle 36 al 100,Barrio 4-A,-26.834835,-65.261708,C-0086
+Repavimentación,Calle 36 al 100,Barrio 4-A,-26.834848,-65.260701,C-0086
+Repavimentación,Calle 36 al 200,Barrio 4-A,-26.834848,-65.260701,C-0087
+Repavimentación,Calle 36 al 200,Barrio 4-A,-26.834861,-65.259694,C-0087
+Repavimentación,Calle 36 al 300,Barrio 4-A,-26.834861,-65.259694,C-0088
+Repavimentación,Calle 36 al 300,Barrio 4-A,-26.834874,-65.258687,C-0088
+Repavimentación,Calle 36 al 400,Barrio 4-A,-26.834874,-65.258687,C-0089
+Repavimentación,Calle 36 al 400,Barrio 4-A,-26.834887,-65.257679,C-0089
+Luminarias,Calle 78 1906,Barrio 4-A,-26.839684,-65.265492,
+Luminarias,Calle 39 1888,Barrio 4-A,-26.832321,-65.269313,
+Luminarias,Calle 11 990,Barrio 4-A,-26.840127,-65.266054,
+Luminarias,Calle 54 1779,Barrio 4-A,-26.830998,-65.265196,
+Luminarias,Calle 76 488,Barrio 4-A,-26.833505,-65.258523,
+Luminarias,Calle 58 1154,Barrio 4-A,-26.842277,-65.267779,
+Luminarias,Calle 76 2249,Barrio 4-A,-26.834706,-65.268018,
+Luminarias,Calle 3 631,Barrio 4-A,-26.834175,-65.267395,
+Luminarias,Calle 70 530,Barrio 4-A,-26.844856,-65.261674,
+Luminarias,Calle 37 276,Barrio 4-A,-26.836943,-65.258406,
+Luminarias,Calle 5 1381,Barrio 4-A,-26.84308,-65.258087,
+Luminarias,Calle 26 1210,Barrio 4-A,-26.834551,-65.266557,
+Luminarias,Calle 55 950,Barrio 4-A,-26.833443,-65.263017,
+Luminarias,Calle 77 140,Barrio 4-A,-26.842636,-65.258791,
+Luminarias,Calle 13 138,Barrio 4-A,-26.839957,-65.268146,
+Refugios,Calle 54 837,Barrio 4-A,-26.835636,-65.258362,
+Refugios,Calle 74 240,Barrio 4-A,-26.841936,-65.265068,
+Refugios,Calle 1 2457,Barrio 4-A,-26.841586,-65.265574,
+Refugios,Calle 73 1156,Barrio 4-A,-26.836908,-65.268624,
+Bacheo,Calle 22 682,Barrio 4-A,-26.836095,-65.259669,
+Bacheo,Calle 74 2201,Barrio 4-A,-26.838346,-65.263323,
+Bacheo,Calle 63 290,Barrio 4-A,-26.838444,-65.259358,
+Bacheo,Calle 62 246,Barrio 4-A,-26.839462,-65.26199,
+Bacheo,Calle 7 1100,Barrio 4-A,-26.837069,-65.266354,
+Bacheo,Calle 40 681,Barrio 4-A,-26.844872,-65.25986,
+Bacheo,Calle 77 1260,Barrio 4-A,-26.845054,-65.26693,
+Arbolado,Calle 11 322,Barrio 4-A,-26.834132,-65.262705,
+Arbolado,Calle 23 247,Barrio 4-A,-26.835145,-65.267587,
+Arbolado,Calle 58 1608,Barrio 4-A,-26.835947,-65.256543,
+Arbolado,Calle 16 416,Barrio 4-A,-26.832088,-65.257482,
+Arbolado,Calle 40 531,Barrio 4-A,-26.837856,-65.269989,
+Arbolado,Calle 58 479,Barrio 4-A,-26.841922,-65.265194,
+Pavimentación,Calle 37 al 100,Barrio 4-B,-26.831102,-65.249182,C-0090
+Pavimentación,Calle 37 al 100,Barrio 4-B,-26.830779,-65.248194,C-0090
+Pavimentación,Calle 37 al 200,Barrio 4-B,-26.830779,-65.248194,C-0091
+Pavimentación,Calle 37 al 200,Barrio 4-B,-26.830456,-65.247206,C-0091
+Pavimentación,Calle 37 al 300,Barrio 4-B,-26.830456,-65.247206,C-0092
+Pavimentación,Calle 37 al 300,Barrio 4-B,-26.830134,-65.246218,C-0092
+Pavimentación,Calle 37 al 400,Barrio 4-B,-26.830134,-65.246218,C-0093
+Pavimentación,Calle 37 al 400,Barrio 4-B,-26.829811,-65.24523,C-0093
+Pavimentación,Calle 38 al 100,Barrio 4-B,-26.837362,-65.243319,C-0094
+Pavimentación,Calle 38 al 100,Barrio 4-B,-26.837199,-65.242425,C-0094
+Pavimentación,Calle 38 al 200,Barrio 4-B,-26.837199,-65.242425,C-0095
+Pavimentación,Calle 38 al 200,Barrio 4-B,-26.837036,-65.241531,C-0095
+Pavimentación,Calle 38 al 300,Barrio 4-B,-26.837036,-65.241531,C-0096
+Pavimentación,Calle 38 al 300,Barrio 4-B,-26.836873,-65.240637,C-0096
+Repavimentación,Calle 39 al 100,Barrio 4-B,-26.834937,-65.249222,C-0097
+Repavimentación,Calle 39 al 100,Barrio 4-B,-26.834697,-65.248282,C-0097
+Repavimentación,Calle 39 al 200,Barrio 4-B,-26.834697,-65.248282,C-0098
+Repavimentación,Calle 39 al 200,Barrio 4-B,-26.834457,-65.247343,C-0098
+Repavimentación,Calle 39 al 300,Barrio 4-B,-26.834457,-65.247343,C-0099
+Repavimentación,Calle 39 al 300,Barrio 4-B,-26.834217,-65.246403,C-0099
+Repavimentación,Calle 39 al 400,Barrio 4-B,-26.834217,-65.246403,C-0100
+Repavimentación,Calle 39 al 400,Barrio 4-B,-26.833977,-65.245464,C-0100
+Repavimentación,Calle 40 al 100,Barrio 4-B,-26.833424,-65.251275,C-0101
+Repavimentación,Calle 40 al 100,Barrio 4-B,-26.834396,-65.251103,C-0101
+Repavimentación,Calle 40 al 200,Barrio 4-B,-26.834396,-65.251103,C-0102
+Repavimentación,Calle 40 al 200,Barrio 4-B,-26.835367,-65.250931,C-0102
+Repavimentación,Calle 40 al 300,Barrio 4-B,-26.835367,-65.250931,C-0103
+Repavimentación,Calle 40 al 300,Barrio 4-B,-26.836339,-65.250758,C-0103
+Repavimentación,Calle 40 al 400,Barrio 4-B,-26.836339,-65.250758,C-0104
+Repavimentación,Calle 40 al 400,Barrio 4-B,-26.837311,-65.250586,C-0104
+Luminarias,Calle 3 267,Barrio 4-B,-26.83379,-65.249369,
+Luminarias,Calle 70 1526,Barrio 4-B,-26.830845,-65.245366,
+Luminarias,Calle 79 2163,Barrio 4-B,-26.831113,-65.243226,
+Luminarias,Calle 13 1628,Barrio 4-B,-26.839995,-65.244561,
+Luminarias,Calle 18 1362,Barrio 4-B,-26.833735,-65.251793,
+Luminarias,Calle 37 757,Barrio 4-B,-26.832717,-65.242327,
+Luminarias,Calle 35 2263,Barrio 4-B,-26.840594,-65.249601,
+Luminarias,Calle 20 1694,Barrio 4-B,-26.833279,-65.2526,
+Luminarias,Calle 72 423,Barrio 4-B,-26.831878,-65.25098,
+Luminarias,Calle 50 1944,Barrio 4-B,-26.830902,-65.249732,
+Luminarias,Calle 5 2205,Barrio 4-B,-26.832111,-65.253839,
+Bacheo,Calle 14 1951,Barrio 4-B,-26.833124,-65.251762,
+Bacheo,Calle 2 1166,Barrio 4-B,-26.829932,-65.249995,
+Bacheo,Calle 77 1304,Barrio 4-B,-26.832478,-65.25049,
+Bacheo,Calle 39 2456,Barrio 4-B,-26.835344,-65.246873,
+Bacheo,Calle 76 2499,Barrio 4-B,-26.83286,-65.240106,
+Bacheo,Calle 3 1528,Barrio 4-B,-26.835203,-65.24697,
+Bacheo,Calle 51 1439,Barrio 4-B,-26.834185,-65.241851,
+Bacheo,Calle 43 788,Barrio 4-B,-26.835882,-65.246363,
+Bacheo,Calle 6 816,Barrio 4-B,-26.841105,-65.248906,
+Bacheo,Calle 71 980,Barrio 4-B,-26.830007,-65.246897,
+Bacheo,Calle 6 1547,Barrio 4-B,-26.830938,-65.253963,
+Bacheo,Calle 27 1569,Barrio 4-B,-26.833965,-65.24268,
+Bacheo,Calle 61 1919,Barrio 4-B,-26.839186,-65.24109,
+Bacheo,Calle 35 2450,Barrio 4-B,-26.836851,-65.24596,
+Bacheo,Calle 6 961,Barrio 4-B,-26.84058,-65.250862,
+Arbolado,Calle 10 1206,Barrio 4-B,-26.838699,-65.250772,
+Arbolado,Calle 21 2127,Barrio 4-B,-26.842685,-65.244059,
+Limpieza de canales,Calle 73 195,Barrio 4-B,-26.827842,-65.245149,
+Repavimentación,Calle 41 al 100,Barrio 4-C,-26.86602,-65.259175,C-0105
+Repavimentación,Calle 41 al 100,Barrio 4-C,-26.865951,-65.258194,C-0105
+Repavimentación,Calle 41 al 200,Barrio 4-C,-26.865951,-65.258194,C-0106
+Repavimentación,Calle 41 al 200,Barrio 4-C,-26.865882,-65.257214,C-0106
+Repavimentación,Calle 41 al 300,Barrio 4-C,-26.865882,-65.257214,C-0107
+Repavimentación,Calle 41 al 300,Barrio 4-C,-26.865813,-65.256233,C-0107
+Repavimentación,Calle 42 al 100,Barrio 4-C,-26.855015,-65.265897,C-0108
+Repavimentación,Calle 42 al 100,Barrio 4-C,-26.856421,-65.26583,C-0108
+Repavimentación,Calle 42 al 200,Barrio 4-C,-26.856421,-65.26583,C-0109
+Repavimentación,Calle 42 al 200,Barrio 4-C,-26.857828,-65.265763,C-0109
+Repavimentación,Calle 42 al 300,Barrio 4-C,-26.857828,-65.265763,C-0110
+Repavimentación,Calle 42 al 300,Barrio 4-C,-26.859234,-65.265695,C-0110
+Repavimentación,Calle 42 al 400,Barrio 4-C,-26.859234,-65.265695,C-0111
+Repavimentación,Calle 42 al 400,Barrio 4-C,-26.860641,-65.265628,C-0111
+Luminarias,Calle 58 905,Barrio 4-C,-26.854418,-65.266327,
+Luminarias,Calle 46 1230,Barrio 4-C,-26.860913,-65.259097,
+Luminarias,Calle 36 159,Barrio 4-C,-26.850727,-65.254566,
+Luminarias,Calle 33 1666,Barrio 4-C,-26.852929,-65.269855,
+Refugios,Calle 17 2265,Barrio 4-C,-26.861053,-65.261174,
+Bacheo,Calle 34 1626,Barrio 4-C,-26.864789,-65.269458,
+Bacheo,Calle 10 1550,Barrio 4-C,-26.86017,-65.262308,
+Bacheo,Calle 3 1851,Barrio 4-C,-26.868968,-65.264668,
+Arbolado,Calle 35 2416,Barrio 4-C,-26.855538,-65.266797,
+Arbolado,Calle 43 980,Barrio 4-C,-26.847678,-65.25503,
+Arbolado,Calle 42 1610,Barrio 4-C,-26.860373,-65.25838,
+Arbolado,Calle 72 1054,Barrio 4-C,-26.852479,-65.262927,
+Arbolado,Calle 65 661,Barrio 4-C,-26.864576,-65.267747,
+Arbolado,Calle 34 418,Barrio 4-C,-26.861702,-65.2695,
+Arbolado,Calle 69 1911,Barrio 4-C,-26.858672,-65.265327,
+Arbolado,Calle 40 589,Barrio 4-C,-26.863737,-65.263973,
+Limpieza de canales,Calle 37 1587,Barrio 4-C,-26.857031,-65.257902,
+Limpieza de canales,Calle 70 303,Barrio 4-C,-26.85975,-65.257919,
+Limpieza de canales,Calle 49 2331,Barrio 4-C,-26.868317,-65.264677,
+Limpieza de canales,Calle 68 1794,Barrio 4-C,-26.867048,-65.258136,
+Pavimentación,Calle 43 al 100,Barrio 4-D,-26.848431,-65.243058,C-0112
+Pavimentación,Calle 43 al 100,Barrio 4-D,-26.848428,-65.242204,C-0112
+Pavimentación,Calle 43 al 200,Barrio 4-D,-26.848428,-65.242204,C-0113
+Pavimentación,Calle 43 al 200,Barrio 4-D,-26.848425,-65.241351,C-0113
+Luminarias,Calle 77 1274,Barrio 4-D,-26.862282,-65.243665,
+Luminarias,Calle 58 817,Barrio 4-D,-26.858546,-65.250226,
+Luminarias,Calle 60 157,Barrio 4-D,-26.863106,-65.250013,
+Luminarias,Calle 6 2094,Barrio 4-D,-26.852169,-65.23969,
+Luminarias,Calle 5 740,Barrio 4-D,-26.848518,-65.243487,
+Luminarias,Calle 56 774,Barrio 4-D,-26.856897,-65.248702,
+Luminarias,Calle 40 902,Barrio 4-D,-26.857928,-65.243923,
+Luminarias,Calle 15 2438,Barrio 4-D,-26.856046,-65.239681,
+Luminarias,Calle 78 1672,Barrio 4-D,-26.860511,-65.250321,
+Luminarias,Calle 48 126,Barrio 4-D,-26.863119,-65.244344,
+Luminarias,Calle 17 390,Barrio 4-D,-26.864542,-65.246411,
+Luminarias,Calle 24 794,Barrio 4-D,-26.854137,-65.240732,
+Luminarias,Calle 51 892,Barrio 4-D,-26.851259,-65.247956,
+Luminarias,Calle 1 1036,Barrio 4-D,-26.86547,-65.246003,
+Luminarias,Calle 30 1161,Barrio 4-D,-26.849589,-65.240631,
+Luminarias,Calle 25 1891,Barrio 4-D,-26.863147,-65.249321,
+Luminarias,Calle 35 1914,Barrio 4-D,-26.863313,-65.243662,
+Luminarias,Calle 74 1610,Barrio 4-D,-26.862306,-65.246168,
+Luminarias,Calle 11 650,Barrio 4-D,-26.848642,-65.244287,
+Luminarias,Calle 58 1561,Barrio 4-D,-26.847568,-65.248798,
+Refugios,Calle 4 880,Barrio 4-D,-26.868242,-65.238986,
+Bacheo,Calle 32 1740,Barrio 4-D,-26.852643,-65.250983,
+Bacheo,Calle 19 1285,Barrio 4-D,-26.856189,-65.24829,
+Bacheo,Calle 7 1544,Barrio 4-D,-26.856557,-65.245062,
+Bacheo,Calle 6 1865,Barrio 4-D,-26.84718,-65.24783,
+Bacheo,Calle 71 1760,Barrio 4-D,-26.855716,-65.242401,
+Bacheo,Calle 46 1303,Barrio 4-D,-26.864422,-65.250642,
+Bacheo,Calle 75 246,Barrio 4-D,-26.853869,-65.240009,
+Bacheo,Calle 61 1323,Barrio 4-D,-26.864628,-65.247104,
+Bacheo,Calle 63 819,Barrio 4-D,-26.860546,-65.241434,
+Bacheo,Calle 25 2306,Barrio 4-D,-26.865797,-65.239831,
+Bacheo,Calle 27 1271,Barrio 4-D,-26.866591,-65.245682,
+Bacheo,Calle 64 2354,Barrio 4-D,-26.862689,-65.247659,
+Bacheo,Calle 8 1706,Barrio 4-D,-26.868194,-65.247111,
+Bacheo,Calle 37 963,Barrio 4-D,-26.867153,-65.240261,
+Bacheo,Calle 22 1093,Barrio 4-D,-26.851965,-65.244052,
+Bacheo,Calle 10 1704,Barrio 4-D,-26.857253,-65.241422,
+Bacheo,Calle 43 1041,Barrio 4-D,-26.863971,-65.242173,
+Bacheo,Calle 41 718,Barrio 4-D,-26.869414,-65.244008,
+Bacheo,Calle 11 237,Barrio 4-D,-26.851201,-65.246539,
+Bacheo,Calle 49 838,Barrio 4-D,-26.854001,-65.24488,
+Bacheo,Calle 62 2210,Barrio 4-D,-26.85721,-65.249171,
+Bacheo,Calle 2 553,Barrio 4-D,-26.869783,-65.238327,
+Bacheo,Calle 60 497,Barrio 4-D,-26.860215,-65.241481,
+Bacheo,Calle 62 433,Barrio 4-D,-26.860006,-65.24031,
+Bacheo,Calle 14 2411,Barrio 4-D,-26.857326,-65.246124,
+Arbolado,Calle 76 2282,Barrio 4-D,-26.847144,-65.244591,
+Limpieza de canales,Calle 32 1003,Barrio 4-D,-26.854306,-65.250463,
+Limpieza de canales,Calle 62 1966,Barrio 4-D,-26.860842,-65.252337,
+Repavimentación,Calle 44 al 100,Barrio 5-A,-26.835127,-65.226982,C-0114
+Repavimentación,Calle 44 al 100,Barrio 5-A,-26.836224,-65.227069,C-0114
+Repavimentación,Calle 44 al 200,Barrio 5-A,-26.836224,-65.227069,C-0115
+Repavimentación,Calle 44 al 200,Barrio 5-A,-26.837322,-65.227155,C-0115
+Repavimentación,Calle 44 al 300,Barrio 5-A,-26.837322,-65.227155,C-0116
+Repavimentación,Calle 44 al 300,Barrio 5-A,-26.838419,-65.227242,C-0116
+Luminarias,Calle 69 742,Barrio 5-A,-26.843455,-65.230885,
+Luminarias,Calle 11 1824,Barrio 5-A,-26.833975,-65.2258,
+Luminarias,Calle 77 2194,Barrio 5-A,-26.842339,-65.22573,
+Luminarias,Calle 68 2181,Barrio 5-A,-26.842161,-65.229893,
+Luminarias,Calle 44 966,Barrio 5-A,-26.843937,-65.22718,
+Luminarias,Calle 80 723,Barrio 5-A,-26.837871,-65.23076,
+Luminarias,Calle 28 188,Barrio 5-A,-26.827832,-65.234351,
+Luminarias,Calle 15 395,Barrio 5-A,-26.836973,-65.226836,
+Luminarias,Calle 70 1583,Barrio 5-A,-26.834762,-65.233158,
+Luminarias,Calle 3 138,Barrio 5-A,-26.840971,-65.23483,
+Luminarias,Calle 68 2099,Barrio 5-A,-26.835596,-65.225394,
+Luminarias,Calle 30 1023,Barrio 5-A,-26.831529,-65.23446,
+Luminarias,Calle 27 453,Barrio 5-A,-26.831031,-65.231709,
+Luminarias,Calle 12 841,Barrio 5-A,-26.8352,-65.236688,
+Luminarias,Calle 59 564,Barrio 5-A,-26.838688,-65.228927,
+Luminarias,Calle 23 583,Barrio 5-A,-26.838924,-65.229847,
+Luminarias,Calle 18 760,Barrio 5-A,-26.835351,-65.234578,
+Luminarias,Calle 46 1090,Barrio 5-A,-26.82908,-65.227963,
+Luminarias,Calle 51 613,Barrio 5-A,-26.837884,-65.229149,
+Luminarias,Calle 63 849,Barrio 5-A,-26.830485,-65.224711,
+Luminarias,Calle 48 2119,Barrio 5-A,-26.840232,-65.22727,
+Luminarias,Calle 50 707,Barrio 5-A,-26.826816,-65.234895,
+Luminarias,Calle 30 339,Barrio 5-A,-26.836168,-65.224929,
+Luminarias,Calle 74 1554,Barrio 5-A,-26.827015,-65.232591,
+Luminarias,Calle 29 853,Barrio 5-A,-26.840368,-65.228202,
+Luminarias,Calle 30 548,Barrio 5-A,-26.829904,-65.235092,
+Luminarias,Calle 15 1556,Barrio 5-A,-26.843066,-65.230592,
+Bacheo,Calle 50 215,Barrio 5-A,-26.840424,-65.233294,
+Bacheo,Calle 48 343,Barrio 5-A,-26.828998,-65.228268,
+Bacheo,Calle 50 1981,Barrio 5-A,-26.833466,-65.233132,
+Bacheo,Calle 74 1121,Barrio 5-A,-26.834803,-65.235071,
+Bacheo,Calle 7 438,Barrio 5-A,-26.837671,-65.232994,
+Arbolado,Calle 7 1061,Barrio 5-A,-26.838358,-65.231114,
+Arbolado,Calle 11 126,Barrio 5-A,-26.841639,-65.229215,
+Arbolado,Calle 11 1374,Barrio 5-A,-26.842652,-65.233256,
+Arbolado,Calle 7 1599,Barrio 5-A,-26.84209,-65.231729,
+Arbolado,Calle 4 1500,Barrio 5-A,-26.831185,-65.235612,
+Arbolado,Calle 53 618,Barrio 5-A,-26.834424,-65.231794,
+Arbolado,Calle 26 243,Barrio 5-A,-26.838936,-65.227241,
+Arbolado,Calle 35 106,Barrio 5-A,-26.842795,-65.231135,
+Arbolado,Calle 36 696,Barrio 5-A,-26.838804,-65.224857,
+Limpieza de canales,Calle 7 2304,Barrio 5-A,-26.833629,-65.235741,
+Limpieza de canales,Calle 6 1430,Barrio 5-A,-26.83682,-65.225846,
+Limpieza de canales,Calle 53 1459,Barrio 5-A,-26.837175,-65.224498,
+Luminarias,Calle 66 519,Barrio 5-B,-26.826738,-65.203448,
+Luminarias,Calle 71 327,Barrio 5-B,-26.829452,-65.219105,
+Luminarias,Calle 41 1821,Barrio 5-B,-26.832846,-65.214707,
+Luminarias,Calle 48 2416,Barrio 5-B,-26.842298,-65.22045,
+Luminarias,Calle 68 570,Barrio 5-B,-26.839992,-65.21765,
+Luminarias,Calle 79 1610,Barrio 5-B,-26.832177,-65.212659,
+Luminarias,Calle 74 1203,Barrio 5-B,-26.84088,-65.219341,
+Luminarias,Calle 25 1209,Barrio 5-B,-26.839947,-65.210375,
+Luminarias,Calle 18 676,Barrio 5-B,-26.830082,-65.220385,
+Luminarias,Calle 29 425,Barrio 5-B,-26.835507,-65.210265,
+Luminarias,Calle 73 488,Barrio 5-B,-26.847434,-65.215923,
+Luminarias,Calle 20 1932,Barrio 5-B,-26.834204,-65.220002,
+Luminarias,Calle 74 1467,Barrio 5-B,-26.835025,-65.218617,
+Luminarias,Calle 46 1938,Barrio 5-B,-26.840396,-65.207759,
+Luminarias,Calle 26 1174,Barrio 5-B,-26.827343,-65.210591,
+Refugios,Calle 24 1496,Barrio 5-B,-26.843307,-65.222039,
+Refugios,Calle 22 2470,Barrio 5-B,-26.841378,-65.219987,
+Refugios,Calle 24 1925,Barrio 5-B,-26.838757,-65.218497,
+Refugios,Calle 30 2465,Barrio 5-B,-26.838068,-65.20728,
+Refugios,Calle 67 1507,Barrio 5-B,-26.82849,-65.209197,
+Refugios,Calle 71 1094,Barrio 5-B,-26.831273,-65.219442,
+Refugios,Calle 41 1880,Barrio 5-B,-26.850494,-65.207485,
+Bacheo,Calle 11 1678,Barrio 5-B,-26.825974,-65.202148,
+Bacheo,Calle 20 396,Barrio 5-B,-26.830003,-65.20876,
+Bacheo,Calle 5 1303,Barrio 5-B,-26.844093,-65.218657,
+Bacheo,Calle 47 1363,Barrio 5-B,-26.833007,-65.220597,
+Bacheo,Calle 64 1781,Barrio 5-B,-26.838648,-65.207411,
+Bacheo,Calle 43 1084,Barrio 5-B,-26.836402,-65.219007,
+Bacheo,Calle 38 1265,Barrio 5-B,-26.830253,-65.205312,
+Bacheo,Calle 55 1544,Barrio 5-B,-26.830755,-65.209245,
+Bacheo,Calle 49 218,Barrio 5-B,-26.828159,-65.210867,
+Bacheo,Calle 52 1019,Barrio 5-B,-26.829,-65.211753,
+Bacheo,Calle 33 2088,Barrio 5-B,-26.831146,-65.219076,
+Bacheo,Calle 9 968,Barrio 5-B,-26.842146,-65.218117,
+Bacheo,Calle 37 1422,Barrio 5-B,-26.845297,-65.219108,
+Bacheo,Calle 13 1300,Barrio 5-B,-26.841937,-65.220702,
+Bacheo,Calle 56 756,Barrio 5-B,-26.832944,-65.215762,
+Bacheo,Calle 7 1360,Barrio 5-B,-26.840114,-65.21839,
+Arbolado,Calle 26 389,Barrio 5-B,-26.835057,-65.220865,
+Arbolado,Calle 39 1348,Barrio 5-B,-26.835745,-65.219283,
+Arbolado,Calle 77 1656,Barrio 5-B,-26.834434,-65.215935,
+Arbolado,Calle 34 463,Barrio 5-B,-26.840719,-65.215805,
+Arbolado,Calle 26 525,Barrio 5-B,-26.828544,-65.215868,
+Arbolado,Calle 16 2387,Barrio 5-B,-26.850391,-65.20742,
+Arbolado,Calle 7 147,Barrio 5-B,-26.833108,-65.218301,
+Arbolado,Calle 74 1385,Barrio 5-B,-26.83996,-65.207016,
+Arbolado,Calle 64 1296,Barrio 5-B,-26.831929,-65.211841,
+Limpieza de canales,Calle 72 1739,Barrio 5-B,-26.843602,-65.214813,
+Pavimentación,Calle 45 al 100,Barrio 5-C,-26.858408,-65.226443,C-0117
+Pavimentación,Calle 45 al 100,Barrio 5-C,-26.858465,-65.225502,C-0117
+Pavimentación,Calle 45 al 200,Barrio 5-C,-26.858465,-65.225502,C-0118
+Pavimentación,Calle 45 al 200,Barrio 5-C,-26.858522,-65.224561,C-0118
+Pavimentación,Calle 45 al 300,Barrio 5-C,-26.858522,-65.224561,C-0119
+Pavimentación,Calle 45 al 300,Barrio 5-C,-26.85858,-65.22362,C-0119
+Pavimentación,Calle 46 al 100,Barrio 5-C,-26.850123,-65.227328,C-0120
+Pavimentación,Calle 46 al 100,Barrio 5-C,-26.851742,-65.227089,C-0120
+Pavimentación,Calle 46 al 200,Barrio 5-C,-26.851742,-65.227089,C-0121
+Pavimentación,Calle 46 al 200,Barrio 5-C,-26.85336,-65.22685,C-0121
+Pavimentación,Calle 46 al 300,Barrio 5-C,-26.85336,-65.22685,C-0122
+Pavimentación,Calle 46 al 300,Barrio 5-C,-26.854979,-65.226611,C-0122
+Pavimentación,Calle 47 al 100,Barrio 5-C,-26.860592,-65.232402,C-0123
+Pavimentación,Calle 47 al 100,Barrio 5-C,-26.862235,-65.232209,C-0123
+Pavimentación,Calle 47 al 200,Barrio 5-C,-26.862235,-65.232209,C-0124
+Pavimentación,Calle 47 al 200,Barrio 5-C,-26.863878,-65.232016,C-0124
+Pavimentación,Calle 48 al 100,Barrio 5-C,-26.85725,-65.227558,C-0125
+Pavimentación,Calle 48 al 100,Barrio 5-C,-26.858873,-65.227328,C-0125
+Pavimentación,Calle 48 al 200,Barrio 5-C,-26.858873,-65.227328,C-0126
+Pavimentación,Calle 48 al 200,Barrio 5-C,-26.860497,-65.227098,C-0126
+Repavimentación,Calle 49 al 100,Barrio 5-C,-26.849869,-65.235532,C-0127
+Repavimentación,Calle 49 al 100,Barrio 5-C,-26.85152,-65.235352,C-0127
+Repavimentación,Calle 49 al 200,Barrio 5-C,-26.85152,-65.235352,C-0128
+Repavimentación,Calle 49 al 200,Barrio 5-C,-26.85317,-65.235173,C-0128
+Repavimentación,Calle 49 al 300,Barrio 5-C,-26.85317,-65.235173,C-0129
+Repavimentación,Calle 49 al 300,Barrio 5-C,-26.85482,-65.234993,C-0129
+Repavimentación,Calle 49 al 400,Barrio 5-C,-26.85482,-65.234993,C-0130
+Repavimentación,Calle 49 al 400,Barrio 5-C,-26.85647,-65.234813,C-0130
+Luminarias,Calle 1 1908,Barrio 5-C,-26.857862,-65.228293,
+Luminarias,Calle 58 1702,Barrio 5-C,-26.847418,-65.233871,
+Luminarias,Calle 59 2294,Barrio 5-C,-26.855952,-65.235422,
+Luminarias,Calle 32 872,Barrio 5-C,-26.860616,-65.222977,
+Luminarias,Calle 54 1596,Barrio 5-C,-26.853113,-65.23159,
+Luminarias,Calle 44 646,Barrio 5-C,-26.859432,-65.223543,
+Luminarias,Calle 67 630,Barrio 5-C,-26.859391,-65.228403,
+Luminarias,Calle 42 1877,Barrio 5-C,-26.855724,-65.234998,
+Luminarias,Calle 56 1915,Barrio 5-C,-26.855064,-65.232507,
+Refugios,Calle 49 446,Barrio 5-C,-26.848975,-65.236234,
+Refugios,Calle 54 727,Barrio 5-C,-26.868104,-65.231322,
+Refugios,Calle 29 136,Barrio 5-C,-26.867498,-65.222574,
+Bacheo,Calle 41 2471,Barrio 5-C,-26.850492,-65.232489,
+Bacheo,Calle 43 1574,Barrio 5-C,-26.86694,-65.226096,
+Bacheo,Calle 46 1408,Barrio 5-C,-26.861389,-65.226804,
+Bacheo,Calle 72 314,Barrio 5-C,-26.86048,-65.223377,
+Bacheo,Calle 80 1437,Barrio 5-C,-26.855639,-65.232743,
+Bacheo,Calle 80 981,Barrio 5-C,-26.855245,-65.225827,
+Bacheo,Calle 51 719,Barrio 5-C,-26.868351,-65.229184,
+Bacheo,Calle 16 2309,Barrio 5-C,-26.853686,-65.226714,
+Bacheo,Calle 45 1865,Barrio 5-C,-26.861672,-65.23404,
+Arbolado,Calle 51 2077,Barrio 5-C,-26.868986,-65.23296,
+Limpieza de canales,Calle 71 656,Barrio 5-C,-26.86104,-65.229723,
+Limpieza de canales,Calle 18 2217,Barrio 5-C,-26.865611,-65.234767,
+Pavimentación,Calle 50 al 100,Barrio 5-D,-26.85781,-65.212926,C-0131
+Pavimentación,Calle 50 al 100,Barrio 5-D,-26.858109,-65.211899,C-0131
+Pavimentación,Calle 50 al 200,Barrio 5-D,-26.858109,-65.211899,C-0132
+Pavimentación,Calle 50 al 200,Barrio 5-D,-26.858407,-65.210872,C-0132
+Pavimentación,Calle 51 al 100,Barrio 5-D,-26.856139,-65.210453,C-0133
+Pavimentación,Calle 51 al 100,Barrio 5-D,-26.856506,-65.20941,C-0133
+Pavimentación,Calle 52 al 100,Barrio 5-D,-26.858163,-65.219868,C-0134
+Pavimentación,Calle 52 al 100,Barrio 5-D,-26.858408,-65.218853,C-0134
+Pavimentación,Calle 52 al 200,Barrio 5-D,-26.858408,-65.218853,C-0135
+Pavimentación,Calle 52 al 200,Barrio 5-D,-26.858653,-65.217838,C-0135
+Repavimentación,Calle 53 al 100,Barrio 5-D,-26.854499,-65.214582,C-0136
+Repavimentación,Calle 53 al 100,Barrio 5-D,-26.855838,-65.214373,C-0136
+Repavimentación,Calle 54 al 100,Barrio 5-D,-26.857387,-65.212037,C-0137
+Repavimentación,Calle 54 al 100,Barrio 5-D,-26.858656,-65.211844,C-0137
+Repavimentación,Calle 54 al 200,Barrio 5-D,-26.858656,-65.211844,C-0138
+Repavimentación,Calle 54 al 200,Barrio 5-D,-26.859925,-65.211651,C-0138
+Repavimentación,Calle 54 al 300,Barrio 5-D,-26.859925,-65.211651,C-0139
+Repavimentación,Calle 54 al 300,Barrio 5-D,-26.861194,-65.211458,C-0139
+Repavimentación,Calle 55 al 100,Barrio 5-D,-26.855062,-65.215188,C-0140
+Repavimentación,Calle 55 al 100,Barrio 5-D,-26.855413,-65.214149,C-0140
+Repavimentación,Calle 56 al 100,Barrio 5-D,-26.866496,-65.214683,C-0141
+Repavimentación,Calle 56 al 100,Barrio 5-D,-26.86657,-65.213707,C-0141
+Repavimentación,Calle 57 al 100,Barrio 5-D,-26.866216,-65.216797,C-0142
+Repavimentación,Calle 57 al 100,Barrio 5-D,-26.866292,-65.215821,C-0142
+Repavimentación,Calle 58 al 100,Barrio 5-D,-26.852208,-65.216673,C-0143
+Repavimentación,Calle 58 al 100,Barrio 5-D,-26.853605,-65.216451,C-0143
+Repavimentación,Calle 59 al 100,Barrio 5-D,-26.859413,-65.215646,C-0144
+Repavimentación,Calle 59 al 100,Barrio 5-D,-26.860813,-65.215423,C-0144
+Repavimentación,Calle 59 al 200,Barrio 5-D,-26.860813,-65.215423,C-0145
+Repavimentación,Calle 59 al 200,Barrio 5-D,-26.862213,-65.2152,C-0145
+Repavimentación,Calle 59 al 300,Barrio 5-D,-26.862213,-65.2152,C-0146
+Repavimentación,Calle 59 al 300,Barrio 5-D,-26.863614,-65.214977,C-0146
+Luminarias,Calle 53 1329,Barrio 5-D,-26.866283,-65.217051,
+Luminarias,Calle 29 637,Barrio 5-D,-26.855427,-65.215364,
+Luminarias,Calle 27 2480,Barrio 5-D,-26.857296,-65.220448,
+Luminarias,Calle 57 421,Barrio 5-D,-26.867441,-65.20828,
+Luminarias,Calle 79 1071,Barrio 5-D,-26.863647,-65.218603,
+Luminarias,Calle 77 2219,Barrio 5-D,-26.856657,-65.220368,
+Luminarias,Calle 42 1424,Barrio 5-D,-26.852851,-65.214313,
+Luminarias,Calle 39 346,Barrio 5-D,-26.868388,-65.212692,
+Luminarias,Calle 78 2333,Barrio 5-D,-26.866422,-65.21063,
+Luminarias,Calle 19 2263,Barrio 5-D,-26.86456,-65.205952,
+Bacheo,Calle 41 691,Barrio 5-D,-26.852969,-65.21233,
+Bacheo,Calle 1 1250,Barrio 5-D,-26.860707,-65.216317,
+Bacheo,Calle 70 1575,Barrio 5-D,-26.865641,-65.216128,
+Bacheo,Calle 56 949,Barrio 5-D,-26.864664,-65.212052,
+Bacheo,Calle 1 1318,Barrio 5-D,-26.868034,-65.211249,
+Bacheo,Calle 62 1677,Barrio 5-D,-26.855661,-65.217693,
+Bacheo,Calle 59 1652,Barrio 5-D,-26.853042,-65.22124,
+Bacheo,Calle 7 379,Barrio 5-D,-26.861197,-65.212855,
+Bacheo,Calle 24 1911,Barrio 5-D,-26.860649,-65.21441,
+Bacheo,Calle 18 926,Barrio 5-D,-26.861781,-65.208298,
+Bacheo,Calle 76 231,Barrio 5-D,-26.854082,-65.214288,
+Bacheo,Calle 26 1267,Barrio 5-D,-26.869981,-65.208333,
+Bacheo,Calle 10 1275,Barrio 5-D,-26.857834,-65.220131,
+Bacheo,Calle 37 197,Barrio 5-D,-26.864362,-65.213248,
+Bacheo,Calle 14 1064,Barrio 5-D,-26.852654,-65.216234,
+Bacheo,Calle 53 2299,Barrio 5-D,-26.859131,-65.214762,
+Bacheo,Calle 32 1366,Barrio 5-D,-26.857407,-65.218896,
+Bacheo,Calle 24 715,Barrio 5-D,-26.865301,-65.210226,
+Bacheo,Calle 13 1939,Barrio 5-D,-26.857025,-65.208808,
+Bacheo,Calle 60 418,Barrio 5-D,-26.857644,-65.218766,
+Bacheo,Calle 73 1226,Barrio 5-D,-26.855971,-65.218927,
+Bacheo,Calle 13 1944,Barrio 5-D,-26.863867,-65.211637,
+Bacheo,Calle 55 1478,Barrio 5-D,-26.869005,-65.218213,
+Bacheo,Calle 30 568,Barrio 5-D,-26.860506,-65.208453,
+Bacheo,Calle 47 1063,Barrio 5-D,-26.870187,-65.207164,
+Bacheo,Calle 11 890,Barrio 5-D,-26.8658,-65.210793,
+Bacheo,Calle 1 862,Barrio 5-D,-26.868132,-65.215671,
+Bacheo,Calle 22 901,Barrio 5-D,-26.852169,-65.217932,
+Bacheo,Calle 21 1748,Barrio 5-D,-26.868497,-65.210274,
+Bacheo,Calle 51 1394,Barrio 5-D,-26.855676,-65.212245,
+Bacheo,Calle 44 2184,Barrio 5-D,-26.866284,-65.207931,
+Bacheo,Calle 44 2324,Barrio 5-D,-26.857952,-65.218987,
+Arbolado,Calle 50 272,Barrio 5-D,-26.863981,-65.216078,
+Arbolado,Calle 18 398,Barrio 5-D,-26.855682,-65.218218,
+Arbolado,Calle 68 1581,Barrio 5-D,-26.858157,-65.210072,
+Arbolado,Calle 47 1988,Barrio 5-D,-26.852251,-65.21928,
+Arbolado,Calle 1 638,Barrio 5-D,-26.862133,-65.209345,
+Arbolado,Calle 62 2054,Barrio 5-D,-26.857913,-65.216793,
+Arbolado,Calle 6 532,Barrio 5-D,-26.862236,-65.214534,
+Arbolado,Calle 71 147,Barrio 5-D,-26.867705,-65.218497,
+Arbolado,Calle 52 2096,Barrio 5-D,-26.854117,-65.218932,
+Limpieza de canales,Calle 70 1098,Barrio 5-D,-26.865209,-65.217476,
+Limpieza de canales,Calle 53 1008,Barrio 5-D,-26.869105,-65.207745,
+Pavimentación,Calle 60 al 100,Barrio 6-A,-26.8378,-65.195889,C-0147
+Pavimentación,Calle 60 al 100,Barrio 6-A,-26.839473,-65.19612,C-0147
+Pavimentación,Calle 61 al 100,Barrio 6-A,-26.842517,-65.191056,C-0148
+Pavimentación,Calle 61 al 100,Barrio 6-A,-26.843984,-65.191155,C-0148
+Pavimentación,Calle 61 al 200,Barrio 6-A,-26.843984,-65.191155,C-0149
+Pavimentación,Calle 61 al 200,Barrio 6-A,-26.845451,-65.191253,C-0149
+Pavimentación,Calle 61 al 300,Barrio 6-A,-26.845451,-65.191253,C-0150
+Pavimentación,Calle 61 al 300,Barrio 6-A,-26.846917,-65.191352,C-0150
+Repavimentación,Calle 62 al 100,Barrio 6-A,-26.832106,-65.189734,C-0151
+Repavimentación,Calle 62 al 100,Barrio 6-A,-26.833544,-65.189815,C-0151
+Repavimentación,Calle 62 al 200,Barrio 6-A,-26.833544,-65.189815,C-0152
+Repavimentación,Calle 62 al 200,Barrio 6-A,-26.834983,-65.189896,C-0152
+Repavimentación,Calle 63 al 100,Barrio 6-A,-26.826625,-65.198688,C-0153
+Repavimentación,Calle 63 al 100,Barrio 6-A,-26.826998,-65.197922,C-0153
+Repavimentación,Calle 63 al 200,Barrio 6-A,-26.826998,-65.197922,C-0154
+Repavimentación,Calle 63 al 200,Barrio 6-A,-26.827372,-65.197157,C-0154
+Repavimentación,Calle 63 al 300,Barrio 6-A,-26.827372,-65.197157,C-0155
+Repavimentación,Calle 63 al 300,Barrio 6-A,-26.827746,-65.196391,C-0155
+Luminarias,Calle 14 2386,Barrio 6-A,-26.837279,-65.191725,
+Refugios,Calle 1 455,Barrio 6-A,-26.838998,-65.188815,
+Bacheo,Calle 35 539,Barrio 6-A,-26.836952,-65.192997,
+Bacheo,Calle 23 2217,Barrio 6-A,-26.838918,-65.189908,
+Bacheo,Calle 7 502,Barrio 6-A,-26.843923,-65.193924,
+Bacheo,Calle 64 1695,Barrio 6-A,-26.839818,-65.192903,
+Bacheo,Calle 25 2206,Barrio 6-A,-26.849439,-65.196987,
+Bacheo,Calle 28 1281,Barrio 6-A,-26.846741,-65.194731,
+Bacheo,Calle 57 1645,Barrio 6-A,-26.842971,-65.196536,
+Bacheo,Calle 6 614,Barrio 6-A,-26.837731,-65.201323,
+Bacheo,Calle 73 1595,Barrio 6-A,-26.839889,-65.197441,
+Bacheo,Calle 51 2271,Barrio 6-A,-26.832224,-65.193001,
+Bacheo,Calle 60 2411,Barrio 6-A,-26.828447,-65.195726,
+Bacheo,Calle 4 902,Barrio 6-A,-26.841266,-65.200287,
+Bacheo,Calle 43 986,Barrio 6-A,-26.831147,-65.197405,
+Bacheo,Calle 41 1515,Barrio 6-A,-26.845276,-65.196028,
+Bacheo,Calle 31 573,Barrio 6-A,-26.843951,-65.194307,
+Arbolado,Calle 41 2314,Barrio 6-A,-26.831571,-65.188673,
+Arbolado,Calle 47 1853,Barrio 6-A,-26.842387,-65.19112,
+Arbolado,Calle 7 406,Barrio 6-A,-26.832236,-65.192671,
+Arbolado,Calle 47 779,Barrio 6-A,-26.843386,-65.196113,
+Arbolado,Calle 74 2498,Barrio 6-A,-26.829084,-65.197437,
+Arbolado,Calle 6 1714,Barrio 6-A,-26.83927,-65.195184,
+Limpieza de canales,Calle 76 1078,Barrio 6-A,-26.839485,-65.197642,
+Limpieza de canales,Calle 73 2464,Barrio 6-A,-26.84,-65.190447,
+Pavimentación,Calle 64 al 100,Barrio 6-B,-26.843402,-65.170687,C-0156
+Pavimentación,Calle 64 al 100,Barrio 6-B,-26.844772,-65.170525,C-0156
+Pavimentación,Calle 64 al 200,Barrio 6-B,-26.844772,-65.170525,C-0157
+Pavimentación,Calle 64 al 200,Barrio 6-B,-26.846141,-65.170363,C-0157
+Pavimentación,Calle 64 al 300,Barrio 6-B,-26.846141,-65.170363,C-0158
+Pavimentación,Calle 64 al 300,Barrio 6-B,-26.847511,-65.170201,C-0158
+Pavimentación,Calle 65 al 100,Barrio 6-B,-26.844738,-65.173174,C-0159
+Pavimentación,Calle 65 al 100,Barrio 6-B,-26.844624,-65.17192,C-0159
+Repavimentación,Calle 66 al 100,Barrio 6-B,-26.842539,-65.178357,C-0160
+Repavimentación,Calle 66 al 100,Barrio 6-B,-26.843893,-65.178274,C-0160
+Repavimentación,Calle 66 al 200,Barrio 6-B,-26.843893,-65.178274,C-0161
+Repavimentación,Calle 66 al 200,Barrio 6-B,-26.845247,-65.178191,C-0161
+Repavimentación,Calle 66 al 300,Barrio 6-B,-26.845247,-65.178191,C-0162
+Repavimentación,Calle 66 al 300,Barrio 6-B,-26.846602,-65.178108,C-0162
+Luminarias,Calle 24 1221,Barrio 6-B,-26.831102,-65.170229,
+Luminarias,Calle 66 2046,Barrio 6-B,-26.829822,-65.176063,
+Luminarias,Calle 6 2281,Barrio 6-B,-26.847713,-65.180247,
+Luminarias,Calle 67 1797,Barrio 6-B,-26.840988,-65.174439,
+Luminarias,Calle 42 1784,Barrio 6-B,-26.83001,-65.174704,
+Luminarias,Calle 3 2173,Barrio 6-B,-26.844216,-65.177037,
+Luminarias,Calle 64 1143,Barrio 6-B,-26.847234,-65.170801,
+Luminarias,Calle 77 1563,Barrio 6-B,-26.844561,-65.17491,
+Luminarias,Calle 31 2371,Barrio 6-B,-26.845414,-65.181342,
+Luminarias,Calle 31 2112,Barrio 6-B,-26.831502,-65.177868,
+Luminarias,Calle 4 106,Barrio 6-B,-26.842859,-65.185766,
+Luminarias,Calle 38 1484,Barrio 6-B,-26.841538,-65.178572,
+Luminarias,Calle 47 2055,Barrio 6-B,-26.831558,-65.183278,
+Luminarias,Calle 12 162,Barrio 6-B,-26.840584,-65.179691,
+Luminarias,Calle 35 1859,Barrio 6-B,-26.841452,-65.17593,
+Luminarias,Calle 55 1318,Barrio 6-B,-26.830656,-65.17069,
+Luminarias,Calle 18 1915,Barrio 6-B,-26.837048,-65.184049,
+Bacheo,Calle 17 2402,Barrio 6-B,-26.838469,-65.185497,
+Bacheo,Calle 39 1848,Barrio 6-B,-26.840834,-65.177356,
+Bacheo,Calle 2 1698,Barrio 6-B,-26.833927,-65.185696,
+Bacheo,Calle 9 2342,Barrio 6-B,-26.836999,-65.169467,
+Bacheo,Calle 11 211,Barrio 6-B,-26.845767,-65.179323,
+Bacheo,Calle 18 1339,Barrio 6-B,-26.834977,-65.175505,
+Bacheo,Calle 11 2127,Barrio 6-B,-26.844799,-65.171817,
+Bacheo,Calle 60 2416,Barrio 6-B,-26.839681,-65.171475,
+Bacheo,Calle 65 376,Barrio 6-B,-26.843726,-65.185393,
+Bacheo,Calle 47 1678,Barrio 6-B,-26.834477,-65.170035,
+Arbolado,Calle 1 1274,Barrio 6-B,-26.844363,-65.175722,
+Arbolado,Calle 79 1834,Barrio 6-B,-26.845051,-65.181514,
+Arbolado,Calle 18 156,Barrio 6-B,-26.836799,-65.183894,
+Arbolado,Calle 8 1176,Barrio 6-B,-26.840684,-65.171458,
+Arbolado,Calle 7 1106,Barrio 6-B,-26.832544,-65.178932,
+Arbolado,Calle 45 1874,Barrio 6-B,-26.830439,-65.174265,
+Arbolado,Calle 71 1955,Barrio 6-B,-26.842434,-65.181828,
+Arbolado,Calle 34 2146,Barrio 6-B,-26.840556,-65.169263,
+Arbolado,Calle 30 747,Barrio 6-B,-26.843148,-65.18292,
+Arbolado,Calle 70 768,Barrio 6-B,-26.846165,-65.169935,
+Limpieza de canales,Calle 62 1931,Barrio 6-B,-26.837698,-65.170956,
+Limpieza de canales,Calle 15 751,Barrio 6-B,-26.845207,-65.176736,
+Limpieza de canales,Calle 46 1199,Barrio 6-B,-26.837208,-65.179625,
+Limpieza de canales,Calle 14 903,Barrio 6-B,-26.837899,-65.18359,
+Pavimentación,Calle 67 al 100,Barrio 6-C,-26.856854,-65.197514,C-0163
+Pavimentación,Calle 67 al 100,Barrio 6-C,-26.857975,-65.197368,C-0163
+Pavimentación,Calle 67 al 200,Barrio 6-C,-26.857975,-65.197368,C-0164
+Pavimentación,Calle 67 al 200,Barrio 6-C,-26.859095,-65.197223,C-0164
+Pavimentación,Calle 67 al 300,Barrio 6-C,-26.859095,-65.197223,C-0165
+Pavimentación,Calle 67 al 300,Barrio 6-C,-26.860216,-65.197077,C-0165
+Pavimentación,Calle 68 al 100,Barrio 6-C,-26.86004,-65.197601,C-0166
+Pavimentación,Calle 68 al 100,Barrio 6-C,-26.861157,-65.197455,C-0166
+Repavimentación,Calle 69 al 100,Barrio 6-C,-26.85873,-65.189451,C-0167
+Repavimentación,Calle 69 al 100,Barrio 6-C,-26.859912,-65.189304,C-0167
+Repavimentación,Calle 69 al 200,Barrio 6-C,-26.859912,-65.189304,C-0168
+Repavimentación,Calle 69 al 200,Barrio 6-C,-26.861095,-65.189157,C-0168
+Repavimentación,Calle 69 al 300,Barrio 6-C,-26.861095,-65.189157,C-0169
+Repavimentación,Calle 69 al 300,Barrio 6-C,-26.862277,-65.18901,C-0169
+Repavimentación,Calle 70 al 100,Barrio 6-C,-26.867817,-65.192537,C-0170
+Repavimentación,Calle 70 al 100,Barrio 6-C,-26.867782,-65.191431,C-0170
+Repavimentación,Calle 70 al 200,Barrio 6-C,-26.867782,-65.191431,C-0171
+Repavimentación,Calle 70 al 200,Barrio 6-C,-26.867748,-65.190326,C-0171
+Repavimentación,Calle 71 al 100,Barrio 6-C,-26.855166,-65.19693,C-0172
+Repavimentación,Calle 71 al 100,Barrio 6-C,-26.855032,-65.195827,C-0172
+Repavimentación,Calle 71 al 200,Barrio 6-C,-26.855032,-65.195827,C-0173
+Repavimentación,Calle 71 al 200,Barrio 6-C,-26.854898,-65.194724,C-0173
+Repavimentación,Calle 72 al 100,Barrio 6-C,-26.855808,-65.20007,C-0174
+Repavimentación,Calle 72 al 100,Barrio 6-C,-26.856909,-65.199925,C-0174
+Repavimentación,Calle 72 al 200,Barrio 6-C,-26.856909,-65.199925,C-0175
+Repavimentación,Calle 72 al 200,Barrio 6-C,-26.858011,-65.199779,C-0175
+Luminarias,Calle 60 1672,Barrio 6-C,-26.858119,-65.200925,
+Luminarias,Calle 2 1695,Barrio 6-C,-26.868582,-65.1962,
+Luminarias,Calle 2 2240,Barrio 6-C,-26.869789,-65.199573,
+Luminarias,Calle 39 385,Barrio 6-C,-26.855418,-65.20162,
+Luminarias,Calle 9 2363,Barrio 6-C,-26.859248,-65.197861,
+Refugios,Calle 40 446,Barrio 6-C,-26.857054,-65.203917,
+Bacheo,Calle 80 1734,Barrio 6-C,-26.865995,-65.195848,
+Bacheo,Calle 7 1301,Barrio 6-C,-26.86459,-65.188626,
+Bacheo,Calle 45 889,Barrio 6-C,-26.869448,-65.193707,
+Bacheo,Calle 37 1118,Barrio 6-C,-26.856486,-65.201189,
+Bacheo,Calle 14 1758,Barrio 6-C,-26.854467,-65.198066,
+Bacheo,Calle 77 2215,Barrio 6-C,-26.865069,-65.20303,
+Bacheo,Calle 80 371,Barrio 6-C,-26.860778,-65.199511,
+Bacheo,Calle 6 635,Barrio 6-C,-26.859321,-65.191809,
+Bacheo,Calle 41 2329,Barrio 6-C,-26.860854,-65.202715,
+Bacheo,Calle 43 370,Barrio 6-C,-26.866799,-65.198498,
+Arbolado,Calle 50 2010,Barrio 6-C,-26.860487,-65.201574,
+Arbolado,Calle 44 980,Barrio 6-C,-26.857802,-65.203107,
+Arbolado,Calle 8 273,Barrio 6-C,-26.858766,-65.192572,
+Arbolado,Calle 23 327,Barrio 6-C,-26.865708,-65.191861,
+Arbolado,Calle 49 615,Barrio 6-C,-26.865042,-65.194021,
+Arbolado,Calle 49 1398,Barrio 6-C,-26.861812,-65.202423,
+Arbolado,Calle 16 2031,Barrio 6-C,-26.859645,-65.196504,
+Arbolado,Calle 32 1208,Barrio 6-C,-26.856448,-65.201006,
+Arbolado,Calle 68 1581,Barrio 6-C,-26.858465,-65.20315,
+Arbolado,Calle 8 1682,Barrio 6-C,-26.861605,-65.200044,
+Arbolado,Calle 39 501,Barrio 6-C,-26.865965,-65.191402,
+Arbolado,Calle 66 775,Barrio 6-C,-26.861242,-65.198064,
+Arbolado,Calle 59 2242,Barrio 6-C,-26.869604,-65.191151,
+Arbolado,Calle 2 1095,Barrio 6-C,-26.863311,-65.199485,
+Arbolado,Calle 45 1662,Barrio 6-C,-26.855073,-65.193455,
+Arbolado,Calle 19 2137,Barrio 6-C,-26.855432,-65.197298,
+Limpieza de canales,Calle 7 2392,Barrio 6-C,-26.86174,-65.18914,
+Pavimentación,Calle 73 al 100,Barrio 6-D,-26.864391,-65.176431,C-0176
+Pavimentación,Calle 73 al 100,Barrio 6-D,-26.865593,-65.176409,C-0176
+Pavimentación,Calle 73 al 200,Barrio 6-D,-26.865593,-65.176409,C-0177
+Pavimentación,Calle 73 al 200,Barrio 6-D,-26.866794,-65.176387,C-0177
+Pavimentación,Calle 74 al 100,Barrio 6-D,-26.85855,-65.173758,C-0178
+Pavimentación,Calle 74 al 100,Barrio 6-D,-26.858445,-65.172553,C-0178
+Pavimentación,Calle 74 al 200,Barrio 6-D,-26.858445,-65.172553,C-0179
+Pavimentación,Calle 74 al 200,Barrio 6-D,-26.858339,-65.171348,C-0179
+Repavimentación,Calle 75 al 100,Barrio 6-D,-26.86415,-65.18246,C-0180
+Repavimentación,Calle 75 al 100,Barrio 6-D,-26.865353,-65.18236,C-0180
+Repavimentación,Calle 75 al 200,Barrio 6-D,-26.865353,-65.18236,C-0181
+Repavimentación,Calle 75 al 200,Barrio 6-D,-26.866555,-65.18226,C-0181
+Repavimentación,Calle 75 al 300,Barrio 6-D,-26.866555,-65.18226,C-0182
+Repavimentación,Calle 75 al 300,Barrio 6-D,-26.867758,-65.18216,C-0182
+Repavimentación,Calle 75 al 400,Barrio 6-D,-26.867758,-65.18216,C-0183
+Repavimentación,Calle 75 al 400,Barrio 6-D,-26.86896,-65.18206,C-0183
+Repavimentación,Calle 76 al 100,Barrio 6-D,-26.854786,-65.174508,C-0184
+Repavimentación,Calle 76 al 100,Barrio 6-D,-26.855987,-65.174511,C-0184
+Repavimentación,Calle 76 al 200,Barrio 6-D,-26.855987,-65.174511,C-0185
+Repavimentación,Calle 76 al 200,Barrio 6-D,-26.857188,-65.174514,C-0185
+Repavimentación,Calle 76 al 300,Barrio 6-D,-26.857188,-65.174514,C-0186
+Repavimentación,Calle 76 al 300,Barrio 6-D,-26.85839,-65.174518,C-0186
+Repavimentación,Calle 77 al 100,Barrio 6-D,-26.863615,-65.175585,C-0187
+Repavimentación,Calle 77 al 100,Barrio 6-D,-26.864816,-65.175574,C-0187
+Repavimentación,Calle 77 al 200,Barrio 6-D,-26.864816,-65.175574,C-0188
+Repavimentación,Calle 77 al 200,Barrio 6-D,-26.866018,-65.175563,C-0188
+Repavimentación,Calle 77 al 300,Barrio 6-D,-26.866018,-65.175563,C-0189
+Repavimentación,Calle 77 al 300,Barrio 6-D,-26.867219,-65.175553,C-0189
+Luminarias,Calle 80 867,Barrio 6-D,-26.861865,-65.170979,
+Refugios,Calle 4 1042,Barrio 6-D,-26.868084,-65.17897,
+Bacheo,Calle 26 663,Barrio 6-D,-26.852586,-65.181086,
+Bacheo,Calle 55 1022,Barrio 6-D,-26.854735,-65.172349,
+Arbolado,Calle 24 1212,Barrio 6-D,-26.861406,-65.170909,
+Arbolado,Calle 22 2346,Barrio 6-D,-26.86203,-65.18116,
+Arbolado,Calle 12 1343,Barrio 6-D,-26.852734,-65.171281,
+Arbolado,Calle 65 669,Barrio 6-D,-26.860816,-65.172668,
+Arbolado,Calle 53 2469,Barrio 6-D,-26.86766,-65.172627,
+Arbolado,Calle 50 2015,Barrio 6-D,-26.867722,-65.180458,
+Limpieza de canales,Calle 64 1538,Barrio 6-D,-26.868603,-65.175025,

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Intervenciones en los barrios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <small id="org">Municipalidad de San Miguel de Tucumán</small>
+      <h1 id="app-title">Intervenciones en los barrios</h1>
+    </div>
+    <span class="data-tag" id="data-tag">Cargando datos…</span>
+  </header>
+
+  <aside class="panel">
+    <section>
+      <h2>Capas del mapa</h2>
+      <div class="layers">
+        <label class="toggle"><input type="checkbox" id="lyr-dist" checked> Distritos</label>
+        <label class="toggle"><input type="checkbox" id="lyr-barr" checked> Barrios</label>
+        <label class="toggle"><input type="checkbox" id="lyr-int" checked> Intervenciones</label>
+      </div>
+      <div class="field">
+        <label for="f-base">Mapa base</label>
+        <select id="f-base">
+          <option value="claro">Calles (claro)</option>
+          <option value="osm">Calles (OpenStreetMap)</option>
+          <option value="sat">Satélite</option>
+          <option value="none">Sin mapa base</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2>Zona</h2>
+      <div class="field">
+        <label for="f-dist">Distrito</label>
+        <select id="f-dist"><option value="">Todos los distritos</option></select>
+      </div>
+      <div class="field">
+        <label for="f-barr">Barrio</label>
+        <select id="f-barr"><option value="">Todos los barrios</option></select>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tipo de intervención</h2>
+      <div class="types" id="types"></div>
+      <div class="type-actions">
+        <button class="linkbtn" id="all-types" type="button">Marcar todos</button>
+        <button class="linkbtn" id="no-types" type="button">Desmarcar todos</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>En el mapa</h2>
+      <div class="summary">
+        <div class="stat"><b id="s-total">0</b><span>intervenciones</span></div>
+        <div class="stat"><b id="s-barrios">0</b><span>barrios alcanzados</span></div>
+      </div>
+      <p class="hint" id="warn" hidden></p>
+    </section>
+
+    <div class="cta">
+      <button class="btn" id="btn-ficha" type="button" disabled>Ver ficha técnica del distrito</button>
+      <span class="hint" id="ficha-hint">Elegí un distrito para armar su ficha en PDF.</span>
+    </div>
+  </aside>
+
+  <main class="mapwrap">
+    <div id="map" aria-label="Mapa de intervenciones"></div>
+    <div class="legend" id="legend"></div>
+  </main>
+</div>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="viewer-bar">
+    <h2 id="viewer-title">Ficha técnica</h2>
+    <label class="toggle"><input type="checkbox" id="opt-list" checked> Incluir listado de direcciones</label>
+    <button class="btn" id="btn-pdf" type="button">Descargar PDF</button>
+    <button class="btn ghost" id="btn-close" type="button">Volver al mapa</button>
+    <div class="viewer-msg" id="viewer-msg"></div>
+  </div>
+  <div class="sheets" id="sheets"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
