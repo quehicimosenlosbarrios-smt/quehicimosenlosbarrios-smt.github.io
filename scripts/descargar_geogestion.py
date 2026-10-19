@@ -83,6 +83,27 @@ def clasificar(fila, reglas):
     return None
 
 
+# partes de las direcciones geocodificadas que no aportan (ciudad, departamento, provincia, CP, país)
+_RELLENO = re.compile(r"^(san miguel de tucum[aá]n|departamento capital|tucum[aá]n|argentina|t\d{4}\w*)$", re.I)
+
+
+def limpiar_direccion(t):
+    """'302, Santiago del Estero, Barrio Norte, San Miguel de Tucumán, …, Argentina' -> 'Santiago del Estero 302'."""
+    t = re.sub(r"(\d+)\.0\b", r"\1", str(t or "").strip())
+    partes = [x.strip() for x in t.split(",") if x.strip()]
+    if len(partes) < 3:
+        return re.sub(r"\s+", " ", t)
+    corte = next((i for i, x in enumerate(partes) if _RELLENO.match(x)), len(partes))
+    partes = partes[:corte]
+    num = next((i for i, x in enumerate(partes) if re.fullmatch(r"\d+\s*\w?", x)), None)
+    if num is not None and num + 1 < len(partes):
+        # lo que sigue a la calle es el barrio del geocodificador (ya está en su propia columna)
+        nombre = partes[:num]
+        calle = partes[num + 1] + " " + partes[num]
+        partes = nombre + [calle]
+    return re.sub(r"\s+", " ", ", ".join(partes))
+
+
 def coord(v, limite=180):
     """Número de una coordenada; None si falta, es 0 o está fuera de rango."""
     try:
@@ -187,7 +208,7 @@ def main():
         if lat is None or lng is None:
             descartadas += 1
             continue
-        filas.append(dict(b, direccion=" ".join(filter(None, [str(p.get("dirección") or p.get("direccion") or "").strip(), str(p.get("numeracion") or "").strip()])),
+        filas.append(dict(b, direccion=limpiar_direccion(" ".join(filter(None, [str(p.get("dirección") or p.get("direccion") or "").strip(), str(p.get("numeracion") or "").strip()]))),
                           barrio=p.get("barrio_nombre") or "", latitud=lat, longitud=lng,
                           id_cuadra="", id_geogestion=p.get("orden_punto") or p.get("id_punto") or ""))
 
@@ -200,7 +221,7 @@ def main():
             descartadas += 1
             continue
         for v in vertices:
-            filas.append(dict(b, direccion=str(v.get("direccion") or l.get("dirección") or l.get("direccion") or "").strip(),
+            filas.append(dict(b, direccion=limpiar_direccion(v.get("direccion") or l.get("dirección") or l.get("direccion")),
                               barrio=v.get("barrio_nombre") or l.get("barrio_nombre") or "",
                               latitud=coord(v.get("latitud")), longitud=coord(v.get("longitud")),
                               id_cuadra="L-%s" % l.get("id_punto"), id_geogestion=l.get("id_punto") or ""))
