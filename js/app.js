@@ -379,7 +379,8 @@ function render() {
   var counts = {}; TYPES.forEach(function (t) { counts[t.id] = zone.filter(function (p) { return p.type === t.id; }).length; max = Math.max(max, counts[t.id]); });
   TYPES.forEach(function (t) { $("n-" + t.id).textContent = fmt.format(counts[t.id]); $("b-" + t.id).style.width = (counts[t.id] / max * 100) + "%"; });
 
-  var lines = pts.filter(function (p) { return p.coords; });
+  // solo calles pavimentadas: GeoGestión también trae líneas de recorridos (transporte, ciclovías)
+  var lines = pts.filter(function (p) { return p.coords && TYPE_BY[p.type].icon === "pav"; });
   $("zone-name").textContent = state.barrio ? BARRIO_BY[state.barrio].name + " · " + DIST_BY[state.district].name : state.district ? DIST_BY[state.district].name : "Toda la ciudad";
   $("k-total").textContent = fmt.format(pts.length);
   $("k-barrios").textContent = fmt.format(new Set(pts.map(function (p) { return p.barrio; }).filter(Boolean)).size);
@@ -507,7 +508,7 @@ function buildFicha() {
   function countBy(tp) {
     return d.barrios.map(function (b) { var bp = tp.filter(function (p) { return p.barrio === b.id; }); return { b: b, n: bp.length, m: bp.reduce(function (a, p) { return a + (p.m || 0); }, 0) }; }).sort(function (a, b) { return b.n - a.n || byName(a.b, b.b); });
   }
-  var lines = dpts.filter(function (p) { return p.coords; });
+  var lines = dpts.filter(function (p) { return p.coords && TYPE_BY[p.type].icon === "pav"; });
 
   // 1. Portada / resumen
   var maxT = Math.max.apply(null, types.map(function (t) { return dpts.filter(function (p) { return p.type === t.id; }).length; }).concat([1]));
