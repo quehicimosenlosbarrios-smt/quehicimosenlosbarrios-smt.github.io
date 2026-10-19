@@ -230,6 +230,7 @@ async function loadAll() {
 
 /* ---------- App ---------- */
 var state = { district: "", barrio: "", types: new Set() };
+var DETAIL_ZOOM = 17, dotRenderer = null, focusId = null;
 var map, distLayer, barrLayer, barrLabels, ptLayer, distPolys = {}, barrPolys = {}, cityBounds, bases = {}, markers = {};
 
 function iconSvg(t, size) { return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="' + ICONS[t.icon] + '"/></svg>'; }
@@ -242,7 +243,12 @@ function initMap() {
   L.control.zoom({ position: "topleft" }).addTo(map);
   bases = {
     // Esri, igual que el satélite: no pide clave (CARTO empezó a mostrar "API key required")
-    claro: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Mapa &copy; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
+    // gris claro y suave (por defecto): las intervenciones resaltan sobre el fondo
+    claro: L.layerGroup([
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 20, maxNativeZoom: 16, attribution: "Mapa &copy; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 20, maxNativeZoom: 16 })
+    ]),
+    calles: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Mapa &copy; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
     sat: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Imágenes &copy; Esri" })
   };
   bases.claro.addTo(map);
@@ -272,7 +278,14 @@ function initMap() {
   cityBounds = L.latLngBounds([]);
   DISTRICTS.forEach(function (d) { cityBounds.extend(distPolys[d.id].getBounds()); });
   map.fitBounds(cityBounds, { padding: [20, 20] });
+  dotRenderer = L.canvas({ padding: 0.3 });
   map.on("zoomend", function () { updateBarrLabels(); render(); });
+  // de cerca los íconos se dibujan solo en pantalla: al moverse hay que redibujar
+  // (no mientras hay un popup abierto: el autopan lo cerraría al redibujar)
+  var popupOpen = false;
+  map.on("popupopen", function () { popupOpen = true; });
+  map.on("popupclose", function () { popupOpen = false; });
+  map.on("moveend", function () { if (map.getZoom() >= DETAIL_ZOOM && !popupOpen) render(); });
 }
 function styleDistrict(id) {
   var sel = state.district === id, dim = state.district && !sel;
@@ -334,6 +347,7 @@ function initPanel() {
     if (!state.types.has(p.type)) { state.types.add(p.type); $("types").querySelector('[data-type="' + p.type + '"]').checked = true; }
     if (state.district && state.district !== p.district) setDistrict("");
     if (!$("lyr-int").checked) $("lyr-int").checked = true;
+    focusId = id;
     map.setView([p.lat, p.lng], 17);
     setTimeout(function () { if (markers[id]) markers[id].openPopup(); }, 350);
     res.hidden = true;
@@ -373,7 +387,9 @@ function popupHtml(p) {
 function render() {
   ptLayer.clearLayers(); markers = {};
   var pts = ITEMS.filter(function (p) { return inZone(p) && state.types.has(p.type); });
-  var stroke = css("--pt-stroke"), size = map.getZoom() >= 15 ? 26 : 20;
+  var stroke = css("--pt-stroke"), size = 24;
+  // con la vista alejada, puntitos dibujados en canvas (livianos); bien de cerca, íconos solo para lo que está en pantalla
+  var detail = map.getZoom() >= DETAIL_ZOOM, dotR = map.getZoom() >= 15 ? 5 : 3.5, view = map.getBounds().pad(0.25);
   if ($("lyr-int").checked) {
     pts.forEach(function (p) {
       var t = TYPE_BY[p.type];
@@ -381,7 +397,9 @@ function render() {
         var ll = p.coords.map(function (c) { return [c[1], c[0]]; });
         L.polyline(ll, { color: stroke, weight: 8, opacity: 0.9, interactive: false }).addTo(ptLayer);
         markers[p.id] = L.polyline(ll, { color: t.color, weight: 5, opacity: 1 }).bindPopup(popupHtml(p)).addTo(ptLayer);
-      } else {
+      } else if (!detail) {
+        markers[p.id] = L.circleMarker([p.lat, p.lng], { renderer: dotRenderer, radius: dotR, weight: 1, color: stroke, fillColor: t.color, fillOpacity: 1 }).bindPopup(popupHtml(p)).addTo(ptLayer);
+      } else if (view.contains([p.lat, p.lng]) || p.id === focusId) {
         markers[p.id] = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: "pin", html: badge(t, size), iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2] }), title: t.name + (p.dir ? ", " + p.dir : "") }).bindPopup(popupHtml(p)).addTo(ptLayer);
       }
     });
