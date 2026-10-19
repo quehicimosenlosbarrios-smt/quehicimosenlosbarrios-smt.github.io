@@ -141,6 +141,8 @@ var DISTRICTS = [], BARRIOS = [], ITEMS = [], TYPES = [], TYPE_BY = {}, DIST_BY 
 var SOURCE = { sample: true, when: null, updated: null, skipped: 0, unlocated: 0 };
 // intervención (norm) -> columna de la planilla que la divide en subgrupos (p. ej. Mapa verde por indicador)
 var SPLIT = {};
+// circuito (norm) -> cantidad de electores del padrón (data/electores.json)
+var ELECTORES = {};
 var SUBPAL = ["#1f78b4", "#e6550d", "#33a02c", "#e31a1c", "#b8860b", "#17becf", "#6a3d9a", "#555555"];
 function colorDist(a, b) { var x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16); return Math.abs((x >> 16) - (y >> 16)) + Math.abs((x >> 8 & 255) - (y >> 8 & 255)) + Math.abs((x & 255) - (y & 255)); }
 
@@ -150,6 +152,10 @@ function buildTypes(names) {
     var k = norm(n), rule = RULES.filter(function (r) { return r.re.test(k); })[0];
     return { id: "t" + k.replace(/[^a-z0-9]+/g, "-"), name: n, icon: rule ? rule.icon : "pin", color: rule ? rule.color : SPARE[used++ % SPARE.length] };
   });
+  // orden fijo por prioridad (config.js); lo que no está en la lista va al final, por nombre
+  var order = (CFG.ordenIntervenciones || []).map(norm);
+  var rank = function (t) { var i = order.indexOf(norm(t.name)); return i < 0 ? order.length : i; };
+  TYPES.sort(function (a, b) { return rank(a) - rank(b) || a.name.localeCompare(b.name, "es"); });
   // dos tipos con la misma regla (raro) reciben colores distintos
   var seen = {};
   TYPES.forEach(function (t) { if (seen[t.color]) t.color = SPARE[used++ % SPARE.length]; seen[t.color] = 1; });
@@ -227,8 +233,11 @@ async function loadAll() {
   DISTRICTS.forEach(function (d) { d.barrios.sort(function (a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }); });
   var extra = await Promise.all([
     fetch(rel("data/filtro-intervenciones.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-    fetch(rel("data/actualizacion.json") + "?t=" + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+    fetch(rel("data/actualizacion.json") + "?t=" + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch(rel("data/electores.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
   ]);
+  ELECTORES = {};
+  Object.keys((extra[2] && extra[2].circuitos) || {}).forEach(function (k) { ELECTORES[norm(k)] = +extra[2].circuitos[k]; });
   SPLIT = {};
   ((extra[0] && extra[0].reglas) || []).forEach(function (r) { if (r.diferenciar_por) SPLIT[norm(r.mostrar_como)] = r.diferenciar_por; });
   var f = extra[1] && String(extra[1].fecha || "").match(/^(\d{4})-(\d\d)-(\d\d)(?:[ T](\d\d):(\d\d))?/);
@@ -637,7 +646,7 @@ function buildFicha() {
   }).join("");
   pages.push(band(d, d.name, nb + ' barrios · ' + fmt.format(dpts.length) + ' intervenciones municipales registradas', { cls: 'cover' }) +
     '<div class="body">' +
-    tiles([{ v: fmt.format(dpts.length), l: "Intervenciones" }, { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: fmt.format(lines.length), l: "Cuadras pavimentadas" }, { v: km(lines.reduce(function (a, p) { return a + p.m; }, 0)) + '<small> km</small>', l: "De calles pavimentadas" }]) +
+    tiles([{ v: fmt.format(dpts.length), l: "Intervenciones" }, { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }].concat(ELECTORES[d.key] != null ? [{ v: fmt.format(ELECTORES[d.key]), l: "Electores" }] : [])) +
     '<div class="sh-map"><canvas data-map="all" width="1396" height="760"></canvas></div>' +
     '<div class="cols2"><div class="locator"><h3 class="sh-h3">Ubicación</h3><canvas data-locator="1" width="460" height="340"></canvas><p>' + esc(d.name) + ' dentro de la ciudad</p></div>' +
     '<div><h3 class="sh-h3">Intervenciones por tipo</h3><table class="t"><thead><tr><th>Tipo</th><th></th><th class="r">Cantidad</th><th class="r">Barrios</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +

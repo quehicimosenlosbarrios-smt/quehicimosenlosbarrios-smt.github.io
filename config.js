@@ -11,6 +11,22 @@ window.APP_CONFIG = {
   planillaCSV: "data/intervenciones.csv",
   planillaEjemplo: "data/ejemplo-intervenciones-smt.csv",
 
+  // Orden en que aparecen las intervenciones en el panel y en la ficha (prioridad).
+  // Tiene que coincidir con "mostrar_como" de data/filtro-intervenciones.json.
+  ordenIntervenciones: [
+    "Pavimentación",
+    "Repavimentación",
+    "Semáforos",
+    "Plan veredas sanas",
+    "El gas llega a tu casa",
+    "Refugios",
+    "Plazas revalorizadas",
+    "Alumbrado público",
+    "Mapa verde",
+    "EDUCÁ",
+    "Pintemos la ciudad"
+  ],
+
   // Límites fijos (WGS84). Origen: CIRCUITOS_ELECTORALES y BARRIOS, EPSG:5345.
   circuitos: "data/circuitos.geojson",
   barrios: "data/barrios.geojson",
