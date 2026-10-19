@@ -1,0 +1,193 @@
+{
+ "_fuente": "Padrón electoral: electores y escuelas 2025 por circuito (planilla electores.xlsx)",
+ "circuitos": {
+  "Circuito 1": {
+   "electores": 6053,
+   "escuelas": 2
+  },
+  "Circuito 1A": {
+   "electores": 5299,
+   "escuelas": 2
+  },
+  "Circuito 2": {
+   "electores": 3703,
+   "escuelas": 2
+  },
+  "Circuito 2A": {
+   "electores": 4255,
+   "escuelas": 2
+  },
+  "Circuito 3": {
+   "electores": 7108,
+   "escuelas": 2
+  },
+  "Circuito 4": {
+   "electores": 6463,
+   "escuelas": 2
+  },
+  "Circuito 5": {
+   "electores": 11174,
+   "escuelas": 3
+  },
+  "Circuito 6": {
+   "electores": 5163,
+   "escuelas": 1
+  },
+  "Circuito 7": {
+   "electores": 4709,
+   "escuelas": 1
+  },
+  "Circuito 7A": {
+   "electores": 6009,
+   "escuelas": 2
+  },
+  "Circuito 8": {
+   "electores": 4437,
+   "escuelas": 2
+  },
+  "Circuito 8A": {
+   "electores": 7292,
+   "escuelas": 2
+  },
+  "Circuito 9": {
+   "electores": 11170,
+   "escuelas": 4
+  },
+  "Circuito 9A": {
+   "electores": 10564,
+   "escuelas": 3
+  },
+  "Circuito 10": {
+   "electores": 11548,
+   "escuelas": 3
+  },
+  "Circuito 10A": {
+   "electores": 21485,
+   "escuelas": 6
+  },
+  "Circuito 11": {
+   "electores": 2048,
+   "escuelas": 1
+  },
+  "Circuito 11A": {
+   "electores": 9075,
+   "escuelas": 3
+  },
+  "Circuito 12": {
+   "electores": 11291,
+   "escuelas": 3
+  },
+  "Circuito 12A": {
+   "electores": 8817,
+   "escuelas": 2
+  },
+  "Circuito 13": {
+   "electores": 10831,
+   "escuelas": 3
+  },
+  "Circuito 13A": {
+   "electores": 4421,
+   "escuelas": 1
+  },
+  "Circuito 14": {
+   "electores": 18796,
+   "escuelas": 5
+  },
+  "Circuito 14 D": {
+   "electores": 4733,
+   "escuelas": 1
+  },
+  "Circuito 14A": {
+   "electores": 2887,
+   "escuelas": 2
+  },
+  "Circuito 14B": {
+   "electores": 3718,
+   "escuelas": 1
+  },
+  "Circuito 14C": {
+   "electores": 6581,
+   "escuelas": 1
+  },
+  "Circuito 15": {
+   "electores": 13642,
+   "escuelas": 4
+  },
+  "Circuito 15A": {
+   "electores": 11629,
+   "escuelas": 2
+  },
+  "Circuito 15B": {
+   "electores": 22665,
+   "escuelas": 6
+  },
+  "Circuito 16": {
+   "electores": 13522,
+   "escuelas": 4
+  },
+  "Circuito 16A": {
+   "electores": 12639,
+   "escuelas": 4
+  },
+  "Circuito 17": {
+   "electores": 15780,
+   "escuelas": 5
+  },
+  "Circuito 17A": {
+   "electores": 11971,
+   "escuelas": 4
+  },
+  "Circuito 18": {
+   "electores": 16742,
+   "escuelas": 4
+  },
+  "Circuito 18A": {
+   "electores": 3895,
+   "escuelas": 1
+  },
+  "Circuito 18B": {
+   "electores": 10402,
+   "escuelas": 2
+  },
+  "Circuito 18C": {
+   "electores": 9970,
+   "escuelas": 2
+  },
+  "Circuito 18D": {
+   "electores": 5525,
+   "escuelas": 2
+  },
+  "Circuito 18E": {
+   "electores": 10326,
+   "escuelas": 2
+  },
+  "Circuito 18F": {
+   "electores": 5788,
+   "escuelas": 2
+  },
+  "Circuito 18G": {
+   "electores": 8642,
+   "escuelas": 2
+  },
+  "Circuito 19": {
+   "electores": 15237,
+   "escuelas": 4
+  },
+  "Circuito 19A": {
+   "electores": 10887,
+   "escuelas": 4
+  },
+  "Circuito 20": {
+   "electores": 25492,
+   "escuelas": 6
+  },
+  "Circuito 21": {
+   "electores": 22594,
+   "escuelas": 6
+  },
+  "Circuito 22": {
+   "electores": 7954,
+   "escuelas": 2
+  }
+ }
+}
