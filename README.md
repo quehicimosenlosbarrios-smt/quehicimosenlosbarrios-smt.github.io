@@ -1,6 +1,6 @@
 # Intervenciones en los barrios
 
-Mapa de las intervenciones municipales en San Miguel de Tucumán, con filtros por distrito, barrio y tipo de intervención, y ficha técnica del distrito en PDF.
+Mapa de las intervenciones municipales en San Miguel de Tucumán, con filtros por circuito electoral, barrio y tipo de intervención, y ficha técnica del circuito en PDF.
 
 App publicada: https://quehicimosenlosbarrios-smt.github.io
 
@@ -8,11 +8,13 @@ App publicada: https://quehicimosenlosbarrios-smt.github.io
 
 | Qué | Archivo | ¿Cambia? |
 |---|---|---|
-| Límites de distritos | `data/distritos.geojson` | No, es fijo |
+| Circuitos electorales | `data/circuitos.geojson` | No, es fijo |
 | Límites de barrios | `data/barrios.geojson` | No, es fijo |
 | Intervenciones | Google Sheet publicada como CSV (link en `config.js`) | Sí, se agregan filas |
 
-Mientras `planillaCSV` en `config.js` esté vacío, la app muestra datos de ejemplo (`data/intervenciones-ejemplo.csv`).
+Mientras `planillaCSV` en `config.js` esté vacío, la app muestra datos de ejemplo (`data/ejemplo-intervenciones-smt.csv`).
+
+Los GeoJSON originales vienen en EPSG:5345 (POSGAR 2007 / Argentina 3) y se convirtieron a WGS84. Cada barrio guarda en `circuitos` la lista de circuitos con los que se superpone (más del 5 % de su superficie), porque hay barrios que cruzan el límite de un circuito.
 
 ## Cómo tiene que ser la planilla
 
@@ -26,8 +28,7 @@ Una fila por intervención, con estas columnas (los nombres pueden variar en may
 
 - **intervencion** es el tipo (Pavimentación, Luminarias, Refugios…). Cada valor distinto aparece como un filtro.
 - Las calles ocupan **dos filas con el mismo `id_cuadra`**: la primera con el punto de inicio y la segunda con el punto final. Las intervenciones puntuales dejan `id_cuadra` vacío.
-- El **distrito** no hace falta cargarlo: la app lo calcula con la ubicación.
-- Si el barrio escrito coincide con un nombre del GeoJSON se usa ese; si no, se calcula por ubicación.
+- El **circuito** y el **barrio** se calculan con la ubicación del punto. El barrio escrito en la planilla solo se usa si el punto cae fuera de todos los barrios.
 
 ## Conectar la planilla
 

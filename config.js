@@ -6,20 +6,18 @@ window.APP_CONFIG = {
   titulo: "Intervenciones en los barrios",
   organismo: "Municipalidad de San Miguel de Tucumán",
 
-  // Link de la Google Sheet publicada como CSV
-  // (Archivo > Compartir > Publicar en la web > hoja de intervenciones > Valores separados por comas).
-  // Mientras esté vacío, la app usa la planilla de ejemplo.
+  // Archivo con las intervenciones. Cuando la descarga automática esté funcionando,
+  // va a ser "data/intervenciones.csv". Mientras esté vacío se usa la planilla de ejemplo.
   planillaCSV: "",
-  planillaEjemplo: "data/intervenciones-ejemplo.csv",
+  planillaEjemplo: "data/ejemplo-intervenciones-smt.csv",
 
-  // Límites fijos
-  distritos: "data/distritos.geojson",
+  // Límites fijos (WGS84). Origen: CIRCUITOS_ELECTORALES y BARRIOS, EPSG:5345.
+  circuitos: "data/circuitos.geojson",
   barrios: "data/barrios.geojson",
 
-  // Propiedad del GeoJSON que tiene el nombre. Si queda vacío se detecta sola
-  // (busca "nombre", "name", "distrito" o "barrio").
-  campoNombreDistrito: "",
-  campoNombreBarrio: "",
+  // Propiedad del GeoJSON que tiene el nombre. Vacío = se detecta sola.
+  campoNombreCircuito: "nombre",
+  campoNombreBarrio: "nombre",
 
   // Nombres posibles de cada columna de la planilla (no importan mayúsculas, tildes ni espacios)
   columnas: {

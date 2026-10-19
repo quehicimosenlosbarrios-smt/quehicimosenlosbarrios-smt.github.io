@@ -6,87 +6,92 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Intervenciones en los barrios</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <div class="app">
-  <header class="topbar">
-    <div class="brand">
-      <small id="org">Municipalidad de San Miguel de Tucumán</small>
-      <h1 id="app-title">Intervenciones en los barrios</h1>
+  <header class="hdr">
+    <div class="hdr-id">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M1 12h30M12 1v30M21 12v19" stroke="currentColor" stroke-width="1.4" opacity=".55"/><circle cx="21" cy="12" r="4.2" fill="#f2b33d"/></svg>
+      <div>
+        <small id="org">Municipalidad de San Miguel de Tucumán</small>
+        <h1 id="app-title">Intervenciones en los barrios</h1>
+      </div>
     </div>
-    <span class="data-tag" id="data-tag">Cargando datos…</span>
+    <div class="hdr-actions">
+      <span class="status" id="data-tag">Cargando datos…</span>
+      <button class="btn btn-sun" id="btn-ficha" type="button" disabled title="Elegí un circuito para armar su ficha">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v15H6zM14 3.5V8h4.5zM9 12h8v1.6H9zM9 15.5h8v1.6H9zM9 19h5v1.6H9z"/></svg>
+        <span id="btn-ficha-label">Ficha técnica</span>
+      </button>
+    </div>
   </header>
 
-  <aside class="panel">
-    <section>
-      <h2>Capas del mapa</h2>
-      <div class="layers">
-        <label class="toggle"><input type="checkbox" id="lyr-dist" checked> Distritos</label>
-        <label class="toggle"><input type="checkbox" id="lyr-barr" checked> Barrios</label>
-        <label class="toggle"><input type="checkbox" id="lyr-int" checked> Intervenciones</label>
-      </div>
-      <div class="field">
-        <label for="f-base">Mapa base</label>
-        <select id="f-base">
-          <option value="claro">Calles (claro)</option>
-          <option value="osm">Calles (OpenStreetMap)</option>
-          <option value="sat">Satélite</option>
-          <option value="none">Sin mapa base</option>
-        </select>
-      </div>
-    </section>
+  <section class="kpibar" aria-label="Resumen de lo que se ve en el mapa">
+    <div class="zone"><span>Mostrando</span><b id="zone-name">Toda la ciudad</b></div>
+    <div class="k"><b id="k-total">0</b><span>intervenciones</span></div>
+    <div class="k"><b id="k-barrios">0</b><span>barrios alcanzados</span></div>
+    <div class="k"><b id="k-cuadras">0</b><span id="k-cuadras-l">cuadras pavimentadas</span></div>
+    <div class="k"><b id="k-tipos">0</b><span>tipos de intervención</span></div>
+  </section>
 
-    <section>
-      <h2>Zona</h2>
-      <div class="field">
-        <label for="f-dist">Distrito</label>
-        <select id="f-dist"><option value="">Todos los distritos</option></select>
-      </div>
-      <div class="field">
-        <label for="f-barr">Barrio</label>
+  <div class="main">
+    <aside class="panel">
+      <section class="sec">
+        <div class="sec-h"><h2>Zona</h2><button class="linkbtn" id="clear" type="button" hidden>Limpiar</button></div>
+        <label class="lbl" for="f-dist">Circuito electoral</label>
+        <select id="f-dist"><option value="">Todos los circuitos</option></select>
+        <label class="lbl" for="f-barr">Barrio</label>
         <select id="f-barr"><option value="">Todos los barrios</option></select>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Buscar dirección</h2></div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 1 0 4.2 12.6l4.6 4.6 1.4-1.4-4.6-4.6A7 7 0 0 0 10 3zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+          <input id="q" type="search" placeholder="Ej.: Calle 12" autocomplete="off">
+        </div>
+        <ul class="results" id="results" hidden></ul>
+      </section>
+
+      <section class="sec">
+        <div class="sec-h"><h2>Tipos de intervención</h2><span><button class="linkbtn" id="all-types" type="button">Todos</button> · <button class="linkbtn" id="no-types" type="button">Ninguno</button></span></div>
+        <div class="types" id="types"></div>
+      </section>
+
+      <p class="warn" id="warn" hidden></p>
+    </aside>
+
+    <main class="mapwrap">
+      <div id="map" aria-label="Mapa de intervenciones"></div>
+      <div class="mapcard layers">
+        <div class="seg" role="group" aria-label="Mapa base">
+          <button type="button" data-base="claro" class="on">Calles</button>
+          <button type="button" data-base="sat">Satélite</button>
+          <button type="button" data-base="none">Sin fondo</button>
+        </div>
+        <div class="checks">
+          <label><input type="checkbox" id="lyr-dist" checked> Circuitos</label>
+          <label><input type="checkbox" id="lyr-barr" checked> Barrios</label>
+          <label><input type="checkbox" id="lyr-int" checked> Intervenciones</label>
+        </div>
       </div>
-    </section>
-
-    <section>
-      <h2>Tipo de intervención</h2>
-      <div class="types" id="types"></div>
-      <div class="type-actions">
-        <button class="linkbtn" id="all-types" type="button">Marcar todos</button>
-        <button class="linkbtn" id="no-types" type="button">Desmarcar todos</button>
-      </div>
-    </section>
-
-    <section>
-      <h2>En el mapa</h2>
-      <div class="summary">
-        <div class="stat"><b id="s-total">0</b><span>intervenciones</span></div>
-        <div class="stat"><b id="s-barrios">0</b><span>barrios alcanzados</span></div>
-      </div>
-      <p class="hint" id="warn" hidden></p>
-    </section>
-
-    <div class="cta">
-      <button class="btn" id="btn-ficha" type="button" disabled>Ver ficha técnica del distrito</button>
-      <span class="hint" id="ficha-hint">Elegí un distrito para armar su ficha en PDF.</span>
-    </div>
-  </aside>
-
-  <main class="mapwrap">
-    <div id="map" aria-label="Mapa de intervenciones"></div>
-    <div class="legend" id="legend"></div>
-  </main>
+      <details class="mapcard legend" open>
+        <summary>Referencias</summary>
+        <div id="legend"></div>
+      </details>
+    </main>
+  </div>
 </div>
 
 <div class="viewer" id="viewer" hidden>
   <div class="viewer-bar">
-    <h2 id="viewer-title">Ficha técnica</h2>
-    <label class="toggle"><input type="checkbox" id="opt-list" checked> Incluir listado de direcciones</label>
-    <button class="btn" id="btn-pdf" type="button">Descargar PDF</button>
-    <button class="btn ghost" id="btn-close" type="button">Volver al mapa</button>
+    <div class="vb-title"><small>Vista previa</small><h2 id="viewer-title">Ficha técnica</h2></div>
+    <label class="opt"><input type="checkbox" id="opt-list" checked> Incluir listado de direcciones</label>
+    <button class="btn btn-sun" id="btn-pdf" type="button">Descargar PDF</button>
+    <button class="btn btn-ghost" id="btn-close" type="button">Volver al mapa</button>
     <div class="viewer-msg" id="viewer-msg"></div>
   </div>
   <div class="sheets" id="sheets"></div>
