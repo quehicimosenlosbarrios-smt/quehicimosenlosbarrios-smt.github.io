@@ -219,7 +219,8 @@ function initMap() {
   map = L.map("map", { zoomSnap: 0.25, zoomControl: false });
   L.control.zoom({ position: "topleft" }).addTo(map);
   bases = {
-    claro: L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 20, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }),
+    // Esri, igual que el satélite: no pide clave (CARTO empezó a mostrar "API key required")
+    claro: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Mapa &copy; Esri, HERE, Garmin, &copy; OpenStreetMap" }),
     sat: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Imágenes &copy; Esri" })
   };
   bases.claro.addTo(map);
