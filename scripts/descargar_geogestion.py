@@ -107,7 +107,8 @@ def main():
             if v in (None, ""):
                 continue
             v = str(v).strip()
-            if k.endswith("_id") or v.isdigit():
+            # GeoGestión a veces guarda el id y a veces directamente el nombre (igual que lo trata el validador)
+            if re.fullmatch(r"\d+(\.0+)?", v):
                 v = mapa.get(v.split(".")[0], "")
             if v:
                 return v
@@ -158,6 +159,10 @@ def main():
         muestra = (datos.get("puntos") or datos.get("lineas") or [{}])[0]
         print("Campos de un registro de GeoGestión: " + ", ".join(sorted(muestra.keys())))
         print("Catálogos de la API: " + ", ".join(sorted(vivos.keys())))
+        regs = (datos.get("puntos") or []) + (datos.get("lineas") or [])
+        for k in ("programa_geo_id", "indicador_geo_id", "ambito_id", "estado_id"):
+            vals = [str(x.get(k) if x.get(k) is not None else "").strip() for x in regs]
+            print("%s: %d vacíos, %d numéricos, %d con texto" % (k, sum(1 for v in vals if not v), sum(1 for v in vals if v.replace(".", "").isdigit()), sum(1 for v in vals if v and not v.replace(".", "").isdigit())))
     if sin_tipo == len(filas):
         sys.exit("Ningún registro tiene programa reconocible; no se modifica %s." % SALIDA)
 
