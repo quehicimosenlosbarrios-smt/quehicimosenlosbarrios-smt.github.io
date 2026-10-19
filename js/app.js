@@ -193,9 +193,15 @@ async function loadAll() {
     ds.forEach(function (x) { var e = b.props.etiquetas && b.props.etiquetas[x.name]; b.labels[x.id] = e || b.label; x.barrios.push(b); });
   });
   DISTRICTS.forEach(function (d) { d.barrios.sort(function (a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }); });
-  var url = CFG.planillaCSV || rel(CFG.planillaEjemplo);
+  var csv = null;
   SOURCE.sample = !CFG.planillaCSV;
-  var csv = await loadCSV(url + (CFG.planillaCSV ? (url.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now() : ""));
+  if (CFG.planillaCSV) {
+    var url = rel(CFG.planillaCSV);
+    // si la descarga automática todavía no generó el archivo, se cae a la planilla de ejemplo
+    try { csv = await loadCSV(url + (url.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now()); } catch (e) { csv = null; }
+    if (!csv || !csv.data.length) { csv = null; SOURCE.sample = true; }
+  }
+  if (!csv) csv = await loadCSV(rel(CFG.planillaEjemplo));
   buildItems(csv.data, csv.meta.fields || []);
   SOURCE.when = new Date();
 }

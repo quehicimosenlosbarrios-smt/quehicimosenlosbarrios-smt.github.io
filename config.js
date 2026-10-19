@@ -6,9 +6,9 @@ window.APP_CONFIG = {
   titulo: "Intervenciones en los barrios",
   organismo: "Municipalidad de San Miguel de Tucumán",
 
-  // Archivo con las intervenciones. Cuando la descarga automática esté funcionando,
-  // va a ser "data/intervenciones.csv". Mientras esté vacío se usa la planilla de ejemplo.
-  planillaCSV: "",
+  // Archivo con las intervenciones. Lo actualiza todos los días la Action
+  // "Actualizar datos desde GeoGestión". Si todavía no existe se usa la planilla de ejemplo.
+  planillaCSV: "data/intervenciones.csv",
   planillaEjemplo: "data/ejemplo-intervenciones-smt.csv",
 
   // Límites fijos (WGS84). Origen: CIRCUITOS_ELECTORALES y BARRIOS, EPSG:5345.
