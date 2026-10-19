@@ -203,6 +203,12 @@ async function loadAll() {
   }
   if (!csv) csv = await loadCSV(rel(CFG.planillaEjemplo));
   buildItems(csv.data, csv.meta.fields || []);
+  // planilla real sin ninguna fila utilizable: mejor el ejemplo que un mapa vacío
+  if (!SOURCE.sample && !ITEMS.length) {
+    SOURCE.sample = true;
+    csv = await loadCSV(rel(CFG.planillaEjemplo));
+    buildItems(csv.data, csv.meta.fields || []);
+  }
   SOURCE.when = new Date();
 }
 
