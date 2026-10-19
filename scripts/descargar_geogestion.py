@@ -8,6 +8,7 @@ las variables de entorno GEOGESTION_CUIL y GEOGESTION_PASSWORD (secretos del rep
   GEOGESTION_CUIL=... GEOGESTION_PASSWORD=... python scripts/descargar_geogestion.py
 """
 import csv
+import datetime
 import http.cookiejar
 import io
 import json
@@ -20,6 +21,7 @@ import urllib.request
 BASE = os.environ.get("GEOGESTION_URL", "https://smtendatos.gob.ar/apps/GeoGestion").rstrip("/")
 SALIDA = os.environ.get("SALIDA", "data/intervenciones.csv")
 FILTRO = os.environ.get("FILTRO", "data/filtro-intervenciones.json")
+ACTUALIZACION = os.path.join(os.path.dirname(SALIDA) or ".", "actualizacion.json")
 
 # Valores de verificado_id que no se publican (2 = Rechazado)
 EXCLUIR_VERIFICADO = {"2"}
@@ -247,6 +249,11 @@ def main():
     os.makedirs(os.path.dirname(SALIDA) or ".", exist_ok=True)
     with open(SALIDA, "w", encoding="utf-8", newline="") as f:
         f.write(buf.getvalue())
+    # fecha de la última descarga, aunque los datos no hayan cambiado: la ficha la muestra en el pie
+    hoy = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
+    with open(ACTUALIZACION, "w", encoding="utf-8") as f:
+        json.dump({"fecha": hoy.strftime("%Y-%m-%d %H:%M")}, f)
+        f.write("\n")
 
     lineas = len({f["id_cuadra"] for f in filas if f["id_cuadra"]})
     print("Guardadas %d filas (%d tramos de línea) en %s; %d sin coordenadas válidas; %d registros fuera del filtro." % (len(filas), lineas, SALIDA, descartadas, fuera_de_filtro))
