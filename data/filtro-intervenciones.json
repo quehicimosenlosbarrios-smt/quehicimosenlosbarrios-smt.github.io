@@ -1,0 +1,16 @@
+{
+  "_ayuda": "Qué registros de GeoGestión se publican en la app. Cada regla elige un programa, sus indicadores, estados y tipos (lista vacía = todos) y el nombre con el que aparece en la app. No importan mayúsculas ni tildes.",
+  "reglas": [
+    { "mostrar_como": "Pavimentación", "programa": "Pavimentación", "indicadores": ["Pavimento transporte público", "Pavimento interbarrial", "Pavimento puntual"], "estados": ["Finalizado"], "tipos": [] },
+    { "mostrar_como": "Repavimentación", "programa": "Pavimentación", "indicadores": ["Repavimentación"], "estados": ["Finalizado"], "tipos": [] },
+    { "mostrar_como": "Alumbrado público", "programa": "Alumbrado público", "indicadores": ["Columnas pintadas"], "estados": ["Ejecutado"], "tipos": [] },
+    { "mostrar_como": "Plan veredas sanas", "programa": "Plan veredas sanas", "indicadores": ["Veredas reparadas"], "estados": ["Finalizado"], "tipos": [] },
+    { "mostrar_como": "Semáforos", "programa": "Semáforos", "indicadores": ["Complejos semafóricos"], "estados": ["Operativos"], "tipos": [] },
+    { "mostrar_como": "El gas llega a tu casa", "programa": "El gas llega a tu casa", "indicadores": ["Obras de gas"], "estados": [], "tipos": [] },
+    { "mostrar_como": "Mapa verde", "programa": "Mapa verde", "indicadores": ["Puntos verdes fijos", "Bolsones", "Tulipanes", "Botellones", "Totem solar"], "estados": [], "tipos": [] },
+    { "mostrar_como": "Plazas revalorizadas", "programa": "Plazas revalorizadas", "indicadores": ["Plazas revalorizadas"], "estados": ["Terminada"], "tipos": [] },
+    { "mostrar_como": "EDUCÁ", "programa": "EDUCÁ", "indicadores": ["Escuelas visitadas"], "estados": [], "tipos": [] },
+    { "mostrar_como": "Refugios", "programa": "Movilidad urbana", "indicadores": ["Refugios"], "estados": ["Terminado"], "tipos": ["Comunes", "Inteligentes"] },
+    { "mostrar_como": "Pintemos la ciudad", "programa": "Pintemos la ciudad", "indicadores": ["Murales"], "estados": ["Finalizado"], "tipos": [] }
+  ]
+}

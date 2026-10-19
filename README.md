@@ -34,7 +34,8 @@ Una fila por intervención, con estas columnas (los nombres pueden variar en may
 
 La Action **Actualizar datos desde GeoGestión** (`.github/workflows/actualizar-datos.yml`) corre todos los días a las 6:00 de Tucumán. Inicia sesión en [GeoGestión](https://smtendatos.gob.ar/apps/GeoGestion/), descarga todos los puntos y líneas, y guarda `data/intervenciones.csv` con `scripts/descargar_geogestion.py`. Si los datos no cambiaron no hace commit.
 
-- **intervencion** es el programa de GeoGestión (Pavimentación, Alumbrado público…). El indicador, ámbito, estado y verificación quedan como columnas extra.
+- Solo se publican los programas, indicadores, estados y tipos listados en `data/filtro-intervenciones.json`. Cada regla dice además con qué nombre aparece en la app (por ejemplo, los tres indicadores de pavimento nuevo salen como **Pavimentación** y la repavimentación aparte). Para sumar o quitar algo alcanza con editar ese archivo; el cambio se aplica en la próxima descarga.
+- **intervencion** es ese nombre; el programa, indicador, ámbito, estado, tipo y verificación quedan como columnas extra.
 - Cada línea o polígono pasa a filas con el mismo `id_cuadra` (`L-` + id del punto), una por vértice.
 - No se publican los registros con verificación **Rechazado**.
 - Si la descarga falla o viene vacía, el archivo anterior no se toca.
