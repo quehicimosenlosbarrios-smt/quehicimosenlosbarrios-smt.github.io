@@ -138,7 +138,11 @@ function loadCSV(url) {
 }
 
 var DISTRICTS = [], BARRIOS = [], ITEMS = [], TYPES = [], TYPE_BY = {}, DIST_BY = {}, BARRIO_BY = {};
-var SOURCE = { sample: true, when: null, skipped: 0, unlocated: 0 };
+var SOURCE = { sample: true, when: null, updated: null, skipped: 0, unlocated: 0 };
+// intervención (norm) -> columna de la planilla que la divide en subgrupos (p. ej. Mapa verde por indicador)
+var SPLIT = {};
+var SUBPAL = ["#1f78b4", "#e6550d", "#33a02c", "#e31a1c", "#b8860b", "#17becf", "#6a3d9a", "#555555"];
+function colorDist(a, b) { var x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16); return Math.abs((x >> 16) - (y >> 16)) + Math.abs((x >> 8 & 255) - (y >> 8 & 255)) + Math.abs((x & 255) - (y & 255)); }
 
 function buildTypes(names) {
   var used = 0;
@@ -171,7 +175,8 @@ function buildItems(rows, headers) {
     if (!tname || !isFinite(lat) || !isFinite(lng)) { skipped++; return; }
     var tk = norm(tname);
     if (!typeSeen[tk]) { typeSeen[tk] = tname; typeNames.push(tname); }
-    var row = { tname: typeSeen[tk], dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat] };
+    var sc = SPLIT[tk] ? findCol(headers, [SPLIT[tk]]) : null;
+    var row = { tname: typeSeen[tk], sub: sc ? String(r[sc] || "").trim() || "Sin especificar" : "", dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat] };
     var cid = C.cuadra ? String(r[C.cuadra] || "").trim() : "";
     if (cid) { (lines[cid] = lines[cid] || []).push(row); } else items.push(row);
   });
@@ -180,7 +185,7 @@ function buildItems(rows, headers) {
     if (rs.length < 2) { skipped += rs.length; return; }
     var a = rs[0].pt, e = rs[rs.length - 1].pt;
     var mid = [(a[0] + e[0]) / 2, (a[1] + e[1]) / 2];
-    items.push({ tname: rs[0].tname, dir: rs[0].dir, barrioText: rs[0].barrioText, pt: mid, coords: rs.map(function (x) { return x.pt; }), cuadra: cid, m: rs.slice(1).reduce(function (acc, x, i) { return acc + meters(rs[i].pt, x.pt); }, 0) });
+    items.push({ tname: rs[0].tname, sub: rs[0].sub, dir: rs[0].dir, barrioText: rs[0].barrioText, pt: mid, coords: rs.map(function (x) { return x.pt; }), cuadra: cid, m: rs.slice(1).reduce(function (acc, x, i) { return acc + meters(rs[i].pt, x.pt); }, 0) });
   });
   buildTypes(typeNames);
   var nameToType = {}; TYPES.forEach(function (t) { nameToType[t.name] = t.id; });
@@ -189,10 +194,21 @@ function buildItems(rows, headers) {
   items.forEach(function (it) {
     var loc = locate(it.pt, it.barrioText);
     if (!loc.district) { unlocated++; return; }
-    ITEMS.push({ id: id++, type: nameToType[it.tname], dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, district: loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
+    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, district: loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
   });
   SOURCE.skipped = skipped; SOURCE.unlocated = unlocated;
+  // subgrupos de cada tipo, de mayor a menor; el primero conserva el color del tipo
+  TYPES.forEach(function (t) {
+    var n = {};
+    ITEMS.forEach(function (p) { if (p.type === t.id && p.sub) n[p.sub] = (n[p.sub] || 0) + 1; });
+    var names = Object.keys(n).sort(function (a, b) { return n[b] - n[a] || a.localeCompare(b, "es"); });
+    // la paleta saltea los colores parecidos al del tipo, que queda para el primer subgrupo
+    var pal = SUBPAL.filter(function (c) { return colorDist(c, t.color) > 120; });
+    t.subs = names.length > 1 ? names.map(function (x, i) { return { name: x, color: i ? pal[(i - 1) % pal.length] : t.color }; }) : null;
+    t.splitBy = SPLIT[norm(t.name)] || "";
+  });
 }
+function subColor(p) { var t = TYPE_BY[p.type], s = t.subs && t.subs.filter(function (x) { return x.name === p.sub; })[0]; return s ? s.color : t.color; }
 
 async function loadAll() {
   var res = await Promise.all([fetch(rel(CFG.circuitos)).then(function (r) { return r.json(); }), fetch(rel(CFG.barrios)).then(function (r) { return r.json(); })]);
@@ -209,6 +225,14 @@ async function loadAll() {
     ds.forEach(function (x) { var e = b.props.etiquetas && b.props.etiquetas[x.name]; b.labels[x.id] = e || b.label; x.barrios.push(b); });
   });
   DISTRICTS.forEach(function (d) { d.barrios.sort(function (a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }); });
+  var extra = await Promise.all([
+    fetch(rel("data/filtro-intervenciones.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch(rel("data/actualizacion.json") + "?t=" + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+  ]);
+  SPLIT = {};
+  ((extra[0] && extra[0].reglas) || []).forEach(function (r) { if (r.diferenciar_por) SPLIT[norm(r.mostrar_como)] = r.diferenciar_por; });
+  var f = extra[1] && String(extra[1].fecha || "").match(/^(\d{4})-(\d\d)-(\d\d)(?:[ T](\d\d):(\d\d))?/);
+  SOURCE.updated = f ? new Date(+f[1], f[2] - 1, +f[3], +(f[4] || 0), +(f[5] || 0)) : null;
   var csv = null;
   SOURCE.sample = !CFG.planillaCSV;
   if (CFG.planillaCSV) {
@@ -225,7 +249,7 @@ async function loadAll() {
     csv = await loadCSV(rel(CFG.planillaEjemplo));
     buildItems(csv.data, csv.meta.fields || []);
   }
-  SOURCE.when = new Date();
+  SOURCE.when = SOURCE.updated || new Date();
 }
 
 /* ---------- App ---------- */
@@ -434,25 +458,76 @@ function render() {
 
 /* ---------- Ficha técnica ---------- */
 var PAPER = { ink: "#16222c", muted: "#5d6b77", line: "#dde3e8", soft: "#f2f5f7", navy: "#0f2b46", district: "#14507e", barrio: "#8a9aa3", ctx: "#e7ecef", ctxLine: "#c9d3d8" };
-var charts = [];
+var charts = [], fichaReady = Promise.resolve();
 var MAXBARS = 15;
 
+// Web Mercator (en radianes), igual que las teselas del mapa de fondo
+function merc(p) { return [p[0] * Math.PI / 180, Math.log(Math.tan(Math.PI / 4 + p[1] * Math.PI / 360))]; }
 function projector(bb, Wd, Hd, pad) {
-  var kx = Math.cos(((bb[1] + bb[3]) / 2) * Math.PI / 180);
-  var s = Math.min((Wd - pad * 2) / ((bb[2] - bb[0]) * kx), (Hd - pad * 2) / (bb[3] - bb[1]));
-  var ox = (Wd - (bb[2] - bb[0]) * kx * s) / 2, oy = (Hd - (bb[3] - bb[1]) * s) / 2;
-  var P = function (p) { return [ox + (p[0] - bb[0]) * kx * s, oy + (bb[3] - p[1]) * s]; };
-  P.s = s; return P;
+  var a = merc([bb[0], bb[1]]), b = merc([bb[2], bb[3]]);
+  var s = Math.min((Wd - pad * 2) / (b[0] - a[0]), (Hd - pad * 2) / (b[1] - a[1]));
+  var ox = (Wd - (b[0] - a[0]) * s) / 2, oy = (Hd - (b[1] - a[1]) * s) / 2;
+  var P = function (p) { var m = merc(p); return [ox + (m[0] - a[0]) * s, oy + (b[1] - m[1]) * s]; };
+  P.s = s; P.x0 = a[0] - ox / s; P.y0 = b[1] + oy / s;
+  P.kmPx = s * 1000 / (6378137 * Math.cos(((bb[1] + bb[3]) / 2) * Math.PI / 180));
+  return P;
 }
+
+/* Mapa de la ciudad (gris claro con nombres de calles) detrás de los planitos */
+var TILE_URL = {
+  base: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+  ref: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+};
+var tileCache = {};
+function loadTile(url) {
+  if (!tileCache[url]) tileCache[url] = new Promise(function (resolve) {
+    var img = new Image(), done = function (ok) { clearTimeout(tm); resolve(ok ? img : null); };
+    var tm = setTimeout(function () { done(false); }, 10000);
+    img.crossOrigin = "anonymous";
+    img.onload = function () { done(true); }; img.onerror = function () { done(false); };
+    img.src = url;
+  });
+  return tileCache[url];
+}
+function tileGrid(P, Wd, Hd) {
+  // zoom en el que una tesela se dibuja cerca de su tamaño real, para que los nombres se lean
+  var z = Math.max(10, Math.min(16, Math.round(Math.log2(P.s * 2 * Math.PI / 256)))), n = Math.pow(2, z), step = 2 * Math.PI / n;
+  var tx = function (x) { return Math.floor((P.x0 + x / P.s + Math.PI) / step); }, ty = function (y) { return Math.floor((Math.PI - (P.y0 - y / P.s)) / step); };
+  var out = [];
+  for (var x = tx(0); x <= tx(Wd); x++) for (var y = ty(0); y <= ty(Hd); y++) {
+    out.push({ z: z, x: x, y: y, px: ((x * step - Math.PI) - P.x0) * P.s, py: (P.y0 - (Math.PI - y * step)) * P.s, size: step * P.s });
+  }
+  return out;
+}
+function loadBasemap(P, Wd, Hd) {
+  var grid = tileGrid(P, Wd, Hd);
+  function layer(k) { return Promise.all(grid.map(function (g) { return loadTile(TILE_URL[k].replace("{z}", g.z).replace("{y}", g.y).replace("{x}", g.x)).then(function (img) { return { g: g, img: img }; }); })); }
+  return Promise.all([layer("base"), layer("ref")]).then(function (r) { return r[0].some(function (t) { return t.img; }) ? { base: r[0], ref: r[1] } : null; });
+}
+function paintTiles(ctx, list) { list.forEach(function (t) { if (t.img) ctx.drawImage(t.img, t.g.px, t.g.py, t.g.size + 0.5, t.g.size + 0.5); }); }
 function tracePolys(ctx, P, polys) { ctx.beginPath(); polys.forEach(function (poly) { poly.forEach(function (ring) { ring.forEach(function (p, i) { var q = P(p); if (i) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); }); ctx.closePath(); }); }); }
 function prepCanvas(canvas) { var ctx = canvas.getContext("2d"); ctx.setTransform(2, 0, 0, 2, 0, 0); return { ctx: ctx, W: canvas.width / 2, H: canvas.height / 2 }; }
 
 function drawMap(canvas, district, pts, opts) {
-  var c = prepCanvas(canvas), ctx = c.ctx, Wd = c.W, Hd = c.H;
+  var c = prepCanvas(canvas), P = projector(district.bbox, c.W, c.H, 30);
+  paintMap(c, P, district, pts, opts, null);
+  // se dibuja enseguida sin fondo y se repite cuando llegan las teselas
+  return loadBasemap(P, c.W, c.H).then(function (tiles) { if (tiles) paintMap(c, P, district, pts, opts, tiles); }).catch(function () {});
+}
+function paintMap(c, P, district, pts, opts, tiles) {
+  var ctx = c.ctx, Wd = c.W, Hd = c.H, colorOf = opts.colorOf || function (p) { return TYPE_BY[p.type].color; };
+  ctx.clearRect(0, 0, Wd, Hd);
   ctx.fillStyle = "#eef2f4"; ctx.fillRect(0, 0, Wd, Hd);
-  var P = projector(district.bbox, Wd, Hd, 30);
-  DISTRICTS.forEach(function (d) { if (d.id === district.id) return; tracePolys(ctx, P, d.polys); ctx.fillStyle = PAPER.ctx; ctx.fill("evenodd"); ctx.strokeStyle = PAPER.ctxLine; ctx.lineWidth = 1; ctx.stroke(); });
-  tracePolys(ctx, P, district.polys); ctx.fillStyle = "#ffffff"; ctx.fill("evenodd");
+  if (tiles) {
+    paintTiles(ctx, tiles.base);
+    // fuera del circuito el mapa queda más apagado
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, Wd, Hd); tracePolys(ctx, P, district.polys); ctx.fillStyle = "rgba(255,255,255,.45)"; ctx.fill("evenodd"); ctx.restore();
+    DISTRICTS.forEach(function (d) { if (d.id === district.id) return; tracePolys(ctx, P, d.polys); ctx.strokeStyle = PAPER.ctxLine; ctx.lineWidth = 1; ctx.stroke(); });
+    paintTiles(ctx, tiles.ref);
+  } else {
+    DISTRICTS.forEach(function (d) { if (d.id === district.id) return; tracePolys(ctx, P, d.polys); ctx.fillStyle = PAPER.ctx; ctx.fill("evenodd"); ctx.strokeStyle = PAPER.ctxLine; ctx.lineWidth = 1; ctx.stroke(); });
+    tracePolys(ctx, P, district.polys); ctx.fillStyle = "#ffffff"; ctx.fill("evenodd");
+  }
   ctx.setLineDash([4, 4]); ctx.strokeStyle = PAPER.barrio; ctx.lineWidth = 0.8;
   ctx.save(); tracePolys(ctx, P, district.polys); ctx.clip("evenodd");
   district.barrios.forEach(function (b) { tracePolys(ctx, P, b.polys); ctx.stroke(); });
@@ -464,7 +539,7 @@ function drawMap(canvas, district, pts, opts) {
     if (!p.coords) return;
     ctx.beginPath(); p.coords.forEach(function (cc, i) { var q = P(cc); if (i) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); });
     ctx.strokeStyle = "#ffffff"; ctx.lineWidth = opts.lineW + 3; ctx.stroke();
-    ctx.strokeStyle = TYPE_BY[p.type].color; ctx.lineWidth = opts.lineW; ctx.stroke();
+    ctx.strokeStyle = colorOf(p); ctx.lineWidth = opts.lineW; ctx.stroke();
   });
   // muchos puntos: puntitos sin ícono, para que no se tapen entre sí (igual que en el mapa)
   var nPts = pts.filter(function (p) { return !p.coords; }).length, dense = nPts > 120;
@@ -473,7 +548,7 @@ function drawMap(canvas, district, pts, opts) {
     if (p.coords) return;
     var t = TYPE_BY[p.type], q = P([p.lng, p.lat]);
     ctx.beginPath(); ctx.arc(q[0], q[1], r, 0, Math.PI * 2);
-    ctx.fillStyle = t.color; ctx.fill(); ctx.lineWidth = dense ? 0.8 : 1.2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+    ctx.fillStyle = colorOf(p); ctx.fill(); ctx.lineWidth = dense ? 0.8 : 1.2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
     if (dense) return;
     var k = (r * 1.32) / 24;
     ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 12 * k); ctx.scale(k, k);
@@ -483,14 +558,15 @@ function drawMap(canvas, district, pts, opts) {
   district.barrios.forEach(function (b) {
     var q = P(b.labels[district.id] || b.label);
     ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineWidth = 3.5; ctx.strokeText(b.name.toUpperCase(), q[0], q[1]);
-    ctx.fillStyle = "#3d4b56"; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
+    ctx.fillStyle = PAPER.navy; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
   });
+  if (tiles) { ctx.font = "9px 'Source Sans 3', Arial, sans-serif"; ctx.textAlign = "right"; ctx.fillStyle = "rgba(255,255,255,.8)"; ctx.fillRect(Wd - 205, Hd - 15, 205, 15); ctx.fillStyle = PAPER.muted; ctx.fillText("Mapa base © Esri, HERE, Garmin, © OpenStreetMap", Wd - 5, Hd - 4); }
   // norte
   ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(Wd - 26, 28, 15, 0, Math.PI * 2); ctx.fill();
   ctx.fillStyle = PAPER.navy; ctx.beginPath(); ctx.moveTo(Wd - 26, 16); ctx.lineTo(Wd - 32, 33); ctx.lineTo(Wd - 26, 29); ctx.lineTo(Wd - 20, 33); ctx.closePath(); ctx.fill();
   ctx.font = "700 9px 'Archivo', Arial, sans-serif"; ctx.fillText("N", Wd - 26, 52);
   // escala
-  var kmPx = P.s / 111.32, steps = [0.25, 0.5, 1, 2, 5], barKm = steps.filter(function (x) { return x * kmPx <= Wd / 5; }).pop() || 0.25, w = barKm * kmPx;
+  var kmPx = P.kmPx, steps = [0.25, 0.5, 1, 2, 5], barKm = steps.filter(function (x) { return x * kmPx <= Wd / 5; }).pop() || 0.25, w = barKm * kmPx;
   ctx.fillStyle = "rgba(255,255,255,.9)"; ctx.fillRect(10, Hd - 34, w + 20, 26);
   ctx.fillStyle = PAPER.navy; ctx.fillRect(20, Hd - 16, w / 2, 4); ctx.strokeStyle = PAPER.navy; ctx.lineWidth = 1; ctx.strokeRect(20 + w / 2, Hd - 16, w / 2, 4);
   ctx.textAlign = "left"; ctx.font = "600 9.5px 'IBM Plex Mono', monospace"; ctx.fillText("0", 18, Hd - 21); ctx.textAlign = "right"; ctx.fillText(barKm < 1 ? barKm * 1000 + " m" : barKm + " km", 22 + w, Hd - 21);
@@ -526,8 +602,8 @@ function chartStack(canvas, labels, datasets) {
 }
 
 function sheetShell(pageNo, total, inner) {
-  var src = SOURCE.sample ? "Datos de ejemplo. No representan intervenciones reales." : "Fuente: planilla de intervenciones municipales, actualizada al " + SOURCE.when.toLocaleDateString("es-AR") + ".";
-  return '<article class="sheet">' + inner + '<div class="foot"><span>' + esc(CFG.organismo) + ' · ' + esc(src) + '</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></article>';
+  var src = SOURCE.sample ? "Datos de ejemplo. No representan intervenciones reales." : "Fuente: GeoGestión, actualizada al " + SOURCE.when.toLocaleDateString("es-AR");
+  return '<article class="sheet">' + inner + '<div class="foot"><span>' + esc(CFG.organismo) + ' - ' + esc(src) + '</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></article>';
 }
 function band(d, title, sub, opts) {
   opts = opts || {};
@@ -556,7 +632,8 @@ function buildFicha() {
   var maxT = Math.max.apply(null, types.map(function (t) { return dpts.filter(function (p) { return p.type === t.id; }).length; }).concat([1]));
   var rows = types.map(function (t) {
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t);
-    return '<tr><td><span class="tcell">' + badge(t, 20) + esc(t.name) + '</span></td><td class="barcell"><div class="hbar" style="width:' + (tp.length / maxT * 100) + '%;background:' + t.color + '"></div></td><td class="r nw"><b>' + fmt.format(tp.length) + '</b>' + (line ? ' <small>cuadras</small>' : '') + '</td><td class="r">' + barriosDe(tp) + '/' + nb + '</td></tr>';
+    var subs = t.subs ? '<div class="subline">' + t.subs.map(function (x) { var n = tp.filter(function (p) { return p.sub === x.name; }).length; return n ? '<span><i style="background:' + x.color + '"></i>' + esc(x.name) + ' ' + n + '</span>' : ''; }).join("") + '</div>' : '';
+    return '<tr><td><span class="tcell">' + badge(t, 20) + '<span>' + esc(t.name) + subs + '</span></span></td><td class="barcell"><div class="hbar" style="width:' + (tp.length / maxT * 100) + '%;background:' + t.color + '"></div></td><td class="r nw"><b>' + fmt.format(tp.length) + '</b>' + (line ? ' <small>cuadras</small>' : '') + '</td><td class="r">' + barriosDe(tp) + '/' + nb + '</td></tr>';
   }).join("");
   pages.push(band(d, d.name, nb + ' barrios · ' + fmt.format(dpts.length) + ' intervenciones municipales registradas', { cls: 'cover' }) +
     '<div class="body">' +
@@ -572,33 +649,44 @@ function buildFicha() {
     var m = tp.reduce(function (a, p) { return a + (p.m || 0); }, 0);
     var byB = countBy(tp).filter(function (x) { return x.n; }), top = byB[0], shown = byB.slice(0, MAXBARS);
     var maxB = top ? top.n : 1;
+    var subs = t.subs ? t.subs.filter(function (x) { return tp.some(function (p) { return p.sub === x.name; }); }) : null;
+    var sublabel = t.splitBy === "tipo" ? "Tipo" : "Indicador";
+    var ncols = subs ? subs.length + 3 : (line ? 5 : 4);
     var trows = shown.map(function (x) {
-      return '<tr><td>' + esc(x.b.name) + '</td><td class="barcell"><div class="hbar" style="width:' + (x.n / maxB * 100) + '%;background:' + t.color + '"></div></td><td class="r"><b>' + x.n + '</b></td>' + (line ? '<td class="r">' + fmt.format(Math.round(x.m)) + '</td>' : '') + '<td class="r">' + Math.round(x.n / tp.length * 100) + '%</td></tr>';
-    }).join("") + (byB.length > MAXBARS ? '<tr><td colspan="' + (line ? 5 : 4) + '" class="more">y ' + (byB.length - MAXBARS) + ' barrios más con menos intervenciones</td></tr>' : '');
+      var pct = '<td class="r">' + Math.round(x.n / tp.length * 100) + '%</td>';
+      if (subs) return '<tr><td>' + esc(x.b.name) + '</td>' + subs.map(function (u) { var n = tp.filter(function (p) { return p.barrio === x.b.id && p.sub === u.name; }).length; return '<td class="r' + (n ? '' : ' zero') + '">' + n + '</td>'; }).join("") + '<td class="r"><b>' + x.n + '</b></td>' + pct + '</tr>';
+      return '<tr><td>' + esc(x.b.name) + '</td><td class="barcell"><div class="hbar" style="width:' + (x.n / maxB * 100) + '%;background:' + t.color + '"></div></td><td class="r"><b>' + x.n + '</b></td>' + (line ? '<td class="r">' + fmt.format(Math.round(x.m)) + '</td>' : '') + pct + '</tr>';
+    }).join("") + (byB.length > MAXBARS ? '<tr><td colspan="' + ncols + '" class="more">y ' + (byB.length - MAXBARS) + ' barrios más con menos intervenciones</td></tr>' : '');
+    var thead = subs
+      ? '<th>Barrio</th>' + subs.map(function (u) { return '<th class="r sub"><i style="background:' + u.color + '"></i>' + esc(u.name) + '</th>'; }).join("") + '<th class="r">Total</th><th class="r">Participación</th>'
+      : '<th>Barrio</th><th></th><th class="r">' + (line ? 'Cuadras' : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">Participación</th>';
+    var legend = subs ? '<div class="sh-legend sub-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + ' (' + tp.filter(function (p) { return p.sub === u.name; }).length + ')</span>'; }).join("") + '</div>' : '';
     var mapH = shown.length > 8 ? 600 : shown.length > 4 ? 760 : 900;
     pages.push(band(d, t.name, 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
-        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: Math.round(tp.length / dpts.length * 100) + '<small>%</small>', l: "Del total del circuito" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
-      '<div class="sh-map"><canvas data-map="' + t.id + '" width="1396" height="' + mapH + '"></canvas></div>' +
-      '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t"><thead><tr><th>Barrio</th><th></th><th class="r">' + (line ? 'Cuadras' : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">% del tipo</th></tr></thead><tbody>' + trows + '</tbody></table></div>' +
+        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: (tp.length / dpts.length < 0.005 ? '&lt;1' : Math.round(tp.length / dpts.length * 100)) + '<small>%</small>', l: "Del total del circuito" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
+      '<div class="sh-map"><canvas data-map="' + t.id + '" width="1396" height="' + mapH + '"></canvas></div>' + legend +
+      '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
+      '<p class="tnote">Participación: qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
       '</div>');
 
     if (!$("opt-list").checked) return;
     var list = tp.slice().sort(function (a, b) {
       var an = a.barrio ? BARRIO_BY[a.barrio].name : "", bn = b.barrio ? BARRIO_BY[b.barrio].name : "";
-      return an.localeCompare(bn, "es", { numeric: true }) || a.dir.localeCompare(b.dir, "es", { numeric: true });
+      return an.localeCompare(bn, "es", { numeric: true }) || (subs ? a.sub.localeCompare(b.sub, "es") : 0) || a.dir.localeCompare(b.dir, "es", { numeric: true });
     });
-    var PER = 36;
-    for (var i = 0; i < list.length; i += PER * 2) {
-      var cols = [list.slice(i, i + PER), list.slice(i + PER, i + PER * 2)].filter(function (c) { return c.length; }).map(function (c) {
-        return '<table class="t"><thead><tr><th>Dirección</th><th>Barrio</th>' + (line ? '<th class="r">m</th>' : '') + '</tr></thead><tbody>' + c.map(function (p) {
-          return '<tr><td>' + esc(p.dir || "Sin dirección") + '</td><td>' + (p.barrio ? esc(BARRIO_BY[p.barrio].name) : "–") + '</td>' + (line ? '<td class="r">' + Math.round(p.m) + '</td>' : '') + '</tr>';
+    // con subgrupos la tabla tiene una columna más: va a lo ancho de la hoja
+    var PER = 36, NC = subs ? 1 : 2, PAGE = PER * NC;
+    for (var i = 0; i < list.length; i += PAGE) {
+      var cols = [list.slice(i, i + PER), list.slice(i + PER, i + PAGE)].filter(function (c) { return c.length; }).map(function (c) {
+        return '<table class="t' + (subs ? ' withsub' : '') + '"><thead><tr><th>Dirección</th>' + (subs ? '<th>' + sublabel + '</th>' : '') + '<th>Barrio</th>' + (line ? '<th class="r">m</th>' : '') + '</tr></thead><tbody>' + c.map(function (p) {
+          return '<tr><td>' + esc(p.dir || "Sin dirección") + '</td>' + (subs ? '<td><i class="dot" style="background:' + subColor(p) + '"></i>' + esc(p.sub) + '</td>' : '') + '<td>' + (p.barrio ? esc(BARRIO_BY[p.barrio].name) : "–") + '</td>' + (line ? '<td class="r">' + Math.round(p.m) + '</td>' : '') + '</tr>';
         }).join("") + '</tbody></table>';
       });
-      var part = list.length > PER * 2 ? ' (' + (i / (PER * 2) + 1) + ' de ' + Math.ceil(list.length / (PER * 2)) + ')' : '';
-      pages.push(band(d, t.name + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body"><div class="list-cols">' + cols.join("") + '</div></div>');
+      var part = list.length > PAGE ? ' (' + (i / PAGE + 1) + ' de ' + Math.ceil(list.length / PAGE) + ')' : '';
+      pages.push(band(d, t.name + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body"><div class="list-cols' + (NC === 1 ? ' one' : '') + '">' + cols.join("") + '</div></div>');
     }
   });
 
@@ -632,10 +720,12 @@ function buildFicha() {
   $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner); }).join("");
   $("viewer-title").textContent = "Ficha técnica · " + d.name;
 
+  var draws = [];
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
-    var k = cv.getAttribute("data-map");
-    drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6 });
+    var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
+    draws.push(drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, colorOf: t && t.subs ? subColor : null }));
   });
+  fichaReady = Promise.all(draws);
   $("sheets").querySelectorAll("canvas[data-locator]").forEach(function (cv) { drawLocator(cv, d); });
   var cv = $("sheets").querySelector('canvas[data-chart="stack"]');
   if (cv) chartStack(cv, topB.map(function (x) { return x.b.name; }), types.map(function (t) { return { label: t.name, backgroundColor: t.color, data: topB.map(function (x) { return dpts.filter(function (p) { return p.barrio === x.b.id && p.type === t.id; }).length; }) }; }));
@@ -655,6 +745,8 @@ function initViewer() {
     var btn = this, msg = $("viewer-msg"), label = btn.textContent;
     btn.disabled = true; msg.textContent = "";
     try {
+      btn.textContent = "Cargando mapas…";
+      await fichaReady;
       var pdf = new window.jspdf.jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
       var sheets = $("sheets").querySelectorAll(".sheet");
       for (var i = 0; i < sheets.length; i++) {

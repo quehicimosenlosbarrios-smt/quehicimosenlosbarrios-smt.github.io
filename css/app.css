@@ -230,3 +230,18 @@ table.heat td.v.zero { color: #b6c1c8; font-weight: 400; }
   .hdr-actions { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Subgrupos de un tipo (Mapa verde por indicador, Refugios por tipo) */
+.tcell > span { min-width: 0; }
+table.t td .tcell { display: flex; }
+.subline { display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 3px; font-size: 10.5px; font-weight: 400; color: var(--paper-muted); }
+.subline span, .sub-legend span, table.t th.sub { white-space: nowrap; }
+.subline i, .sub-legend i, table.t th.sub i, table.t i.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.sub-legend { margin-top: -6px; color: var(--paper-ink); }
+.sub-legend b { font-weight: 600; margin-right: 2px; }
+table.t th.sub { text-transform: none; letter-spacing: 0; font-size: 10.5px; }
+table.t td.zero { color: #b6c1c8; }
+.tnote { margin: 6px 0 0; font-size: 10.5px; color: var(--paper-muted); }
+.list-cols.one { grid-template-columns: 1fr; }
+.list-cols table.withsub th:first-child { width: 50%; }
+.list-cols table.withsub th:nth-child(2) { width: 25%; }
