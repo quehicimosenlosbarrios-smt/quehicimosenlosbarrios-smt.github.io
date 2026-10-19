@@ -70,16 +70,32 @@ function bboxOf(polys) {
   return b;
 }
 function ringArea(r) { var a = 0; for (var i = 0, j = r.length - 1; i < r.length; j = i++) a += (r[j][0] + r[i][0]) * (r[j][1] - r[i][1]); return Math.abs(a / 2); }
+function segDist2(p, a, b) {
+  var x = a[0], y = a[1], dx = b[0] - x, dy = b[1] - y;
+  if (dx || dy) { var t = ((p[0] - x) * dx + (p[1] - y) * dy) / (dx * dx + dy * dy); if (t > 1) { x = b[0]; y = b[1]; } else if (t > 0) { x += dx * t; y += dy * t; } }
+  dx = p[0] - x; dy = p[1] - y; return dx * dx + dy * dy;
+}
 function labelPoint(polys) {
-  // centroide del anillo más grande; si cae afuera, el punto medio de su caja
-  var best = polys.slice().sort(function (a, b) { return ringArea(b[0]) - ringArea(a[0]); })[0][0];
-  var A = 0, cx = 0, cy = 0;
-  for (var i = 0, j = best.length - 1; i < best.length; j = i++) {
-    var f = best[j][0] * best[i][1] - best[i][0] * best[j][1];
-    A += f; cx += (best[j][0] + best[i][0]) * f; cy += (best[j][1] + best[i][1]) * f;
+  // centro visual del anillo más grande: el punto interior más alejado del borde (búsqueda en grilla con dos refinamientos)
+  var best = polys.slice().sort(function (a, b) { return ringArea(b[0]) - ringArea(a[0]); })[0];
+  var ring = best[0], b = bboxOf([best]), w = b[2] - b[0], h = b[3] - b[1];
+  function score(p) {
+    if (!inRing(p, ring)) return -1;
+    for (var k = 1; k < best.length; k++) if (inRing(p, best[k])) return -1;
+    var m = Infinity;
+    best.forEach(function (r) { for (var i = 0, j = r.length - 1; i < r.length; j = i++) m = Math.min(m, segDist2(p, r[j], r[i])); });
+    return m;
   }
-  if (A) { cx /= 3 * A; cy /= 3 * A; if (inRing([cx, cy], best)) return [cx, cy]; }
-  var b = bboxOf([[best]]); return [(b[0] + b[2]) / 2, (b[1] + b[3]) / 2];
+  var c = [(b[0] + b[2]) / 2, (b[1] + b[3]) / 2], cs = score(c), n = 24;
+  for (var pass = 0; pass < 3; pass++) {
+    var x0 = c[0] - w / 2, y0 = c[1] - h / 2;
+    for (var i = 0; i <= n; i++) for (var j = 0; j <= n; j++) {
+      var p = [x0 + w * i / n, y0 + h * j / n], sc = score(p);
+      if (sc > cs) { cs = sc; c = p; }
+    }
+    w = w * 3 / n; h = h * 3 / n;
+  }
+  return c;
 }
 function meters(a, b) {
   var rad = Math.PI / 180, dLat = (b[1] - a[1]) * rad, dLng = (b[0] - a[0]) * rad;
@@ -241,7 +257,7 @@ function initMap() {
   distLayer = L.layerGroup(); barrLayer = L.layerGroup(); barrLabels = L.layerGroup(); ptLayer = L.layerGroup();
   DISTRICTS.forEach(function (d) {
     var poly = L.polygon(d.polys.map(function (p) { return p.map(toLL); }), styleDistrict(d.id));
-    poly.bindTooltip(esc(d.name.replace(/^circuito\s*/i, "")), { permanent: true, direction: "center", className: "dlabel" });
+    L.tooltip({ permanent: true, direction: "center", className: "dlabel", interactive: false }).setLatLng([d.label[1], d.label[0]]).setContent(esc(d.name.replace(/^circuito\s*/i, ""))).addTo(distLayer);
     poly.on("click", function () { setDistrict(state.district === d.id ? "" : d.id); });
     poly.on("mouseover", function () { if (state.district !== d.id) poly.setStyle({ fillOpacity: 0.09, weight: 3 }); });
     poly.on("mouseout", function () { poly.setStyle(styleDistrict(d.id)); });
@@ -268,9 +284,10 @@ function initPanel() {
   $("org").textContent = CFG.organismo; $("app-title").textContent = CFG.titulo; document.title = CFG.titulo;
   $("f-dist").innerHTML = '<option value="">Todos los circuitos</option>' + DISTRICTS.slice().sort(byName).map(function (d) { return '<option value="' + d.id + '">' + esc(d.name) + '</option>'; }).join("");
   fillBarrios();
-  TYPES.forEach(function (t) { state.types.add(t.id); });
+  // arranca sin intervenciones en el mapa: con todas prendidas la carga es muy pesada
+  state.types = new Set();
   $("types").innerHTML = TYPES.map(function (t) {
-    return '<label class="type-row"><input type="checkbox" data-type="' + t.id + '" checked>' + badge(t, 26) + '<span class="nm">' + esc(t.name) + '</span><span class="n" id="n-' + t.id + '">0</span><span class="bar"><i id="b-' + t.id + '" style="background:' + t.color + '"></i></span></label>';
+    return '<label class="type-row"><input type="checkbox" role="switch" data-type="' + t.id + '">' + badge(t, 26) + '<span class="nm">' + esc(t.name) + '</span><span class="n" id="n-' + t.id + '">0</span><span class="sw" aria-hidden="true"></span><span class="bar"><i id="b-' + t.id + '" style="background:' + t.color + '"></i></span></label>';
   }).join("");
   $("legend").innerHTML = TYPES.map(function (t) { return '<div>' + badge(t, 18) + esc(t.name) + '</div>'; }).join("");
 
@@ -379,6 +396,8 @@ function render() {
   var counts = {}; TYPES.forEach(function (t) { counts[t.id] = zone.filter(function (p) { return p.type === t.id; }).length; max = Math.max(max, counts[t.id]); });
   TYPES.forEach(function (t) { $("n-" + t.id).textContent = fmt.format(counts[t.id]); $("b-" + t.id).style.width = (counts[t.id] / max * 100) + "%"; });
 
+  // los totales cuentan lo prendido; con todo apagado (como arranca) cuentan todos los tipos
+  if (!state.types.size) pts = zone;
   // solo calles pavimentadas: GeoGestión también trae líneas de recorridos (transporte, ciclovías)
   var lines = pts.filter(function (p) { return p.coords && TYPE_BY[p.type].icon === "pav"; });
   $("zone-name").textContent = state.barrio ? BARRIO_BY[state.barrio].name + " · " + DIST_BY[state.district].name : state.district ? DIST_BY[state.district].name : "Toda la ciudad";
@@ -500,7 +519,8 @@ function tiles(list) { return '<div class="tiles">' + list.map(function (x) { re
 function buildFicha() {
   charts.forEach(function (c) { c.destroy(); }); charts = [];
   var d = DIST_BY[state.district];
-  var dpts = ITEMS.filter(function (p) { return p.district === d.id && state.types.has(p.type); });
+  var on = state.types.size ? state.types : new Set(TYPES.map(function (t) { return t.id; }));
+  var dpts = ITEMS.filter(function (p) { return p.district === d.id && on.has(p.type); });
   var types = TYPES.filter(function (t) { return dpts.some(function (p) { return p.type === t.id; }); });
   var isLine = function (t) { return dpts.some(function (p) { return p.type === t.id && p.coords; }); };
   var nb = d.barrios.length, pages = [];
