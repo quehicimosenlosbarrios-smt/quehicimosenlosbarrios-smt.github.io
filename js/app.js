@@ -289,7 +289,8 @@ function initMap() {
 }
 function styleDistrict(id) {
   var sel = state.district === id, dim = state.district && !sel;
-  return { color: css("--district"), weight: sel ? 3.5 : 2, opacity: dim ? 0.5 : 1, fillColor: css("--district"), fillOpacity: sel ? 0.06 : dim ? 0.12 : 0.02 };
+  // el circuito elegido se rellena en celeste claro para que se distinga
+  return { color: css("--district"), weight: sel ? 3.5 : 2, opacity: dim ? 0.5 : 1, fillColor: sel ? css("--selected") : css("--district"), fillOpacity: sel ? 0.28 : dim ? 0.12 : 0.02 };
 }
 function updateBarrLabels() { if ($("lyr-barr").checked && map.getZoom() >= 14.5) barrLabels.addTo(map); else barrLabels.remove(); }
 
@@ -465,12 +466,15 @@ function drawMap(canvas, district, pts, opts) {
     ctx.strokeStyle = "#ffffff"; ctx.lineWidth = opts.lineW + 3; ctx.stroke();
     ctx.strokeStyle = TYPE_BY[p.type].color; ctx.lineWidth = opts.lineW; ctx.stroke();
   });
-  var r = opts.radius;
+  // muchos puntos: puntitos sin ícono, para que no se tapen entre sí (igual que en el mapa)
+  var nPts = pts.filter(function (p) { return !p.coords; }).length, dense = nPts > 120;
+  var r = dense ? 3.4 : opts.radius;
   pts.forEach(function (p) {
     if (p.coords) return;
     var t = TYPE_BY[p.type], q = P([p.lng, p.lat]);
     ctx.beginPath(); ctx.arc(q[0], q[1], r, 0, Math.PI * 2);
-    ctx.fillStyle = t.color; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+    ctx.fillStyle = t.color; ctx.fill(); ctx.lineWidth = dense ? 0.8 : 1.2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+    if (dense) return;
     var k = (r * 1.32) / 24;
     ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 12 * k); ctx.scale(k, k);
     ctx.fillStyle = "#ffffff"; ctx.fill(new Path2D(ICONS[t.icon]), "evenodd"); ctx.restore();

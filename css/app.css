@@ -15,6 +15,7 @@
   --accent: #1f6fa8;
   --map: #e9edf0;
   --district: #14507e;
+  --selected: #7cc4ef;
   --barrio: #7f8f99;
   --pt-stroke: #ffffff;
   --shadow: 0 1px 2px rgba(16, 34, 52, .08), 0 6px 18px rgba(16, 34, 52, .10);
@@ -26,7 +27,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --hdr: #0b1f33; --hdr-2: #143552; --bg: #0f161c; --panel: #161f27; --ink: #e4eaef; --muted: #96a5b0; --line: #26333d;
-    --soft: #1d2831; --accent: #66aee0; --map: #121a20; --district: #7dbbe3; --barrio: #5d707b; --pt-stroke: #0f161c;
+    --soft: #1d2831; --accent: #66aee0; --map: #121a20; --district: #7dbbe3; --selected: #7cc4ef; --barrio: #5d707b; --pt-stroke: #0f161c;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35); color-scheme: dark;
   }
 }
@@ -132,7 +133,7 @@ select, .search input { width: 100%; padding: 9px 10px; border-radius: 8px; bord
 /* número de circuito: círculo azul con número blanco, en el centro visual del polígono */
 .dlabel { background: var(--district); border: 2px solid #fff; border-radius: 999px; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); min-width: 26px; padding: 2px 6px; text-align: center; font-family: var(--f-display); font-weight: 800; font-size: 13px; line-height: 18px; color: #fff; text-shadow: none; pointer-events: none; }
 /* nombres de barrio: etiqueta con fondo blanco y borde fino, sin halo difuso, para que se lean sobre calles y satélite */
-.blabel { background: rgba(255, 255, 255, .92); border: 1px solid rgba(22, 34, 44, .18); border-radius: 3px; box-shadow: none; padding: 1px 5px; font-size: 11.5px; font-weight: 700; line-height: 1.25; letter-spacing: .01em; color: var(--ink); white-space: nowrap; text-shadow: none; }
+.blabel { background: rgba(255, 255, 255, .92); border: 1px solid rgba(22, 34, 44, .18); border-radius: 3px; box-shadow: none; padding: 1px 5px; font-size: 11.5px; font-weight: 700; line-height: 1.25; letter-spacing: .01em; color: #0f2b46; white-space: nowrap; text-shadow: none; }
 .dlabel::before, .blabel::before { display: none; }
 .dtip { font-family: var(--f-body); font-size: 13px; }
 .leaflet-popup-content-wrapper { background: var(--panel); color: var(--ink); border-radius: 10px; padding: 0; overflow: hidden; box-shadow: var(--shadow); }
@@ -205,6 +206,10 @@ table.heat th.c { text-align: center; padding-bottom: 6px; }
 table.heat td.v.zero { color: #b6c1c8; font-weight: 400; }
 .list-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
 .list-cols table.t td { padding: 3.5px 6px; font-size: 11.5px; }
+/* una línea por fila, así cada hoja del listado entra completa */
+.list-cols table.t { table-layout: fixed; width: 100%; }
+.list-cols table.t th:first-child { width: 64%; }
+.list-cols table.t td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .findings li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; font-size: 13px; line-height: 1.45; padding: 8px 10px; background: var(--paper-soft); border-radius: 6px; }
 .findings li .badge { margin-top: 1px; }
