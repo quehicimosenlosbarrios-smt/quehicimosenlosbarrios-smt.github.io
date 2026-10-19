@@ -27,8 +27,8 @@ var ICONS = {
   pin:     "M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 4.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4z"
 };
 var RULES = [
-  { re: /repavim/, icon: "pav", color: "#b0569a" },
-  { re: /paviment|asfalt|calzada/, icon: "pav", color: "#6b4fa3" },
+  { re: /repavim/, icon: "pav", color: "#6fbf5f" },
+  { re: /paviment|asfalt|calzada/, icon: "pav", color: "#1e7a34" },
   { re: /lumin|alumbr|led|luz/, icon: "luz", color: "#c29b00" },
   { re: /refugio|parada/, icon: "refugio", color: "#c2453d" },
   { re: /bache/, icon: "bacheo", color: "#d9822b" },
