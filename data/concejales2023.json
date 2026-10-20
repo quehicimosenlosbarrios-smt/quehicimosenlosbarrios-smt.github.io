@@ -1,0 +1,1086 @@
+{
+ "_ayuda": "Elecciones 2023, concejales: las 3 listas más votadas por circuito y el total de votos a listas del circuito (sin blancos ni nulos). Fuente: planilla concejales.xlsx.",
+ "circuitos": {
+  "Circuito 1": {
+   "total": 4035,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 750
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 323
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 233
+    }
+   ]
+  },
+  "Circuito 1A": {
+   "total": 3527,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 565
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 315
+    },
+    {
+     "lista": "820",
+     "nombre": "PARTIDO INCLUSION SOCIAL (PISO)",
+     "candidato": "FEDERICO ROMANO NORRI",
+     "votos": 159
+    }
+   ]
+  },
+  "Circuito 2": {
+   "total": 2406,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 447
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 156
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 124
+    }
+   ]
+  },
+  "Circuito 2A": {
+   "total": 2889,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 546
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 181
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 159
+    }
+   ]
+  },
+  "Circuito 3": {
+   "total": 4759,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 764
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 340
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 265
+    }
+   ]
+  },
+  "Circuito 4": {
+   "total": 4331,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 813
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 225
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 208
+    }
+   ]
+  },
+  "Circuito 5": {
+   "total": 7580,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1510
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 903
+    },
+    {
+     "lista": "820",
+     "nombre": "PARTIDO INCLUSION SOCIAL (PISO)",
+     "candidato": "FEDERICO ROMANO NORRI",
+     "votos": 448
+    }
+   ]
+  },
+  "Circuito 6": {
+   "total": 3515,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 621
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 290
+    },
+    {
+     "lista": "941",
+     "nombre": "FRENTE DEL PUEBLO UNIDO",
+     "candidato": "LEANDRO ARGAÑARAZ",
+     "votos": 216
+    }
+   ]
+  },
+  "Circuito 7": {
+   "total": 3454,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 498
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 208
+    },
+    {
+     "lista": "214",
+     "nombre": "NUEVA FUERZA",
+     "candidato": "CARLOS ALE",
+     "votos": 172
+    }
+   ]
+  },
+  "Circuito 7A": {
+   "total": 4220,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 528
+    },
+    {
+     "lista": "85",
+     "nombre": "CAMBIEMOS",
+     "candidato": "ANA GONZALEZ",
+     "votos": 329
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 250
+    }
+   ]
+  },
+  "Circuito 8": {
+   "total": 2947,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 470
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 193
+    },
+    {
+     "lista": "808",
+     "nombre": "PARTIDO POR LA JUSTICIA SOCIAL",
+     "candidato": "CARLOS ARNEDO",
+     "votos": 152
+    }
+   ]
+  },
+  "Circuito 8A": {
+   "total": 5347,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 684
+    },
+    {
+     "lista": "808",
+     "nombre": "PARTIDO POR LA JUSTICIA SOCIAL",
+     "candidato": "CARLOS ARNEDO",
+     "votos": 399
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 305
+    }
+   ]
+  },
+  "Circuito 9": {
+   "total": 8603,
+   "listas": [
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 1444
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 602
+    },
+    {
+     "lista": "85",
+     "nombre": "CAMBIEMOS",
+     "candidato": "ANA GONZALEZ",
+     "votos": 511
+    }
+   ]
+  },
+  "Circuito 9A": {
+   "total": 8021,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 525
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 485
+    },
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 465
+    }
+   ]
+  },
+  "Circuito 10": {
+   "total": 8813,
+   "listas": [
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 690
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 607
+    },
+    {
+     "lista": "830",
+     "nombre": "FRENTE DE TODOS POR TUCUMAN",
+     "candidato": "ERNESTO NAGLE",
+     "votos": 581
+    }
+   ]
+  },
+  "Circuito 10A": {
+   "total": 16545,
+   "listas": [
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 1826
+    },
+    {
+     "lista": "830",
+     "nombre": "FRENTE DE TODOS POR TUCUMAN",
+     "candidato": "ERNESTO NAGLE",
+     "votos": 1588
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 1205
+    }
+   ]
+  },
+  "Circuito 11": {
+   "total": 1428,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 271
+    },
+    {
+     "lista": "818",
+     "nombre": "CREO",
+     "candidato": "JULIO JIMENEZ",
+     "votos": 100
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 79
+    }
+   ]
+  },
+  "Circuito 11A": {
+   "total": 7043,
+   "listas": [
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 646
+    },
+    {
+     "lista": "830",
+     "nombre": "FRENTE DE TODOS POR TUCUMAN",
+     "candidato": "ERNESTO NAGLE",
+     "votos": 636
+    },
+    {
+     "lista": "391",
+     "nombre": "MOVIMIENTO POPULAR DE LA MILITANCIA",
+     "candidato": "JOSÉ MARÍA FRANCO",
+     "votos": 439
+    }
+   ]
+  },
+  "Circuito 12": {
+   "total": 8171,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1068
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 479
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 419
+    }
+   ]
+  },
+  "Circuito 12A": {
+   "total": 6585,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 492
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 472
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 442
+    }
+   ]
+  },
+  "Circuito 13": {
+   "total": 8027,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 815
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 618
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 501
+    }
+   ]
+  },
+  "Circuito 13A": {
+   "total": 3238,
+   "listas": [
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 293
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 287
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 225
+    }
+   ]
+  },
+  "Circuito 14": {
+   "total": 14234,
+   "listas": [
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 1213
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1198
+    },
+    {
+     "lista": "256",
+     "nombre": "TUCUMAN EN POSITIVO",
+     "candidato": "EMILIANO VARGAS AIGNASSE",
+     "votos": 1044
+    }
+   ]
+  },
+  "Circuito 14A": {
+   "total": 2123,
+   "listas": [
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 203
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 199
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 190
+    }
+   ]
+  },
+  "Circuito 14B": {
+   "total": 2764,
+   "listas": [
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 493
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 227
+    },
+    {
+     "lista": "256",
+     "nombre": "TUCUMAN EN POSITIVO",
+     "candidato": "EMILIANO VARGAS AIGNASSE",
+     "votos": 196
+    }
+   ]
+  },
+  "Circuito 14C": {
+   "total": 5081,
+   "listas": [
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 562
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 507
+    },
+    {
+     "lista": "256",
+     "nombre": "TUCUMAN EN POSITIVO",
+     "candidato": "EMILIANO VARGAS AIGNASSE",
+     "votos": 450
+    }
+   ]
+  },
+  "Circuito 14 D": {
+   "total": 3647,
+   "listas": [
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 551
+    },
+    {
+     "lista": "256",
+     "nombre": "TUCUMAN EN POSITIVO",
+     "candidato": "EMILIANO VARGAS AIGNASSE",
+     "votos": 398
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 325
+    }
+   ]
+  },
+  "Circuito 15": {
+   "total": 10126,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 709
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 561
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 552
+    }
+   ]
+  },
+  "Circuito 15A": {
+   "total": 9194,
+   "listas": [
+    {
+     "lista": "214",
+     "nombre": "NUEVA FUERZA",
+     "candidato": "CARLOS ALE",
+     "votos": 945
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 666
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 586
+    }
+   ]
+  },
+  "Circuito 15B": {
+   "total": 17542,
+   "listas": [
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 1631
+    },
+    {
+     "lista": "301",
+     "nombre": "COMPROMISO CON EL PUEBLO",
+     "candidato": "CRISTIAN DANIEL PETTERSEN",
+     "votos": 1413
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1111
+    }
+   ]
+  },
+  "Circuito 16": {
+   "total": 10130,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1213
+    },
+    {
+     "lista": "808",
+     "nombre": "PARTIDO POR LA JUSTICIA SOCIAL",
+     "candidato": "CARLOS ARNEDO",
+     "votos": 824
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 512
+    }
+   ]
+  },
+  "Circuito 16A": {
+   "total": 9542,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 998
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 543
+    },
+    {
+     "lista": "301",
+     "nombre": "COMPROMISO CON EL PUEBLO",
+     "candidato": "CRISTIAN DANIEL PETTERSEN",
+     "votos": 464
+    }
+   ]
+  },
+  "Circuito 17": {
+   "total": 11746,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1429
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 785
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 534
+    }
+   ]
+  },
+  "Circuito 17A": {
+   "total": 8814,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1298
+    },
+    {
+     "lista": "808",
+     "nombre": "PARTIDO POR LA JUSTICIA SOCIAL",
+     "candidato": "CARLOS ARNEDO",
+     "votos": 544
+    },
+    {
+     "lista": "820",
+     "nombre": "PARTIDO INCLUSION SOCIAL (PISO)",
+     "candidato": "FEDERICO ROMANO NORRI",
+     "votos": 520
+    }
+   ]
+  },
+  "Circuito 18": {
+   "total": 12460,
+   "listas": [
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 1207
+    },
+    {
+     "lista": "85",
+     "nombre": "CAMBIEMOS",
+     "candidato": "ANA GONZALEZ",
+     "votos": 891
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 851
+    }
+   ]
+  },
+  "Circuito 18A": {
+   "total": 3065,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 253
+    },
+    {
+     "lista": "391",
+     "nombre": "MOVIMIENTO POPULAR DE LA MILITANCIA",
+     "candidato": "JOSÉ MARÍA FRANCO",
+     "votos": 225
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 205
+    }
+   ]
+  },
+  "Circuito 18B": {
+   "total": 8191,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 642
+    },
+    {
+     "lista": "824",
+     "nombre": "MULTIPLICAR LEALTAD",
+     "candidato": "GONZALO CARRILLO LEITO",
+     "votos": 630
+    },
+    {
+     "lista": "248",
+     "nombre": "NUEVO ESPACIO POPULAR",
+     "candidato": "FACUNDO VARGAS AIGNASSE",
+     "votos": 522
+    }
+   ]
+  },
+  "Circuito 18C": {
+   "total": 7857,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 606
+    },
+    {
+     "lista": "247",
+     "nombre": "FRENTE PROVINCIAL",
+     "candidato": "ELENA CORTALEZZI",
+     "votos": 568
+    },
+    {
+     "lista": "824",
+     "nombre": "MULTIPLICAR LEALTAD",
+     "candidato": "GONZALO CARRILLO LEITO",
+     "votos": 549
+    }
+   ]
+  },
+  "Circuito 18D": {
+   "total": 4361,
+   "listas": [
+    {
+     "lista": "391",
+     "nombre": "MOVIMIENTO POPULAR DE LA MILITANCIA",
+     "candidato": "JOSÉ MARÍA FRANCO",
+     "votos": 415
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 320
+    },
+    {
+     "lista": "830",
+     "nombre": "FRENTE DE TODOS POR TUCUMAN",
+     "candidato": "ERNESTO NAGLE",
+     "votos": 295
+    }
+   ]
+  },
+  "Circuito 18E": {
+   "total": 7836,
+   "listas": [
+    {
+     "lista": "247",
+     "nombre": "FRENTE PROVINCIAL",
+     "candidato": "ELENA CORTALEZZI",
+     "votos": 667
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 646
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 449
+    }
+   ]
+  },
+  "Circuito 18F": {
+   "total": 4109,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 341
+    },
+    {
+     "lista": "391",
+     "nombre": "MOVIMIENTO POPULAR DE LA MILITANCIA",
+     "candidato": "JOSÉ MARÍA FRANCO",
+     "votos": 278
+    },
+    {
+     "lista": "824",
+     "nombre": "MULTIPLICAR LEALTAD",
+     "candidato": "GONZALO CARRILLO LEITO",
+     "votos": 232
+    }
+   ]
+  },
+  "Circuito 18G": {
+   "total": 5484,
+   "listas": [
+    {
+     "lista": "58",
+     "nombre": "COMUNIDAD EN ORGANIZACIÓN",
+     "candidato": "FERNANDO VALDEZ",
+     "votos": 506
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 354
+    },
+    {
+     "lista": "824",
+     "nombre": "MULTIPLICAR LEALTAD",
+     "candidato": "GONZALO CARRILLO LEITO",
+     "votos": 330
+    }
+   ]
+  },
+  "Circuito 19": {
+   "total": 11889,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 940
+    },
+    {
+     "lista": "390",
+     "nombre": "VALORES PARA TUCUMAN",
+     "candidato": "JOSÉ MARÍA CANELADA",
+     "votos": 852
+    },
+    {
+     "lista": "247",
+     "nombre": "FRENTE PROVINCIAL",
+     "candidato": "ELENA CORTALEZZI",
+     "votos": 757
+    }
+   ]
+  },
+  "Circuito 19A": {
+   "total": 8507,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 788
+    },
+    {
+     "lista": "247",
+     "nombre": "FRENTE PROVINCIAL",
+     "candidato": "ELENA CORTALEZZI",
+     "votos": 721
+    },
+    {
+     "lista": "821",
+     "nombre": "TUCUMAN PARA LA VICTORIA",
+     "candidato": "FERNANDO JURI",
+     "votos": 584
+    }
+   ]
+  },
+  "Circuito 20": {
+   "total": 19313,
+   "listas": [
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 1546
+    },
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 1349
+    },
+    {
+     "lista": "79",
+     "nombre": "VIVA LA CIUDAD",
+     "candidato": "DANIEL ALFARO",
+     "votos": 1086
+    }
+   ]
+  },
+  "Circuito 21": {
+   "total": 16636,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 1292
+    },
+    {
+     "lista": "78",
+     "nombre": "LA MAREA VERDE",
+     "candidato": "ALITO ASSAN",
+     "votos": 1277
+    },
+    {
+     "lista": "830",
+     "nombre": "FRENTE DE TODOS POR TUCUMAN",
+     "candidato": "ERNESTO NAGLE",
+     "votos": 869
+    }
+   ]
+  },
+  "Circuito 22": {
+   "total": 6039,
+   "listas": [
+    {
+     "lista": "901",
+     "nombre": "FUERZA REPUBLICANA",
+     "candidato": "RAMIRO ORTEGA",
+     "votos": 409
+    },
+    {
+     "lista": "824",
+     "nombre": "MULTIPLICAR LEALTAD",
+     "candidato": "GONZALO CARRILLO LEITO",
+     "votos": 364
+    },
+    {
+     "lista": "808",
+     "nombre": "PARTIDO POR LA JUSTICIA SOCIAL",
+     "candidato": "CARLOS ARNEDO",
+     "votos": 350
+    }
+   ]
+  }
+ }
+}
