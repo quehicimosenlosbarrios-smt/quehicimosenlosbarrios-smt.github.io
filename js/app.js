@@ -24,6 +24,12 @@ var ICONS = {
   cloaca:  "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2.2a6.8 6.8 0 1 1 0 13.6 6.8 6.8 0 0 1 0-13.6zM8 9.5h8v1.6H8zM8 12.9h8v1.6H8z",
   senal:   "M12 2l9 9-9 9-9-9zM11 7h2v6h-2zM11 14.5h2v2h-2z",
   limpieza:"M14.5 2l2 1-4.2 8.2 2.7 1.4-1 2L11.6 16 9 21H4.5l3.8-7.1-2.1-1.1 1-2 4.4 2.3z",
+  llama:   "M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.4 1.3-4 2.6-5.3.1 1.6.8 2.8 2 3.3C11 8.6 11 5.5 12 2z",
+  libro:   "M3 5.5C5.5 4.5 8.5 4.5 11 6v13c-2.5-1.5-5.5-1.5-8-.5zM13 6c2.5-1.5 5.5-1.5 8-.5v13c-2.5-1-5.5-1-8 .5z",
+  pincel:  "M15 2.5l6.5 6.5-7 7-6.5-6.5zM7 11.5l5.5 5.5c-.6 2.8-2.9 4.5-5.7 4.5H3v-3.8c0-2.8 1.6-5.2 4-6.2z",
+  reciclar:"M9.2 3.5h5.6l2.6 4.5 1.8-1 -1.2 5-5-1.2 1.8-1L13 6.5h-2L9.4 9.3 6.8 7.8zM4.4 12.2l2.6-1.5 1.6 2.8L10.2 16v-2l4.6 3.4-4.6 3.4v-2H7.4L4.5 15.6zM19.6 12.2l-2.6 4.4h-3.4v3h3.8l2.8-4.8 1.8 1-.8-5.2-4.8 1.6z",
+  bolsa:   "M7 8V7a5 5 0 0 1 10 0v1h3l-1 13H5L4 8zm2 0h6V7a3 3 0 0 0-6 0z",
+  sol:     "M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM11 1h2v4h-2zM11 19h2v4h-2zM1 11h4v2H1zM19 11h4v2h-4zM4.2 5.6l1.4-1.4 2.8 2.8L7 8.4zM15.6 17l1.4-1.4 2.8 2.8-1.4 1.4zM4.2 18.4l2.8-2.8 1.4 1.4-2.8 2.8zM15.6 7l2.8-2.8 1.4 1.4L17 8.4z",
   pin:     "M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 4.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4z"
 };
 var RULES = [
@@ -148,11 +154,24 @@ var CONCEJALES = {};
 var SUBPAL = ["#1f78b4", "#e6550d", "#33a02c", "#e31a1c", "#b8860b", "#17becf", "#6a3d9a", "#555555"];
 function colorDist(a, b) { var x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16); return Math.abs((x >> 16) - (y >> 16)) + Math.abs((x >> 8 & 255) - (y >> 8 & 255)) + Math.abs((x & 255) - (y & 255)); }
 
+// estilos de config.js por nombre normalizado (color, ícono e imagen de cada intervención y subgrupo)
+var ESTILO = {};
+function loadEstilos() {
+  ESTILO = {};
+  Object.keys(CFG.estilos || {}).forEach(function (k) {
+    var e = CFG.estilos[k], subs = {};
+    Object.keys(e.subgrupos || {}).forEach(function (s) { subs[norm(s)] = e.subgrupos[s]; });
+    ESTILO[norm(k)] = { color: e.color, icono: e.icono, dibujo: e.dibujo, subgrupos: e.subgrupos ? subs : null };
+  });
+}
 function buildTypes(names) {
+  loadEstilos();
   var used = 0;
   TYPES = names.map(function (n) {
     var k = norm(n), rule = RULES.filter(function (r) { return r.re.test(k); })[0];
-    return { id: "t" + k.replace(/[^a-z0-9]+/g, "-"), name: n, icon: rule ? rule.icon : "pin", color: rule ? rule.color : SPARE[used++ % SPARE.length] };
+    var e = ESTILO[k] || {};
+    return { id: "t" + k.replace(/[^a-z0-9]+/g, "-"), name: n, icon: e.dibujo || (rule ? rule.icon : "pin"), img: e.icono || null, estiloSubs: e.subgrupos || null,
+      color: e.color || (rule ? rule.color : SPARE[used++ % SPARE.length]) };
   });
   // orden fijo por prioridad (config.js); lo que no está en la lista va al final, por nombre
   var order = (CFG.ordenIntervenciones || []).map(norm);
@@ -212,11 +231,28 @@ function buildItems(rows, headers) {
     var names = Object.keys(n).sort(function (a, b) { return n[b] - n[a] || a.localeCompare(b, "es"); });
     // la paleta saltea los colores parecidos al del tipo, que queda para el primer subgrupo
     var pal = SUBPAL.filter(function (c) { return colorDist(c, t.color) > 120; });
-    t.subs = names.length > 1 ? names.map(function (x, i) { return { name: x, color: i ? pal[(i - 1) % pal.length] : t.color }; }) : null;
+    var ns = 0;
+    t.subs = names.length > 1 ? names.map(function (x, i) {
+      var e = t.estiloSubs && t.estiloSubs[norm(x)];
+      if (e) return { name: x, color: e.color, img: e.icono || null, icon: e.dibujo || t.icon };
+      return { name: x, color: i || t.estiloSubs ? pal[ns++ % pal.length] : t.color, img: null, icon: t.icon };
+    }) : null;
     t.splitBy = SPLIT[norm(t.name)] || "";
   });
 }
-function subColor(p) { var t = TYPE_BY[p.type], s = t.subs && t.subs.filter(function (x) { return x.name === p.sub; })[0]; return s ? s.color : t.color; }
+function subOf(p) { var t = TYPE_BY[p.type]; return (t.subs && t.subs.filter(function (x) { return x.name === p.sub; })[0]) || null; }
+function subColor(p) { var s = subOf(p); return s ? s.color : TYPE_BY[p.type].color; }
+// cómo se dibuja un punto: el ícono de su subgrupo si tiene, si no el de su tipo
+function styleOf(p) { var t = TYPE_BY[p.type], s = subOf(p); return s && (s.img || s.icon !== t.icon || s.color !== t.color) ? s : t; }
+// imágenes de íconos precargadas (para dibujarlas en los mapas de la ficha)
+var IMG = {};
+function preloadIcons() {
+  var urls = {};
+  TYPES.forEach(function (t) { if (t.img) urls[t.img] = 1; (t.subs || []).forEach(function (s) { if (s.img) urls[s.img] = 1; }); });
+  return Promise.all(Object.keys(urls).map(function (u) {
+    return new Promise(function (ok) { var im = new Image(); im.onload = function () { IMG[u] = im; ok(); }; im.onerror = function () { ok(); }; im.src = rel(u); });
+  }));
+}
 
 async function loadAll() {
   var res = await Promise.all([fetch(rel(CFG.circuitos)).then(function (r) { return r.json(); }), fetch(rel(CFG.barrios)).then(function (r) { return r.json(); })]);
@@ -272,7 +308,10 @@ var DETAIL_ZOOM = 17, dotRenderer = null, focusId = null;
 var map, distLayer, barrLayer, barrLabels, ptLayer, distPolys = {}, barrPolys = {}, cityBounds, bases = {}, markers = {};
 
 function iconSvg(t, size) { return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="' + ICONS[t.icon] + '"/></svg>'; }
-function badge(t, size) { return '<span class="badge" style="background:' + t.color + ';width:' + size + 'px;height:' + size + 'px">' + iconSvg(t, Math.round(size * 0.66)) + '</span>'; }
+function badge(t, size) {
+  if (t.img) return '<span class="badge" style="background:' + t.color + ';width:' + size + 'px;height:' + size + 'px"><img src="' + esc(t.img) + '" width="' + size + '" height="' + size + '" alt=""></span>';
+  return '<span class="badge" style="background:' + t.color + ';width:' + size + 'px;height:' + size + 'px">' + iconSvg(t, Math.round(size * 0.66)) + '</span>';
+}
 function km(m) { return fmt.format(Math.round(m / 100) / 10); }
 function byName(a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }
 
@@ -341,7 +380,9 @@ function initPanel() {
   $("types").innerHTML = TYPES.map(function (t) {
     return '<label class="type-row"><input type="checkbox" role="switch" data-type="' + t.id + '">' + badge(t, 26) + '<span class="nm">' + esc(t.name) + '</span><span class="n" id="n-' + t.id + '">0</span><span class="sw" aria-hidden="true"></span><span class="bar"><i id="b-' + t.id + '" style="background:' + t.color + '"></i></span></label>';
   }).join("");
-  $("legend").innerHTML = TYPES.map(function (t) { return '<div>' + badge(t, 18) + esc(t.name) + '</div>'; }).join("");
+  $("legend").innerHTML = TYPES.map(function (t) {
+    return '<div>' + badge(t, 18) + esc(t.name) + '</div>' + (t.subs ? t.subs.map(function (s) { return '<div class="lsub">' + badge(s, 16) + esc(s.name) + '</div>'; }).join("") : "");
+  }).join("");
 
   $("f-dist").addEventListener("change", function () { setDistrict($("f-dist").value); });
   $("f-barr").addEventListener("change", function () {
@@ -437,9 +478,9 @@ function render() {
         L.polyline(ll, { color: stroke, weight: 8, opacity: 0.9, interactive: false }).addTo(ptLayer);
         markers[p.id] = L.polyline(ll, { color: t.color, weight: 5, opacity: 1 }).bindPopup(popupHtml(p)).addTo(ptLayer);
       } else if (!detail) {
-        markers[p.id] = L.circleMarker([p.lat, p.lng], { renderer: dotRenderer, radius: dotR, weight: 1, color: stroke, fillColor: t.color, fillOpacity: 1 }).bindPopup(popupHtml(p)).addTo(ptLayer);
+        markers[p.id] = L.circleMarker([p.lat, p.lng], { renderer: dotRenderer, radius: dotR, weight: 1, color: stroke, fillColor: styleOf(p).color, fillOpacity: 1 }).bindPopup(popupHtml(p)).addTo(ptLayer);
       } else if (view.contains([p.lat, p.lng]) || p.id === focusId) {
-        markers[p.id] = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: "pin", html: badge(t, size), iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2] }), title: t.name + (p.dir ? ", " + p.dir : "") }).bindPopup(popupHtml(p)).addTo(ptLayer);
+        markers[p.id] = L.marker([p.lat, p.lng], { icon: L.divIcon({ className: "pin", html: badge(styleOf(p), size), iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2] }), title: t.name + (p.dir ? ", " + p.dir : "") }).bindPopup(popupHtml(p)).addTo(ptLayer);
       }
     });
   }
@@ -569,7 +610,11 @@ function paintMap(c, P, district, pts, opts, tiles) {
   var r = dense ? 3.4 : opts.radius;
   pts.forEach(function (p) {
     if (p.coords) return;
-    var t = TYPE_BY[p.type], q = P([p.lng, p.lat]);
+    var t = styleOf(p), q = P([p.lng, p.lat]);
+    if (!dense && t.img && IMG[t.img]) {
+      ctx.beginPath(); ctx.arc(q[0], q[1], r + 1.2, 0, Math.PI * 2); ctx.fillStyle = "#ffffff"; ctx.fill();
+      ctx.drawImage(IMG[t.img], q[0] - r, q[1] - r, 2 * r, 2 * r); return;
+    }
     ctx.beginPath(); ctx.arc(q[0], q[1], r, 0, Math.PI * 2);
     ctx.fillStyle = colorOf(p); ctx.fill(); ctx.lineWidth = dense ? 0.8 : 1.2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
     if (dense) return;
@@ -822,7 +867,7 @@ function initViewer() {
     $("viewer").hidden = false;
     // los mapas y gráficos de la ficha escriben con Poppins: esperar a que esté cargada
     var fonts = document.fonts ? Promise.all(["400 12px Poppins", "600 12px Poppins"].map(function (f) { return document.fonts.load(f); })).catch(function () {}) : Promise.resolve();
-    fonts.then(function () { buildFicha(); $("sheets").scrollTop = 0; });
+    Promise.all([fonts, preloadIcons()]).then(function () { buildFicha(); $("sheets").scrollTop = 0; });
   });
   $("btn-close").addEventListener("click", function () { $("viewer").hidden = true; });
   $("opt-list").addEventListener("change", buildFicha);
