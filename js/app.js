@@ -70,6 +70,26 @@ function inFeature(pt, f) {
     return true;
   });
 }
+// distancia en metros de un punto al borde de un polígono (aprox. plana, alcanza a escala de ciudad)
+function distToFeature(pt, f) {
+  var kx = 111320 * Math.cos(pt[1] * Math.PI / 180), ky = 110540, best = Infinity;
+  f.polys.forEach(function (poly) { poly.forEach(function (ring) {
+    for (var i = 1; i < ring.length; i++) {
+      var ax = (ring[i - 1][0] - pt[0]) * kx, ay = (ring[i - 1][1] - pt[1]) * ky, bx = (ring[i][0] - pt[0]) * kx, by = (ring[i][1] - pt[1]) * ky;
+      var dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy, t = L ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / L)) : 0;
+      best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+    }
+  }); });
+  return best;
+}
+// el polígono que contiene el punto o, si cae en una rendija entre polígonos (p. ej. sobre una avenida), el más cercano
+function featureAt(pt, feats, maxM) {
+  var f = feats.filter(function (x) { return inFeature(pt, x); })[0];
+  if (f || !maxM) return f || null;
+  var best = null, bd = maxM;
+  feats.forEach(function (x) { var d = distToFeature(pt, x); if (d < bd) { bd = d; best = x; } });
+  return best;
+}
 function bboxOf(polys) {
   var b = [Infinity, Infinity, -Infinity, -Infinity];
   polys.forEach(function (poly) { poly[0].forEach(function (p) { b[0] = Math.min(b[0], p[0]); b[1] = Math.min(b[1], p[1]); b[2] = Math.max(b[2], p[0]); b[3] = Math.max(b[3], p[1]); }); });
@@ -185,9 +205,11 @@ function buildTypes(names) {
 
 function locate(pt, barrioText) {
   // la ubicación manda; el nombre escrito en la planilla se usa solo si el punto cae fuera de todo barrio
-  var key = norm(barrioText), d = DISTRICTS.filter(function (x) { return inFeature(pt, x); })[0] || null;
-  var b = BARRIOS.filter(function (x) { return inFeature(pt, x); })[0] || null;
+  // los polígonos dejan rendijas sobre algunas avenidas: lo que cae ahí (o a menos de 500 m del borde) va al más cercano
+  var key = norm(barrioText), d = featureAt(pt, DISTRICTS, 500);
+  var b = featureAt(pt, BARRIOS);
   if (!b && key) b = BARRIOS.filter(function (x) { return x.key === key && (!d || x.circuits.indexOf(d.id) >= 0); })[0] || null;
+  if (!b && d) b = featureAt(pt, BARRIOS.filter(function (x) { return x.circuits.indexOf(d.id) >= 0; }), 500);
   return { barrio: b, district: d };
 }
 
