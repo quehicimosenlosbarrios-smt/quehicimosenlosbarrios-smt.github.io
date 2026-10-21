@@ -538,9 +538,11 @@ var PAPER = { ink: "#16222c", muted: "#5d6b77", line: "#dde3e8", soft: "#f2f5f7"
 var charts = [], fichaReady = Promise.resolve();
 var MAXBARS = 15, MAXROWS = 12;
 // listado de direcciones: alto útil de cada columna y de la fila con el nombre del barrio (px)
-var LIST_CAP = 910, GRP_H = 31;
+var LIST_CAP = 930, GRP_H = 40, LIST_FS = 14.5, LIST_COLW = 361;
 var measureCtx = null;
-function textW(t) { if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d"); measureCtx.font = "400 13px Poppins, Arial, sans-serif"; return measureCtx.measureText(t).width; } // MAXROWS: filas del ranking en la hoja de cada tipo
+function textW(t) { if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d"); measureCtx.font = "400 " + LIST_FS + "px Poppins, Arial, sans-serif"; return measureCtx.measureText(t).width; }
+// texto oscuro o blanco según qué se lea mejor sobre el color
+function inkOn(hex) { var x = parseInt(hex.slice(1), 16), l = (0.299 * (x >> 16) + 0.587 * (x >> 8 & 255) + 0.114 * (x & 255)) / 255; return l > 0.62 ? PAPER.navy : "#ffffff"; } // MAXROWS: filas del ranking en la hoja de cada tipo
 
 // Web Mercator (en radianes), igual que las teselas del mapa de fondo
 function merc(p) { return [p[0] * Math.PI / 180, Math.log(Math.tan(Math.PI / 4 + p[1] * Math.PI / 360))]; }
@@ -620,6 +622,22 @@ function paintMap(c, P, district, pts, opts, tiles) {
   ctx.restore();
   ctx.setLineDash([]);
   tracePolys(ctx, P, district.polys); ctx.strokeStyle = PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
+  ctx.font = "600 " + (opts.labelSize || 12) + "px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
+  // nombres de barrios debajo de las intervenciones, así las marcas quedan siempre a la vista
+  if (opts.numbered) {
+    // plano: cada barrio con su número, igual que en el listado de la misma hoja
+    ctx.textBaseline = "middle"; ctx.font = "700 14px Poppins, Arial, sans-serif";
+    district.barrios.forEach(function (b, i) {
+      var q = P(b.labels[district.id] || b.label), n = String(i + 1);
+      ctx.strokeStyle = "rgba(255,255,255,.95)"; ctx.lineWidth = 4; ctx.strokeText(n, q[0], q[1]);
+      ctx.fillStyle = PAPER.navy; ctx.fillText(n, q[0], q[1]);
+    });
+    ctx.textBaseline = "alphabetic";
+  } else district.barrios.forEach(function (b) {
+    var q = P(b.labels[district.id] || b.label);
+    ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineWidth = 3.5; ctx.strokeText(b.name.toUpperCase(), q[0], q[1]);
+    ctx.fillStyle = PAPER.navy; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
+  });
   ctx.lineCap = "round";
   pts.forEach(function (p) {
     if (!p.coords) return;
@@ -644,21 +662,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
     ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 12 * k); ctx.scale(k, k);
     ctx.fillStyle = "#ffffff"; ctx.fill(new Path2D(ICONS[t.icon]), "evenodd"); ctx.restore();
   });
-  ctx.font = "600 12px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
-  if (opts.numbered) {
-    // plano: cada barrio con su número, que remite al listado de la misma hoja
-    ctx.textBaseline = "middle"; ctx.font = "600 12px Poppins, Arial, sans-serif";
-    district.barrios.forEach(function (b, i) {
-      var q = P(b.labels[district.id] || b.label), n = String(i + 1), rr = n.length > 1 ? 12 : 10.5;
-      ctx.beginPath(); ctx.arc(q[0], q[1], rr, 0, Math.PI * 2); ctx.fillStyle = PAPER.navy; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = "#ffffff"; ctx.stroke();
-      ctx.fillStyle = "#ffffff"; ctx.fillText(n, q[0], q[1] + 0.5);
-    });
-    ctx.textBaseline = "alphabetic";
-  } else district.barrios.forEach(function (b) {
-    var q = P(b.labels[district.id] || b.label);
-    ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineWidth = 3.5; ctx.strokeText(b.name.toUpperCase(), q[0], q[1]);
-    ctx.fillStyle = PAPER.navy; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
-  });
+  ctx.textAlign = "center";
   if (tiles) { ctx.font = "9px Poppins, Arial, sans-serif"; ctx.textAlign = "right"; ctx.fillStyle = "rgba(255,255,255,.8)"; ctx.fillRect(Wd - 205, Hd - 15, 205, 15); ctx.fillStyle = PAPER.muted; ctx.fillText("Mapa base © Esri, HERE, Garmin, © OpenStreetMap", Wd - 5, Hd - 4); }
   // norte
   ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(Wd - 26, 28, 15, 0, Math.PI * 2); ctx.fill();
@@ -721,7 +725,7 @@ function planoPage(d) {
   var blist = '<ol class="blist' + (nb > 24 ? ' c3' : nb > 8 ? ' c2' : '') + '">' + d.barrios.map(function (b) { return '<li>' + esc(b.name) + '</li>'; }).join("") + '</ol>';
   var elec = c ? '<div class="elec">' + c.listas.map(function (l, i) {
     var pct = l.votos / c.total * 100;
-    return '<div class="el-row"><span class="el-pos">' + (i + 1) + '</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small><div class="el-bar"><i style="width:' + (pct / (c.listas[0].votos / c.total * 100) * 100).toFixed(1) + '%"></i></div></div>' +
+    return '<div class="el-row"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small><div class="el-bar"><i style="width:' + (pct / (c.listas[0].votos / c.total * 100) * 100).toFixed(1) + '%"></i></div></div>' +
       '<div class="el-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b><small>' + fmt.format(l.votos) + ' votos</small></div></div>';
   }).join("") + '<p class="tnote">Porcentaje sobre ' + fmt.format(c.total) + ' votos a listas de concejales en el circuito (no incluye blancos ni nulos). Elecciones municipales 2023.</p></div>'
     : '<p class="tnote">No hay resultados electorales cargados para este circuito.</p>';
@@ -796,9 +800,9 @@ function buildFicha() {
     });
     // listado a dos columnas, agrupado por barrio y con la dirección completa (puede ocupar más de una línea):
     // se mide cada dirección para saber cuánto alto ocupa y armar las columnas sin que la hoja se corte
-    var LH = 19.5, CAP = LIST_CAP - (subs ? 30 : 0), aw = 350 - 12 - (line ? 52 : 0) - (subs ? 16 : 0);
+    var LH = 21.5, CAP = LIST_CAP - (subs ? 34 : 0), aw = LIST_COLW - 16 - (line ? 56 : 0) - (subs ? 17 : 0);
     var cols = [], col = [], used = 0, prevB = null;
-    function rowH(p) { return Math.max(1, Math.ceil(textW(p.dir || "Sin dirección") * 1.04 / aw)) * LH + 7; }
+    function rowH(p) { return Math.max(1, Math.ceil(textW(p.dir || "Sin dirección") * 1.04 / aw)) * LH + 8; }
     function grp(bid, cont) { return { g: bid, cont: cont }; }
     list.forEach(function (p) {
       var h = rowH(p), needHead = p.barrio !== prevB;
@@ -812,13 +816,14 @@ function buildFicha() {
     var legend = subs ? '<div class="sh-legend sub-legend list-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + '</span>'; }).join("") + '</div>' : '';
     for (var i = 0; i < cols.length; i += 2) {
       var html = cols.slice(i, i + 2).map(function (c) {
-        return '<table class="t lst"><thead><tr><th>Dirección</th>' + (line ? '<th class="r m">m</th>' : '') + '</tr></thead><tbody>' + c.map(function (p) {
-          if (p.g !== undefined) return '<tr class="grp"><td colspan="' + (line ? 2 : 1) + '">' + (p.g ? esc(BARRIO_BY[p.g].name) : 'Sin barrio') + ' <small>' + (p.cont ? '(continúa)' : counts[p.g] + (line ? ' cuadras' : '')) + '</small></td></tr>';
+        var gs = 'background:' + t.color + ';color:' + inkOn(t.color);
+        return '<table class="t lst"><colgroup><col>' + (line ? '<col class="m">' : '') + '</colgroup><tbody>' + c.map(function (p) {
+          if (p.g !== undefined) return '<tr class="grp"><td colspan="' + (line ? 2 : 1) + '"><div class="gbox" style="' + gs + '"><span>' + (p.g ? esc(BARRIO_BY[p.g].name) : 'Sin barrio') + '</span><small>' + (p.cont ? 'continúa' : counts[p.g] + (line ? ' cuadras' : '')) + '</small></div></td></tr>';
           return '<tr><td>' + (subs ? '<i class="dot" style="background:' + subColor(p) + '"></i>' : '') + esc(p.dir || "Sin dirección") + '</td>' + (line ? '<td class="r m">' + Math.round(p.m) + '</td>' : '') + '</tr>';
         }).join("") + '</tbody></table>';
       });
       var part = nPages > 1 ? ' (' + (i / 2 + 1) + ' de ' + nPages + ')' : '';
-      pages.push(band(d, t.name + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
+      pages.push(band(d, t.name + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body lbody">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
     }
   });
 
@@ -874,7 +879,7 @@ function buildFicha() {
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
     var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
     if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4 })); return; }
-    draws.push(drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, colorOf: t && t.subs ? subColor : null }));
+    draws.push(drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null }));
   });
   fichaReady = Promise.all(draws);
   $("sheets").querySelectorAll("canvas[data-locator]").forEach(function (cv) { drawLocator(cv, d); });
