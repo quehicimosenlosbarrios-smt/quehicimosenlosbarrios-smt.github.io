@@ -534,11 +534,12 @@ function render() {
 }
 
 /* ---------- Ficha técnica ---------- */
-var PAPER = { ink: "#16222c", muted: "#5d6b77", line: "#dde3e8", soft: "#f2f5f7", navy: "#0f2b46", district: "#14507e", barrio: "#8a9aa3", ctx: "#e7ecef", ctxLine: "#c9d3d8" };
+// colores de la ficha, tomados del Informe de Gestión de la Subsecretaría
+var PAPER = { ink: "#333333", muted: "#6b6b6b", line: "#d9d9d9", soft: "#f3f7ff", navy: "#333333", blue: "#0066ff", sky: "#2eb1ff", yellow: "#f4dc00", district: "#0066ff", barrio: "#8a9aa3", ctx: "#e7ecef", ctxLine: "#c9d3d8" };
 var charts = [], fichaReady = Promise.resolve();
-var MAXBARS = 15, MAXROWS = 12;
+var MAXBARS = 15, MAXROWS = 11;
 // listado de direcciones: alto útil de cada columna y de la fila con el nombre del barrio (px)
-var LIST_CAP = 930, GRP_H = 40, LIST_FS = 14.5, LIST_COLW = 361;
+var LIST_CAP = 885, GRP_H = 40, LIST_FS = 14.5, LIST_COLW = 335;
 var measureCtx = null;
 function textW(t) { if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d"); measureCtx.font = "400 " + LIST_FS + "px Poppins, Arial, sans-serif"; return measureCtx.measureText(t).width; }
 // texto oscuro o blanco según qué se lea mejor sobre el color
@@ -682,7 +683,7 @@ function drawLocator(canvas, district) {
   DISTRICTS.forEach(function (d) { bb[0] = Math.min(bb[0], d.bbox[0]); bb[1] = Math.min(bb[1], d.bbox[1]); bb[2] = Math.max(bb[2], d.bbox[2]); bb[3] = Math.max(bb[3], d.bbox[3]); });
   var P = projector(bb, c.W, c.H, 12);
   DISTRICTS.forEach(function (d) {
-    tracePolys(ctx, P, d.polys); ctx.fillStyle = d.id === district.id ? PAPER.navy : "#d5dde3"; ctx.fill("evenodd");
+    tracePolys(ctx, P, d.polys); ctx.fillStyle = d.id === district.id ? PAPER.blue : "#d5dde3"; ctx.fill("evenodd");
     ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 1.2; ctx.stroke();
   });
 
@@ -704,17 +705,27 @@ function chartStack(canvas, labels, datasets) {
   }));
 }
 
-function sheetShell(pageNo, total, inner) {
+// hoja con el diseño del Informe de Gestión: encabezado con logos, marco, textos al margen y pie con la fuente
+function monthYear() { var s = new Date().toLocaleDateString("es-AR", { month: "long", year: "numeric" }).replace(" de ", " "); return s; }
+function sheetShell(pageNo, total, inner, d) {
   if (inner.indexOf('<div class="cover-full">') === 0) return '<article class="sheet cover-sheet">' + inner + '</article>';
-  var src = SOURCE.sample ? "Datos de ejemplo. No representan intervenciones reales." : "Fuente: GeoGestión, actualizada al " + SOURCE.when.toLocaleDateString("es-AR");
-  return '<article class="sheet">' + inner + '<div class="foot"><span>' + esc(CFG.organismo) + ' - ' + esc(src) + '</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></article>';
+  var src = SOURCE.sample ? "Datos de ejemplo. No representan intervenciones reales." : "GeoGestión, actualizada al " + SOURCE.when.toLocaleDateString("es-AR") + ".";
+  return '<article class="sheet"><div class="pg-head"><span class="ph-sec"><b>Ficha técnica</b> ' + esc(d.name) + '</span><span class="ph-org"><img src="img/ciudad-smt.png" alt="Ciudad SMT"><i></i><b>Subsecretaría de<br>Gestión Estratégica</b></span></div>' +
+    '<div class="side"><span class="s-top">' + esc(monthYear()) + '</span><span class="s-bot"><b>Ficha técnica</b> – ' + esc(CFG.organismo.replace(/^Municipalidad de /i, "Ciudad de ")) + '</span></div>' +
+    '<div class="frame">' + inner + '<div class="foot"><span><b>Fuente:</b> ' + esc(src) + ' <b>Elaboración:</b> Subsecretaría de Gestión Estratégica.</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></div></article>';
+}
+// título como en el informe: la parte final en azul (lo que va después de "·", o la última palabra)
+function titleHTML(title, plain) {
+  var i = title.indexOf(" · ");
+  if (i > 0) return esc(title.slice(0, i)) + ' <em>' + esc(title.slice(i + 3)) + '</em>';
+  var w = title.split(" ");
+  return plain || w.length < 2 ? esc(title) : esc(w.slice(0, -1).join(" ")) + ' <em>' + esc(w[w.length - 1]) + '</em>';
 }
 function band(d, title, sub, opts) {
   opts = opts || {};
-  var today = new Date().toLocaleDateString("es-AR");
-  return '<div class="band' + (opts.cls ? ' ' + opts.cls : '') + '"><div class="eyebrow"><span>' + esc(CFG.organismo) + '</span><span>Ficha técnica · ' + esc(d.name) + ' · ' + today + '</span></div>' +
-    (opts.type ? '<div class="tline">' + badge(opts.type, opts.cls === 'slim' ? 30 : 46) + '<h2>' + esc(title) + '</h2></div>' : '<h2>' + esc(title) + '</h2>') +
-    (sub ? '<p>' + sub + '</p>' : '') + '</div>' + (opts.type ? '<div class="rule" style="background:' + opts.type.color + '"></div>' : '');
+  return '<div class="band' + (opts.cls ? ' ' + opts.cls : '') + '">' +
+    (opts.type ? '<div class="tline">' + badge(opts.type, opts.cls === 'slim' ? 32 : 42) + '<h2>' + titleHTML(title, true) + '</h2></div>' : '<h2>' + titleHTML(title) + '</h2>') +
+    (sub ? '<p>' + sub + '</p>' : '') + '</div>';
 }
 function tiles(list, cls) { return '<div class="tiles' + (cls ? ' ' + cls : '') + '">' + list.map(function (x) { return '<div class="tile' + (x.txt ? ' txt' : '') + '"><b>' + x.v + '</b><span>' + x.l + '</span></div>'; }).join("") + '</div>'; }
 
@@ -730,7 +741,7 @@ function planoPage(d) {
   }).join("") + '<p class="tnote">Porcentaje sobre ' + fmt.format(c.total) + ' votos a listas de concejales en el circuito (no incluye blancos ni nulos). Elecciones municipales 2023.</p></div>'
     : '<p class="tnote">No hay resultados electorales cargados para este circuito.</p>';
   return band(d, "Plano del circuito", nb + (nb === 1 ? " barrio" : " barrios") + " · " + esc(d.name)) +
-    '<div class="body"><div class="sh-map"><canvas data-map="plano" width="1444" height="980"></canvas></div>' +
+    '<div class="body"><div class="sh-map"><canvas data-map="plano" width="1372" height="930"></canvas></div>' +
     '<div class="plano-cols' + (nb > 24 ? ' wide' : '') + '"><div><h3 class="sh-h3">Barrios del circuito</h3>' + blist + '</div>' +
     '<div><h3 class="sh-h3">Concejales 2023 · listas más votadas</h3>' + elec + '</div></div></div>';
 }
@@ -760,7 +771,7 @@ function buildFicha() {
   }).join("");
   pages.push(band(d, 'Resumen del circuito', nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales registradas') +
     '<div class="body">' +
-    '<div class="sh-map"><canvas data-map="all" width="1444" height="' + (types.length > 8 ? 700 : 820) + '"></canvas></div>' +
+    '<div class="sh-map"><canvas data-map="all" width="1372" height="' + (types.length > 8 ? 665 : 780) + '"></canvas></div>' +
     '<div><h3 class="sh-h3">Intervenciones por tipo</h3><table class="t"><thead><tr><th>Tipo</th><th></th><th class="r">Cantidad</th><th class="r">Barrios</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
     '</div>');
 
@@ -782,13 +793,13 @@ function buildFicha() {
       ? '<th>Barrio</th>' + subs.map(function (u) { return '<th class="r sub"><i style="background:' + u.color + '"></i>' + esc(u.name) + '</th>'; }).join("") + '<th class="r">Total</th><th class="r">Participación</th>'
       : '<th>Barrio</th><th></th><th class="r">' + (line ? 'Cuadras' : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">Participación</th>';
     var legend = subs ? '<div class="sh-legend sub-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + ' (' + tp.filter(function (p) { return p.sub === u.name; }).length + ')</span>'; }).join("") + '</div>' : '';
-    var mapH = shown.length > 8 ? 600 : shown.length > 4 ? 760 : 900;
+    var mapH = shown.length > 8 ? 570 : shown.length > 4 ? 720 : 855;
     pages.push(band(d, t.name, 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
         : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: (tp.length / dpts.length < 0.005 ? '&lt;1' : Math.round(tp.length / dpts.length * 100)) + '<small>%</small>', l: "Del total del circuito" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
-      '<div class="sh-map"><canvas data-map="' + t.id + '" width="1444" height="' + mapH + '"></canvas></div>' + legend +
+      '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
       '<p class="tnote">Participación: qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
       '</div>');
@@ -831,7 +842,7 @@ function buildFicha() {
   var nBefore = pages.length;
   var tot = countBy(dpts), topB = tot.filter(function (x) { return x.n; }).slice(0, MAXBARS);
   var findings = [];
-  if (dpts.length) findings.push('<li class="all">' + badge({ color: PAPER.navy, icon: "pin" }, 22) + '<span><b>En conjunto,</b> ' + esc(tot[0].b.name) + ' es el barrio con más intervenciones (' + tot[0].n + ', ' + Math.round(tot[0].n / dpts.length * 100) + '% del circuito)' + (tot[tot.length - 1].n < tot[0].n ? ' y ' + esc(tot[tot.length - 1].b.name) + ' el que menos recibió (' + tot[tot.length - 1].n + ')' : '') + '.</span></li>');
+  if (dpts.length) findings.push('<li class="all">' + badge({ color: PAPER.blue, icon: "pin" }, 22) + '<span><b>En conjunto,</b> ' + esc(tot[0].b.name) + ' es el barrio con más intervenciones (' + tot[0].n + ', ' + Math.round(tot[0].n / dpts.length * 100) + '% del circuito)' + (tot[tot.length - 1].n < tot[0].n ? ' y ' + esc(tot[tot.length - 1].b.name) + ' el que menos recibió (' + tot[tot.length - 1].n + ')' : '') + '.</span></li>');
   types.forEach(function (t) {
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t), byB = countBy(tp);
     var zero = byB.filter(function (x) { return !x.n; }).length;
@@ -853,19 +864,21 @@ function buildFicha() {
   pages.push(band(d, "Síntesis ejecutiva", "Lo principal de " + esc(d.name) + " en una hoja") +
     '<div class="body"><div class="syn-head"><div class="locator"><canvas data-locator="1" width="440" height="330"></canvas><p>' + esc(d.name) + ' dentro de la ciudad</p></div>' + keyTiles + '</div><div><h3 class="sh-h3">Lectura rápida</h3><ul class="findings">' + findings.join("") + '</ul></div></div>');
   pages.push(band(d, "Síntesis ejecutiva · por barrio", "Qué barrios concentran más intervenciones según el tipo" + (tot.filter(function (x) { return x.n; }).length > MAXBARS ? " · " + MAXBARS + " barrios con más intervenciones" : "")) +
-    '<div class="body"><div><h3 class="sh-h3">Intervenciones por barrio y tipo</h3><canvas data-chart="stack" width="722" height="' + stackH + '"></canvas></div>' +
+    '<div class="body"><div><h3 class="sh-h3">Intervenciones por barrio y tipo</h3><canvas data-chart="stack" width="684" height="' + stackH + '"></canvas></div>' +
     (many ? '' : '<div><h3 class="sh-h3">Cuadro por barrio y tipo</h3>' + heat + '</div>') + '</div>');
   if (many) pages.push(band(d, "Cuadro por barrio y tipo", "Cantidad de intervenciones de cada tipo en cada barrio. El color más intenso marca dónde se concentra cada tipo.") + '<div class="body">' + heat + '</div>');
 
   // portada
-  var cover = '<div class="cover-full"><div class="cv-top"><img class="cv-logo" src="img/logo-blanco.svg" alt="Qué hicimos en los barrios · Fichas técnicas">' +
-    '<div class="cv-title"><span>Ficha técnica</span><h1>' + esc(d.name) + '</h1><p>' + nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales · ' +
-    (SOURCE.sample ? 'datos de ejemplo' : 'actualizada al ' + SOURCE.when.toLocaleDateString("es-AR")) + '</p></div></div>' +
-    '<div class="cv-bottom"><div class="cv-org"><b>Subsecretaría de Gestión Estratégica</b><span>Secretaría General</span><span>' + esc(CFG.organismo) + '</span></div></div></div>';
+  var my = monthYear();
+  var cover = '<div class="cover-full"><div class="cv-top"><img class="cv-logo" src="img/logo.svg" alt="Qué hicimos en los barrios · Fichas técnicas"><img class="cv-city" src="img/ciudad-smt.png" alt="Ciudad SMT"></div>' +
+    '<div class="cv-panel"><span class="cv-pill">Ficha técnica</span><div class="cv-title"><h1>' + esc(d.name) + '</h1><p>' + nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales · ' +
+    (SOURCE.sample ? 'datos de ejemplo' : 'actualizada al ' + SOURCE.when.toLocaleDateString("es-AR")) + '</p></div>' +
+    '<ul class="cv-list"><li>Plano del circuito</li><li>Síntesis ejecutiva</li><li>Resumen del circuito</li><li>Intervenciones por tipo</li></ul>' +
+    '<div class="cv-foot"><div><b>Subsecretaría de Gestión Estratégica</b><br>Secretaría General</div><div class="r"><b>' + esc(my.charAt(0).toUpperCase() + my.slice(1)) + '</b><br>' + esc(CFG.organismo) + '</div></div></div></div>';
   var plano = planoPage(d);
   pages = [cover, plano].concat(pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore));
 
-  $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner); }).join("");
+  $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner, d); }).join("");
   $("viewer-title").textContent = "Ficha técnica · " + d.name;
 
   // con letra más grande algunas hojas no entran: el mapa se achica lo justo para que la hoja no se corte
