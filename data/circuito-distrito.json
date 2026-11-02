@@ -1,193 +1,1119 @@
 {
- "_ayuda": "Distrito de Presupuesto Participativo que más superficie comparte con cada circuito electoral (coincidencia en % del área del circuito). Calculado cruzando DISTRITOS TODOS.geojson con circuitos.geojson.",
+ "_ayuda": "Cruce de los circuitos electorales con los distritos de Presupuesto Participativo (superficie compartida, en %). En 'circuitos', 'distrito' es el que más comparte con el circuito. En 'distritos', los electores y escuelas son estimados: cada circuito aporta según el % de su superficie dentro del distrito. Generado por scripts/cruce_distritos.py.",
  "circuitos": {
   "Circuito 14": {
    "distrito": 8,
-   "coincidencia": 96
+   "coincidencia": 96,
+   "cruce": {
+    "8": 96
+   }
   },
   "Circuito 14 D": {
    "distrito": 7,
-   "coincidencia": 69
+   "coincidencia": 69,
+   "cruce": {
+    "7": 69,
+    "8": 23
+   }
   },
   "Circuito 14C": {
    "distrito": 7,
-   "coincidencia": 95
+   "coincidencia": 95,
+   "cruce": {
+    "7": 95
+   }
   },
   "Circuito 14B": {
    "distrito": 7,
-   "coincidencia": 94
+   "coincidencia": 94,
+   "cruce": {
+    "7": 94
+   }
   },
   "Circuito 14A": {
    "distrito": 7,
-   "coincidencia": 97
+   "coincidencia": 97,
+   "cruce": {
+    "7": 97
+   }
   },
   "Circuito 11A": {
    "distrito": 11,
-   "coincidencia": 96
+   "coincidencia": 96,
+   "cruce": {
+    "11": 96
+   }
   },
   "Circuito 11": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 10": {
    "distrito": 11,
-   "coincidencia": 87
+   "coincidencia": 87,
+   "cruce": {
+    "10": 12,
+    "11": 87
+   }
   },
   "Circuito 10A": {
    "distrito": 16,
-   "coincidencia": 95
+   "coincidencia": 95,
+   "cruce": {
+    "15": 5,
+    "16": 95
+   }
   },
   "Circuito 9": {
    "distrito": 15,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "15": 100
+   }
   },
   "Circuito 9A": {
    "distrito": 15,
-   "coincidencia": 73
+   "coincidencia": 73,
+   "cruce": {
+    "14": 27,
+    "15": 73
+   }
   },
   "Circuito 20": {
    "distrito": 15,
-   "coincidencia": 51
+   "coincidencia": 51,
+   "cruce": {
+    "14": 9,
+    "15": 51,
+    "16": 34,
+    "19": 6
+   }
   },
   "Circuito 21": {
    "distrito": 19,
-   "coincidencia": 35
+   "coincidencia": 35,
+   "cruce": {
+    "14": 1,
+    "16": 20,
+    "18": 15,
+    "19": 35,
+    "20": 28
+   }
   },
   "Circuito 22": {
    "distrito": 20,
-   "coincidencia": 88
+   "coincidencia": 88,
+   "cruce": {
+    "20": 88
+   }
   },
   "Circuito 3": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 4": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 1A": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 2A": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 1": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 2": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 5": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 6": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "10": 100
+   }
   },
   "Circuito 12": {
    "distrito": 6,
-   "coincidencia": 86
+   "coincidencia": 86,
+   "cruce": {
+    "5": 13,
+    "6": 86
+   }
   },
   "Circuito 13": {
    "distrito": 5,
-   "coincidencia": 93
+   "coincidencia": 93,
+   "cruce": {
+    "4": 7,
+    "5": 93
+   }
   },
   "Circuito 12A": {
    "distrito": 6,
-   "coincidencia": 83
+   "coincidencia": 83,
+   "cruce": {
+    "5": 16,
+    "6": 83
+   }
   },
   "Circuito 13A": {
    "distrito": 5,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "5": 100
+   }
   },
   "Circuito 15A": {
    "distrito": 4,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "4": 99
+   }
   },
   "Circuito 15": {
    "distrito": 4,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "4": 99
+   }
   },
   "Circuito 7A": {
    "distrito": 10,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "10": 99
+   }
   },
   "Circuito 7": {
    "distrito": 10,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "10": 99
+   }
   },
   "Circuito 8": {
    "distrito": 10,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "9": 1,
+    "10": 100
+   }
   },
   "Circuito 8A": {
    "distrito": 10,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "10": 99
+   }
   },
   "Circuito 19": {
    "distrito": 14,
-   "coincidencia": 96
+   "coincidencia": 96,
+   "cruce": {
+    "13": 3,
+    "14": 96
+   }
   },
   "Circuito 19A": {
    "distrito": 14,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "14": 100
+   }
   },
   "Circuito 15B": {
    "distrito": 2,
-   "coincidencia": 34
+   "coincidencia": 34,
+   "cruce": {
+    "1": 33,
+    "2": 34,
+    "3": 32
+   }
   },
   "Circuito 16": {
    "distrito": 3,
-   "coincidencia": 48
+   "coincidencia": 48,
+   "cruce": {
+    "2": 41,
+    "3": 48,
+    "9": 10
+   }
   },
   "Circuito 16A": {
    "distrito": 1,
-   "coincidencia": 92
+   "coincidencia": 92,
+   "cruce": {
+    "1": 92,
+    "9": 7
+   }
   },
   "Circuito 17A": {
    "distrito": 9,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "9": 100
+   }
   },
   "Circuito 17": {
    "distrito": 9,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "9": 100
+   }
   },
   "Circuito 18": {
    "distrito": 9,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "9": 100
+   }
   },
   "Circuito 18A": {
    "distrito": 12,
-   "coincidencia": 98
+   "coincidencia": 98,
+   "cruce": {
+    "12": 98
+   }
   },
   "Circuito 18B": {
    "distrito": 12,
-   "coincidencia": 98
+   "coincidencia": 98,
+   "cruce": {
+    "12": 98
+   }
   },
   "Circuito 18F": {
    "distrito": 17,
-   "coincidencia": 98
+   "coincidencia": 98,
+   "cruce": {
+    "17": 98
+   }
   },
   "Circuito 18C": {
    "distrito": 13,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "13": 99
+   }
   },
   "Circuito 18D": {
    "distrito": 13,
-   "coincidencia": 99
+   "coincidencia": 99,
+   "cruce": {
+    "13": 99
+   }
   },
   "Circuito 18E": {
    "distrito": 13,
-   "coincidencia": 100
+   "coincidencia": 100,
+   "cruce": {
+    "13": 100
+   }
   },
   "Circuito 18G": {
    "distrito": 17,
-   "coincidencia": 51
+   "coincidencia": 51,
+   "cruce": {
+    "17": 51,
+    "18": 47
+   }
+  }
+ },
+ "distritos": {
+  "Distrito 1": {
+   "distrito": 1,
+   "circuitos": [
+    {
+     "circuito": "Circuito 16A",
+     "del_circuito": 92,
+     "del_distrito": 60,
+     "etiqueta": [
+      -65.252797,
+      -26.799794
+     ]
+    },
+    {
+     "circuito": "Circuito 15B",
+     "del_circuito": 33,
+     "del_distrito": 40,
+     "etiqueta": [
+      -65.248444,
+      -26.788368
+     ]
+    }
+   ],
+   "electores_estimados": 19140,
+   "escuelas_estimadas": 5.7
+  },
+  "Distrito 2": {
+   "distrito": 2,
+   "circuitos": [
+    {
+     "circuito": "Circuito 15B",
+     "del_circuito": 34,
+     "del_distrito": 51,
+     "etiqueta": [
+      -65.238947,
+      -26.791849
+     ]
+    },
+    {
+     "circuito": "Circuito 16",
+     "del_circuito": 41,
+     "del_distrito": 49,
+     "etiqueta": [
+      -65.241728,
+      -26.804313
+     ]
+    }
+   ],
+   "electores_estimados": 13178,
+   "escuelas_estimadas": 3.7
+  },
+  "Distrito 3": {
+   "distrito": 3,
+   "circuitos": [
+    {
+     "circuito": "Circuito 16",
+     "del_circuito": 48,
+     "del_distrito": 54,
+     "etiqueta": [
+      -65.231935,
+      -26.805731
+     ]
+    },
+    {
+     "circuito": "Circuito 15B",
+     "del_circuito": 32,
+     "del_distrito": 46,
+     "etiqueta": [
+      -65.229344,
+      -26.795396
+     ]
+    }
+   ],
+   "electores_estimados": 13873,
+   "escuelas_estimadas": 3.9
+  },
+  "Distrito 4": {
+   "distrito": 4,
+   "circuitos": [
+    {
+     "circuito": "Circuito 15",
+     "del_circuito": 99,
+     "del_distrito": 52,
+     "etiqueta": [
+      -65.22054,
+      -26.807856
+     ]
+    },
+    {
+     "circuito": "Circuito 15A",
+     "del_circuito": 99,
+     "del_distrito": 45,
+     "etiqueta": [
+      -65.217203,
+      -26.79393
+     ]
+    },
+    {
+     "circuito": "Circuito 13",
+     "del_circuito": 7,
+     "del_distrito": 3,
+     "etiqueta": [
+      -65.214089,
+      -26.810284
+     ]
+    }
+   ],
+   "electores_estimados": 25752,
+   "escuelas_estimadas": 6.1
+  },
+  "Distrito 5": {
+   "distrito": 5,
+   "circuitos": [
+    {
+     "circuito": "Circuito 13",
+     "del_circuito": 93,
+     "del_distrito": 45,
+     "etiqueta": [
+      -65.208614,
+      -26.810613
+     ]
+    },
+    {
+     "circuito": "Circuito 13A",
+     "del_circuito": 100,
+     "del_distrito": 41,
+     "etiqueta": [
+      -65.20565,
+      -26.797915
+     ]
+    },
+    {
+     "circuito": "Circuito 12A",
+     "del_circuito": 16,
+     "del_distrito": 7,
+     "etiqueta": [
+      -65.199279,
+      -26.797589
+     ]
+    },
+    {
+     "circuito": "Circuito 12",
+     "del_circuito": 13,
+     "del_distrito": 6,
+     "etiqueta": [
+      -65.203061,
+      -26.814104
+     ]
+    }
+   ],
+   "electores_estimados": 17430,
+   "escuelas_estimadas": 4.5
+  },
+  "Distrito 6": {
+   "distrito": 6,
+   "circuitos": [
+    {
+     "circuito": "Circuito 12",
+     "del_circuito": 86,
+     "del_distrito": 55,
+     "etiqueta": [
+      -65.197116,
+      -26.812497
+     ]
+    },
+    {
+     "circuito": "Circuito 12A",
+     "del_circuito": 83,
+     "del_distrito": 45,
+     "etiqueta": [
+      -65.194202,
+      -26.800045
+     ]
+    }
+   ],
+   "electores_estimados": 17124,
+   "escuelas_estimadas": 4.3
+  },
+  "Distrito 7": {
+   "distrito": 7,
+   "circuitos": [
+    {
+     "circuito": "Circuito 14C",
+     "del_circuito": 95,
+     "del_distrito": 47,
+     "etiqueta": [
+      -65.174997,
+      -26.804851
+     ]
+    },
+    {
+     "circuito": "Circuito 14B",
+     "del_circuito": 94,
+     "del_distrito": 30,
+     "etiqueta": [
+      -65.171289,
+      -26.796168
+     ]
+    },
+    {
+     "circuito": "Circuito 14 D",
+     "del_circuito": 69,
+     "del_distrito": 16,
+     "etiqueta": [
+      -65.178252,
+      -26.810668
+     ]
+    },
+    {
+     "circuito": "Circuito 14A",
+     "del_circuito": 97,
+     "del_distrito": 7,
+     "etiqueta": [
+      -65.184025,
+      -26.795596
+     ]
+    }
+   ],
+   "electores_estimados": 15806,
+   "escuelas_estimadas": 4.5
+  },
+  "Distrito 8": {
+   "distrito": 8,
+   "circuitos": [
+    {
+     "circuito": "Circuito 14",
+     "del_circuito": 96,
+     "del_distrito": 90,
+     "etiqueta": [
+      -65.177308,
+      -26.817072
+     ]
+    },
+    {
+     "circuito": "Circuito 14 D",
+     "del_circuito": 23,
+     "del_distrito": 10,
+     "etiqueta": [
+      -65.177956,
+      -26.812738
+     ]
+    }
+   ],
+   "electores_estimados": 19067,
+   "escuelas_estimadas": 5.0
+  },
+  "Distrito 9": {
+   "distrito": 9,
+   "circuitos": [
+    {
+     "circuito": "Circuito 17A",
+     "del_circuito": 100,
+     "del_distrito": 38,
+     "etiqueta": [
+      -65.257577,
+      -26.818057
+     ]
+    },
+    {
+     "circuito": "Circuito 18",
+     "del_circuito": 100,
+     "del_distrito": 30,
+     "etiqueta": [
+      -65.243552,
+      -26.830236
+     ]
+    },
+    {
+     "circuito": "Circuito 17",
+     "del_circuito": 100,
+     "del_distrito": 27,
+     "etiqueta": [
+      -65.240252,
+      -26.816932
+     ]
+    },
+    {
+     "circuito": "Circuito 16",
+     "del_circuito": 10,
+     "del_distrito": 3,
+     "etiqueta": [
+      -65.242889,
+      -26.809124
+     ]
+    },
+    {
+     "circuito": "Circuito 16A",
+     "del_circuito": 7,
+     "del_distrito": 1,
+     "etiqueta": [
+      -65.25297,
+      -26.807735
+     ]
+    },
+    {
+     "circuito": "Circuito 8",
+     "del_circuito": 1,
+     "del_distrito": 0,
+     "etiqueta": [
+      -65.232803,
+      -26.827878
+     ]
+    }
+   ],
+   "electores_estimados": 46712,
+   "escuelas_estimadas": 13.7
+  },
+  "Distrito 10": {
+   "distrito": 10,
+   "circuitos": [
+    {
+     "circuito": "Circuito 7A",
+     "del_circuito": 99,
+     "del_distrito": 10,
+     "etiqueta": [
+      -65.22323,
+      -26.817842
+     ]
+    },
+    {
+     "circuito": "Circuito 8A",
+     "del_circuito": 99,
+     "del_distrito": 10,
+     "etiqueta": [
+      -65.227594,
+      -26.835431
+     ]
+    },
+    {
+     "circuito": "Circuito 3",
+     "del_circuito": 100,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.204664,
+      -26.840385
+     ]
+    },
+    {
+     "circuito": "Circuito 4",
+     "del_circuito": 100,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.215335,
+      -26.838073
+     ]
+    },
+    {
+     "circuito": "Circuito 5",
+     "del_circuito": 100,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.200293,
+      -26.822588
+     ]
+    },
+    {
+     "circuito": "Circuito 6",
+     "del_circuito": 100,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.210897,
+      -26.820375
+     ]
+    },
+    {
+     "circuito": "Circuito 7",
+     "del_circuito": 99,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.224656,
+      -26.823819
+     ]
+    },
+    {
+     "circuito": "Circuito 8",
+     "del_circuito": 100,
+     "del_distrito": 8,
+     "etiqueta": [
+      -65.22608,
+      -26.829374
+     ]
+    },
+    {
+     "circuito": "Circuito 2",
+     "del_circuito": 100,
+     "del_distrito": 7,
+     "etiqueta": [
+      -65.212523,
+      -26.826552
+     ]
+    },
+    {
+     "circuito": "Circuito 1",
+     "del_circuito": 100,
+     "del_distrito": 6,
+     "etiqueta": [
+      -65.201819,
+      -26.82862
+     ]
+    },
+    {
+     "circuito": "Circuito 1A",
+     "del_circuito": 100,
+     "del_distrito": 6,
+     "etiqueta": [
+      -65.203106,
+      -26.834084
+     ]
+    },
+    {
+     "circuito": "Circuito 2A",
+     "del_circuito": 100,
+     "del_distrito": 6,
+     "etiqueta": [
+      -65.213871,
+      -26.831923
+     ]
+    },
+    {
+     "circuito": "Circuito 10",
+     "del_circuito": 12,
+     "del_distrito": 4,
+     "etiqueta": [
+      -65.197314,
+      -26.838742
+     ]
+    },
+    {
+     "circuito": "Circuito 11",
+     "del_circuito": 100,
+     "del_distrito": 3,
+     "etiqueta": [
+      -65.194447,
+      -26.82648
+     ]
+    }
+   ],
+   "electores_estimados": 74851,
+   "escuelas_estimadas": 24.3
+  },
+  "Distrito 11": {
+   "distrito": 11,
+   "circuitos": [
+    {
+     "circuito": "Circuito 11A",
+     "del_circuito": 96,
+     "del_distrito": 54,
+     "etiqueta": [
+      -65.180913,
+      -26.82894
+     ]
+    },
+    {
+     "circuito": "Circuito 10",
+     "del_circuito": 87,
+     "del_distrito": 45,
+     "etiqueta": [
+      -65.187312,
+      -26.843087
+     ]
+    }
+   ],
+   "electores_estimados": 18793,
+   "escuelas_estimadas": 5.5
+  },
+  "Distrito 12": {
+   "distrito": 12,
+   "circuitos": [
+    {
+     "circuito": "Circuito 18B",
+     "del_circuito": 98,
+     "del_distrito": 62,
+     "etiqueta": [
+      -65.261235,
+      -26.841822
+     ]
+    },
+    {
+     "circuito": "Circuito 18A",
+     "del_circuito": 98,
+     "del_distrito": 37,
+     "etiqueta": [
+      -65.264986,
+      -26.833543
+     ]
+    }
+   ],
+   "electores_estimados": 14017,
+   "escuelas_estimadas": 2.9
+  },
+  "Distrito 13": {
+   "distrito": 13,
+   "circuitos": [
+    {
+     "circuito": "Circuito 18C",
+     "del_circuito": 99,
+     "del_distrito": 43,
+     "etiqueta": [
+      -65.249385,
+      -26.842443
+     ]
+    },
+    {
+     "circuito": "Circuito 18E",
+     "del_circuito": 100,
+     "del_distrito": 37,
+     "etiqueta": [
+      -65.243408,
+      -26.850419
+     ]
+    },
+    {
+     "circuito": "Circuito 18D",
+     "del_circuito": 99,
+     "del_distrito": 17,
+     "etiqueta": [
+      -65.240134,
+      -26.838974
+     ]
+    },
+    {
+     "circuito": "Circuito 19",
+     "del_circuito": 3,
+     "del_distrito": 3,
+     "etiqueta": [
+      -65.237029,
+      -26.843502
+     ]
+    }
+   ],
+   "electores_estimados": 26176,
+   "escuelas_estimadas": 6.1
+  },
+  "Distrito 14": {
+   "distrito": 14,
+   "circuitos": [
+    {
+     "circuito": "Circuito 19",
+     "del_circuito": 96,
+     "del_distrito": 52,
+     "etiqueta": [
+      -65.230419,
+      -26.845824
+     ]
+    },
+    {
+     "circuito": "Circuito 19A",
+     "del_circuito": 100,
+     "del_distrito": 29,
+     "etiqueta": [
+      -65.234266,
+      -26.858143
+     ]
+    },
+    {
+     "circuito": "Circuito 20",
+     "del_circuito": 9,
+     "del_distrito": 9,
+     "etiqueta": [
+      -65.226966,
+      -26.859216
+     ]
+    },
+    {
+     "circuito": "Circuito 9A",
+     "del_circuito": 27,
+     "del_distrito": 9,
+     "etiqueta": [
+      -65.221527,
+      -26.846847
+     ]
+    },
+    {
+     "circuito": "Circuito 21",
+     "del_circuito": 1,
+     "del_distrito": 1,
+     "etiqueta": [
+      -65.231906,
+      -26.866152
+     ]
+    }
+   ],
+   "electores_estimados": 30974,
+   "escuelas_estimadas": 9.3
+  },
+  "Distrito 15": {
+   "distrito": 15,
+   "circuitos": [
+    {
+     "circuito": "Circuito 20",
+     "del_circuito": 51,
+     "del_distrito": 46,
+     "etiqueta": [
+      -65.21601,
+      -26.860286
+     ]
+    },
+    {
+     "circuito": "Circuito 9",
+     "del_circuito": 100,
+     "del_distrito": 29,
+     "etiqueta": [
+      -65.206741,
+      -26.847726
+     ]
+    },
+    {
+     "circuito": "Circuito 9A",
+     "del_circuito": 73,
+     "del_distrito": 22,
+     "etiqueta": [
+      -65.216537,
+      -26.849412
+     ]
+    },
+    {
+     "circuito": "Circuito 10A",
+     "del_circuito": 5,
+     "del_distrito": 3,
+     "etiqueta": [
+      -65.201675,
+      -26.852057
+     ]
+    }
+   ],
+   "electores_estimados": 32783,
+   "escuelas_estimadas": 9.5
+  },
+  "Distrito 16": {
+   "distrito": 16,
+   "circuitos": [
+    {
+     "circuito": "Circuito 10A",
+     "del_circuito": 95,
+     "del_distrito": 51,
+     "etiqueta": [
+      -65.192826,
+      -26.855268
+     ]
+    },
+    {
+     "circuito": "Circuito 20",
+     "del_circuito": 34,
+     "del_distrito": 27,
+     "etiqueta": [
+      -65.200822,
+      -26.865621
+     ]
+    },
+    {
+     "circuito": "Circuito 21",
+     "del_circuito": 20,
+     "del_distrito": 18,
+     "etiqueta": [
+      -65.205026,
+      -26.872385
+     ]
+    }
+   ],
+   "electores_estimados": 33460,
+   "escuelas_estimadas": 8.9
+  },
+  "Distrito 17": {
+   "distrito": 17,
+   "circuitos": [
+    {
+     "circuito": "Circuito 18G",
+     "del_circuito": 51,
+     "del_distrito": 76,
+     "etiqueta": [
+      -65.255635,
+      -26.856644
+     ]
+    },
+    {
+     "circuito": "Circuito 18F",
+     "del_circuito": 98,
+     "del_distrito": 24,
+     "etiqueta": [
+      -65.26956,
+      -26.853394
+     ]
+    }
+   ],
+   "electores_estimados": 10101,
+   "escuelas_estimadas": 3.0
+  },
+  "Distrito 18": {
+   "distrito": 18,
+   "circuitos": [
+    {
+     "circuito": "Circuito 18G",
+     "del_circuito": 47,
+     "del_distrito": 76,
+     "etiqueta": [
+      -65.252973,
+      -26.865945
+     ]
+    },
+    {
+     "circuito": "Circuito 21",
+     "del_circuito": 15,
+     "del_distrito": 20,
+     "etiqueta": [
+      -65.234232,
+      -26.87076
+     ]
+    }
+   ],
+   "electores_estimados": 7487,
+   "escuelas_estimadas": 1.8
+  },
+  "Distrito 19": {
+   "distrito": 19,
+   "circuitos": [
+    {
+     "circuito": "Circuito 21",
+     "del_circuito": 35,
+     "del_distrito": 86,
+     "etiqueta": [
+      -65.221745,
+      -26.871835
+     ]
+    },
+    {
+     "circuito": "Circuito 20",
+     "del_circuito": 6,
+     "del_distrito": 14,
+     "etiqueta": [
+      -65.225019,
+      -26.864239
+     ]
+    }
+   ],
+   "electores_estimados": 9461,
+   "escuelas_estimadas": 2.5
+  },
+  "Distrito 20": {
+   "distrito": 20,
+   "circuitos": [
+    {
+     "circuito": "Circuito 22",
+     "del_circuito": 88,
+     "del_distrito": 80,
+     "etiqueta": [
+      -65.217916,
+      -26.893211
+     ]
+    },
+    {
+     "circuito": "Circuito 21",
+     "del_circuito": 28,
+     "del_distrito": 19,
+     "etiqueta": [
+      -65.212395,
+      -26.877617
+     ]
+    }
+   ],
+   "electores_estimados": 13394,
+   "escuelas_estimadas": 3.5
   }
  }
 }

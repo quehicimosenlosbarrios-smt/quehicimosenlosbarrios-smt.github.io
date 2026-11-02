@@ -29,9 +29,14 @@ jobs:
           GEOGESTION_PASSWORD: ${{ secrets.GEOGESTION_PASSWORD }}
         run: python scripts/descargar_geogestion.py
 
+      - name: Descargar ganadores de Presupuesto Participativo
+        # si el sitio no responde, se mantiene el archivo anterior y sigue la actualización
+        continue-on-error: true
+        run: python scripts/descargar_presupuesto_participativo.py 2025
+
       - name: Guardar cambios
         run: |
-          git add data/intervenciones.csv data/actualizacion.json
+          git add data/intervenciones.csv data/actualizacion.json data/presupuesto-participativo-*.json
           if git diff --cached --quiet; then
             echo "Sin cambios en los datos."
             exit 0

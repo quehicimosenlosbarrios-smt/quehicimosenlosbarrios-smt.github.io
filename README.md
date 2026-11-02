@@ -11,10 +11,20 @@ App publicada: https://quehicimosenlosbarrios-smt.github.io
 | Circuitos electorales | `data/circuitos.geojson` | No, es fijo |
 | Límites de barrios | `data/barrios.geojson` | No, es fijo |
 | Intervenciones | `data/intervenciones.csv`, descargado de GeoGestión | Sí, se actualiza todos los días |
+| Distritos de Presupuesto Participativo | `data/distritos.geojson` | No, es fijo |
+| Cruce circuitos × distritos | `data/circuito-distrito.json` (`scripts/cruce_distritos.py`) | Solo si cambia un mapa |
+| Ganadores de Presupuesto Participativo | `data/presupuesto-participativo-2025.json`, descargado de presupuestoparticipativo.smt.gob.ar | Sí, se actualiza todos los días (etapa de la obra) |
 
 Mientras `data/intervenciones.csv` no exista, la app muestra datos de ejemplo (`data/ejemplo-intervenciones-smt.csv`).
 
-Los GeoJSON originales vienen en EPSG:5345 (POSGAR 2007 / Argentina 3) y se convirtieron a WGS84. Cada barrio guarda en `circuitos` la lista de circuitos con los que se superpone (más del 5 % de su superficie), porque hay barrios que cruzan el límite de un circuito.
+Los GeoJSON originales vienen en EPSG:5345 (POSGAR 2007 / Argentina 3) y se convirtieron a WGS84. Cada barrio guarda en `circuitos` la lista de circuitos con los que se superpone (más del 5 % de su superficie), porque hay barrios que cruzan el límite de un circuito, y en `distritos` lo mismo para los distritos.
+
+### Circuitos y distritos
+
+En el panel, "Ver por" cambia el mapa y la ficha técnica entre circuitos electorales y distritos de Presupuesto Participativo.
+
+- Ficha de un **circuito**: muestra el proyecto ganador del distrito con el que comparte más superficie, con ese porcentaje.
+- Ficha de un **distrito**: muestra su propio ganador y los circuitos electorales que caen en él. Electores y escuelas del distrito son estimados: cada circuito suma según la parte de su superficie que cae dentro del distrito.
 
 ## Cómo tiene que ser la planilla
 

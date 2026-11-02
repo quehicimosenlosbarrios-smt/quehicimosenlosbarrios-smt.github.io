@@ -165,7 +165,8 @@ select:focus, .search input:focus { border-color: var(--brand); outline: 2px sol
 .sheet { width: 794px; height: 1123px; flex: none; background: var(--paper); color: var(--paper-ink); box-shadow: 0 4px 24px rgba(0,0,0,.3);
   display: flex; flex-direction: column; font-family: var(--f-body); overflow: hidden; position: relative; }
 /* encabezado de cada hoja: sección a la izquierda, logos a la derecha */
-.pg-head { flex: none; display: flex; align-items: center; justify-content: space-between; padding: 24px 62px 8px 30px; }
+/* margen izquierdo amplio (20 mm) para encuadernar o abrochar: las hojas se imprimen simple faz */
+.pg-head { flex: none; display: flex; align-items: center; justify-content: space-between; padding: 24px 62px 8px 76px; }
 .pg-head .ph-sec { font-size: 12px; color: var(--paper-ink); }
 .pg-head .ph-sec b { font-weight: 700; }
 .pg-head .ph-org { display: flex; align-items: center; gap: 12px; }
@@ -179,7 +180,7 @@ select:focus, .search input:focus { border-color: var(--brand); outline: 2px sol
 .side .s-bot { bottom: 52px; }
 .side .s-bot b { color: var(--paper-blue); font-weight: 700; }
 /* marco: línea a la izquierda y abajo, con la esquina redondeada */
-.frame { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0 52px 34px 30px; padding-left: 24px; border-left: 1.5px solid #555; border-bottom: 1.5px solid #555; border-bottom-left-radius: 36px; }
+.frame { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0 52px 34px 76px; padding-left: 24px; border-left: 1.5px solid #555; border-bottom: 1.5px solid #555; border-bottom-left-radius: 36px; }
 .band { padding: 18px 0 0; position: relative; }
 .band .tline { display: flex; align-items: center; gap: 12px; }
 .band h2 { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 31px; letter-spacing: -.01em; line-height: 1.1; color: var(--paper-ink); }
@@ -224,8 +225,8 @@ table.heat th.c { text-align: center; padding-bottom: 6px; }
 table.heat td.v.zero { color: #b6c1c8; font-weight: 400; }
 .list-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
 .body.lbody { padding-top: 14px; gap: 14px; }
-.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
-.findings li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; font-size: 13.5px; line-height: 1.4; padding: 5px 12px; background: var(--paper-soft); border-left: 4px solid var(--paper-blue); border-radius: 0 8px 8px 0; }
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.findings li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; font-size: 13.5px; line-height: 1.4; padding: 3px 12px; background: var(--paper-soft); border-left: 4px solid var(--paper-blue); border-radius: 0 8px 8px 0; }
 .findings li .badge { margin-top: 1px; }
 .findings li.all { background: #e3edff; }
 .sh-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; }
@@ -311,3 +312,35 @@ table.t td.zero { color: #b6c1c8; }
 .el-v { text-align: right; }
 .el-v b { display: block; font-size: 19px; font-weight: 800; color: var(--paper-blue); }
 .el-v small { font-size: 11.5px; color: var(--paper-muted); }
+/* hoja de Presupuesto Participativo */
+.pp-legend { margin-top: 8px; }
+.pp-legend i { display: inline-block; vertical-align: -2px; margin-right: 6px; }
+.pp-legend .lg-circ { width: 18px; height: 12px; border: 2.5px solid var(--paper-blue); border-radius: 2px; }
+.pp-legend .lg-dist { width: 18px; height: 12px; border: 2px dashed #c9a800; background: rgba(244,220,0,.2); border-radius: 2px; }
+.pp-legend .lg-pin { width: 11px; height: 11px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #e4002b; }
+.pp-card { border-left: 4px solid var(--paper-yellow); background: var(--paper-soft); border-radius: 0 14px 14px 0; padding: 14px 18px 14px 16px; }
+.pp-cat { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--paper-blue); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.pp-card h4 { margin: 8px 0 0; font-family: var(--f-display); font-size: 21px; font-weight: 800; line-height: 1.2; color: var(--paper-ink); }
+.pp-meta { margin: 4px 0 0; font-size: 13px; color: var(--paper-muted); }
+.pp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 12px; }
+.pp-steps span { font-size: 12px; font-weight: 600; color: var(--paper-muted); }
+.pp-steps span i { display: block; height: 7px; border-radius: 4px; background: #dce3e8; margin-bottom: 5px; }
+.pp-steps span.on i { background: var(--paper-blue); }
+.pp-steps span.cur { color: var(--paper-blue); }
+.pp-info { margin: 12px 0 0; }
+.pp-info dt { font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--paper-ink); }
+.pp-info dd { margin: 3px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--paper-ink); }
+.pp-legend .lg-pin.aprox { opacity: .5; }
+.pp-desc { column-count: 2; column-gap: 24px; font-size: 12.5px; line-height: 1.5; color: var(--paper-ink); }
+.pp-desc.full { column-count: 1; font-size: 14px; line-height: 1.55; }
+.pp-desc section { margin-bottom: 10px; }
+.pp-desc h5 { break-after: avoid; }
+.pp-desc h5 { margin: 0 0 4px; font-size: 13px; font-weight: 700; color: var(--paper-blue); }
+.pp-desc.full h5 { font-size: 16px; margin-bottom: 6px; }
+.pp-desc p { margin: 0 0 6px; }
+.pp-desc.full section { margin-bottom: 16px; }
+table.t.ctab tr.tot td { font-weight: 700; border-top: 1.5px solid var(--paper-ink); }
+/* panel: ver por circuito o por distrito */
+.zone-seg { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 10px; }
+.pp-legend .lg-cline { width: 20px; height: 0; border-top: 2px dashed #e4002b; }
+table.t.ctab.tight td, table.t.ctab.tight th { padding-top: 3px; padding-bottom: 3px; font-size: 12.5px; }
