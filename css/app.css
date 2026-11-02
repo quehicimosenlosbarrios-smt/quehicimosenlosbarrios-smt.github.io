@@ -175,9 +175,11 @@ select:focus, .search input:focus { border-color: var(--brand); outline: 2px sol
 .pg-head .ph-org b { font-size: 11.5px; font-weight: 700; line-height: 1.2; color: var(--paper-ink); }
 /* textos verticales del margen derecho */
 .side { position: absolute; top: 0; right: 0; bottom: 0; width: 42px; }
-.side span { position: absolute; left: 50%; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; color: var(--paper-ink); }
-.side .s-top { top: 34px; font-weight: 700; }
-.side .s-bot { bottom: 52px; }
+/* el texto va horizontal dentro de una franja girada 90°: así lo copia bien el PDF (html2canvas no entiende writing-mode) */
+.side .rot { position: absolute; left: 0; top: 100%; width: 1123px; height: 42px; transform-origin: 0 0; transform: rotate(-90deg); }
+.side span { position: absolute; top: 0; line-height: 42px; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; color: var(--paper-ink); }
+.side .s-top { right: 34px; font-weight: 700; }
+.side .s-bot { left: 52px; }
 .side .s-bot b { color: var(--paper-blue); font-weight: 700; }
 /* marco: línea a la izquierda y abajo, con la esquina redondeada */
 .frame { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0 52px 34px 76px; padding-left: 24px; border-left: 1.5px solid #555; border-bottom: 1.5px solid #555; border-bottom-left-radius: 36px; }
