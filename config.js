@@ -51,6 +51,16 @@ window.APP_CONFIG = {
     "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel" }
   },
 
+  // Presupuesto Participativo: proyecto ganador de cada distrito (lo descarga
+  // scripts/descargar_presupuesto_participativo.py desde presupuestoparticipativo.smt.gob.ar).
+  // Cada circuito muestra el ganador del distrito con el que comparte más superficie (circuito-distrito.json).
+  presupuestoParticipativo: {
+    edicion: 2025,
+    ganadores: "data/presupuesto-participativo-2025.json",
+    distritos: "data/distritos.geojson",
+    cruce: "data/circuito-distrito.json"
+  },
+
   // Límites fijos (WGS84). Origen: CIRCUITOS_ELECTORALES y BARRIOS, EPSG:5345.
   circuitos: "data/circuitos.geojson",
   barrios: "data/barrios.geojson",

@@ -41,7 +41,11 @@
     <aside class="panel">
       <section class="sec">
         <div class="sec-h"><h2>Zona</h2><button class="linkbtn" id="clear" type="button" hidden>Limpiar</button></div>
-        <label class="lbl" for="f-dist">Circuito electoral</label>
+        <div class="seg zone-seg" id="zone-mode" role="group" aria-label="Ver la ciudad por">
+          <button type="button" data-mode="circuito" class="on" aria-pressed="true">Circuitos</button>
+          <button type="button" data-mode="distrito" aria-pressed="false">Distritos</button>
+        </div>
+        <label class="lbl" for="f-dist" id="f-dist-l">Circuito electoral</label>
         <select id="f-dist"><option value="">Todos los circuitos</option></select>
         <label class="lbl" for="f-barr">Barrio</label>
         <select id="f-barr"><option value="">Todos los barrios</option></select>
@@ -74,7 +78,7 @@
           <button type="button" data-base="none">Sin fondo</button>
         </div>
         <div class="checks">
-          <label><input type="checkbox" id="lyr-dist" checked> Circuitos</label>
+          <label><input type="checkbox" id="lyr-dist" checked> <span id="lyr-dist-l">Circuitos</span></label>
           <label><input type="checkbox" id="lyr-barr" checked> Barrios</label>
           <label><input type="checkbox" id="lyr-int" checked> Intervenciones</label>
         </div>

@@ -171,6 +171,10 @@ var SPLIT = {};
 var ELECTORES = {};
 // circuito (norm) -> { total, listas: [3 más votadas] } de concejales 2023 (data/concejales2023.json)
 var CONCEJALES = {};
+// Presupuesto Participativo: ganadores por n° de distrito y cruce con los circuitos (data/circuito-distrito.json)
+var PP = { ganadores: {}, circuitos: {}, distritos: {}, edicion: null };
+// las dos formas de dividir la ciudad: circuitos electorales y distritos de Presupuesto Participativo
+var ZONES = { circuito: [], distrito: [] }, MODE = "circuito";
 var SUBPAL = ["#1f78b4", "#e6550d", "#33a02c", "#e31a1c", "#b8860b", "#17becf", "#6a3d9a", "#555555"];
 function colorDist(a, b) { var x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16); return Math.abs((x >> 16) - (y >> 16)) + Math.abs((x >> 8 & 255) - (y >> 8 & 255)) + Math.abs((x & 255) - (y & 255)); }
 
@@ -243,7 +247,8 @@ function buildItems(rows, headers) {
   items.forEach(function (it) {
     var loc = locate(it.pt, it.barrioText);
     if (!loc.district) { unlocated++; return; }
-    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, district: loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
+    var zd = ZONES.distrito.length ? featureAt(it.pt, ZONES.distrito, 500) : null;
+    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, zc: loc.district.id, zd: zd ? zd.id : null, district: MODE === "distrito" ? (zd ? zd.id : null) : loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
   });
   SOURCE.skipped = skipped; SOURCE.unlocated = unlocated;
   // subgrupos de cada tipo, de mayor a menor; el primero conserva el color del tipo
@@ -277,26 +282,45 @@ function preloadIcons() {
 }
 
 async function loadAll() {
-  var res = await Promise.all([fetch(rel(CFG.circuitos)).then(function (r) { return r.json(); }), fetch(rel(CFG.barrios)).then(function (r) { return r.json(); })]);
-  DISTRICTS = prepFeatures(res[0], CFG.campoNombreCircuito, ["nombre", "name", "circuito"], "D");
+  var ppc = CFG.presupuestoParticipativo || {};
+  var res = await Promise.all([
+    fetch(rel(CFG.circuitos)).then(function (r) { return r.json(); }),
+    fetch(rel(CFG.barrios)).then(function (r) { return r.json(); }),
+    ppc.distritos ? fetch(rel(ppc.distritos)).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }) : null
+  ]);
+  ZONES.circuito = prepFeatures(res[0], CFG.campoNombreCircuito, ["nombre", "name", "circuito"], "D");
+  ZONES.distrito = res[2] ? prepFeatures(res[2], "nombre", ["nombre", "distrito"], "P") : [];
+  ZONES.circuito.forEach(function (d) { d.kind = "circuito"; });
+  ZONES.distrito.forEach(function (d) { d.kind = "distrito"; d.num = +d.props.distrito; });
+  DISTRICTS = ZONES.circuito;
   BARRIOS = prepFeatures(res[1], CFG.campoNombreBarrio, ["nombre", "name", "barrio"], "B");
-  DISTRICTS.forEach(function (d) { DIST_BY[d.id] = d; });
+  ZONES.circuito.concat(ZONES.distrito).forEach(function (d) { DIST_BY[d.id] = d; });
   BARRIOS.forEach(function (b) {
     BARRIO_BY[b.id] = b;
-    // un barrio puede caer en más de un circuito: la lista viene calculada en el GeoJSON
-    var names = Array.isArray(b.props.circuitos) ? b.props.circuitos.map(norm) : null;
-    var ds = DISTRICTS.filter(function (x) { return names ? names.indexOf(x.key) >= 0 : inFeature(b.label, x); });
-    b.circuits = ds.map(function (x) { return x.id; });
-    b.labels = {};
-    ds.forEach(function (x) { var e = b.props.etiquetas && b.props.etiquetas[x.name]; b.labels[x.id] = e || b.label; x.barrios.push(b); });
+    b.labels = {}; b.zones = {};
+    // un barrio puede caer en más de un circuito o distrito: la lista viene calculada en el GeoJSON
+    [["circuito", "circuitos"], ["distrito", "distritos"]].forEach(function (z) {
+      var names = Array.isArray(b.props[z[1]]) ? b.props[z[1]].map(norm) : null;
+      var ds = ZONES[z[0]].filter(function (x) { return names ? names.indexOf(x.key) >= 0 : inFeature(b.label, x); });
+      b.zones[z[0]] = ds.map(function (x) { return x.id; });
+      ds.forEach(function (x) { var e = b.props.etiquetas && b.props.etiquetas[x.name]; b.labels[x.id] = e || b.label; x.barrios.push(b); });
+    });
+    b.circuits = b.zones.circuito;
   });
-  DISTRICTS.forEach(function (d) { d.barrios.sort(function (a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }); });
+  ZONES.circuito.concat(ZONES.distrito).forEach(function (d) { d.barrios.sort(function (a, b) { return a.name.localeCompare(b.name, "es", { numeric: true }); }); });
   var extra = await Promise.all([
     fetch(rel("data/filtro-intervenciones.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
     fetch(rel("data/actualizacion.json") + "?t=" + Date.now()).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
     fetch(rel("data/electores.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
     fetch(rel("data/concejales2023.json")).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]);
+  ].concat(["ganadores", "cruce"].map(function (k) {
+    return ppc[k] ? fetch(rel(ppc[k])).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }) : null;
+  })));
+  PP = { ganadores: (extra[4] && extra[4].ganadores) || {}, edicion: extra[4] ? extra[4].edicion : null, circuitos: {}, distritos: {} };
+  if (extra[5]) {
+    Object.keys(extra[5].circuitos || {}).forEach(function (k) { PP.circuitos[norm(k)] = extra[5].circuitos[k]; });
+    Object.keys(extra[5].distritos || {}).forEach(function (k) { PP.distritos[extra[5].distritos[k].distrito] = extra[5].distritos[k]; });
+  }
   CONCEJALES = {};
   Object.keys((extra[3] && extra[3].circuitos) || {}).forEach(function (k) { CONCEJALES[norm(k)] = extra[3].circuitos[k]; });
   ELECTORES = {};
@@ -351,23 +375,16 @@ function initMap() {
     sat: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Imágenes &copy; Esri" })
   };
   bases.claro.addTo(map);
-  document.querySelectorAll(".seg button").forEach(function (b) {
+  document.querySelectorAll(".layers .seg button").forEach(function (b) {
     b.addEventListener("click", function () {
-      document.querySelectorAll(".seg button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      document.querySelectorAll(".layers .seg button").forEach(function (x) { x.classList.toggle("on", x === b); });
       Object.keys(bases).forEach(function (k) { bases[k].remove(); });
       if (bases[b.dataset.base]) bases[b.dataset.base].addTo(map);
     });
   });
 
   distLayer = L.layerGroup(); barrLayer = L.layerGroup(); barrLabels = L.layerGroup(); ptLayer = L.layerGroup();
-  DISTRICTS.forEach(function (d) {
-    var poly = L.polygon(d.polys.map(function (p) { return p.map(toLL); }), styleDistrict(d.id));
-    L.tooltip({ permanent: true, direction: "center", className: "dlabel", interactive: false }).setLatLng([d.label[1], d.label[0]]).setContent(esc(d.name.replace(/^circuito\s*/i, ""))).addTo(distLayer);
-    poly.on("click", function () { setDistrict(state.district === d.id ? "" : d.id); });
-    poly.on("mouseover", function () { if (state.district !== d.id) poly.setStyle({ fillOpacity: 0.09, weight: 3 }); });
-    poly.on("mouseout", function () { poly.setStyle(styleDistrict(d.id)); });
-    distPolys[d.id] = poly; poly.addTo(distLayer);
-  });
+  buildZoneLayer();
   BARRIOS.forEach(function (b) {
     var poly = L.polygon(b.polys.map(function (p) { return p.map(toLL); }), { color: css("--barrio"), weight: 1, dashArray: "4 4", fill: false, interactive: false });
     barrPolys[b.id] = poly; poly.addTo(barrLayer);
@@ -375,7 +392,7 @@ function initMap() {
   });
   barrLayer.addTo(map); distLayer.addTo(map); ptLayer.addTo(map);
   cityBounds = L.latLngBounds([]);
-  DISTRICTS.forEach(function (d) { cityBounds.extend(distPolys[d.id].getBounds()); });
+  ZONES.circuito.forEach(function (d) { cityBounds.extend(distPolys[d.id].getBounds()); });
   map.fitBounds(cityBounds, { padding: [20, 20] });
   dotRenderer = L.canvas({ padding: 0.3 });
   map.on("zoomend", function () { updateBarrLabels(); render(); });
@@ -386,6 +403,37 @@ function initMap() {
   map.on("popupclose", function () { popupOpen = false; });
   map.on("moveend", function () { if (map.getZoom() >= DETAIL_ZOOM && !popupOpen) render(); });
 }
+// circuitos o distritos, según lo que se eligió en "Ver por"
+function buildZoneLayer() {
+  distLayer.clearLayers(); distPolys = {};
+  DISTRICTS.forEach(function (d) {
+    var poly = L.polygon(d.polys.map(function (p) { return p.map(toLL); }), styleDistrict(d.id));
+    L.tooltip({ permanent: true, direction: "center", className: "dlabel", interactive: false }).setLatLng([d.label[1], d.label[0]]).setContent(esc(d.name.replace(/^(circuito|distrito)\s*/i, ""))).addTo(distLayer);
+    poly.on("click", function () { setDistrict(state.district === d.id ? "" : d.id); });
+    poly.on("mouseover", function () { if (state.district !== d.id) poly.setStyle({ fillOpacity: 0.09, weight: 3 }); });
+    poly.on("mouseout", function () { poly.setStyle(styleDistrict(d.id)); });
+    distPolys[d.id] = poly; poly.addTo(distLayer);
+  });
+}
+var ZONE_TXT = {
+  circuito: { label: "Circuito electoral", todos: "Todos los circuitos", capa: "Circuitos", elegi: "Elegí un circuito para armar su ficha" },
+  distrito: { label: "Distrito (Presupuesto Participativo)", todos: "Todos los distritos", capa: "Distritos", elegi: "Elegí un distrito para armar su ficha" }
+};
+function fillZones() {
+  var T = ZONE_TXT[MODE];
+  $("f-dist-l").textContent = T.label; $("lyr-dist-l").textContent = T.capa;
+  $("f-dist").innerHTML = '<option value="">' + T.todos + '</option>' + DISTRICTS.slice().sort(byName).map(function (d) { return '<option value="' + d.id + '">' + esc(d.name) + '</option>'; }).join("");
+}
+function setMode(m) {
+  if (m === MODE || !ZONES[m].length) return;
+  MODE = m; DISTRICTS = ZONES[m];
+  ITEMS.forEach(function (p) { p.district = m === "distrito" ? p.zd : p.zc; });
+  document.querySelectorAll("#zone-mode button").forEach(function (x) { x.classList.toggle("on", x.dataset.mode === m); x.setAttribute("aria-pressed", x.dataset.mode === m); });
+  buildZoneLayer(); fillZones();
+  state.district = ""; state.barrio = "";
+  setDistrict("");
+}
+function zonesOf(b) { return b.zones[MODE]; }
 function styleDistrict(id) {
   var sel = state.district === id, dim = state.district && !sel;
   // el circuito elegido se rellena en celeste claro para que se distinga
@@ -395,7 +443,9 @@ function updateBarrLabels() { if ($("lyr-barr").checked && map.getZoom() >= 14.5
 
 function initPanel() {
   $("org").textContent = CFG.organismo; $("app-title").textContent = CFG.titulo; document.title = CFG.titulo;
-  $("f-dist").innerHTML = '<option value="">Todos los circuitos</option>' + DISTRICTS.slice().sort(byName).map(function (d) { return '<option value="' + d.id + '">' + esc(d.name) + '</option>'; }).join("");
+  fillZones();
+  if (!ZONES.distrito.length) $("zone-mode").hidden = true;
+  $("zone-mode").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) setMode(b.dataset.mode); });
   fillBarrios();
   // arranca sin intervenciones en el mapa: con todas prendidas la carga es muy pesada
   state.types = new Set();
@@ -411,7 +461,7 @@ function initPanel() {
     state.barrio = $("f-barr").value;
     if (state.barrio) {
       var b = BARRIO_BY[state.barrio];
-      if (b.circuits.indexOf(state.district) < 0) { state.district = b.circuits.length === 1 ? b.circuits[0] : ""; $("f-dist").value = state.district; fillBarrios(); }
+      if (zonesOf(b).indexOf(state.district) < 0) { state.district = zonesOf(b).length === 1 ? zonesOf(b)[0] : ""; $("f-dist").value = state.district; fillBarrios(); }
       map.fitBounds(barrPolys[b.id].getBounds(), { padding: [40, 40] });
     } else if (state.district) map.fitBounds(distPolys[state.district].getBounds(), { padding: [30, 30] });
     render();
@@ -472,7 +522,7 @@ function fillBarrios() {
 }
 function setDistrict(id) {
   state.district = id;
-  if (state.barrio && (!id || BARRIO_BY[state.barrio].circuits.indexOf(id) < 0)) state.barrio = "";
+  if (state.barrio && (!id || zonesOf(BARRIO_BY[state.barrio]).indexOf(id) < 0)) state.barrio = "";
   $("f-dist").value = id; fillBarrios(); render();
   map.fitBounds(id ? distPolys[id].getBounds() : cityBounds, { padding: [30, 30] });
 }
@@ -482,7 +532,7 @@ function popupHtml(p) {
   var t = TYPE_BY[p.type], b = BARRIO_BY[p.barrio];
   return '<div class="pop-h" style="background:' + t.color + '">' + iconSvg(t, 18) + esc(t.name) + '</div><div class="pop-b">' +
     (p.dir ? '<div class="dir">' + esc(p.dir) + '</div>' : '') +
-    '<div class="meta">' + (b ? esc(b.name) + ' · ' : '') + esc(DIST_BY[p.district].name) + '</div>' +
+    '<div class="meta">' + (b ? esc(b.name) + ' · ' : '') + esc(DIST_BY[p.zc].name) + (p.zd ? ' · ' + esc(DIST_BY[p.zd].name) : '') + '</div>' +
     (p.cuadra ? '<div class="meta">Cuadra ' + esc(p.cuadra) + ' · ' + fmt.format(Math.round(p.m)) + ' m</div>' : '') + '</div>';
 }
 
@@ -529,7 +579,7 @@ function render() {
   $("clear").hidden = !state.district;
   var btn = $("btn-ficha");
   btn.disabled = !state.district;
-  btn.title = state.district ? "" : "Elegí un circuito para armar su ficha";
+  btn.title = state.district ? "" : ZONE_TXT[MODE].elegi;
   $("btn-ficha-label").textContent = state.district ? "Ficha técnica · " + DIST_BY[state.district].name : "Ficha técnica";
 }
 
@@ -539,7 +589,7 @@ var PAPER = { ink: "#333333", muted: "#6b6b6b", line: "#d9d9d9", soft: "#f3f7ff"
 var charts = [], fichaReady = Promise.resolve();
 var MAXBARS = 15, MAXROWS = 11;
 // listado de direcciones: alto útil de cada columna y de la fila con el nombre del barrio (px)
-var LIST_CAP = 885, GRP_H = 40, LIST_FS = 14.5, LIST_COLW = 335;
+var LIST_CAP = 875, GRP_H = 40, LIST_FS = 14.5, LIST_COLW = 312;
 var measureCtx = null;
 function textW(t) { if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d"); measureCtx.font = "400 " + LIST_FS + "px Poppins, Arial, sans-serif"; return measureCtx.measureText(t).width; }
 // texto oscuro o blanco según qué se lea mejor sobre el color
@@ -623,6 +673,22 @@ function paintMap(c, P, district, pts, opts, tiles) {
   ctx.restore();
   ctx.setLineDash([]);
   tracePolys(ctx, P, district.polys); ctx.strokeStyle = PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
+  // ficha por distrito: los circuitos electorales que caen en él
+  if (opts.overlay) {
+    ctx.save(); tracePolys(ctx, P, district.polys); ctx.clip("evenodd");
+    ctx.setLineDash([8, 5]); ctx.strokeStyle = "#e4002b"; ctx.lineWidth = 1.8;
+    opts.overlay.forEach(function (o) { tracePolys(ctx, P, o.polys); ctx.stroke(); });
+    ctx.restore(); ctx.setLineDash([]);
+    ctx.font = "700 12px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
+    var z = PP.distritos[district.num], lab = {};
+    if (z) z.circuitos.forEach(function (c) { if (c.del_circuito >= 5 && c.etiqueta) lab[norm(c.circuito)] = c.etiqueta; });
+    opts.overlay.forEach(function (o) {
+      if (!lab[o.key]) return;
+      var q = P(lab[o.key]), t = "C. " + o.name.replace(/^circuito\s*/i, "");
+      ctx.strokeStyle = "rgba(255,255,255,.95)"; ctx.lineWidth = 4; ctx.strokeText(t, q[0], q[1] + 16);
+      ctx.fillStyle = "#e4002b"; ctx.fillText(t, q[0], q[1] + 16);
+    });
+  }
   ctx.font = "600 " + (opts.labelSize || 12) + "px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
   // nombres de barrios debajo de las intervenciones, así las marcas quedan siempre a la vista
   if (opts.numbered) {
@@ -634,7 +700,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
       ctx.fillStyle = PAPER.navy; ctx.fillText(n, q[0], q[1]);
     });
     ctx.textBaseline = "alphabetic";
-  } else district.barrios.forEach(function (b) {
+  } else if (!opts.noLabels) district.barrios.forEach(function (b) {
     var q = P(b.labels[district.id] || b.label);
     ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineWidth = 3.5; ctx.strokeText(b.name.toUpperCase(), q[0], q[1]);
     ctx.fillStyle = PAPER.navy; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
@@ -676,6 +742,36 @@ function paintMap(c, P, district, pts, opts, tiles) {
   ctx.textAlign = "left"; ctx.font = "600 9.5px Poppins, Arial"; ctx.fillText("0", 18, Hd - 21); ctx.textAlign = "right"; ctx.fillText(barKm < 1 ? barKm * 1000 + " m" : barKm + " km", 22 + w, Hd - 21);
 }
 
+// mapa de Presupuesto Participativo: el circuito, el distrito que más comparte con él y el proyecto ganador
+function drawPPMap(canvas, district, x) {
+  var c = prepCanvas(canvas), bb = district.bbox.slice(), g = x.ganador;
+  var pt = g.lat != null && g.lon != null ? [g.lon, g.lat] : null;
+  function grow(b) { bb = [Math.min(bb[0], b[0]), Math.min(bb[1], b[1]), Math.max(bb[2], b[2]), Math.max(bb[3], b[3])]; }
+  if (x.area) grow(x.area.bbox);
+  if (pt) grow([pt[0], pt[1], pt[0], pt[1]]);
+  var P = projector(bb, c.W, c.H, 34);
+  function paint(tiles) {
+    paintMap(c, P, district, [], { noLabels: true }, tiles);
+    var ctx = c.ctx;
+    if (x.area) {
+      tracePolys(ctx, P, x.area.polys); ctx.fillStyle = "rgba(244,220,0,.2)"; ctx.fill("evenodd");
+      ctx.setLineDash([9, 5]); ctx.strokeStyle = "#c9a800"; ctx.lineWidth = 2.6; ctx.stroke(); ctx.setLineDash([]);
+    }
+    tracePolys(ctx, P, district.polys); ctx.strokeStyle = PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
+    if (pt) {
+      var q = P(pt), k = 1.75;
+      ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 22 * k); ctx.scale(k, k);
+      var pin = new Path2D(ICONS.pin);
+      ctx.shadowColor = "rgba(0,0,0,.3)"; ctx.shadowBlur = 4; ctx.shadowOffsetY = 1;
+      ctx.lineWidth = 2.2 / k; ctx.strokeStyle = "#ffffff"; ctx.stroke(pin);
+      ctx.shadowColor = "transparent"; ctx.fillStyle = "#e4002b"; if (g.ubicacion_aproximada) ctx.globalAlpha = 0.5; ctx.fill(pin, "evenodd");
+      ctx.restore();
+    }
+  }
+  paint(null);
+  return loadBasemap(P, c.W, c.H).then(function (tiles) { if (tiles) paint(tiles); }).catch(function () {});
+}
+
 function drawLocator(canvas, district) {
   var c = prepCanvas(canvas), ctx = c.ctx;
   ctx.fillStyle = PAPER.soft; ctx.fillRect(0, 0, c.W, c.H);
@@ -710,6 +806,9 @@ function monthYear() { var s = new Date().toLocaleDateString("es-AR", { month: "
 function sheetShell(pageNo, total, inner, d) {
   if (inner.indexOf('<div class="cover-full">') === 0) return '<article class="sheet cover-sheet">' + inner + '</article>';
   var src = SOURCE.sample ? "Datos de ejemplo. No representan intervenciones reales." : "GeoGestión, actualizada al " + SOURCE.when.toLocaleDateString("es-AR") + ".";
+  // una hoja puede traer su propia fuente al principio: <!--fuente:...-->
+  var own = inner.match(/^<!--fuente:(.*?)-->/);
+  if (own) src = own[1];
   return '<article class="sheet"><div class="pg-head"><span class="ph-sec"><b>Ficha técnica</b> ' + esc(d.name) + '</span><span class="ph-org"><img src="img/ciudad-smt.png" alt="Ciudad SMT"><i></i><b>Subsecretaría de<br>Gestión Estratégica</b></span></div>' +
     '<div class="side"><span class="s-top">' + esc(monthYear()) + '</span><span class="s-bot"><b>Ficha técnica</b> – ' + esc(CFG.organismo.replace(/^Municipalidad de /i, "Ciudad de ")) + '</span></div>' +
     '<div class="frame">' + inner + '<div class="foot"><span><b>Fuente:</b> ' + esc(src) + ' <b>Elaboración:</b> Subsecretaría de Gestión Estratégica.</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></div></article>';
@@ -733,6 +832,7 @@ function titleCase(t) { return String(t).toLowerCase().replace(/(^|[\s(."'-])(\S
 // hoja del plano: el circuito con sus barrios numerados, el listado de barrios y las 3 listas más votadas a concejal (2023)
 function planoPage(d) {
   var nb = d.barrios.length, c = CONCEJALES[d.key];
+  if (d.kind === "distrito") c = null;
   var blist = '<ol class="blist' + (nb > 24 ? ' c3' : nb > 8 ? ' c2' : '') + '">' + d.barrios.map(function (b) { return '<li>' + esc(b.name) + '</li>'; }).join("") + '</ol>';
   var elec = c ? '<div class="elec">' + c.listas.map(function (l, i) {
     var pct = l.votos / c.total * 100;
@@ -740,10 +840,103 @@ function planoPage(d) {
       '<div class="el-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b><small>' + fmt.format(l.votos) + ' votos</small></div></div>';
   }).join("") + '<p class="tnote">Porcentaje sobre ' + fmt.format(c.total) + ' votos a listas de concejales en el circuito (no incluye blancos ni nulos). Elecciones municipales 2023.</p></div>'
     : '<p class="tnote">No hay resultados electorales cargados para este circuito.</p>';
-  return band(d, "Plano del circuito", nb + (nb === 1 ? " barrio" : " barrios") + " · " + esc(d.name)) +
-    '<div class="body"><div class="sh-map"><canvas data-map="plano" width="1372" height="930"></canvas></div>' +
-    '<div class="plano-cols' + (nb > 24 ? ' wide' : '') + '"><div><h3 class="sh-h3">Barrios del circuito</h3>' + blist + '</div>' +
-    '<div><h3 class="sh-h3">Concejales 2023 · listas más votadas</h3>' + elec + '</div></div></div>';
+  var right = '<div><h3 class="sh-h3">Concejales 2023 · listas más votadas</h3>' + elec + '</div>';
+  if (d.kind === "distrito") {
+    var z = PP.distritos[d.num], cs = z ? z.circuitos.filter(function (x) { return x.del_circuito >= 5; }) : [];
+    right = '<div><h3 class="sh-h3">Circuitos electorales del distrito</h3><table class="t ctab' + (cs.length > 6 ? ' tight' : '') + '"><thead><tr><th>Circuito</th><th class="r">En el distrito</th><th class="r">Electores</th><th class="r">Escuelas</th></tr></thead><tbody>' +
+      cs.map(function (x) { var e = ELECTORES[norm(x.circuito)]; return '<tr><td>' + esc(x.circuito.replace(/^Circuito\s*/, "")) + '</td><td class="r">' + x.del_circuito + '%</td><td class="r">' + (e ? fmt.format(e.electores) : '–') + '</td><td class="r">' + (e ? e.escuelas : '–') + '</td></tr>'; }).join("") +
+      (z ? '<tr class="tot"><td colspan="2">Estimado en el distrito</td><td class="r">≈ ' + fmt.format(z.electores_estimados) + '</td><td class="r">≈ ' + Math.round(z.escuelas_estimadas) + '</td></tr>' : '') + '</tbody></table>' +
+      '<p class="tnote">"En el distrito": parte de la superficie del circuito dentro del distrito. Electores y escuelas: padrón 2025 del circuito completo; el total del distrito suma cada circuito según esa parte. Se omiten cruces menores al 5% (bordes).</p></div>';
+  }
+  return band(d, "Plano del " + zw(d), nb + (nb === 1 ? " barrio" : " barrios") + " · " + esc(d.name)) +
+    '<div class="body"><div><div class="sh-map"><canvas data-map="plano" width="1372" height="930"></canvas></div>' +
+    (d.kind === "distrito" ? '<div class="sh-legend pp-legend"><span><i class="lg-circ"></i>' + esc(d.name) + '</span><span><i class="lg-cline"></i>Límite de circuito electoral (C.)</span></div>' : '') + '</div>' +
+    '<div class="plano-cols' + (nb > 24 ? ' wide' : '') + '"><div><h3 class="sh-h3">Barrios del ' + zw(d) + '</h3>' + blist + '</div>' + right + '</div></div>';
+}
+
+// palabra de la zona de la ficha
+function zw(d) { return d.kind === "distrito" ? "distrito" : "circuito"; }
+// proyecto ganador de Presupuesto Participativo que corresponde a la zona:
+// el del propio distrito, o en un circuito el del distrito con el que comparte más superficie
+function ppOf(d) {
+  var c = d.kind === "distrito" ? null : PP.circuitos[d.key];
+  var num = d.kind === "distrito" ? d.num : c && c.distrito, g = num && PP.ganadores[String(num)];
+  if (!g) return null;
+  return { distrito: num, coincidencia: c ? c.coincidencia : null, ganador: g, edicion: PP.edicion,
+    area: c ? ZONES.distrito.filter(function (x) { return x.num === num; })[0] || null : null };
+}
+// electores y escuelas: del padrón en un circuito; en un distrito, estimados según superficie
+function padronOf(d) {
+  if (d.kind !== "distrito") return ELECTORES[d.key] ? { electores: ELECTORES[d.key].electores, escuelas: ELECTORES[d.key].escuelas, est: false } : null;
+  var z = PP.distritos[d.num];
+  return z ? { electores: z.electores_estimados, escuelas: Math.round(z.escuelas_estimadas), est: true } : null;
+}
+// ficha por distrito: una tarjeta por circuito electoral que cae en él, con electores, escuelas y las 3 listas más votadas a concejal (2023)
+var CIRC_PER_PAGE = 6;
+function circuitPages(d) {
+  if (d.kind !== "distrito") return [];
+  var z = PP.distritos[d.num];
+  var cs = z ? z.circuitos.filter(function (x) { return x.del_circuito >= 5; }) : [];
+  if (!cs.length) return [];
+  var cards = cs.map(function (x) {
+    var key = norm(x.circuito), e = ELECTORES[key], c = CONCEJALES[key];
+    var lists = c ? c.listas.map(function (l, i) {
+      var pct = l.votos / c.total * 100;
+      return '<div class="cc-row"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small></div><div class="cc-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b> <small>' + fmt.format(l.votos) + '</small></div></div>';
+    }).join("") : '<p class="tnote">Sin resultados electorales cargados.</p>';
+    return '<div class="cc-card"><div class="cc-head"><b>' + esc(x.circuito) + '</b><span>' + x.del_circuito + '% en el distrito</span></div>' +
+      '<div class="cc-kpi"><span><b>' + (e ? fmt.format(e.electores) : '–') + '</b> electores</span><span><b>' + (e ? e.escuelas : '–') + '</b> ' + (e && e.escuelas === 1 ? 'escuela donde se vota' : 'escuelas donde se vota') + '</span></div>' +
+      '<div class="cc-sub">Concejales 2023 · 3 más votadas</div>' + lists + '</div>';
+  });
+  var total = '<div class="cc-total"><div><b>≈ ' + fmt.format(z.electores_estimados) + '</b><span>Electores del distrito</span></div><div><b>≈ ' + Math.round(z.escuelas_estimadas) + '</b><span>Escuelas donde se vota</span></div>' +
+    '<p>Total estimado: cada circuito suma sus electores y escuelas según la parte de su superficie que cae dentro del distrito, así los circuitos compartidos no se cuentan dos veces. Concejales: porcentaje sobre los votos a listas de cada circuito completo (sin blancos ni nulos), elecciones municipales 2023.</p></div>';
+  // la primera hoja lleva el total arriba y 4 tarjetas; las siguientes, 6
+  var chunks = [cards.slice(0, CIRC_PER_PAGE - 2)];
+  for (var i = CIRC_PER_PAGE - 2; i < cards.length; i += CIRC_PER_PAGE) chunks.push(cards.slice(i, i + CIRC_PER_PAGE));
+  return chunks.map(function (ch, k) {
+    var part = chunks.length > 1 ? ' · ' + (k + 1) + ' de ' + chunks.length : '';
+    return '<!--fuente:Padrón electoral 2025 y resultados de concejales 2023 por circuito; cruce con los distritos de Presupuesto Participativo.-->' +
+      band(d, 'Circuitos electorales' + part, k ? null : cs.length + (cs.length === 1 ? ' circuito cae' : ' circuitos caen') + ' dentro de ' + esc(d.name), k ? { cls: 'slim' } : null) +
+      '<div class="body">' + (k ? '' : total) + '<div class="cc-grid">' + ch.join("") + '</div></div>';
+  });
+}
+
+// hoja de Presupuesto Participativo: proyecto ganador, su ubicación y la descripción publicada
+var PP_PASOS = ["Licitación", "Adjudicada", "En obra", "Finalizada"];
+function ppDesc(g) { return (g.descripcion || []).map(function (s) { return '<section><h5>' + esc(s.titulo) + '</h5>' + s.parrafos.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join("") + '</section>'; }).join(""); }
+function ppDescLen(g) { return (g.descripcion || []).reduce(function (a, s) { return a + 60 + s.parrafos.reduce(function (b, t) { return b + t.length + 40; }, 0); }, 0); }
+var ppSplitFor = null; // zona cuya descripción no entró junto al mapa y va en hoja aparte
+function ppPage(d) {
+  var x = ppOf(d);
+  if (!x) return null;
+  var g = x.ganador, hasPt = g.lat != null && g.lon != null, isD = d.kind === "distrito";
+  var steps = '<div class="pp-steps">' + PP_PASOS.map(function (s, i) { return '<span class="' + (i < g.paso ? 'on' : '') + (i === g.paso - 1 ? ' cur' : '') + '"><i></i>' + s + '</span>'; }).join("") + '</div>';
+  var info = [];
+  if (g.novedad) info.push('<div><dt>Última novedad' + (g.actualizado ? ' · ' + esc(g.actualizado) : '') + '</dt><dd>' + esc(g.novedad) + '</dd></div>');
+  else info.push('<div><dt>Última novedad</dt><dd>El sitio de Presupuesto Participativo todavía no publicó novedades de esta obra.</dd></div>');
+  var meta = [g.barrio ? 'Barrio ' + esc(g.barrio) : null, 'Distrito ' + x.distrito, g.votos ? fmt.format(g.votos) + ' votos' : null].filter(Boolean).join(' · ');
+  var nCirc = isD && PP.distritos[d.num] ? PP.distritos[d.num].circuitos.filter(function (c) { return c.del_circuito >= 5; }).length : 0;
+  var note = (isD ? 'Proyecto elegido con el voto de los vecinos del Distrito ' + x.distrito + '.'
+    : 'Hay un ganador por distrito y los distritos no coinciden con los circuitos electorales: se muestra el proyecto del distrito que más superficie comparte con el circuito (el ' + x.coincidencia + '% de ' + esc(d.name) + ' está dentro del Distrito ' + x.distrito + ').') +
+    (!hasPt ? ' El sitio de Presupuesto Participativo no publica la ubicación de este proyecto.' : g.ubicacion_aproximada ? ' El sitio de Presupuesto Participativo no tiene la ubicación exacta: la marca va en el centro del distrito.' : '');
+  // descripción larga: va en una hoja propia, así el mapa no se achica
+  var desc = ppDesc(g), split = desc && (ppSplitFor === d.id || ppDescLen(g) > 1100);
+  var src = '<!--fuente:Presupuesto Participativo SMT, edición ' + x.edicion + ' (presupuestoparticipativo.smt.gob.ar).-->';
+  var head = isD
+    ? [{ v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }, { v: String(nCirc), l: nCirc === 1 ? "Circuito electoral en el distrito" : "Circuitos electorales en el distrito" }]
+    : [{ v: String(x.distrito), l: "Distrito" }, { v: x.coincidencia + '<small>%</small>', l: "Del circuito dentro del distrito" }, { v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }];
+  var pin = !hasPt ? '' : g.ubicacion_aproximada ? '<span><i class="lg-pin aprox"></i>Proyecto ganador (ubicación aproximada)</span>' : '<span><i class="lg-pin"></i>Proyecto ganador</span>';
+  var descBlock = desc ? '<div><h3 class="sh-h3">Descripción del proyecto</h3><div class="pp-desc' + (split ? ' full' : '') + '">' + desc + '</div></div>' : '';
+  var p1 = src + band(d, 'Presupuesto Participativo · ' + x.edicion, 'Proyecto ganador del Distrito ' + x.distrito + ', elegido por los vecinos con su voto') +
+    '<div class="body">' + tiles(head) +
+    '<div><div class="sh-map"><canvas data-pp="1" width="1372" height="' + (split || !desc ? 760 : 600) + '"></canvas></div>' +
+    '<div class="sh-legend pp-legend"><span><i class="lg-circ"></i>' + esc(d.name) + '</span>' + (isD ? '' : '<span><i class="lg-dist"></i>Distrito ' + x.distrito + '</span>') + pin + '</div></div>' +
+    '<div><h3 class="sh-h3">Proyecto ganador</h3><div class="pp-card"><div class="pp-pills">' + (g.categoria ? '<span class="pp-cat">' + esc(g.categoria) + '</span>' : '') + '<span class="pp-estado s' + g.paso + '">Estado de la obra: ' + esc(g.etapa) + '</span></div>' +
+    '<h4>' + esc(g.titulo) + '</h4><p class="pp-meta">' + meta + '</p>' + steps +
+    '<dl class="pp-info">' + info.join("") + '</dl></div>' + (split ? '' : '<p class="tnote">' + note + '</p>') + '</div>' +
+    (split ? '' : descBlock) + '</div>';
+  if (!split) return [p1];
+  return [p1, src + band(d, 'Presupuesto Participativo · descripción', esc(g.titulo), { cls: 'slim' }) + '<div class="body">' + descBlock + '<p class="tnote">' + note + ' Texto publicado en presupuestoparticipativo.smt.gob.ar.</p></div>'];
 }
 
 function buildFicha() {
@@ -769,7 +962,7 @@ function buildFicha() {
     var subs = t.subs ? '<div class="subline">' + t.subs.map(function (x) { var n = tp.filter(function (p) { return p.sub === x.name; }).length; return n ? '<span><i style="background:' + x.color + '"></i>' + esc(x.name) + ' ' + n + '</span>' : ''; }).join("") + '</div>' : '';
     return '<tr><td><span class="tcell">' + badge(t, 20) + '<span>' + esc(t.name) + subs + '</span></span></td><td class="barcell"><div class="hbar" style="width:' + (tp.length / maxT * 100) + '%;background:' + t.color + '"></div></td><td class="r nw"><b>' + fmt.format(tp.length) + '</b>' + (line ? ' <small>cuadras</small>' : '') + '</td><td class="r">' + barriosDe(tp) + '/' + nb + '</td></tr>';
   }).join("");
-  pages.push(band(d, 'Resumen del circuito', nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales registradas') +
+  pages.push(band(d, 'Resumen del ' + zw(d), nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales registradas') +
     '<div class="body">' +
     '<div class="sh-map"><canvas data-map="all" width="1372" height="' + (types.length > 8 ? 665 : 780) + '"></canvas></div>' +
     '<div><h3 class="sh-h3">Intervenciones por tipo</h3><table class="t"><thead><tr><th>Tipo</th><th></th><th class="r">Cantidad</th><th class="r">Barrios</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
@@ -798,7 +991,7 @@ function buildFicha() {
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
-        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: (tp.length / dpts.length < 0.005 ? '&lt;1' : Math.round(tp.length / dpts.length * 100)) + '<small>%</small>', l: "Del total del circuito" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
+        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: (tp.length / dpts.length < 0.005 ? '&lt;1' : Math.round(tp.length / dpts.length * 100)) + '<small>%</small>', l: "Del total del " + zw(d) }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
       '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
       '<p class="tnote">Participación: qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
@@ -843,6 +1036,8 @@ function buildFicha() {
   var tot = countBy(dpts), topB = tot.filter(function (x) { return x.n; }).slice(0, MAXBARS);
   var findings = [];
   if (dpts.length) findings.push('<li class="all">' + badge({ color: PAPER.blue, icon: "pin" }, 22) + '<span><b>En conjunto,</b> ' + esc(tot[0].b.name) + ' es el barrio con más intervenciones (' + tot[0].n + ', ' + Math.round(tot[0].n / dpts.length * 100) + '% del circuito)' + (tot[tot.length - 1].n < tot[0].n ? ' y ' + esc(tot[tot.length - 1].b.name) + ' el que menos recibió (' + tot[tot.length - 1].n + ')' : '') + '.</span></li>');
+  var ppx = ppOf(d);
+  // Presupuesto Participativo va en su propia hoja, al final
   types.forEach(function (t) {
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t), byB = countBy(tp);
     var zero = byB.filter(function (x) { return !x.n; }).length;
@@ -860,7 +1055,8 @@ function buildFicha() {
     '<div class="sh-legend" style="margin-top:8px">' + types.map(function (t) { return '<span>' + badge(t, 16) + esc(t.name) + '</span>'; }).join("") + '</div>';
   var stackH = Math.min(Math.max(220, topB.length * 30 + 110), 560);
   var many = topB.length > 8;
-  var keyTiles = tiles([{ v: fmt.format(dpts.length), l: "Intervenciones" }, { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }].concat(ELECTORES[d.key] ? [{ v: fmt.format(ELECTORES[d.key].electores), l: "Electores" }, { v: fmt.format(ELECTORES[d.key].escuelas), l: ELECTORES[d.key].escuelas === 1 ? "Escuela donde se vota" : "Escuelas donde se vota" }] : []), "g2");
+  var pad = padronOf(d), apx = pad && pad.est ? '<small>≈ </small>' : '';
+  var keyTiles = tiles([{ v: fmt.format(dpts.length), l: "Intervenciones" }, { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }].concat(pad ? [{ v: apx + fmt.format(pad.electores), l: pad.est ? "Electores (estimado)" : "Electores" }, { v: apx + fmt.format(pad.escuelas), l: (pad.escuelas === 1 ? "Escuela donde se vota" : "Escuelas donde se vota") + (pad.est ? " (estimado)" : "") }] : []), "g2");
   pages.push(band(d, "Síntesis ejecutiva", "Lo principal de " + esc(d.name) + " en una hoja") +
     '<div class="body"><div class="syn-head"><div class="locator"><canvas data-locator="1" width="440" height="330"></canvas><p>' + esc(d.name) + ' dentro de la ciudad</p></div>' + keyTiles + '</div><div><h3 class="sh-h3">Lectura rápida</h3><ul class="findings">' + findings.join("") + '</ul></div></div>');
   pages.push(band(d, "Síntesis ejecutiva · por barrio", "Qué barrios concentran más intervenciones según el tipo" + (tot.filter(function (x) { return x.n; }).length > MAXBARS ? " · " + MAXBARS + " barrios con más intervenciones" : "")) +
@@ -873,27 +1069,32 @@ function buildFicha() {
   var cover = '<div class="cover-full"><div class="cv-top"><img class="cv-logo" src="img/logo.svg" alt="Qué hicimos en los barrios · Fichas técnicas"><img class="cv-city" src="img/ciudad-smt.png" alt="Ciudad SMT"></div>' +
     '<div class="cv-panel"><span class="cv-pill">Ficha técnica</span><div class="cv-title"><h1>' + esc(d.name) + '</h1><p>' + nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales · ' +
     (SOURCE.sample ? 'datos de ejemplo' : 'actualizada al ' + SOURCE.when.toLocaleDateString("es-AR")) + '</p></div>' +
-    '<ul class="cv-list"><li>Plano del circuito</li><li>Síntesis ejecutiva</li><li>Resumen del circuito</li><li>Intervenciones por tipo</li></ul>' +
+    '<ul class="cv-list' + (d.kind === "distrito" ? ' tight' : '') + '"><li>Plano del ' + zw(d) + '</li>' + (d.kind === "distrito" ? '<li>Circuitos electorales del distrito</li>' : '') + '<li>Síntesis ejecutiva</li><li>Resumen del ' + zw(d) + '</li><li>Intervenciones por tipo</li>' + (ppx ? '<li>Presupuesto Participativo ' + ppx.edicion + '</li>' : '') + '</ul>' +
     '<div class="cv-foot"><div><b>Subsecretaría de Gestión Estratégica</b><br>Secretaría General</div><div class="r"><b>' + esc(my.charAt(0).toUpperCase() + my.slice(1)) + '</b><br>' + esc(CFG.organismo) + '</div></div></div></div>';
-  var plano = planoPage(d);
-  pages = [cover, plano].concat(pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore));
+  var plano = planoPage(d), pp = ppPage(d);
+  // orden: portada, plano, (circuitos del distrito), síntesis, resumen, tipos y, al final, Presupuesto Participativo
+  pages = [cover, plano].concat(circuitPages(d), pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore), pp || []);
 
   $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner, d); }).join("");
   $("viewer-title").textContent = "Ficha técnica · " + d.name;
 
   // con letra más grande algunas hojas no entran: el mapa se achica lo justo para que la hoja no se corte
-  $("sheets").querySelectorAll(".sheet canvas[data-map]").forEach(function (cv) {
+  $("sheets").querySelectorAll(".sheet canvas[data-map], .sheet canvas[data-pp]").forEach(function (cv) {
     var sh = cv.closest(".sheet"), foot = sh.querySelector(".foot");
     var bottom = Math.max.apply(null, Array.prototype.map.call(sh.querySelectorAll(".body > *"), function (e) { return e.getBoundingClientRect().bottom; }));
     var over = bottom - foot.getBoundingClientRect().top;
     if (over > 0) cv.height = Math.max(360, cv.height - Math.ceil(over * cv.width / cv.getBoundingClientRect().width) - 8);
   });
+  // si para que entre la descripción el mapa de Presupuesto Participativo queda muy chico, la descripción pasa a otra hoja
+  var ppc = $("sheets").querySelector("canvas[data-pp]");
+  if (ppc && ppc.height < 500 && ppSplitFor !== d.id && $("sheets").querySelector(".pp-desc:not(.full)")) { ppSplitFor = d.id; return buildFicha(); }
   var draws = [];
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
     var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
-    if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4 })); return; }
+    if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4, overlay: d.kind === "distrito" ? ZONES.circuito : null })); return; }
     draws.push(drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null }));
   });
+  $("sheets").querySelectorAll("canvas[data-pp]").forEach(function (cv) { draws.push(drawPPMap(cv, d, ppOf(d))); });
   fichaReady = Promise.all(draws);
   $("sheets").querySelectorAll("canvas[data-locator]").forEach(function (cv) { drawLocator(cv, d); });
   var cv = $("sheets").querySelector('canvas[data-chart="stack"]');

@@ -1,0 +1,729 @@
+{
+ "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
+ "edicion": 2025,
+ "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
+ "descargado": "2026-11-02",
+ "ganadores": {
+  "1": {
+   "distrito": 1,
+   "titulo": "Puesta en Valor de la Gruta de la Virgen del Rosario de San Nicolás",
+   "barrio": "Oeste II",
+   "categoria": "Espacio de innovación urbana",
+   "votos": 35,
+   "lat": -26.798656,
+   "lon": -65.252994,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/puesta-en-valor-de-la-gruta-de-la-virgen-del-rosario-de-san-nicolas?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "Deterioro del techo de la pérgola que resguarda la gruta, afectando su conservación. Otros problemas detectados: ausencia de bancos que permitan a los vecinos permanecer en el lugar con comodidad; falta de ornamentación y embellecimiento del entorno, lo que resta atractivo y calidez al espacio.",
+      "Afecta principalmente a los vecinos y fieles que se acercan a la gruta para rezar, pero también a toda la comunidad que utiliza el espacio público: reduce la comodidad, dificulta la permanencia y genera un ambiente poco cuidado en un espacio de relevancia espiritual y comunitaria."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Refacción integral del techo de la pérgola que resguarda la gruta. Instalación de bancos de cemento para brindar un espacio cómodo y digno de oración. Incorporación de plantas florales ornamentales alrededor de la gruta, para embellecer y dar mayor calidez al entorno."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Revalorización de un espacio significativo para la fe y la identidad comunitaria. Generación de un lugar digno y confortable para la oración y la reflexión. Embellecimiento del entorno barrial y fortalecimiento del sentido de pertenencia. Creación de un espacio público que favorezca la convivencia, la espiritualidad y el encuentro vecinal."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "16 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $237.780.853,33. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "237.780.853,33",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17359/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-gruta-de-"
+  },
+  "2": {
+   "distrito": 2,
+   "titulo": "Puesta en Valor Plaza Democracia- Barrio Casino-Zenón Santillan",
+   "barrio": "Casino (Zenón Santillan)",
+   "categoria": "Espacio socio ambiental",
+   "votos": 25,
+   "lat": -26.800276,
+   "lon": -65.236695,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/puesta-en-valor-plaza-democracia-barrio-casino-zenon-santillan?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La Plaza Democracia del barrio Casino constituye un punto estratégico para la vida comunitaria; actualmente se encuentra en un estado deplorable debido a la falta de mantenimiento, mobiliario urbano y condiciones de seguridad no apropiadas. La escasa iluminación y el desaprovechamiento del espacio verde impiden que la plaza cumpla su función de promover la interacción entre vecinos, la recreación y el fortalecimiento del sentido de pertenencia.",
+      "Diagnóstico detallado: falta de iluminación y condiciones de seguridad apropiadas; ausencia de juegos infantiles, equipamiento deportivo y mobiliario urbano; espacios verdes en mal estado, sin mantenimiento ni parquización adecuada; escasez de lugares de encuentro y recreación para vecinos de distintas edades.",
+      "A quiénes afecta: niños, que no cuentan con un lugar seguro y atractivo para el juego; jóvenes, que carecen de espacios recreativos y deportivos accesibles; adultos y adultos mayores, que no disponen de un espacio de reunión, esparcimiento y actividades saludables; y la comunidad en general, que pierde un espacio público de integración social y cultural. Cómo afecta: genera sensación de inseguridad, limita la vida comunitaria y la posibilidad de encuentros barriales, y reduce el acceso a actividades recreativas, deportivas y culturales."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Recuperación y revalorización de un espacio público estratégico para la vida comunitaria. Mejora de la seguridad y accesibilidad de la plaza. Creación de un lugar de integración que favorezca la convivencia y el sentido de pertenencia. Fomento de la recreación, el deporte y la vida saludable. Embellecimiento del entorno barrial y fortalecimiento de la identidad comunitaria."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "20 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $263.239.466,60. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "263.239.466,60",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17433/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-plaza-dem"
+  },
+  "3": {
+   "distrito": 3,
+   "titulo": "Playón deportivo para \"Plaza Lozano Munoz\" en B° Echeverria",
+   "barrio": "Echeverria",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 49,
+   "lat": -26.8000605,
+   "lon": -65.2303437,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/playon-deportivo-para-plaza-lozano-munoz-en-b-echeverria?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La Plaza Lozano Muñoz cumple un rol social, cultural y deportivo clave en la comunidad. Sin embargo, actualmente no cuenta con un espacio adecuado para la práctica de múltiples disciplinas al aire libre."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un playón deportivo que permita brindar un lugar seguro y accesible para la práctica del deporte; promover la inclusión social de niños, niñas, jóvenes y adultos; ofrecer una alternativa recreativa que contribuya a la salud y al bienestar; y fomentar valores como el compañerismo, la solidaridad y el trabajo en equipo."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Incrementar la práctica de deportes en un espacio seguro. Revalorizar la plaza como núcleo de encuentro comunitario. Prevenir problemáticas sociales vinculadas al ocio improductivo. Favorecer la integración intergeneracional a través de torneos y actividades recreativas."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "22 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $260.402.522,16. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "260.402.522,16",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17473/presupuesto-participativo-licitan-el-proyecto-de-construccion-de-un-playon-depor"
+  },
+  "4": {
+   "distrito": 4,
+   "titulo": "Puesta en Valor Plaza Curva Barrio Juan Pablo II",
+   "barrio": "Juan Pablo II",
+   "categoria": "Espacio socio ambiental",
+   "votos": 172,
+   "lat": -26.8022746,
+   "lon": -65.2188772,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/puesta-en-valor-plaza-curva-barrio-juan-pablo-ii?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La plaza es un espacio de encuentro para los vecinos del barrio Juan Pablo II, para niños, jóvenes y adultos que asisten a la OC Los Lapachitos. En ella se realizan diferentes actividades culturales, recreativas y espacios de encuentro que requieren resignificar el espacio, para permitir proyectar actividades organizadas por esa organización colindante."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Contar con un espacio refuncionalizado ayudará de manera integral a la convivencia, se podrán proyectar actividades y la comunidad podrá empoderarse del espacio, haciendo un uso adecuado del tiempo libre de los jóvenes con diferentes problemas sociales."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Integrar este espacio como una oportunidad para todos."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "16 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $111.872.656,40. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "111.872.656,40",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17362/presupuesto-participativo-licitan-obras-de-puesta-en-valor-de-la-plaza-curva-del"
+  },
+  "5": {
+   "distrito": 5,
+   "titulo": "Espacio Deportivo -Cultural-Club Sargento Cabral-Villa Urquiza",
+   "barrio": "Villa Urquiza",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 282,
+   "lat": -26.7969558,
+   "lon": -65.2008651,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/espacio-deportivo-cultural-club-sargento-cabral-villa-urquiza?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La comunidad enfrenta una carencia de infraestructura deportiva y recreativa, lo que afecta principalmente a niños, niñas y jóvenes que no cuentan con alternativas seguras para ocupar su tiempo libre. Esta situación favorece el sedentarismo, limita la participación social y aumenta el riesgo de problemáticas asociadas a la exclusión. Además, el espacio público existente se encuentra deteriorado y subutilizado, sin equipamiento ni iluminación adecuada para el desarrollo de actividades comunitarias."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un playón deportivo comunitario multifuncional: piso de hormigón con demarcaciones deportivas; equipamiento fijo (arcos, aros, redes para vóley y handball); iluminación LED para uso nocturno y mayor seguridad; bancos, cestos de residuos y señalética comunitaria; y actividades deportivas, culturales y recreativas articuladas con escuelas, clubes y organizaciones sociales. Destinado a fútbol, vóley, básquet, handball y otras actividades comunitarias."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Mayor participación de jóvenes en actividades deportivas y recreativas. Reducción del sedentarismo y mejora del bienestar físico y emocional. Fortalecimiento de la cohesión social y del sentido de pertenencia barrial. Creación de redes de contención comunitaria a través del deporte. Revalorización de un espacio público actualmente deteriorado y subutilizado."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "6": {
+   "distrito": 6,
+   "titulo": "Recuperación Integral del Complejo General Muñoz- Villa 9 de Julio",
+   "barrio": "Villa 9 de Julio",
+   "categoria": "Espacio de innovación urbana",
+   "votos": 89,
+   "lat": -26.8068358,
+   "lon": -65.1955256,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/recuperacion-integral-del-complejo-general-munoz-villa-9-de-julio?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "El Complejo General Muñoz es un espacio emblemático del noreste de San Miguel de Tucumán. Durante décadas fue un punto de encuentro, formación y contención para generaciones de vecinos; en sus canchas se forjaron lazos comunitarios y en su gruta, dedicada a la Virgen del Rosario de San Nicolás, se mantiene viva una fuerte identidad espiritual. En la actualidad el predio presenta un grave deterioro debido al abandono, lo que lo ha convertido en un foco de inseguridad y vandalismo. Su recuperación es urgente no sólo desde lo urbano, sino también desde lo social y humano.",
+      "Diagnóstico detallado: estado de abandono y deterioro general del predio; falta de iluminación, equipamiento y mantenimiento; inseguridad por robos, vandalismo y enfrentamientos; escasez de espacios verdes y deportivos en el noreste de la ciudad; dificultades de acceso y falta de infraestructura inclusiva para adultos mayores y personas con movilidad reducida. Afecta a toda la comunidad del sector noreste, especialmente niños, jóvenes, adultos mayores y personas con discapacidad."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Infraestructura deportiva: reacondicionamiento de canchas, iluminación, señalética y equipamiento. Gruta de la Virgen de San Nicolás: restauración paisajística, mobiliario y mejoras de accesibilidad. Accesibilidad universal: rampas, caminos seguros, bancos ergonómicos y áreas tranquilas para adultos mayores. Entorno verde: reforestación con especies nativas, huertas comunitarias y jardines sensoriales. Seguridad y prevención: iluminación perimetral, cámaras, patrullajes preventivos y jornadas de concientización. Actividades comunitarias: programas deportivos, recreativos, culturales y religiosos coordinados con instituciones locales.",
+      "La sostenibilidad se plantea con acompañamiento municipal y participación vecinal, articulando instituciones barriales, escuelas, clubes y organizaciones sociales."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "26 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación de la primera etapa. Presupuesto oficial: $238.720.890,80. Plazo de obra: 90 días.",
+   "presupuesto_oficial": "238.720.890,80",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17533/presupuesto-participativo-licitan-la-primera-etapa-de-obras-de-recuperacion-inte"
+  },
+  "7": {
+   "distrito": 7,
+   "titulo": "Plaza Activa – B° Sitravi",
+   "barrio": null,
+   "categoria": "Espacio socio ambiental",
+   "votos": 118,
+   "lat": -26.8028125,
+   "lon": -65.1740751,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/plaza-activa-b-sitravi?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La plaza presenta equipamiento incompleto, poca iluminación y ausencia de un área deportiva reglada. Estas condiciones limitan el uso del espacio público y la posibilidad de desarrollar actividades recreativas, culturales y comunitarias."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Transformar el lugar en un punto de encuentro moderno, seguro y accesible, con seis sectores:",
+      "Sector deportivo central: playón multiuso en hormigón con demarcaciones reglamentarias para futsal, básquet, vóley y handball; cercado perimetral con portón accesible, bancos, apoyabicicletas, bebedero y áreas de sombra; tableros de básquet templados con aros reforzados y señalética deportiva.",
+      "Gimnasio urbano y circuito aeróbico: barras de calistenia, paralelas y banco de abdominales sobre piso de caucho; sendero perimetral con baldosas podotáctiles y señalización de distancias.",
+      "Espacios de descanso y verde: pérgolas metálicas, bancos y mesas de hormigón con madera tratada; cestos dobles (seco/húmedo), bicicleteros, arbolado nativo y canteros con riego por goteo.",
+      "Anfiteatro a cielo abierto: gradas bajas en semicírculo, escenario central y rampa accesible; iluminación específica y toma técnica para sonido o proyección.",
+      "SUM cívico-comunitario: sala multiuso cerrada con tratamiento acústico básico, galería perimetral techada y cocina de apoyo; sanitarios (incluido baño accesible) y depósito.",
+      "Sustentabilidad y seguridad: iluminación LED, ventilación cruzada, materiales de bajo mantenimiento y preinstalación para energía solar; paisajismo bajo que asegura visibilidad 360° y drenaje eficiente."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Espacio ordenado y multifuncional para el deporte, la educación y la convivencia. Hábitos saludables e integración intergeneracional. Mejor seguridad, iluminación y accesibilidad. Identidad barrial y uso activo del espacio público durante todo el año."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "20 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $264.615.099,56. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "264.615.099,56",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17429/presupuesto-participativo-licitan-las-obras-de-puesta-en-valor-de-la-plaza-activ"
+  },
+  "8": {
+   "distrito": 8,
+   "titulo": "Playón deportivo comunitario \"Plaza Viluco\"",
+   "barrio": null,
+   "categoria": "Espacio cultural deportivo",
+   "votos": 137,
+   "lat": -26.8173892,
+   "lon": -65.1777654,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/playon-deportivo-comunitario-plaza-viluco?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "En numerosos barrios de la ciudad, niños, niñas y jóvenes carecen de espacios deportivos adecuados y accesibles. Esta ausencia de infraestructura limita la recreación, incrementa el sedentarismo y deja a muchos chicos y chicas sin alternativas saludables para ocupar su tiempo libre; en ese contexto emergen problemáticas como el consumo problemático, la deserción escolar y la exclusión social. El deporte y la recreación permiten fortalecer vínculos comunitarios, promover hábitos saludables y fomentar valores como el respeto, la cooperación, la disciplina y el esfuerzo."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un playón multifuncional con piso de hormigón y demarcaciones deportivas; equipamiento fijo (arcos, aros, red de vóley/handball); iluminación LED para uso nocturno y mayor seguridad; bancos, cestos de residuos y señalética comunitaria; y jornadas de promoción de la salud, charlas deportivas y actividades recreativas coordinadas con escuelas, clubes, centros vecinales y organizaciones sociales. Uso previsto: fútbol, vóley, básquet, handball y actividades culturales o comunitarias."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Mayor participación de jóvenes en actividades recreativas y deportivas. Reducción del sedentarismo y mejora del bienestar físico y emocional. Fortalecimiento de la cohesión social y el orgullo barrial. Creación de redes de contención comunitaria a través del deporte. Revalorización y activación de un espacio público deteriorado y subutilizado."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "28 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $261.922.047,31. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "261.922.047,31",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17580/presupuesto-participativo-licitan-el-proyecto-de-creacion-de-un-playon-deportivo"
+  },
+  "9": {
+   "distrito": 9,
+   "titulo": "Puesta en Valor de la Plaza Pedro Cossio Paz de Barrio Padilla",
+   "barrio": null,
+   "categoria": "Espacio de innovación urbana",
+   "votos": 26,
+   "lat": -26.8213724,
+   "lon": -65.248154,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/puesta-en-valor-de-la-plaza-pedro-cossio-paz-de-barrio-padilla?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La plaza presenta destrozos en sus instalaciones y ha sufrido vandalismo, lo que genera inseguridad y dificulta su uso por parte de la comunidad. Los niños, jóvenes y familias del barrio no cuentan con un espacio adecuado para jugar, recrearse o desarrollar actividades al aire libre. La falta de seguridad, equipamiento y mantenimiento limita la posibilidad de que este espacio cumpla su función social."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Plan integral de puesta en valor: incorporación de medidas de seguridad para resguardar el espacio; instalación de juegos infantiles y merenderos comunitarios; creación de una pista para clases de baile y gimnasia; refuerzo en la limpieza, conservación del espacio verde y mantenimiento general."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Recuperación de un espacio público clave para la recreación, el deporte y la cultura. Mejora de la seguridad y limpieza del entorno. Inclusión de actividades para todas las edades, fortaleciendo la integración social. Fomento de la vida saludable y del uso responsable del espacio público. Incremento de la calidad de vida de los vecinos del Barrio Ernesto Padilla."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "10": {
+   "distrito": 10,
+   "titulo": "Revalorización y renovación de la Plaza Urquiza",
+   "barrio": null,
+   "categoria": "Espacio socio ambiental",
+   "votos": null,
+   "lat": null,
+   "lon": null,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/revalorizacion-y-renovacion-de-la-plaza-urquiza?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Renovación integral de la Plaza Urquiza: nuevas caminerías, pérgolas, sistemas de riego, drenaje e iluminación, un sector canil, un espacio para skate, juegos infantiles y la restauración de sus esculturas."
+     ]
+    }
+   ],
+   "etapa": "En obra",
+   "paso": 3,
+   "actualizado": "28 de octubre de 2026",
+   "novedad": "La obra empezó el 19 de agosto de 2026 y lleva cerca de un 20% de avance, con demoras por las lluvias. Se prevé terminarla en marzo de 2027.",
+   "presupuesto_oficial": null,
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17581/la-intendente-chahla-superviso-las-obras-de-renovacion-de-plaza-urquiza-donde-av"
+  },
+  "11": {
+   "distrito": 11,
+   "titulo": "Playón deportivo comunitario \"Cancha Ex Aeropuerto\"",
+   "barrio": "Ex-Aeropuerto",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 231,
+   "lat": -26.8346266,
+   "lon": -65.1832158,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/playon-deportivo-comunitario-cancha-ex-aeropuerto?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "Ausencia de espacios deportivos adecuados y accesibles para niños, niñas y jóvenes del Barrio Ex Aeropuerto, con el consiguiente sedentarismo y falta de alternativas saludables para el tiempo libre."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un playón deportivo comunitario en la cancha del B° Ex Aeropuerto como espacio de encuentro, inclusión y participación."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Mayor participación de jóvenes en actividades recreativas y deportivas. Reducción del sedentarismo y mejora del bienestar físico y emocional. Fortalecimiento de la cohesión social y el orgullo barrial. Creación de redes de contención comunitaria a través del deporte. Revalorización y activación de un espacio público deteriorado y subutilizado."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "12": {
+   "distrito": 12,
+   "titulo": "El Arte Popular en la Plaza Los Platanos",
+   "barrio": "Los Plátanos",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 192,
+   "lat": -26.8392745,
+   "lon": -65.2623295,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/el-arte-popular-en-la-plaza-los-platanos?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "La plaza carece de infraestructura adecuada que permita el desarrollo de espectáculos, talleres o encuentros vecinales, lo que limita las oportunidades de integración social y acceso a la cultura. Las actividades comunitarias suelen desarrollarse sin condiciones de seguridad, visibilidad o accesibilidad, restringiendo la participación. Afecta principalmente a jóvenes, instituciones educativas, artistas locales y organizaciones sociales que no cuentan con un ámbito adecuado para sus eventos y expresiones culturales."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un escenario al aire libre con capacidad para aproximadamente 200 personas, con gradas, rampas de accesibilidad y equipamiento técnico básico (iluminación, sonido y electricidad segura). El diseño contempla seguridad, confort y sustentabilidad: materiales resistentes, drenaje pluvial, ventilación natural y accesibilidad universal."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Permitirá espectáculos, obras teatrales, actividades escolares, ferias, capacitaciones y eventos comunitarios."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "13": {
+   "distrito": 13,
+   "titulo": "Plaza de Juegos y Pista de Salud \"Barrio Lincoln\"",
+   "barrio": "Lincoln",
+   "categoria": "Espacio de innovación urbana",
+   "votos": 49,
+   "lat": -26.838791,
+   "lon": -65.250745,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/plaza-de-juegos-y-pista-de-salud-barrio-lincoln?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "Carencia de un área de juegos infantiles y de un circuito de ejercicios adecuados para la actividad física en el barrio. Afecta a las familias del Barrio Lincoln, especialmente a niños, niñas y adultos mayores que no disponen de espacios apropiados para el juego, el esparcimiento y la actividad física, limitando las oportunidades de recreación y convivencia barrial."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Instalación de una plaza de juegos infantiles y creación de una pista de salud en el espacio recreativo existente: juegos seguros y modernos para distintas edades; aparatos para actividad física y ejercicios aeróbicos; mobiliario urbano (bancos, cestos, luminarias); parquizado y señalización del circuito de salud."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Promueve la recreación saludable, la integración familiar y la convivencia vecinal. Brinda un espacio accesible para el esparcimiento infantil y la actividad física de jóvenes y adultos."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "14": {
+   "distrito": 14,
+   "titulo": "CAC N° 11 Inclusivo",
+   "barrio": "Victoria",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 40,
+   "lat": -26.846834,
+   "lon": -65.225133,
+   "ubicacion_aproximada": false,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/cac-n-11-inclusivo-2?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "El CAC N° 11 no alcanza para la demanda de la comunidad: falta espacio para realizar actividades para todas las edades en un ámbito seguro e inclusivo para encuentros, talleres y eventos."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un segundo piso para ampliar el centro y destinarlo a apoyo escolar, alfabetización y actividades culturales."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "La ampliación y el mejoramiento del espacio permitirá mayor inclusión y una mejor calidad de vida para los vecinos."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "15": {
+   "distrito": 15,
+   "titulo": "Centro Cultural y Comunitario DIZA",
+   "barrio": null,
+   "categoria": "Espacio socio ambiental",
+   "votos": 67,
+   "lat": -26.8519695,
+   "lon": -65.2113026,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/centro-cultural-y-comunitario-diza?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "El barrio Diza carece de un espacio cubierto y accesible donde realizar actividades educativas, culturales y comunitarias. Actualmente los talleres, capacitaciones y reuniones deben organizarse en lugares improvisados o al aire libre, lo que limita la participación vecinal y el desarrollo de propuestas estables."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un Centro Cultural y Comunitario que brinde un espacio adecuado y multifuncional para educación, cultura y participación ciudadana; fortalezca la identidad barrial y el sentido de pertenencia; promueva la inclusión social, el acceso a servicios y el aprendizaje continuo; y ofrezca un punto de encuentro seguro y equipado para toda la comunidad del Distrito 15."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Incremento de la oferta cultural, educativa y recreativa local. Sede para programas municipales, talleres de oficios, ferias y actividades artísticas. Espacio de resguardo ante emergencias climáticas y centro operativo para campañas de salud. Mayor participación comunitaria e integración intergeneracional. Promoción de prácticas sustentables y de cuidado del entorno."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "22 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $259.457.528,63. Plazo de obra: seis meses.",
+   "presupuesto_oficial": "259.457.528,63",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17472/presupuesto-participativo-licitan-obras-de-construccion-de-un-centro-cultural-y-"
+  },
+  "16": {
+   "distrito": 16,
+   "titulo": "Proyecto de Puesta en Valor Club Social y Deportivo Barrio 20 de Junio",
+   "barrio": null,
+   "categoria": "Espacio cultural deportivo",
+   "votos": 186,
+   "lat": -26.8607862,
+   "lon": -65.1965579,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/proyecto-de-puesta-en-valor-club-social-y-deportivo-barrio-20-de-junio?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "Al club asisten más de 350 personas entre niños, adolescentes y adultos, principalmente en fútbol, representando al club en las máximas categorías del fútbol tucumano: ocho categorías infantiles, cuatro de inferiores, reserva, primera división, veteranos y senior más 35. A lo largo de la semana se desarrollan entrenamientos, partidos oficiales y actividades sociales orientadas a la contención, integración y desarrollo físico, social y emocional de los jóvenes. El predio no cuenta con iluminación apta para la práctica nocturna ni con vestuarios y baños en condiciones, lo que limita el horario de uso y la seguridad."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Instalación de seis columnas de alumbrado de alto porte; colocación de luminarias LED aptas para canchas de fútbol; provisión de cableado, tableros, accesorios y mano de obra completa para el sistema de iluminación; supervisión técnica municipal durante la obra; remodelación y acondicionamiento de baños existentes; construcción y equipamiento de vestuarios para jugadores locales y visitantes; y provisión de un salón de usos múltiples con baños."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "La iluminación permitirá optimizar el uso del predio, incrementar la seguridad, estimular la participación de padres y madres y consolidar un espacio de pertenencia, contención e inclusión. Continuar participando en la Liga Tucumana de Fútbol. Fomentar el deporte como herramienta de inclusión social."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "17": {
+   "distrito": 17,
+   "titulo": "Revalorización de la Plaza del Barrio San Miguel",
+   "barrio": "San Miguel",
+   "categoria": "Espacio socio ambiental",
+   "votos": 28,
+   "lat": -26.8556447,
+   "lon": -65.2589986,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/revalorizacion-de-la-plaza-del-barrio-san-miguel?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "Falta de equipamiento urbano y recreativo. Degradación del espacio verde y ausencia de mantenimiento programado. Desaprovechamiento del desnivel natural como recurso paisajístico. Ausencia de conectividad peatonal interna. Presencia de situaciones de vulnerabilidad social en el espacio: uso problemático del lugar durante la noche, actos de vandalismo y hechos delictivos. Existe una demanda vecinal de un espacio público que fomente el encuentro intergeneracional, el juego, el ejercicio y el descanso."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Caminerías perimetrales e interiores con tratamiento de solado articulado y rampas accesibles. Espacios verdes sectorizados con vegetación baja y arbolado de sombra. Juegos infantiles y equipamiento inclusivo. Sector de salud con estaciones de ejercicio y bancos de descanso. Playón deportivo multifuncional de aproximadamente 750 m², con superficie de hormigón llaneado y demarcaciones para cancha de básquet y fútbol 5 integrados, con equipamiento deportivo. Iluminación LED peatonal y deportiva para todo el recorrido y sectores de uso nocturno. Mobiliario urbano: bancos, cestos, bicicleteros y bebederos."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "18": {
+   "distrito": 18,
+   "titulo": "Espacio Deportivo Comunitario en Plaza de Chañaritos",
+   "barrio": null,
+   "categoria": "Espacio cultural deportivo",
+   "votos": 58,
+   "lat": -26.8674398,
+   "lon": -65.2485435,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/espacio-deportivo-comunitario-en-plaza-de-chanaritos?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "En esta plaza, desde hace más de 10 años, un grupo de entrenadoras y madres del barrio sostiene de manera autogestiva una actividad deportiva inclusiva y gratuita: clases de hockey infantil para niñas de entre 4 y 12 años. Actualmente participan alrededor de 50 niñas de los barrios Chañaritos, Lapachos, Kirchner y Manantial Sur. A pesar de las condiciones desfavorables (falta de delimitación de cancha, luminarias, superficie adecuada y equipamiento), el grupo se mantiene firme, promoviendo el deporte y valores de solidaridad, participación, contención y comunidad."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construir una cancha de césped sintético de 16 × 32 m con cerramiento perimetral. Instalar una pista saludable con caminos de trote y zonas de ejercicios funcionales. Incorporar luminarias LED para permitir el uso en horario nocturno. Fortalecer el vínculo comunitario mediante el deporte y la vida saludable."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Más de 30 niñas de entre 4 y 12 años que ya participan del hockey. Madres y vecinas que realizan entrenamiento funcional en la plaza. Vecinos que utilizan el espacio público como lugar de encuentro y salud. Niños y jóvenes que podrían incorporarse a la escuelita deportiva gratuita."
+     ]
+    }
+   ],
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "26 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $103.467.181,61. Plazo de obra: dos meses.",
+   "presupuesto_oficial": "103.467.181,61",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17532/presupuesto-participativo-licitan-la-creacion-de-un-espacio-deportivo-comunitari"
+  },
+  "19": {
+   "distrito": 19,
+   "titulo": "Playón Deportivo Vestuarios para el Club San Alberto",
+   "barrio": "San Alberto",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 210,
+   "lat": -26.8677229,
+   "lon": -65.2205851,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/playon-deportivo-vestuarios-para-el-club-san-alberto?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "El Club San Alberto carece de infraestructura para realizar deportes al aire libre, lo que limita la participación de niños, jóvenes y adultos en actividades que promuevan la salud y la integración social. La falta de instalaciones seguras y equipadas promueve el sedentarismo, reduce las oportunidades de socialización y genera la pérdida de un espacio de encuentro positivo y formativo."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Construcción de un playón deportivo comunitario con piso de hormigón llaneado, delimitación reglamentaria de canchas y equipamiento para distintas disciplinas (fútbol, básquet, vóley, handball). Incluye vestuarios y baños, iluminación LED para uso nocturno, bancos, cerco perimetral y señalización. El espacio se destinará a actividades deportivas, recreativas y sociales, tanto para socios del club como para vecinos, escuelas y organizaciones comunitarias."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Impacto directo en la calidad de vida de la comunidad, promoviendo el deporte como herramienta de inclusión social y prevención de problemáticas vinculadas al ocio y al sedentarismo. Fomenta la participación familiar y vecinal, fortalece los vínculos intergeneracionales y contribuye al uso positivo del espacio público, convirtiendo al club en un punto de encuentro seguro, educativo y saludable."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  },
+  "20": {
+   "distrito": 20,
+   "titulo": "Centro Deportivo San Miguel- Barrio CGT",
+   "barrio": "CGT",
+   "categoria": "Espacio cultural deportivo",
+   "votos": 75,
+   "lat": -26.8882363,
+   "lon": -65.2150522,
+   "ubicacion_aproximada": true,
+   "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/centro-deportivo-san-miguel-barrio-cgt?edicion=2025",
+   "descripcion": [
+    {
+     "titulo": "El problema",
+     "parrafos": [
+      "El espacio no cuenta con equipamiento ni mobiliario urbano destinado a la práctica deportiva adaptada. Presenta zonas oscuras y funciona como vertedero de basura, y está desintegrado de la trama urbana de la ciudad."
+     ]
+    },
+    {
+     "titulo": "La propuesta",
+     "parrafos": [
+      "Canchas de fútbol 7 y canchas multiuso (básquet, vóley), juegos infantiles, caminería, SUM con espacios administrativos, baños y vestuarios, áreas verdes, forestación, rampas, pistas de salud, luminarias LED y paneles solares."
+     ]
+    },
+    {
+     "titulo": "Beneficios para el barrio",
+     "parrafos": [
+      "Práctica deportiva de amateurs y profesionales. Participación de niños, jóvenes, adultos mayores, personas con discapacidad y familias. Escuelas aledañas y del barrio."
+     ]
+    }
+   ],
+   "etapa": "Sin información todavía",
+   "paso": 0,
+   "actualizado": null,
+   "novedad": null,
+   "presupuesto_oficial": null,
+   "nota_prensa": null
+  }
+ }
+}
