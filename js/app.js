@@ -831,7 +831,7 @@ function sheetShell(pageNo, total, inner, d) {
   var own = inner.match(/^<!--fuente:(.*?)-->/);
   if (own) src = own[1];
   return '<article class="sheet"><div class="pg-head"><span class="ph-sec"><b>Ficha técnica</b> ' + esc(d.name) + '</span><span class="ph-org"><img src="img/ciudad-smt.png" alt="Ciudad SMT"><i></i><b>Subsecretaría de<br>Gestión Estratégica</b></span></div>' +
-    '<div class="side"><span class="s-top">' + esc(monthYear()) + '</span><span class="s-bot"><b>Ficha técnica</b> – ' + esc(CFG.organismo.replace(/^Municipalidad de /i, "Ciudad de ")) + '</span></div>' +
+    '<div class="side"><div class="rot"><span class="s-top">' + esc(monthYear()) + '</span><span class="s-bot"><b>Ficha técnica</b> – ' + esc(CFG.organismo.replace(/^Municipalidad de /i, "Ciudad de ")) + '</span></div></div>' +
     '<div class="frame">' + inner + '<div class="foot"><span><b>Fuente:</b> ' + esc(src) + ' <b>Elaboración:</b> Subsecretaría de Gestión Estratégica.</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></div></article>';
 }
 // título como en el informe: la parte final en azul (lo que va después de "·", o la última palabra)
