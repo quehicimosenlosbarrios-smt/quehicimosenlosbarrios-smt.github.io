@@ -871,6 +871,36 @@ function padronOf(d) {
   var z = PP.distritos[d.num];
   return z ? { electores: z.electores_estimados, escuelas: Math.round(z.escuelas_estimadas), est: true } : null;
 }
+// ficha por distrito: una tarjeta por circuito electoral que cae en él, con electores, escuelas y las 3 listas más votadas a concejal (2023)
+var CIRC_PER_PAGE = 6;
+function circuitPages(d) {
+  if (d.kind !== "distrito") return [];
+  var z = PP.distritos[d.num];
+  var cs = z ? z.circuitos.filter(function (x) { return x.del_circuito >= 5; }) : [];
+  if (!cs.length) return [];
+  var cards = cs.map(function (x) {
+    var key = norm(x.circuito), e = ELECTORES[key], c = CONCEJALES[key];
+    var lists = c ? c.listas.map(function (l, i) {
+      var pct = l.votos / c.total * 100;
+      return '<div class="cc-row"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small></div><div class="cc-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b> <small>' + fmt.format(l.votos) + '</small></div></div>';
+    }).join("") : '<p class="tnote">Sin resultados electorales cargados.</p>';
+    return '<div class="cc-card"><div class="cc-head"><b>' + esc(x.circuito) + '</b><span>' + x.del_circuito + '% en el distrito</span></div>' +
+      '<div class="cc-kpi"><span><b>' + (e ? fmt.format(e.electores) : '–') + '</b> electores</span><span><b>' + (e ? e.escuelas : '–') + '</b> ' + (e && e.escuelas === 1 ? 'escuela donde se vota' : 'escuelas donde se vota') + '</span></div>' +
+      '<div class="cc-sub">Concejales 2023 · 3 más votadas</div>' + lists + '</div>';
+  });
+  var total = '<div class="cc-total"><div><b>≈ ' + fmt.format(z.electores_estimados) + '</b><span>Electores del distrito</span></div><div><b>≈ ' + Math.round(z.escuelas_estimadas) + '</b><span>Escuelas donde se vota</span></div>' +
+    '<p>Total estimado: cada circuito suma sus electores y escuelas según la parte de su superficie que cae dentro del distrito, así los circuitos compartidos no se cuentan dos veces. Concejales: porcentaje sobre los votos a listas de cada circuito completo (sin blancos ni nulos), elecciones municipales 2023.</p></div>';
+  // la primera hoja lleva el total arriba y 4 tarjetas; las siguientes, 6
+  var chunks = [cards.slice(0, CIRC_PER_PAGE - 2)];
+  for (var i = CIRC_PER_PAGE - 2; i < cards.length; i += CIRC_PER_PAGE) chunks.push(cards.slice(i, i + CIRC_PER_PAGE));
+  return chunks.map(function (ch, k) {
+    var part = chunks.length > 1 ? ' · ' + (k + 1) + ' de ' + chunks.length : '';
+    return '<!--fuente:Padrón electoral 2025 y resultados de concejales 2023 por circuito; cruce con los distritos de Presupuesto Participativo.-->' +
+      band(d, 'Circuitos electorales' + part, k ? null : cs.length + (cs.length === 1 ? ' circuito cae' : ' circuitos caen') + ' dentro de ' + esc(d.name), k ? { cls: 'slim' } : null) +
+      '<div class="body">' + (k ? '' : total) + '<div class="cc-grid">' + ch.join("") + '</div></div>';
+  });
+}
+
 // hoja de Presupuesto Participativo: proyecto ganador, su ubicación y la descripción publicada
 var PP_PASOS = ["Licitación", "Adjudicada", "En obra", "Finalizada"];
 function ppDesc(g) { return (g.descripcion || []).map(function (s) { return '<section><h5>' + esc(s.titulo) + '</h5>' + s.parrafos.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join("") + '</section>'; }).join(""); }
@@ -893,15 +923,15 @@ function ppPage(d) {
   var desc = ppDesc(g), split = desc && (ppSplitFor === d.id || ppDescLen(g) > 1100);
   var src = '<!--fuente:Presupuesto Participativo SMT, edición ' + x.edicion + ' (presupuestoparticipativo.smt.gob.ar).-->';
   var head = isD
-    ? [{ v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Etapa de la obra", txt: true }, { v: String(nCirc), l: nCirc === 1 ? "Circuito electoral en el distrito" : "Circuitos electorales en el distrito" }]
-    : [{ v: String(x.distrito), l: "Distrito" }, { v: x.coincidencia + '<small>%</small>', l: "Del circuito dentro del distrito" }, { v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Etapa de la obra", txt: true }];
+    ? [{ v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }, { v: String(nCirc), l: nCirc === 1 ? "Circuito electoral en el distrito" : "Circuitos electorales en el distrito" }]
+    : [{ v: String(x.distrito), l: "Distrito" }, { v: x.coincidencia + '<small>%</small>', l: "Del circuito dentro del distrito" }, { v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }];
   var pin = !hasPt ? '' : g.ubicacion_aproximada ? '<span><i class="lg-pin aprox"></i>Proyecto ganador (ubicación aproximada)</span>' : '<span><i class="lg-pin"></i>Proyecto ganador</span>';
   var descBlock = desc ? '<div><h3 class="sh-h3">Descripción del proyecto</h3><div class="pp-desc' + (split ? ' full' : '') + '">' + desc + '</div></div>' : '';
   var p1 = src + band(d, 'Presupuesto Participativo · ' + x.edicion, 'Proyecto ganador del Distrito ' + x.distrito + ', elegido por los vecinos con su voto') +
     '<div class="body">' + tiles(head) +
     '<div><div class="sh-map"><canvas data-pp="1" width="1372" height="' + (split || !desc ? 760 : 600) + '"></canvas></div>' +
     '<div class="sh-legend pp-legend"><span><i class="lg-circ"></i>' + esc(d.name) + '</span>' + (isD ? '' : '<span><i class="lg-dist"></i>Distrito ' + x.distrito + '</span>') + pin + '</div></div>' +
-    '<div><h3 class="sh-h3">Proyecto ganador</h3><div class="pp-card">' + (g.categoria ? '<span class="pp-cat">' + esc(g.categoria) + '</span>' : '') +
+    '<div><h3 class="sh-h3">Proyecto ganador</h3><div class="pp-card"><div class="pp-pills">' + (g.categoria ? '<span class="pp-cat">' + esc(g.categoria) + '</span>' : '') + '<span class="pp-estado s' + g.paso + '">Estado de la obra: ' + esc(g.etapa) + '</span></div>' +
     '<h4>' + esc(g.titulo) + '</h4><p class="pp-meta">' + meta + '</p>' + steps +
     '<dl class="pp-info">' + info.join("") + '</dl></div>' + (split ? '' : '<p class="tnote">' + note + '</p>') + '</div>' +
     (split ? '' : descBlock) + '</div>';
@@ -1007,7 +1037,7 @@ function buildFicha() {
   var findings = [];
   if (dpts.length) findings.push('<li class="all">' + badge({ color: PAPER.blue, icon: "pin" }, 22) + '<span><b>En conjunto,</b> ' + esc(tot[0].b.name) + ' es el barrio con más intervenciones (' + tot[0].n + ', ' + Math.round(tot[0].n / dpts.length * 100) + '% del circuito)' + (tot[tot.length - 1].n < tot[0].n ? ' y ' + esc(tot[tot.length - 1].b.name) + ' el que menos recibió (' + tot[tot.length - 1].n + ')' : '') + '.</span></li>');
   var ppx = ppOf(d);
-  if (ppx) { var ppg = ppx.ganador; findings.push('<li>' + badge({ color: "#d4b800", icon: "pin" }, 22) + '<span><b>Presupuesto Participativo ' + ppx.edicion + ':</b> en el Distrito ' + ppx.distrito + ' ganó «' + esc(ppg.titulo) + '»' + (ppg.votos ? ' (' + fmt.format(ppg.votos) + ' votos)' : '') + '; etapa: ' + esc(ppg.etapa.toLowerCase()) + '.</span></li>'); }
+  // Presupuesto Participativo va en su propia hoja, al final
   types.forEach(function (t) {
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t), byB = countBy(tp);
     var zero = byB.filter(function (x) { return !x.n; }).length;
@@ -1039,10 +1069,11 @@ function buildFicha() {
   var cover = '<div class="cover-full"><div class="cv-top"><img class="cv-logo" src="img/logo.svg" alt="Qué hicimos en los barrios · Fichas técnicas"><img class="cv-city" src="img/ciudad-smt.png" alt="Ciudad SMT"></div>' +
     '<div class="cv-panel"><span class="cv-pill">Ficha técnica</span><div class="cv-title"><h1>' + esc(d.name) + '</h1><p>' + nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales · ' +
     (SOURCE.sample ? 'datos de ejemplo' : 'actualizada al ' + SOURCE.when.toLocaleDateString("es-AR")) + '</p></div>' +
-    '<ul class="cv-list"><li>Plano del ' + zw(d) + '</li><li>Síntesis ejecutiva</li><li>Resumen del ' + zw(d) + '</li>' + (ppx ? '<li>Presupuesto Participativo ' + ppx.edicion + '</li>' : '') + '<li>Intervenciones por tipo</li></ul>' +
+    '<ul class="cv-list' + (d.kind === "distrito" ? ' tight' : '') + '"><li>Plano del ' + zw(d) + '</li>' + (d.kind === "distrito" ? '<li>Circuitos electorales del distrito</li>' : '') + '<li>Síntesis ejecutiva</li><li>Resumen del ' + zw(d) + '</li><li>Intervenciones por tipo</li>' + (ppx ? '<li>Presupuesto Participativo ' + ppx.edicion + '</li>' : '') + '</ul>' +
     '<div class="cv-foot"><div><b>Subsecretaría de Gestión Estratégica</b><br>Secretaría General</div><div class="r"><b>' + esc(my.charAt(0).toUpperCase() + my.slice(1)) + '</b><br>' + esc(CFG.organismo) + '</div></div></div></div>';
   var plano = planoPage(d), pp = ppPage(d);
-  pages = [cover, plano].concat(pages.slice(nBefore), [pages[0]], pp || [], pages.slice(1, nBefore));
+  // orden: portada, plano, (circuitos del distrito), síntesis, resumen, tipos y, al final, Presupuesto Participativo
+  pages = [cover, plano].concat(circuitPages(d), pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore), pp || []);
 
   $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner, d); }).join("");
   $("viewer-title").textContent = "Ficha técnica · " + d.name;

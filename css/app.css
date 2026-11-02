@@ -344,3 +344,31 @@ table.t.ctab tr.tot td { font-weight: 700; border-top: 1.5px solid var(--paper-i
 .zone-seg { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 10px; }
 .pp-legend .lg-cline { width: 20px; height: 0; border-top: 2px dashed #e4002b; }
 table.t.ctab.tight td, table.t.ctab.tight th { padding-top: 3px; padding-bottom: 3px; font-size: 12.5px; }
+.cv-list.tight li { padding: 7px 0; font-size: 17px; }
+/* ficha por distrito: tarjetas de circuitos electorales */
+.cc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cc-card { border: 1px solid var(--paper-line); border-top: 4px solid var(--paper-blue); border-radius: 10px; padding: 9px 11px 8px; }
+.cc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cc-head b { font-family: var(--f-display); font-size: 17px; font-weight: 800; color: var(--paper-ink); }
+.cc-head span { font-size: 11px; color: var(--paper-muted); text-align: right; }
+.cc-kpi { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 5px 0 2px; padding: 5px 9px; background: var(--paper-soft); border-radius: 8px; font-size: 12px; color: var(--paper-ink); }
+.cc-kpi span { white-space: nowrap; }
+.cc-kpi b { font-size: 16px; font-weight: 800; color: var(--paper-blue); }
+.cc-sub { font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--paper-muted); margin: 6px 0 2px; }
+.cc-row { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; align-items: center; padding: 3px 0; border-top: 1px solid var(--paper-soft); line-height: 1.2; }
+.cc-row .el-pos { font-size: 13px; }
+.cc-row .el-main b { display: block; font-size: 11.5px; line-height: 1.2; }
+.cc-row .el-main small { display: block; font-size: 10.5px; line-height: 1.2; color: var(--paper-muted); }
+.cc-v { text-align: right; white-space: nowrap; }
+.cc-v b { font-size: 13px; font-weight: 800; color: var(--paper-blue); }
+.cc-v small { font-size: 10px; color: var(--paper-muted); }
+.cc-total { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cc-total > div { background: var(--paper-blue); border-radius: 14px; padding: 11px 15px; color: #fff; }
+.cc-total > div b { display: block; font-family: var(--f-display); font-size: 28px; font-weight: 800; line-height: 1.05; }
+.cc-total > div span { font-size: 12.5px; font-weight: 700; }
+.cc-total p { grid-column: 1 / -1; margin: 0; font-size: 12px; color: var(--paper-muted); }
+.pp-pills { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pp-estado { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #fff3a6; color: #5c4d00; border: 1px solid #e0c400; }
+.pp-estado.s3 { background: #ffe0b3; color: #6b3a00; border-color: #f0a040; }
+.pp-estado.s4 { background: #cdeccd; color: #1f5a1f; border-color: #7cc27c; }
+.pp-estado.s0 { background: #eef1f3; color: var(--paper-muted); border-color: var(--paper-line); }
