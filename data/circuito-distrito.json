@@ -1,0 +1,193 @@
+{
+ "_ayuda": "Distrito de Presupuesto Participativo que más superficie comparte con cada circuito electoral (coincidencia en % del área del circuito). Calculado cruzando DISTRITOS TODOS.geojson con circuitos.geojson.",
+ "circuitos": {
+  "Circuito 14": {
+   "distrito": 8,
+   "coincidencia": 96
+  },
+  "Circuito 14 D": {
+   "distrito": 7,
+   "coincidencia": 69
+  },
+  "Circuito 14C": {
+   "distrito": 7,
+   "coincidencia": 95
+  },
+  "Circuito 14B": {
+   "distrito": 7,
+   "coincidencia": 94
+  },
+  "Circuito 14A": {
+   "distrito": 7,
+   "coincidencia": 97
+  },
+  "Circuito 11A": {
+   "distrito": 11,
+   "coincidencia": 96
+  },
+  "Circuito 11": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 10": {
+   "distrito": 11,
+   "coincidencia": 87
+  },
+  "Circuito 10A": {
+   "distrito": 16,
+   "coincidencia": 95
+  },
+  "Circuito 9": {
+   "distrito": 15,
+   "coincidencia": 100
+  },
+  "Circuito 9A": {
+   "distrito": 15,
+   "coincidencia": 73
+  },
+  "Circuito 20": {
+   "distrito": 15,
+   "coincidencia": 51
+  },
+  "Circuito 21": {
+   "distrito": 19,
+   "coincidencia": 35
+  },
+  "Circuito 22": {
+   "distrito": 20,
+   "coincidencia": 88
+  },
+  "Circuito 3": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 4": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 1A": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 2A": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 1": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 2": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 5": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 6": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 12": {
+   "distrito": 6,
+   "coincidencia": 86
+  },
+  "Circuito 13": {
+   "distrito": 5,
+   "coincidencia": 93
+  },
+  "Circuito 12A": {
+   "distrito": 6,
+   "coincidencia": 83
+  },
+  "Circuito 13A": {
+   "distrito": 5,
+   "coincidencia": 100
+  },
+  "Circuito 15A": {
+   "distrito": 4,
+   "coincidencia": 99
+  },
+  "Circuito 15": {
+   "distrito": 4,
+   "coincidencia": 99
+  },
+  "Circuito 7A": {
+   "distrito": 10,
+   "coincidencia": 99
+  },
+  "Circuito 7": {
+   "distrito": 10,
+   "coincidencia": 99
+  },
+  "Circuito 8": {
+   "distrito": 10,
+   "coincidencia": 100
+  },
+  "Circuito 8A": {
+   "distrito": 10,
+   "coincidencia": 99
+  },
+  "Circuito 19": {
+   "distrito": 14,
+   "coincidencia": 96
+  },
+  "Circuito 19A": {
+   "distrito": 14,
+   "coincidencia": 100
+  },
+  "Circuito 15B": {
+   "distrito": 2,
+   "coincidencia": 34
+  },
+  "Circuito 16": {
+   "distrito": 3,
+   "coincidencia": 48
+  },
+  "Circuito 16A": {
+   "distrito": 1,
+   "coincidencia": 92
+  },
+  "Circuito 17A": {
+   "distrito": 9,
+   "coincidencia": 100
+  },
+  "Circuito 17": {
+   "distrito": 9,
+   "coincidencia": 100
+  },
+  "Circuito 18": {
+   "distrito": 9,
+   "coincidencia": 100
+  },
+  "Circuito 18A": {
+   "distrito": 12,
+   "coincidencia": 98
+  },
+  "Circuito 18B": {
+   "distrito": 12,
+   "coincidencia": 98
+  },
+  "Circuito 18F": {
+   "distrito": 17,
+   "coincidencia": 98
+  },
+  "Circuito 18C": {
+   "distrito": 13,
+   "coincidencia": 99
+  },
+  "Circuito 18D": {
+   "distrito": 13,
+   "coincidencia": 99
+  },
+  "Circuito 18E": {
+   "distrito": 13,
+   "coincidencia": 100
+  },
+  "Circuito 18G": {
+   "distrito": 17,
+   "coincidencia": 51
+  }
+ }
+}
