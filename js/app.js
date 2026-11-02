@@ -701,6 +701,8 @@ function paintMap(c, P, district, pts, opts, tiles) {
     });
     ctx.textBaseline = "alphabetic";
   } else if (!opts.noLabels) district.barrios.forEach(function (b) {
+    // mapa de un tipo: solo los barrios que recibieron esa intervención, así nombres e íconos no se pisan
+    if (opts.onlyBarrios && !opts.onlyBarrios.has(b.id)) return;
     var q = P(b.labels[district.id] || b.label);
     ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineWidth = 3.5; ctx.strokeText(b.name.toUpperCase(), q[0], q[1]);
     ctx.fillStyle = PAPER.navy; ctx.fillText(b.name.toUpperCase(), q[0], q[1]);
@@ -983,7 +985,7 @@ function buildFicha() {
       return '<tr><td><span class="bn">' + esc(x.b.name) + '</span></td><td class="barcell"><div class="hbar" style="width:' + (x.n / maxB * 100) + '%;background:' + t.color + '"></div></td><td class="r"><b>' + x.n + '</b></td>' + (line ? '<td class="r">' + fmt.format(Math.round(x.m)) + '</td>' : '') + pct + '</tr>';
     }).join("") + (byB.length > MAXROWS ? '<tr><td colspan="' + ncols + '" class="more">y ' + (byB.length - MAXROWS) + ' barrios más con menos intervenciones</td></tr>' : '');
     var thead = subs
-      ? '<th>Barrio</th>' + subs.map(function (u) { return '<th class="r sub"><i style="background:' + u.color + '"></i>' + esc(u.name) + '</th>'; }).join("") + '<th class="r">Total</th><th class="r">Participación</th>'
+      ? '<th>Barrio</th>' + subs.map(function (u) { return '<th class="r sub"><i style="background:' + u.color + '"></i>' + esc(u.name) + '</th>'; }).join("") + '<th class="r">Total</th><th class="r">%</th>'
       : '<th>Barrio</th><th></th><th class="r">' + (line ? 'Cuadras' : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">Participación</th>';
     var legend = subs ? '<div class="sh-legend sub-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + ' (' + tp.filter(function (p) { return p.sub === u.name; }).length + ')</span>'; }).join("") + '</div>' : '';
     var mapH = shown.length > 8 ? 570 : shown.length > 4 ? 720 : 855;
@@ -991,10 +993,10 @@ function buildFicha() {
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
-        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: (tp.length / dpts.length < 0.005 ? '&lt;1' : Math.round(tp.length / dpts.length * 100)) + '<small>%</small>', l: "Del total del " + zw(d) }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
+        : [{ v: fmt.format(tp.length), l: "Intervenciones" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
       '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
-      '<p class="tnote">Participación: qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
+      '<p class="tnote">' + (subs ? '%' : 'Participación') + ': qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
       '</div>');
 
     if (!$("opt-list").checked) return;
@@ -1060,7 +1062,7 @@ function buildFicha() {
   pages.push(band(d, "Síntesis ejecutiva", "Lo principal de " + esc(d.name) + " en una hoja") +
     '<div class="body"><div class="syn-head"><div class="locator"><canvas data-locator="1" width="440" height="330"></canvas><p>' + esc(d.name) + ' dentro de la ciudad</p></div>' + keyTiles + '</div><div><h3 class="sh-h3">Lectura rápida</h3><ul class="findings">' + findings.join("") + '</ul></div></div>');
   pages.push(band(d, "Síntesis ejecutiva · por barrio", "Qué barrios concentran más intervenciones según el tipo" + (tot.filter(function (x) { return x.n; }).length > MAXBARS ? " · " + MAXBARS + " barrios con más intervenciones" : "")) +
-    '<div class="body"><div><h3 class="sh-h3">Intervenciones por barrio y tipo</h3><canvas data-chart="stack" width="684" height="' + stackH + '"></canvas></div>' +
+    '<div class="body"><div><h3 class="sh-h3">Intervenciones por barrio y tipo</h3><canvas data-chart="stack" width="636" height="' + stackH + '"></canvas></div>' +
     (many ? '' : '<div><h3 class="sh-h3">Cuadro por barrio y tipo</h3>' + heat + '</div>') + '</div>');
   if (many) pages.push(band(d, "Cuadro por barrio y tipo", "Cantidad de intervenciones de cada tipo en cada barrio. El color más intenso marca dónde se concentra cada tipo.") + '<div class="body">' + heat + '</div>');
 
@@ -1092,7 +1094,8 @@ function buildFicha() {
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
     var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
     if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4, overlay: d.kind === "distrito" ? ZONES.circuito : null })); return; }
-    draws.push(drawMap(cv, d, k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; }), { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null }));
+    var tps = k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; });
+    draws.push(drawMap(cv, d, tps, { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null, onlyBarrios: k === "all" ? null : new Set(tps.map(function (p) { return p.barrio; })) }));
   });
   $("sheets").querySelectorAll("canvas[data-pp]").forEach(function (cv) { draws.push(drawPPMap(cv, d, ppOf(d))); });
   fichaReady = Promise.all(draws);

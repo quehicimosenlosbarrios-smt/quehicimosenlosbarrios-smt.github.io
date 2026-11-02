@@ -372,3 +372,9 @@ table.t.ctab.tight td, table.t.ctab.tight th { padding-top: 3px; padding-bottom:
 .pp-estado.s3 { background: #ffe0b3; color: #6b3a00; border-color: #f0a040; }
 .pp-estado.s4 { background: #cdeccd; color: #1f5a1f; border-color: #7cc27c; }
 .pp-estado.s0 { background: #eef1f3; color: var(--paper-muted); border-color: var(--paper-line); }
+/* cuadro por subgrupo (p. ej. Mapa verde): columnas fijas para que no se salga de la hoja */
+table.t.bysub { table-layout: fixed; font-size: 13px; }
+table.t.bysub th:first-child { width: 30%; }
+table.t.bysub th, table.t.bysub td { padding-left: 4px; padding-right: 4px; }
+table.t.bysub th.sub { white-space: normal; font-size: 11px; line-height: 1.25; vertical-align: bottom; }
+table.t.bysub .bn { max-width: none; }
