@@ -378,3 +378,7 @@ table.t.bysub th:first-child { width: 30%; }
 table.t.bysub th, table.t.bysub td { padding-left: 4px; padding-right: 4px; }
 table.t.bysub th.sub { white-space: normal; font-size: 11px; line-height: 1.25; vertical-align: bottom; }
 table.t.bysub .bn { max-width: none; }
+/* plano: mismos colores que el mapa (barrios en celeste, circuitos en rojo) */
+.sh-h3.dot-blue::before { background: #0b63f6; opacity: .55; }
+.sh-h3.dot-red::before { background: #e4002b; }
+.blist li::marker { color: var(--paper-ink); }
