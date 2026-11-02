@@ -46,8 +46,9 @@ window.APP_CONFIG = {
       "Bolsones":            { color: "#3d1a5b", dibujo: "bolsa" },
       "Totem solar":         { color: "#d9b3ec", dibujo: "sol" } } },
     // sin ícono en el documento: colores definidos para que no se repitan
-    "El gas llega a tu casa": { color: "#8d5a2b", dibujo: "llama" },
-    "EDUCÁ":                 { color: "#0f8b8d", dibujo: "libro" },
+    // "unidad": cómo se cuenta esa intervención en la ficha (si falta, "intervenciones")
+    "El gas llega a tu casa": { color: "#8d5a2b", dibujo: "llama", unidad: "domicilios" },
+    "EDUCÁ":                 { color: "#0f8b8d", dibujo: "libro", unidad: "instituciones visitadas" },
     "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel" }
   },
 
