@@ -9,7 +9,8 @@ Fuentes (sitio oficial, datos abiertos):
     etapa de la obra (licitación, adjudicada, en obra, finalizada), la última
     novedad y el enlace a la nota de prensa.
 
-Escribe data/presupuesto-participativo-AAAA.json con un ganador por distrito.
+Escribe data/presupuesto-participativo-AAAA.json con un ganador por distrito y los
+3 proyectos más votados de cada uno (el sitio publica los votos en /api/proyectos).
 La ficha técnica lo cruza con data/circuito-distrito.json para mostrar en cada
 circuito el proyecto del distrito con el que comparte más superficie.
 
@@ -82,6 +83,12 @@ def main():
     edicion = sys.argv[1] if len(sys.argv) > 1 else "2025"
     api = json.loads(bajar(f"{SITIO}/api/proyectos?edicion={edicion}"))
     obras = etapas(bajar(f"{SITIO}/transparencia?edicion={edicion}"))
+    # los 3 proyectos más votados de cada distrito (para el gráfico de la ficha)
+    por_distrito = {}
+    for p in api["proyectos"]:
+        if p.get("distrito") is None or (not p.get("ganador") and not p.get("votos")):
+            continue
+        por_distrito.setdefault(int(p["distrito"]), []).append(p)
     ganadores = {}
     for p in api["proyectos"]:
         if not p.get("ganador"):
@@ -99,12 +106,15 @@ def main():
             "ubicacion_aproximada": bool(p.get("ubicacion_aproximada")),
             "url": SITIO + p["url"] if p.get("url") else None,
             "descripcion": descripcion(bajar(SITIO + p["url"])) if p.get("url") else [],
-            "etapa": o.get("etapa") or "Sin información todavía",
+            # el sitio pone "Sin información todavía" cuando la obra no empezó ninguna etapa
+            "etapa": "Sin avance" if not o.get("etapa") or re.match(r"sin informaci", o["etapa"], re.I) else o["etapa"],
             "paso": o.get("paso", 0),
             "actualizado": o.get("actualizado"),
             "novedad": o.get("novedad"),
             "presupuesto_oficial": o.get("presupuesto_oficial"),
             "nota_prensa": o.get("nota_prensa"),
+            "mas_votados": [{"titulo": x["titulo"].strip(), "barrio": x.get("barrio"), "votos": x.get("votos") or 0, "ganador": bool(x.get("ganador"))}
+                            for x in sorted(por_distrito.get(d, []), key=lambda x: (not x.get("ganador"), -(x.get("votos") or 0), x["titulo"]))[:3]],
         }
     if len(ganadores) < 1:
         sys.exit("No se encontraron proyectos ganadores; no se modifica el archivo.")

@@ -27,7 +27,14 @@ ACTUALIZACION = os.path.join(os.path.dirname(SALIDA) or ".", "actualizacion.json
 EXCLUIR_VERIFICADO = {"2"}
 
 COLUMNAS = ["intervencion", "programa", "indicador", "ambito", "estado", "tipo", "verificado", "direccion",
-            "barrio", "latitud", "longitud", "id_cuadra", "id_geogestion", "fecha_verificado"]
+            "barrio", "latitud", "longitud", "id_cuadra", "id_geogestion", "fecha_verificado", "foto"]
+
+# Fotos: de estas intervenciones se baja la primera foto de cada registro, achicada, a img/fotos/
+# (la ficha técnica las muestra con su dirección). GeoGestión las guarda en uploads/img_….jpg
+FOTOS_DE = {x.strip() for x in os.environ.get("FOTOS_DE", "Refugios").split(",") if x.strip()}
+DIR_FOTOS = os.environ.get("DIR_FOTOS", "img/fotos")
+FOTO_RE = re.compile(r"(img_\d+_\d+_[0-9a-f]+\.(?:jpe?g|png|webp))", re.I)
+FOTO_LADO = 640  # px del lado mayor
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -104,6 +111,44 @@ def limpiar_direccion(t):
         calle = partes[num + 1] + " " + partes[num]
         partes = nombre + [calle]
     return re.sub(r"\s+", " ", ", ".join(partes))
+
+
+def bajar_foto(nombre):
+    """Baja uploads/<nombre> con la sesión iniciada y la guarda achicada como JPG. Devuelve el archivo o None."""
+    destino = os.path.join(DIR_FOTOS, os.path.splitext(nombre)[0] + ".jpg")
+    if os.path.exists(destino):
+        return os.path.basename(destino)
+    try:
+        with opener.open(BASE + "/uploads/" + nombre, timeout=60) as r:
+            crudo = r.read()
+    except OSError as e:
+        print("  foto %s: %s" % (nombre, e))
+        return None
+    try:
+        from PIL import Image, ImageOps
+        im = ImageOps.exif_transpose(Image.open(io.BytesIO(crudo))).convert("RGB")
+        im.thumbnail((FOTO_LADO, FOTO_LADO))
+        os.makedirs(DIR_FOTOS, exist_ok=True)
+        im.save(destino, "JPEG", quality=72, optimize=True, progressive=True)
+    except Exception as e:  # sin Pillow o imagen dañada: no se guarda
+        print("  foto %s no se pudo procesar: %s" % (nombre, e))
+        return None
+    return os.path.basename(destino)
+
+
+def diagnostico_fotos(regs, nombre):
+    """Si ningún registro trae el nombre de su foto, muestra (sin valores) dónde podría estar, para ajustar el script."""
+    print("Ningún registro de %s trae el nombre de una foto (img_….jpg)." % nombre)
+    if regs:
+        print("Campos de un registro: " + ", ".join(sorted(regs[0].keys())))
+    try:
+        _, pagina = pedir("")
+        for src in [x for x in re.findall(r'<script[^>]+src="([^"]+)"', pagina) if not x.startswith("http")][:12]:
+            _, js = pedir(src.lstrip("./"))
+            for m in list(re.finditer(r"uploads/|img_|imagen|foto", js))[:6]:
+                print("  %s: …%s…" % (src, js[max(0, m.start() - 120):m.end() + 120].replace("\n", " ")))
+    except Exception as e:
+        print("  sin diagnóstico: %s" % e)
 
 
 def coord(v, limite=180):
@@ -210,9 +255,11 @@ def main():
         if lat is None or lng is None:
             descartadas += 1
             continue
+        fotos = FOTO_RE.findall(json.dumps(p)) if b["intervencion"] in FOTOS_DE else []
         filas.append(dict(b, direccion=limpiar_direccion(" ".join(filter(None, [str(p.get("dirección") or p.get("direccion") or "").strip(), str(p.get("numeracion") or "").strip()]))),
                           barrio=p.get("barrio_nombre") or "", latitud=lat, longitud=lng,
-                          id_cuadra="", id_geogestion=p.get("orden_punto") or p.get("id_punto") or ""))
+                          id_cuadra="", id_geogestion=p.get("orden_punto") or p.get("id_punto") or "",
+                          foto=fotos[0] if fotos else "", _reg=p))
 
     for l in datos.get("lineas") or []:
         b = entra(l)
@@ -241,6 +288,18 @@ def main():
     # Si no queda nada para publicar no se pisa el archivo anterior
     if not filas:
         sys.exit("Ningún registro coincide con %s; no se modifica %s." % (FILTRO, SALIDA))
+
+    # fotos: se bajan solo las nuevas; en el CSV queda el archivo guardado en img/fotos
+    for k in FOTOS_DE:
+        con = [f for f in filas if f["intervencion"] == k]
+        if con and not any(f.get("foto") for f in con):
+            diagnostico_fotos([f["_reg"] for f in con], k)
+        nuevas = sum(1 for f in con if f.get("foto") and not os.path.exists(os.path.join(DIR_FOTOS, os.path.splitext(f["foto"])[0] + ".jpg")))
+        for f in con:
+            f["foto"] = (bajar_foto(f["foto"]) or "") if f.get("foto") else ""
+        print("Fotos de %s: %d de %d registros (%d nuevas)." % (k, sum(1 for f in con if f["foto"]), len(con), nuevas))
+    for f in filas:
+        f.pop("_reg", None)
 
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=COLUMNAS, lineterminator="\n")

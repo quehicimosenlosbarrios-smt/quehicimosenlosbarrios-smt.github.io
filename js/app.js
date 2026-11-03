@@ -30,6 +30,11 @@ var ICONS = {
   reciclar:"M9.2 3.5h5.6l2.6 4.5 1.8-1 -1.2 5-5-1.2 1.8-1L13 6.5h-2L9.4 9.3 6.8 7.8zM4.4 12.2l2.6-1.5 1.6 2.8L10.2 16v-2l4.6 3.4-4.6 3.4v-2H7.4L4.5 15.6zM19.6 12.2l-2.6 4.4h-3.4v3h3.8l2.8-4.8 1.8 1-.8-5.2-4.8 1.6z",
   bolsa:   "M7 8V7a5 5 0 0 1 10 0v1h3l-1 13H5L4 8zm2 0h6V7a3 3 0 0 0-6 0z",
   sol:     "M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM11 1h2v4h-2zM11 19h2v4h-2zM1 11h4v2H1zM19 11h4v2h-4zM4.2 5.6l1.4-1.4 2.8 2.8L7 8.4zM15.6 17l1.4-1.4 2.8 2.8-1.4 1.4zM4.2 18.4l2.8-2.8 1.4 1.4-2.8 2.8zM15.6 7l2.8-2.8 1.4 1.4L17 8.4z",
+  // íconos de los indicadores de la síntesis
+  herram:  "M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z",
+  casas:   "M1 21.5V10l7-5.5 7 5.5v11.5h-4.6v-5.8H5.6v5.8zM16.6 21.5V9.3L11.5 5.3 14 3.3l8.5 6.6v11.6z",
+  urna:    "M18 13h-.68l-2 2h1.91L19 17H5l1.78-2h2.05l-2-2H6l-3 3v4c0 1.1.89 2 1.99 2H19c1.1 0 2-.89 2-2v-4l-3-3zm-1-5.05l-4.95 4.95-3.54-3.54 4.95-4.95L17 7.95zm-4.24-5.66L6.39 8.66c-.39.39-.39 1.02 0 1.41l4.95 4.95c.39.39 1.02.39 1.41 0l6.36-6.36c.39-.39.39-1.02 0-1.41L14.16 2.3c-.38-.4-1.01-.4-1.4-.01z",
+  escuela: "M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z",
   pin:     "M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 4.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4z"
 };
 var RULES = [
@@ -185,7 +190,7 @@ function loadEstilos() {
   Object.keys(CFG.estilos || {}).forEach(function (k) {
     var e = CFG.estilos[k], subs = {};
     Object.keys(e.subgrupos || {}).forEach(function (s) { subs[norm(s)] = e.subgrupos[s]; });
-    ESTILO[norm(k)] = { color: e.color, icono: e.icono, dibujo: e.dibujo, unidad: e.unidad || null, subgrupos: e.subgrupos ? subs : null };
+    ESTILO[norm(k)] = { color: e.color, icono: e.icono, dibujo: e.dibujo, tinta: e.tinta || null, unidad: e.unidad || null, subgrupos: e.subgrupos ? subs : null };
   });
 }
 function buildTypes(names) {
@@ -194,7 +199,7 @@ function buildTypes(names) {
   TYPES = names.map(function (n) {
     var k = norm(n), rule = RULES.filter(function (r) { return r.re.test(k); })[0];
     var e = ESTILO[k] || {};
-    return { id: "t" + k.replace(/[^a-z0-9]+/g, "-"), name: n, icon: e.dibujo || (rule ? rule.icon : "pin"), img: e.icono || null, estiloSubs: e.subgrupos || null, unidad: e.unidad || null,
+    return { id: "t" + k.replace(/[^a-z0-9]+/g, "-"), name: n, icon: e.dibujo || (rule ? rule.icon : "pin"), img: e.icono || null, estiloSubs: e.subgrupos || null, unidad: e.unidad || null, ink: e.tinta || null,
       color: e.color || (rule ? rule.color : SPARE[used++ % SPARE.length]) };
   });
   // orden fijo por prioridad (config.js); lo que no está en la lista va al final, por nombre
@@ -229,7 +234,7 @@ function buildItems(rows, headers) {
     var tk = norm(tname);
     if (!typeSeen[tk]) { typeSeen[tk] = tname; typeNames.push(tname); }
     var sc = SPLIT[tk] ? findCol(headers, [SPLIT[tk]]) : null;
-    var row = { tname: typeSeen[tk], sub: sc ? String(r[sc] || "").trim() || "Sin especificar" : "", dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat] };
+    var row = { tname: typeSeen[tk], sub: sc ? String(r[sc] || "").trim() || "Sin especificar" : "", foto: C.foto ? String(r[C.foto] || "").trim() : "", dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat] };
     var cid = C.cuadra ? String(r[C.cuadra] || "").trim() : "";
     if (cid) { (lines[cid] = lines[cid] || []).push(row); } else items.push(row);
   });
@@ -248,7 +253,7 @@ function buildItems(rows, headers) {
     var loc = locate(it.pt, it.barrioText);
     if (!loc.district) { unlocated++; return; }
     var zd = ZONES.distrito.length ? featureAt(it.pt, ZONES.distrito, 500) : null;
-    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, zc: loc.district.id, zd: zd ? zd.id : null, district: MODE === "distrito" ? (zd ? zd.id : null) : loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
+    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, foto: it.foto || "", dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, zc: loc.district.id, zd: zd ? zd.id : null, district: MODE === "distrito" ? (zd ? zd.id : null) : loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
   });
   SOURCE.skipped = skipped; SOURCE.unlocated = unlocated;
   // subgrupos de cada tipo, de mayor a menor; el primero conserva el color del tipo
@@ -261,8 +266,8 @@ function buildItems(rows, headers) {
     var ns = 0;
     t.subs = names.length > 1 ? names.map(function (x, i) {
       var e = t.estiloSubs && t.estiloSubs[norm(x)];
-      if (e) return { name: x, color: e.color, img: e.icono || null, icon: e.dibujo || t.icon };
-      return { name: x, color: i || t.estiloSubs ? pal[ns++ % pal.length] : t.color, img: null, icon: t.icon };
+      if (e) return { name: x, color: e.color, img: e.icono || null, icon: e.dibujo || t.icon, ink: e.tinta || t.ink };
+      return { name: x, color: i || t.estiloSubs ? pal[ns++ % pal.length] : t.color, img: null, icon: t.icon, ink: t.ink };
     }) : null;
     t.splitBy = SPLIT[norm(t.name)] || "";
   });
@@ -353,7 +358,7 @@ var state = { district: "", barrio: "", types: new Set() };
 var DETAIL_ZOOM = 17, dotRenderer = null, focusId = null;
 var map, distLayer, barrLayer, barrLabels, ptLayer, distPolys = {}, barrPolys = {}, cityBounds, bases = {}, markers = {};
 
-function iconSvg(t, size) { return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" aria-hidden="true"><path fill="#fff" fill-rule="evenodd" d="' + ICONS[t.icon] + '"/></svg>'; }
+function iconSvg(t, size) { return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" aria-hidden="true"><path fill="' + (t.ink || '#fff') + '" fill-rule="evenodd" d="' + ICONS[t.icon] + '"/></svg>'; }
 function badge(t, size) {
   if (t.img) return '<span class="badge" style="background:' + t.color + ';width:' + size + 'px;height:' + size + 'px"><img src="' + esc(t.img) + '" width="' + size + '" height="' + size + '" alt=""></span>';
   return '<span class="badge" style="background:' + t.color + ';width:' + size + 'px;height:' + size + 'px">' + iconSvg(t, Math.round(size * 0.66)) + '</span>';
@@ -676,6 +681,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
   district.barrios.forEach(function (b) { tracePolys(ctx, P, b.polys); ctx.stroke(); });
   ctx.restore();
   ctx.setLineDash([]);
+  if (opts.before) { opts.before(ctx, P); ctx.setLineDash([]); }
   tracePolys(ctx, P, district.polys); ctx.strokeStyle = PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
   // ficha por distrito: los circuitos electorales que caen en él
   if (opts.overlay) {
@@ -687,6 +693,8 @@ function paintMap(c, P, district, pts, opts, tiles) {
     if (z) z.circuitos.forEach(function (c) { if (c.del_circuito >= 5 && c.etiqueta) lab[norm(c.circuito)] = c.etiqueta; });
     // se escriben después de los números de barrio, corridos para no taparlos
     var circLabels = opts.overlay.filter(function (o) { return lab[o.key]; }).map(function (o) { return { q: P(lab[o.key]), t: "C. " + o.name.replace(/^circuito\s*/i, "") }; });
+  } else if (opts.numbered && district.kind === "circuito") {
+    circLabels = [{ q: P(district.label), t: "Circuito " + district.name.replace(/^circuito\s*/i, ""), big: true }];
   }
   ctx.font = "600 " + (opts.labelSize || 12) + "px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
   // nombres de barrios debajo de las intervenciones, así las marcas quedan siempre a la vista
@@ -706,16 +714,18 @@ function paintMap(c, P, district, pts, opts, tiles) {
       var hit = function (a, b) { return Math.abs(a.x - b.x) * 2 < a.w + b.w && Math.abs(a.y - b.y) * 2 < a.h + b.h; };
       var offs = [[0, 0], [0, 20], [0, -20], [34, 0], [-34, 0], [0, 38], [0, -38], [30, 22], [-30, 22], [30, -22], [-30, -22], [0, 56], [0, -56]];
       circLabels.forEach(function (c) {
-        var w = ctx.measureText(c.t).width + 12, box = null;
+        ctx.font = "700 " + (c.big ? 14 : 12) + "px Poppins, Arial, sans-serif";
+        var hh = c.big ? 24 : 18, w = ctx.measureText(c.t).width + (c.big ? 18 : 12), box = null;
         for (var k = 0; k < offs.length && !box; k++) {
-          var cand = { x: c.q[0] + offs[k][0], y: c.q[1] + offs[k][1], w: w, h: 18 };
+          var cand = { x: c.q[0] + offs[k][0], y: c.q[1] + offs[k][1], w: w, h: hh };
           if (!taken.some(function (t) { return hit(t, cand); })) box = cand;
         }
-        box = box || { x: c.q[0], y: c.q[1] + 20, w: w, h: 18 };
+        box = box || { x: c.q[0], y: c.q[1] + 20, w: w, h: hh };
         taken.push(box);
-        ctx.beginPath(); ctx.roundRect(box.x - w / 2, box.y - 9, w, 18, 9);
-        ctx.fillStyle = "#ffffff"; ctx.fill(); ctx.strokeStyle = "#e4002b"; ctx.lineWidth = 1.2; ctx.stroke();
-        ctx.fillStyle = "#e4002b"; ctx.fillText(c.t, box.x, box.y + 1);
+        ctx.beginPath(); ctx.roundRect(box.x - w / 2, box.y - hh / 2, w, hh, hh / 2);
+        // el del propio circuito va lleno de rojo; los de los circuitos dentro de un distrito, blancos con borde rojo
+        ctx.fillStyle = c.big ? "#e4002b" : "#ffffff"; ctx.fill(); ctx.strokeStyle = c.big ? "#ffffff" : "#e4002b"; ctx.lineWidth = c.big ? 2 : 1.2; ctx.stroke();
+        ctx.fillStyle = c.big ? "#ffffff" : "#e4002b"; ctx.fillText(c.t, box.x, box.y + 1);
       });
     }
     ctx.textBaseline = "alphabetic";
@@ -748,7 +758,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
     if (dense) return;
     var k = (r * 1.32) / 24;
     ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 12 * k); ctx.scale(k, k);
-    ctx.fillStyle = "#ffffff"; ctx.fill(new Path2D(ICONS[t.icon]), "evenodd"); ctx.restore();
+    ctx.fillStyle = t.ink || "#ffffff"; ctx.fill(new Path2D(ICONS[t.icon]), "evenodd"); ctx.restore();
   });
   ctx.textAlign = "center";
   if (tiles) { ctx.font = "9px Poppins, Arial, sans-serif"; ctx.textAlign = "right"; ctx.fillStyle = "rgba(255,255,255,.8)"; ctx.fillRect(Wd - 205, Hd - 15, 205, 15); ctx.fillStyle = PAPER.muted; ctx.fillText("Mapa base © Esri, HERE, Garmin, © OpenStreetMap", Wd - 5, Hd - 4); }
@@ -830,7 +840,7 @@ function sheetShell(pageNo, total, inner, d) {
   // una hoja puede traer su propia fuente al principio: <!--fuente:...-->
   var own = inner.match(/^<!--fuente:(.*?)-->/);
   if (own) src = own[1];
-  return '<article class="sheet"><div class="pg-head"><span class="ph-sec"><b>Ficha técnica</b> ' + esc(d.name) + '</span><span class="ph-org"><img src="img/ciudad-smt.png" alt="Ciudad SMT"><i></i><b>Subsecretaría de<br>Gestión Estratégica</b></span></div>' +
+  return '<article class="sheet"><div class="pg-head"><span class="ph-sec"><small>Ficha técnica</small><b class="ph-zone">' + esc(d.name) + '</b></span><span class="ph-org"><img src="img/ciudad-smt.png" alt="Ciudad SMT"><i></i><b>Subsecretaría de<br>Gestión Estratégica</b></span></div>' +
     '<div class="side"><div class="rot"><span class="s-top">' + esc(monthYear()) + '</span><span class="s-bot"><b>Ficha técnica</b> – ' + esc(CFG.organismo.replace(/^Municipalidad de /i, "Ciudad de ")) + '</span></div></div>' +
     '<div class="frame">' + inner + '<div class="foot"><span><b>Fuente:</b> ' + esc(src) + ' <b>Elaboración:</b> Subsecretaría de Gestión Estratégica.</span><span class="pg">' + String(pageNo).padStart(2, "0") + ' / ' + String(total).padStart(2, "0") + '</span></div></div></article>';
 }
@@ -847,8 +857,10 @@ function band(d, title, sub, opts) {
     (opts.type ? '<div class="tline">' + badge(opts.type, opts.cls === 'slim' ? 32 : 42) + '<h2>' + titleHTML(title, true) + '</h2></div>' : '<h2>' + titleHTML(title) + '</h2>') +
     (sub ? '<p>' + sub + '</p>' : '') + '</div>';
 }
-function tiles(list, cls) { return '<div class="tiles' + (cls ? ' ' + cls : '') + '">' + list.map(function (x) { return '<div class="tile' + (x.txt ? ' txt' : '') + '"><b>' + x.v + '</b><span>' + x.l + '</span></div>'; }).join("") + '</div>'; }
+function tiles(list, cls) { return '<div class="tiles' + (cls ? ' ' + cls : '') + '">' + list.map(function (x) { return '<div class="tile' + (x.txt ? ' txt' : '') + (x.ic ? ' ic' : '') + '">' + (x.ic ? '<i class="kic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="' + ICONS[x.ic] + '"/></svg></i>' : '') + '<b>' + x.v + '</b><span>' + x.l + '</span></div>'; }).join("") + '</div>'; }
 
+// Fuerza Republicana se distingue en morado; las demás listas quedan en azul
+function frCls(l) { return /fuerza\s+republicana/i.test(l.nombre) ? ' fr' : ''; }
 function titleCase(t) { return String(t).toLowerCase().replace(/(^|[\s(."'-])(\S)/g, function (m, a, b) { return a + b.toUpperCase(); }); }
 // hoja del plano: el circuito con sus barrios numerados, el listado de barrios y las 3 listas más votadas a concejal (2023)
 function planoPage(d) {
@@ -857,7 +869,7 @@ function planoPage(d) {
   var blist = '<ol class="blist' + (nb > 24 ? ' c3' : nb > 8 ? ' c2' : '') + '">' + d.barrios.map(function (b) { return '<li>' + esc(b.name) + '</li>'; }).join("") + '</ol>';
   var elec = c ? '<div class="elec">' + c.listas.map(function (l, i) {
     var pct = l.votos / c.total * 100;
-    return '<div class="el-row"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small><div class="el-bar"><i style="width:' + (pct / (c.listas[0].votos / c.total * 100) * 100).toFixed(1) + '%"></i></div></div>' +
+    return '<div class="el-row' + frCls(l) + '"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small><div class="el-bar"><i style="width:' + (pct / (c.listas[0].votos / c.total * 100) * 100).toFixed(1) + '%"></i></div></div>' +
       '<div class="el-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b><small>' + fmt.format(l.votos) + ' votos</small></div></div>';
   }).join("") + '<p class="tnote">Porcentaje sobre ' + fmt.format(c.total) + ' votos a listas de concejales en el circuito (no incluye blancos ni nulos). Elecciones municipales 2023.</p></div>'
     : '<p class="tnote">No hay resultados electorales cargados para este circuito.</p>';
@@ -903,7 +915,7 @@ function circuitPages(d) {
     var key = norm(x.circuito), e = ELECTORES[key], c = CONCEJALES[key];
     var lists = c ? c.listas.map(function (l, i) {
       var pct = l.votos / c.total * 100;
-      return '<div class="cc-row"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small></div><div class="cc-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b> <small>' + fmt.format(l.votos) + '</small></div></div>';
+      return '<div class="cc-row' + frCls(l) + '"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small></div><div class="cc-v"><b>' + pct.toFixed(1).replace(".", ",") + '%</b> <small>' + fmt.format(l.votos) + '</small></div></div>';
     }).join("") : '<p class="tnote">Sin resultados electorales cargados.</p>';
     return '<div class="cc-card"><div class="cc-head"><b>' + esc(x.circuito) + '</b><span>' + x.del_circuito + '% en el distrito</span></div>' +
       '<div class="cc-kpi"><span><b>' + (e ? fmt.format(e.electores) : '–') + '</b> electores</span><span><b>' + (e ? e.escuelas : '–') + '</b> ' + (e && e.escuelas === 1 ? 'escuela donde se vota' : 'escuelas donde se vota') + '</span></div>' +
@@ -926,6 +938,18 @@ function circuitPages(d) {
 var PP_PASOS = ["Licitación", "Adjudicada", "En obra", "Finalizada"];
 function ppDesc(g) { return (g.descripcion || []).map(function (s) { return '<section><h5>' + esc(s.titulo) + '</h5>' + s.parrafos.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join("") + '</section>'; }).join(""); }
 function ppDescLen(g) { return (g.descripcion || []).reduce(function (a, s) { return a + 60 + s.parrafos.reduce(function (b, t) { return b + t.length + 40; }, 0); }, 0); }
+function ppEtapa(g) { return /^sin informaci/i.test(g.etapa || "") || !g.etapa ? "Sin avance" : g.etapa.replace(/ todavía$/, ""); }
+// gráfico de barras con los proyectos más votados del distrito (votos publicados por el sitio)
+function ppVotos(g, num) {
+  var mv = (g.mas_votados || []).filter(function (v) { return v.votos > 0; });
+  if (!mv.length) return '';
+  var max = Math.max.apply(null, mv.map(function (v) { return v.votos; }));
+  return '<div><h3 class="sh-h3">' + (mv.length === 1 ? 'Proyecto más votado' : 'Los ' + mv.length + ' proyectos más votados') + ' del Distrito ' + num + '</h3><div class="pp-votes">' +
+    mv.map(function (v, i) {
+      return '<div class="pv-row' + (v.ganador ? ' win' : '') + '"><span class="pv-pos">' + (i + 1) + '°</span><span class="pv-t">' + esc(v.titulo) + (v.ganador ? ' <em>Ganador</em>' : '') + '</span>' +
+        '<span class="pv-bar"><i style="width:' + Math.max(1.5, v.votos / max * 100).toFixed(1) + '%"></i></span><span class="pv-v"><b>' + fmt.format(v.votos) + '</b> ' + (v.votos === 1 ? 'voto' : 'votos') + '</span></div>';
+    }).join("") + '</div>' + (mv.length < 3 ? '<p class="tnote">En este distrito solo ' + (mv.length === 1 ? 'este proyecto registró' : 'estos proyectos registraron') + ' votos.</p>' : '') + '</div>';
+}
 var ppSplitFor = null; // zona cuya descripción no entró junto al mapa y va en hoja aparte
 function ppPage(d) {
   var x = ppOf(d);
@@ -944,21 +968,212 @@ function ppPage(d) {
   var desc = ppDesc(g), split = desc && (ppSplitFor === d.id || ppDescLen(g) > 1100);
   var src = '<!--fuente:Presupuesto Participativo SMT, edición ' + x.edicion + ' (presupuestoparticipativo.smt.gob.ar).-->';
   var head = isD
-    ? [{ v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }, { v: String(nCirc), l: nCirc === 1 ? "Circuito electoral en el distrito" : "Circuitos electorales en el distrito" }]
-    : [{ v: String(x.distrito), l: "Distrito" }, { v: x.coincidencia + '<small>%</small>', l: "Del circuito dentro del distrito" }, { v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(g.etapa.replace(/ todavía$/, "")), l: "Estado de la obra", txt: true }];
+    ? [{ v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(ppEtapa(g)), l: "Estado de la obra", txt: true }, { v: String(nCirc), l: nCirc === 1 ? "Circuito electoral en el distrito" : "Circuitos electorales en el distrito" }]
+    : [{ v: String(x.distrito), l: "Distrito" }, { v: x.coincidencia + '<small>%</small>', l: "Del circuito dentro del distrito" }, { v: g.votos ? fmt.format(g.votos) : '–', l: g.votos ? "Votos obtenidos" : "Votos no publicados" }, { v: esc(ppEtapa(g)), l: "Estado de la obra", txt: true }];
   var pin = !hasPt ? '' : g.ubicacion_aproximada ? '<span><i class="lg-pin aprox"></i>Proyecto ganador (ubicación aproximada)</span>' : '<span><i class="lg-pin"></i>Proyecto ganador</span>';
   var descBlock = desc ? '<div><h3 class="sh-h3">Descripción del proyecto</h3><div class="pp-desc' + (split ? ' full' : '') + '">' + desc + '</div></div>' : '';
   var p1 = src + band(d, 'Presupuesto Participativo · ' + x.edicion, 'Proyecto ganador del Distrito ' + x.distrito + ', elegido por los vecinos con su voto') +
     '<div class="body">' + tiles(head) +
     '<div><div class="sh-map"><canvas data-pp="1" width="1372" height="' + (split || !desc ? 760 : 600) + '"></canvas></div>' +
     '<div class="sh-legend pp-legend"><span><i class="lg-circ"></i>' + esc(d.name) + '</span>' + (isD ? '' : '<span><i class="lg-dist"></i>Distrito ' + x.distrito + '</span>') + pin + '</div></div>' +
-    '<div><h3 class="sh-h3">Proyecto ganador</h3><div class="pp-card"><div class="pp-pills">' + (g.categoria ? '<span class="pp-cat">' + esc(g.categoria) + '</span>' : '') + '<span class="pp-estado s' + g.paso + '">Estado de la obra: ' + esc(g.etapa) + '</span></div>' +
+    '<div><h3 class="sh-h3">Proyecto ganador</h3><div class="pp-card"><div class="pp-pills">' + (g.categoria ? '<span class="pp-cat">' + esc(g.categoria) + '</span>' : '') + '<span class="pp-estado s' + g.paso + '">Estado de la obra: ' + esc(ppEtapa(g)) + '</span></div>' +
     '<h4>' + esc(g.titulo) + '</h4><p class="pp-meta">' + meta + '</p>' + steps +
-    '<dl class="pp-info">' + info.join("") + '</dl></div>' + (split ? '' : '<p class="tnote">' + note + '</p>') + '</div>' +
+    '<dl class="pp-info">' + info.join("") + '</dl></div>' + (split ? '' : '<p class="tnote">' + note + '</p>') + '</div>' + ppVotos(g, x.distrito) +
     (split ? '' : descBlock) + '</div>';
   if (!split) return [p1];
   return [p1, src + band(d, 'Presupuesto Participativo · descripción', esc(g.titulo), { cls: 'slim' }) + '<div class="body">' + descBlock + '<p class="tnote">' + note + ' Texto publicado en presupuestoparticipativo.smt.gob.ar.</p></div>'];
 }
+
+/* ---------- Red vial por material (Power BI de la Subsecretaría) ---------- */
+var RV = { lineas: null, zonas: null, promesa: null };
+function loadRedVial() {
+  var c = CFG.redVial;
+  if (!c) return Promise.resolve();
+  if (!RV.promesa) RV.promesa = Promise.all([
+    fetch(rel(c.zonas)).then(function (r) { return r.ok ? r.json() : null; }),
+    fetch(rel(c.lineas)).then(function (r) { return r.ok ? r.json() : null; })
+  ]).then(function (r) {
+    if (!r[0] || !r[1]) return;
+    RV.zonas = r[0].zonas;
+    RV.lineas = r[1].features.map(function (f) {
+      var cs = f.geometry.coordinates, b = [Infinity, Infinity, -Infinity, -Infinity];
+      cs.forEach(function (p) { b[0] = Math.min(b[0], p[0]); b[1] = Math.min(b[1], p[1]); b[2] = Math.max(b[2], p[0]); b[3] = Math.max(b[3], p[1]); });
+      return { m: f.properties.m, c: cs, bb: b };
+    });
+  }).catch(function () { RV.promesa = null; });
+  return RV.promesa;
+}
+var RV_ORDEN = ["P", "C", "R"];
+function rvMat(k) { return CFG.redVial.materiales[k]; }
+function rvKey(d) { return d.kind === "distrito" ? "Distrito " + d.num : d.name; }
+// km, cuadras y % de cada material en la zona; "ciudad" suma todos los circuitos
+function rvStats(st) {
+  var km = 0, cu = 0, out = {};
+  RV_ORDEN.forEach(function (k) { km += st[k].km; cu += st[k].cuadras; });
+  RV_ORDEN.forEach(function (k) { out[k] = { km: st[k].km, cuadras: st[k].cuadras, pct: km ? st[k].km / km * 100 : 0 }; });
+  out.km = km; out.cuadras = cu;
+  return out;
+}
+function rvCiudad() {
+  var t = {}; RV_ORDEN.forEach(function (k) { t[k] = { km: 0, cuadras: 0 }; });
+  Object.keys(RV.zonas).forEach(function (n) { if (/^Distrito /.test(n)) return; RV_ORDEN.forEach(function (k) { t[k].km += RV.zonas[n][k].km; t[k].cuadras += RV.zonas[n][k].cuadras; }); });
+  return rvStats(t);
+}
+function pc(x) { return (Math.round(x * 10) / 10).toFixed(1).replace(".", ","); }
+function kmTxt(x) { return fmt.format(Math.round(x * 10) / 10); }
+function redPage(d) {
+  if (!RV.zonas || !RV.zonas[rvKey(d)]) return null;
+  var z = zw(d), s = rvStats(RV.zonas[rvKey(d)]), city = rvCiudad();
+  if (!s.km) return null;
+  var np = s.C.km + s.R.km;
+  // puesto entre las zonas del mismo tipo por proporción de calles sin pavimento (1 = la mayor)
+  var same = Object.keys(RV.zonas).filter(function (n) { return /^Distrito /.test(n) === (d.kind === "distrito"); }).map(function (n) { return rvStats(RV.zonas[n]); }).filter(function (x) { return x.km; });
+  var share = function (x) { return (x.C.km + x.R.km) / x.km; }, rank = 1 + same.filter(function (x) { return share(x) > share(s) + 1e-9; }).length;
+  var comp = function (a, b) { return Math.abs(a - b) < 2 ? 'similar al' : a > b ? 'por encima del' : 'por debajo del'; };
+  var findings = [
+    '<b>Pavimento:</b> el ' + pc(s.P.pct) + '% de la red vial del ' + z + ' (' + kmTxt(s.P.km) + ' km, ' + fmt.format(s.P.cuadras) + ' cuadras) está pavimentada, ' + comp(s.P.pct, city.P.pct) + ' promedio de la ciudad (' + pc(city.P.pct) + '%).',
+    np > 0.05 ? '<b>Sin pavimento:</b> quedan ' + kmTxt(np) + ' km de calles' + (s.C.km > 0.05 ? ' con cordón cuneta (' + kmTxt(s.C.km) + ' km, ' + fmt.format(s.C.cuadras) + ' cuadras)' : '') + (s.C.km > 0.05 && s.R.km > 0.05 ? ' y' : '') + (s.R.km > 0.05 ? ' de ripio (' + kmTxt(s.R.km) + ' km, ' + fmt.format(s.R.cuadras) + ' cuadras)' : '') + '.'
+      : '<b>Sin pavimento:</b> prácticamente toda la red vial del ' + z + ' está pavimentada.',
+    '<b>Ripio:</b> ' + (s.R.km > 0.05 ? 'representa el ' + pc(s.R.pct) + '% de la red, ' + comp(s.R.pct, city.R.pct) + ' ' + pc(city.R.pct) + '% de la ciudad.' : 'no hay calles de ripio registradas en el ' + z + '.'),
+    np < 0.05 ? '<b>Comparación:</b> es uno de los ' + same.filter(function (x) { return x.C.km + x.R.km < 0.05; }).length + ' ' + z + 's de la ciudad con toda su red vial pavimentada.'
+      : '<b>Comparación:</b> es el ' + rank + '° de ' + same.length + ' ' + z + 's con mayor proporción de calles sin pavimentar (cordón cuneta y ripio).'
+  ];
+  var table = '<table class="t rv-t"><thead><tr><th>Material</th><th class="r">Cuadras</th><th class="r">Km</th><th class="r">% red</th></tr></thead><tbody>' +
+    RV_ORDEN.map(function (k) { return '<tr><td><i class="rv-sw" style="background:' + rvMat(k).color + '"></i>' + rvMat(k).nombre + '</td><td class="r">' + fmt.format(s[k].cuadras) + '</td><td class="r">' + kmTxt(s[k].km) + '</td><td class="r">' + pc(s[k].pct) + '%</td></tr>'; }).join("") +
+    '</tbody><tfoot><tr><td>Total</td><td class="r">' + fmt.format(s.cuadras) + '</td><td class="r">' + kmTxt(s.km) + '</td><td class="r">100%</td></tr></tfoot></table>';
+  return '<!--fuente:Red vial de la ciudad por material (Power BI de la Subsecretaría de Gestión Estratégica).-->' +
+    band(d, 'Caracterización de la red vial del ' + z, 'Material de las calles de ' + esc(d.name) + ' · ' + fmt.format(s.cuadras) + ' cuadras · ' + kmTxt(s.km) + ' km') +
+    '<div class="body"><div><div class="sh-map"><canvas data-map="red" width="1372" height="900"></canvas></div>' +
+    '<div class="sh-legend pp-legend">' + RV_ORDEN.map(function (k) { return '<span><i class="lg-rv" style="background:' + rvMat(k).color + '"></i>' + rvMat(k).nombre + '</span>'; }).join("") + '<span><i class="lg-circ"></i>Límite del ' + z + '</span></div></div>' +
+    '<div class="rv-cols"><div><h3 class="sh-h3">Red vial según material</h3><canvas data-chart="red" width="318" height="168"></canvas><p class="tnote">Porcentaje de los km de calles. En color, el ' + z + '; en gris, la ciudad.</p></div>' +
+    '<div><h3 class="sh-h3">Cantidades</h3>' + table + '</div></div>' +
+    '<div><h3 class="sh-h3">Análisis</h3><ul class="findings rv-f">' + findings.map(function (f) { return '<li><span class="rv-dot"></span><span>' + f + '</span></li>'; }).join("") + '</ul>' +
+    '<p class="tnote">Km medidos recortando cada cuadra con el límite del ' + z + '; cada cuadra se cuenta donde cae su punto medio.</p></div></div>';
+}
+function paintRed(ctx, P, d) {
+  if (!RV.lineas) return;
+  var bb = d.bbox;
+  ctx.save(); tracePolys(ctx, P, d.polys); ctx.clip("evenodd");
+  ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = P.kmPx > 120 ? 3 : 2.2;
+  RV_ORDEN.forEach(function (k) {
+    ctx.strokeStyle = rvMat(k).color; ctx.beginPath();
+    RV.lineas.forEach(function (l) {
+      if (l.m !== k || l.bb[2] < bb[0] || l.bb[0] > bb[2] || l.bb[3] < bb[1] || l.bb[1] > bb[3]) return;
+      l.c.forEach(function (p, i) { var q = P(p); if (i) ctx.lineTo(q[0], q[1]); else ctx.moveTo(q[0], q[1]); });
+    });
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+function chartRed(canvas, d) {
+  var s = rvStats(RV.zonas[rvKey(d)]), city = rvCiudad();
+  charts.push(new Chart(canvas, {
+    type: "bar",
+    data: { labels: RV_ORDEN.map(function (k) { return rvMat(k).nombre; }), datasets: [
+      { label: d.name, data: RV_ORDEN.map(function (k) { return Math.round(s[k].pct * 10) / 10; }), backgroundColor: RV_ORDEN.map(function (k) { return rvMat(k).color; }) },
+      { label: "Ciudad", data: RV_ORDEN.map(function (k) { return Math.round(city[k].pct * 10) / 10; }), backgroundColor: "#c9d3d8" }] },
+    options: {
+      indexAxis: "y", responsive: false, animation: false, devicePixelRatio: 2,
+      datasets: { bar: { barPercentage: 0.9, categoryPercentage: 0.8, maxBarThickness: 16 } },
+      layout: { padding: { right: 44 } },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: {
+        x: { beginAtZero: true, max: 100, grid: { color: PAPER.line }, border: { display: false }, ticks: { color: PAPER.muted, stepSize: 25, callback: function (v) { return v + "%"; }, font: { size: 11, family: "Poppins, Arial" } } },
+        y: { grid: { display: false }, border: { color: PAPER.ink }, ticks: { color: PAPER.ink, font: { size: 12, family: "Poppins, Arial", weight: 500 } } }
+      }
+    },
+    plugins: [{ id: "valores", afterDatasetsDraw: function (ch) {
+      var ctx = ch.ctx; ctx.save(); ctx.font = "600 10.5px Poppins, Arial"; ctx.textBaseline = "middle"; ctx.textAlign = "left";
+      ch.data.datasets.forEach(function (ds, i) { ch.getDatasetMeta(i).data.forEach(function (b, j) { ctx.fillStyle = i ? PAPER.muted : PAPER.ink; ctx.fillText(pc(ds.data[j]) + "%", b.x + 4, b.y); }); });
+      ctx.restore();
+    } }]
+  }));
+}
+
+/* ---------- Hoja de contextualización ---------- */
+function contextPage(d, hasRed, hasPP) {
+  var z = zw(d), isD = d.kind === "distrito";
+  var quien = isD ? 'el ' + esc(d.name) + ' de Presupuesto Participativo' : 'el ' + esc(d.name).replace(/^Circuito/, 'circuito electoral');
+  var parts = [];
+  if (hasRed) parts.push(['Red vial', 'Material de las calles, plano y análisis.']);
+  parts.push(['Plano del ' + z, isD ? 'Barrios y circuitos electorales del distrito.' : 'Barrios y listas más votadas a concejal 2023.']);
+  if (isD) parts.push(['Circuitos electorales', 'Electores, escuelas y listas más votadas.']);
+  parts.push(['Síntesis ejecutiva', 'Indicadores, lectura rápida y barrios.']);
+  parts.push(['Resumen del ' + z, 'Mapa con todas las intervenciones.']);
+  parts.push(['Intervenciones por tipo', 'Mapa, ranking de barrios y direcciones.']);
+  if (hasPP) parts.push(['Presupuesto Participativo', 'Ganador, estado de la obra y más votados.']);
+  var fuentes = [
+    ['Intervenciones municipales', SOURCE.sample ? 'Datos de ejemplo' : 'GeoGestión, al ' + SOURCE.when.toLocaleDateString("es-AR") + ' (sin registros rechazados)'],
+    ['Circuitos electorales y barrios', 'Cartografía de la Municipalidad'],
+    ['Distritos y proyectos ganadores', 'Presupuesto Participativo SMT' + (PP.edicion ? ', edición ' + PP.edicion : '')],
+    ['Electores y escuelas', 'Padrón electoral 2025 por circuito'],
+    ['Concejales', 'Elecciones municipales 2023, por circuito']
+  ];
+  if (hasRed) fuentes.splice(1, 0, ['Red vial', 'Power BI de la Subsecretaría (red vial por material)']);
+  var criterios = [
+    'Cada intervención se ubica en su barrio y su ' + z + ' por sus coordenadas; si cae sobre una avenida, se asigna al más cercano.',
+    'Un barrio que cruza el límite del ' + z + ' cuenta solo con las intervenciones que caen dentro.',
+    'Pavimentación se cuenta por cuadras; El gas llega a tu casa, por domicilios; EDUCÁ, por instituciones visitadas.',
+    isD ? 'Electores y escuelas del distrito se estiman según la parte de cada circuito que cae dentro.'
+        : 'Presupuesto Participativo: se muestra el ganador del distrito que comparte más superficie con el circuito.'
+  ];
+  return '<!--fuente:ver el cuadro "Fuentes de información" de esta hoja.-->' +
+    band(d, 'Contextualización de la Ficha Técnica', 'Qué es esta ficha, de dónde salen los datos y cómo leerla') +
+    '<div class="body"><div class="ctx-intro"><p>Esta ficha técnica reúne en un solo documento las intervenciones que la ' + esc(CFG.organismo) + ' registró en ' + quien +
+    ', organizadas por barrio y por tipo de intervención. Es una herramienta de la Subsecretaría de Gestión Estratégica para conocer el territorio, dar cuenta de lo realizado y acompañar la planificación.</p></div>' +
+    '<div><h3 class="sh-h3">Qué contiene</h3><ol class="ctx-grid">' + parts.map(function (x) { return '<li><b>' + x[0] + '</b><span>' + x[1] + '</span></li>'; }).join("") + '</ol></div>' +
+    '<div><h3 class="sh-h3">Fuentes de información</h3><table class="t ctx-t"><tbody>' + fuentes.map(function (f) { return '<tr><td><b>' + f[0] + '</b></td><td>' + esc(f[1]) + '</td></tr>'; }).join("") + '</tbody></table></div>' +
+    '<div><h3 class="sh-h3">Criterios de lectura</h3><ul class="ctx-crit">' + criterios.map(function (c) { return '<li>' + c + '</li>'; }).join("") + '</ul></div></div>';
+}
+
+// fotos de GeoGestión (p. ej. de cada refugio), con la dirección debajo: 12 por hoja
+var FOTOS_POR_HOJA = 12;
+function fotoPages(d, t, fotos) {
+  if (!fotos.length) return [];
+  var list = fotos.slice().sort(function (a, b) {
+    var an = a.barrio ? BARRIO_BY[a.barrio].name : "", bn = b.barrio ? BARRIO_BY[b.barrio].name : "";
+    return an.localeCompare(bn, "es", { numeric: true }) || a.dir.localeCompare(b.dir, "es", { numeric: true });
+  });
+  var out = [], n = Math.ceil(list.length / FOTOS_POR_HOJA);
+  for (var i = 0; i < list.length; i += FOTOS_POR_HOJA) {
+    var part = n > 1 ? ' (' + (i / FOTOS_POR_HOJA + 1) + ' de ' + n + ')' : '';
+    out.push('<!--fuente:GeoGestión (fotos y direcciones de cada registro).-->' + band(d, (t.name === "Refugios" ? typeTitle(t, d) : t.name) + ' · fotos' + part, null, { type: t, cls: 'slim' }) +
+      '<div class="body"><div class="foto-grid">' + list.slice(i, i + FOTOS_POR_HOJA).map(function (p) {
+        var s = subOf(p);
+        return '<figure class="foto"><div class="ph"><img src="' + esc(CFG.carpetaFotos || "img/fotos/") + esc(p.foto) + '" alt="" loading="eager">' + (s ? '<span class="ftag" style="background:' + s.color + ';color:' + inkOn(s.color) + '">' + esc(s.name) + '</span>' : '') + '</div>' +
+          '<figcaption><b>' + esc(p.dir || "Sin dirección") + '</b><small>' + (p.barrio ? esc(BARRIO_BY[p.barrio].name) : 'Sin barrio') + '</small></figcaption></figure>';
+      }).join("") + '</div></div>');
+  }
+  return out;
+}
+
+// tipos que la ficha muestra juntos en una hoja (config.js: fichaJuntas), cada uno de sus indicadores en un tono de verde
+function joinTypes(dpts, types) {
+  var J = CFG.fichaJuntas;
+  if (!J) return { dpts: dpts, types: types };
+  var names = J.tipos.map(norm), jin = types.filter(function (t) { return names.indexOf(norm(t.name)) >= 0; });
+  if (!jin.length) return { dpts: dpts, types: types };
+  var ids = jin.map(function (t) { return t.id; }), subs = [];
+  jin.forEach(function (t) {
+    var tp = dpts.filter(function (p) { return p.type === t.id; });
+    if (t.subs) t.subs.forEach(function (x) { if (tp.some(function (p) { return p.sub === x.name; })) subs.push({ name: x.name, icon: x.icon }); });
+    else subs.push({ name: t.name, icon: t.icon });
+  });
+  var jt = { id: "tjuntas", name: J.nombre, icon: jin[0].icon, img: null, color: J.verdes[1] || J.verdes[0], unidad: null, splitBy: "tipo",
+    subs: subs.map(function (x, i) { return { name: x.name, icon: x.icon, img: null, color: J.verdes[i % J.verdes.length] }; }) };
+  TYPE_BY[jt.id] = jt;
+  dpts = dpts.map(function (p) {
+    if (ids.indexOf(p.type) < 0) return p;
+    var t = TYPE_BY[p.type], q = Object.assign({}, p);
+    q.type = jt.id; q.sub = t.subs ? p.sub : t.name;
+    return q;
+  });
+  var at = types.indexOf(jin[0]);
+  types = types.filter(function (t) { return ids.indexOf(t.id) < 0; });
+  types.splice(at, 0, jt);
+  return { dpts: dpts, types: types };
+}
+function typeTitle(t, d) { var x = (CFG.fichaTitulos || {})[t.name]; return x ? x.replace("{zona}", zw(d)) : t.name; }
 
 function buildFicha() {
   charts.forEach(function (c) { c.destroy(); }); charts = [];
@@ -966,6 +1181,7 @@ function buildFicha() {
   var on = state.types.size ? state.types : new Set(TYPES.map(function (t) { return t.id; }));
   var dpts = ITEMS.filter(function (p) { return p.district === d.id && on.has(p.type); });
   var types = TYPES.filter(function (t) { return dpts.some(function (p) { return p.type === t.id; }); });
+  var jn = joinTypes(dpts, types); dpts = jn.dpts; types = jn.types;
   var isLine = function (t) { return dpts.some(function (p) { return p.type === t.id && p.coords; }); };
   var nb = d.barrios.length, pages = [];
   // solo cuentan los barrios del circuito, así "alcanzados" nunca supera el total
@@ -1008,24 +1224,25 @@ function buildFicha() {
       : '<th>Barrio</th><th></th><th class="r">' + (line || t.unidad ? cap(unitOf(t, line)) : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">Participación</th>';
     var legend = subs ? '<div class="sh-legend sub-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + ' (' + tp.filter(function (p) { return p.sub === u.name; }).length + ')</span>'; }).join("") + '</div>' : '';
     var mapH = shown.length > 8 ? 570 : shown.length > 4 ? 720 : 855;
-    pages.push(band(d, t.name, 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
+    pages.push(band(d, typeTitle(t, d), 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
       '<div class="body">' +
       tiles(line
-        ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
-        : [{ v: fmt.format(tp.length), l: cap(unitOf(t, false)) }, { v: barriosDe(tp) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
+        ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
+        : [{ v: fmt.format(tp.length), l: cap(unitOf(t, false)) }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
       '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
       '<p class="tnote">' + (subs ? '%' : 'Participación') + ': qué parte del total de ' + esc(t.name) + ' en ' + esc(d.name) + ' está en cada barrio.</p></div>' +
       '</div>');
 
-    if (!$("opt-list").checked) return;
+    var fotos = tp.filter(function (p) { return p.foto; });
+    if (!$("opt-list").checked) { pages.push.apply(pages, fotoPages(d, t, fotos)); return; }
     var list = tp.slice().sort(function (a, b) {
       var an = a.barrio ? BARRIO_BY[a.barrio].name : "", bn = b.barrio ? BARRIO_BY[b.barrio].name : "";
       return an.localeCompare(bn, "es", { numeric: true }) || (subs ? a.sub.localeCompare(b.sub, "es") : 0) || a.dir.localeCompare(b.dir, "es", { numeric: true });
     });
     // listado a dos columnas, agrupado por barrio y con la dirección completa (puede ocupar más de una línea):
     // se mide cada dirección para saber cuánto alto ocupa y armar las columnas sin que la hoja se corte
-    var LH = 21.5, CAP = LIST_CAP - (subs ? 34 : 0), aw = LIST_COLW - 16 - (line ? 56 : 0) - (subs ? 17 : 0);
+    var LH = 21.5, CAP = LIST_CAP - (subs ? (subs.length > 4 ? 62 : 34) : 0), aw = LIST_COLW - 16 - (line ? 56 : 0) - (subs ? 17 : 0);
     var cols = [], col = [], used = 0, prevB = null;
     function rowH(p) { return Math.max(1, Math.ceil(textW(p.dir || "Sin dirección") * 1.04 / aw)) * LH + 8; }
     function grp(bid, cont) { return { g: bid, cont: cont }; }
@@ -1044,12 +1261,13 @@ function buildFicha() {
         var gs = 'background:' + t.color + ';color:' + inkOn(t.color);
         return '<table class="t lst"><colgroup><col>' + (line ? '<col class="m">' : '') + '</colgroup><tbody>' + c.map(function (p) {
           if (p.g !== undefined) return '<tr class="grp"><td colspan="' + (line ? 2 : 1) + '"><div class="gbox" style="' + gs + '"><span>' + (p.g ? esc(BARRIO_BY[p.g].name) : 'Sin barrio') + '</span><small>' + (p.cont ? 'continúa' : counts[p.g] + (line || t.unidad ? ' ' + unitOf(t, line) : '')) + '</small></div></td></tr>';
-          return '<tr><td>' + (subs ? '<i class="dot" style="background:' + subColor(p) + '"></i>' : '') + esc(p.dir || "Sin dirección") + '</td>' + (line ? '<td class="r m">' + Math.round(p.m) + '</td>' : '') + '</tr>';
+          return '<tr><td>' + (subs ? '<i class="dot" style="background:' + subColor(p) + '"></i>' : '') + esc(p.dir || "Sin dirección") + '</td>' + (line ? '<td class="r m">' + (p.coords ? Math.round(p.m) : '–') + '</td>' : '') + '</tr>';
         }).join("") + '</tbody></table>';
       });
       var part = nPages > 1 ? ' (' + (i / 2 + 1) + ' de ' + nPages + ')' : '';
-      pages.push(band(d, t.name + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body lbody">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
+      pages.push(band(d, (t.name === "Refugios" ? typeTitle(t, d) : t.name) + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body lbody">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
     }
+    pages.push.apply(pages, fotoPages(d, t, fotos));
   });
 
   // 3. Síntesis ejecutiva (va como segunda hoja)
@@ -1077,7 +1295,12 @@ function buildFicha() {
   var stackH = Math.min(Math.max(220, topB.length * 30 + 110), 560);
   var many = topB.length > 8;
   var pad = padronOf(d), apx = pad && pad.est ? '<small>≈ </small>' : '';
-  var keyTiles = tiles([{ v: fmt.format(dpts.length), l: "Intervenciones" }, { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios alcanzados" }].concat(pad ? [{ v: apx + fmt.format(pad.electores), l: pad.est ? "Electores (estimado)" : "Electores" }, { v: apx + fmt.format(pad.escuelas), l: (pad.escuelas === 1 ? "Escuela donde se vota" : "Escuelas donde se vota") + (pad.est ? " (estimado)" : "") }] : []), "g2");
+  var zt = zw(d), keyTiles = tiles([
+    { v: fmt.format(dpts.length), l: "Intervenciones realizadas en el " + zt, ic: "herram" },
+    { v: barriosDe(dpts) + '<small> / ' + nb + '</small>', l: "Barrios con intervenciones / total de barrios en el " + zt, ic: "casas" }
+  ].concat(pad ? [
+    { v: apx + fmt.format(pad.electores), l: "Electores del " + zt + (pad.est ? " (estimado)" : ""), ic: "urna" },
+    { v: apx + fmt.format(pad.escuelas), l: (pad.escuelas === 1 ? "Escuela donde se vota" : "Escuelas donde se vota") + " en el " + zt + (pad.est ? " (estimado)" : ""), ic: "escuela" }] : []), "g2 kpi");
   pages.push(band(d, "Síntesis ejecutiva", "Lo principal de " + esc(d.name) + " en una hoja") +
     '<div class="body"><div class="syn-head"><div class="locator"><canvas data-locator="1" width="440" height="330"></canvas><p>' + esc(d.name) + ' dentro de la ciudad</p></div>' + keyTiles + '</div><div><h3 class="sh-h3">Lectura rápida</h3><ul class="findings">' + findings.join("") + '</ul></div></div>');
   pages.push(band(d, "Síntesis ejecutiva · por barrio", "Qué barrios concentran más intervenciones según el tipo" + (tot.filter(function (x) { return x.n; }).length > MAXBARS ? " · " + MAXBARS + " barrios con más intervenciones" : "")) +
@@ -1090,11 +1313,11 @@ function buildFicha() {
   var cover = '<div class="cover-full"><div class="cv-top"><img class="cv-logo" src="img/logo.svg" alt="Qué hicimos en los barrios · Fichas técnicas"><img class="cv-city" src="img/ciudad-smt.png" alt="Ciudad SMT"></div>' +
     '<div class="cv-panel"><span class="cv-pill">Ficha técnica</span><div class="cv-title"><h1>' + esc(d.name) + '</h1><p>' + nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales · ' +
     (SOURCE.sample ? 'datos de ejemplo' : 'actualizada al ' + SOURCE.when.toLocaleDateString("es-AR")) + '</p></div>' +
-    '<ul class="cv-list' + (d.kind === "distrito" ? ' tight' : '') + '"><li>Plano del ' + zw(d) + '</li>' + (d.kind === "distrito" ? '<li>Circuitos electorales del distrito</li>' : '') + '<li>Síntesis ejecutiva</li><li>Resumen del ' + zw(d) + '</li><li>Intervenciones por tipo</li>' + (ppx ? '<li>Presupuesto Participativo ' + ppx.edicion + '</li>' : '') + '</ul>' +
+    '<ul class="cv-list' + (d.kind === "distrito" ? ' tight' : '') + '"><li>Contextualización</li>' + (RV.zonas ? '<li>Red vial del ' + zw(d) + '</li>' : '') + '<li>Plano del ' + zw(d) + '</li>' + (d.kind === "distrito" ? '<li>Circuitos electorales del distrito</li>' : '') + '<li>Síntesis ejecutiva</li><li>Resumen del ' + zw(d) + '</li><li>Intervenciones por tipo</li>' + (ppx ? '<li>Presupuesto Participativo ' + ppx.edicion + '</li>' : '') + '</ul>' +
     '<div class="cv-foot"><div><b>Subsecretaría de Gestión Estratégica</b><br>Secretaría General</div><div class="r"><b>' + esc(my.charAt(0).toUpperCase() + my.slice(1)) + '</b><br>' + esc(CFG.organismo) + '</div></div></div></div>';
-  var plano = planoPage(d), pp = ppPage(d);
-  // orden: portada, plano, (circuitos del distrito), síntesis, resumen, tipos y, al final, Presupuesto Participativo
-  pages = [cover, plano].concat(circuitPages(d), pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore), pp || []);
+  var plano = planoPage(d), pp = ppPage(d), red = redPage(d);
+  // orden: portada, contextualización, red vial, plano, (circuitos del distrito), síntesis, resumen, tipos y, al final, Presupuesto Participativo
+  pages = [cover, contextPage(d, !!red, !!pp)].concat(red ? [red] : [], [plano], circuitPages(d), pages.slice(nBefore), [pages[0]], pages.slice(1, nBefore), pp || []);
 
   $("sheets").innerHTML = pages.map(function (inner, i) { return sheetShell(i + 1, pages.length, inner, d); }).join("");
   $("viewer-title").textContent = "Ficha técnica · " + d.name;
@@ -1113,6 +1336,7 @@ function buildFicha() {
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
     var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
     if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4, overlay: d.kind === "distrito" ? ZONES.circuito : null })); return; }
+    if (k === "red") { draws.push(drawMap(cv, d, [], { noLabels: true, before: function (ctx, P) { paintRed(ctx, P, d); } })); return; }
     var tps = k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; });
     draws.push(drawMap(cv, d, tps, { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null, onlyBarrios: k === "all" ? null : new Set(tps.map(function (p) { return p.barrio; })) }));
   });
@@ -1120,6 +1344,8 @@ function buildFicha() {
   fichaReady = Promise.all(draws);
   $("sheets").querySelectorAll("canvas[data-locator]").forEach(function (cv) { drawLocator(cv, d); });
   var cv = $("sheets").querySelector('canvas[data-chart="stack"]');
+  var rc = $("sheets").querySelector('canvas[data-chart="red"]');
+  if (rc) chartRed(rc, d);
   if (cv) chartStack(cv, topB.map(function (x) { return x.b.name; }), types.map(function (t) { return { label: t.name, backgroundColor: t.color, data: topB.map(function (x) { return dpts.filter(function (p) { return p.barrio === x.b.id && p.type === t.id; }).length; }) }; }));
 }
 
@@ -1129,8 +1355,8 @@ function initViewer() {
     $("viewer-msg").textContent = "";
     $("viewer").hidden = false;
     // los mapas y gráficos de la ficha escriben con Poppins: esperar a que esté cargada
-    var fonts = document.fonts ? Promise.all(["400 12px Poppins", "600 12px Poppins"].map(function (f) { return document.fonts.load(f); })).catch(function () {}) : Promise.resolve();
-    Promise.all([fonts, preloadIcons()]).then(function () { buildFicha(); $("sheets").scrollTop = 0; });
+    var fonts = document.fonts ? Promise.all(["400 12px Poppins", "500 12px Poppins", "600 12px Poppins", "700 12px Poppins", "800 12px Poppins"].map(function (f) { return document.fonts.load(f); })).catch(function () {}) : Promise.resolve();
+    Promise.all([fonts, preloadIcons(), loadRedVial()]).then(function () { buildFicha(); $("sheets").scrollTop = 0; });
   });
   $("btn-close").addEventListener("click", function () { $("viewer").hidden = true; });
   $("opt-list").addEventListener("change", buildFicha);

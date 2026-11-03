@@ -1,0 +1,943 @@
+{
+ "_ayuda": "Km y cuadras de cada material de la red vial (P pavimento, C cordón cuneta, R ripio) en cada circuito y distrito. Generado por scripts/red_vial.py.",
+ "zonas": {
+  "Circuito 14": {
+   "P": {
+    "km": 38.06,
+    "cuadras": 318
+   },
+   "C": {
+    "km": 2.91,
+    "cuadras": 31
+   },
+   "R": {
+    "km": 4.87,
+    "cuadras": 20
+   }
+  },
+  "Circuito 14 D": {
+   "P": {
+    "km": 6.19,
+    "cuadras": 46
+   },
+   "C": {
+    "km": 2.76,
+    "cuadras": 21
+   },
+   "R": {
+    "km": 5.91,
+    "cuadras": 32
+   }
+  },
+  "Circuito 14C": {
+   "P": {
+    "km": 8.05,
+    "cuadras": 58
+   },
+   "C": {
+    "km": 9.59,
+    "cuadras": 81
+   },
+   "R": {
+    "km": 7.89,
+    "cuadras": 33
+   }
+  },
+  "Circuito 14B": {
+   "P": {
+    "km": 3.44,
+    "cuadras": 66
+   },
+   "C": {
+    "km": 8.8,
+    "cuadras": 76
+   },
+   "R": {
+    "km": 4.87,
+    "cuadras": 30
+   }
+  },
+  "Circuito 14A": {
+   "P": {
+    "km": 4.11,
+    "cuadras": 52
+   },
+   "C": {
+    "km": 4.33,
+    "cuadras": 34
+   },
+   "R": {
+    "km": 0.43,
+    "cuadras": 3
+   }
+  },
+  "Circuito 11A": {
+   "P": {
+    "km": 38.47,
+    "cuadras": 276
+   },
+   "C": {
+    "km": 1.89,
+    "cuadras": 19
+   },
+   "R": {
+    "km": 0.9,
+    "cuadras": 13
+   }
+  },
+  "Circuito 11": {
+   "P": {
+    "km": 5.05,
+    "cuadras": 43
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 10": {
+   "P": {
+    "km": 23.91,
+    "cuadras": 175
+   },
+   "C": {
+    "km": 5.88,
+    "cuadras": 31
+   },
+   "R": {
+    "km": 1.64,
+    "cuadras": 15
+   }
+  },
+  "Circuito 10A": {
+   "P": {
+    "km": 32.07,
+    "cuadras": 306
+   },
+   "C": {
+    "km": 8.86,
+    "cuadras": 72
+   },
+   "R": {
+    "km": 3.7,
+    "cuadras": 34
+   }
+  },
+  "Circuito 9": {
+   "P": {
+    "km": 22.49,
+    "cuadras": 181
+   },
+   "C": {
+    "km": 1.05,
+    "cuadras": 7
+   },
+   "R": {
+    "km": 0.78,
+    "cuadras": 7
+   }
+  },
+  "Circuito 9A": {
+   "P": {
+    "km": 21.66,
+    "cuadras": 176
+   },
+   "C": {
+    "km": 2.14,
+    "cuadras": 20
+   },
+   "R": {
+    "km": 1.42,
+    "cuadras": 13
+   }
+  },
+  "Circuito 20": {
+   "P": {
+    "km": 41.07,
+    "cuadras": 396
+   },
+   "C": {
+    "km": 14.88,
+    "cuadras": 138
+   },
+   "R": {
+    "km": 10.18,
+    "cuadras": 80
+   }
+  },
+  "Circuito 21": {
+   "P": {
+    "km": 26.88,
+    "cuadras": 244
+   },
+   "C": {
+    "km": 17.99,
+    "cuadras": 139
+   },
+   "R": {
+    "km": 23.1,
+    "cuadras": 180
+   }
+  },
+  "Circuito 22": {
+   "P": {
+    "km": 11.78,
+    "cuadras": 128
+   },
+   "C": {
+    "km": 10.48,
+    "cuadras": 87
+   },
+   "R": {
+    "km": 10.59,
+    "cuadras": 30
+   }
+  },
+  "Circuito 3": {
+   "P": {
+    "km": 10.99,
+    "cuadras": 77
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 4": {
+   "P": {
+    "km": 13.04,
+    "cuadras": 89
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 1A": {
+   "P": {
+    "km": 8.87,
+    "cuadras": 58
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 2A": {
+   "P": {
+    "km": 8.56,
+    "cuadras": 50
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 1": {
+   "P": {
+    "km": 8.27,
+    "cuadras": 54
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 2": {
+   "P": {
+    "km": 8.73,
+    "cuadras": 55
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 5": {
+   "P": {
+    "km": 11.72,
+    "cuadras": 77
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 6": {
+   "P": {
+    "km": 10.59,
+    "cuadras": 68
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 12": {
+   "P": {
+    "km": 25.57,
+    "cuadras": 202
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.05,
+    "cuadras": 1
+   }
+  },
+  "Circuito 13": {
+   "P": {
+    "km": 24.96,
+    "cuadras": 208
+   },
+   "C": {
+    "km": 0.23,
+    "cuadras": 1
+   },
+   "R": {
+    "km": 0.39,
+    "cuadras": 5
+   }
+  },
+  "Circuito 12A": {
+   "P": {
+    "km": 18.36,
+    "cuadras": 153
+   },
+   "C": {
+    "km": 0.38,
+    "cuadras": 4
+   },
+   "R": {
+    "km": 0.32,
+    "cuadras": 3
+   }
+  },
+  "Circuito 13A": {
+   "P": {
+    "km": 17.98,
+    "cuadras": 144
+   },
+   "C": {
+    "km": 0.07,
+    "cuadras": 1
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 15A": {
+   "P": {
+    "km": 23.94,
+    "cuadras": 210
+   },
+   "C": {
+    "km": 6.34,
+    "cuadras": 60
+   },
+   "R": {
+    "km": 0.37,
+    "cuadras": 5
+   }
+  },
+  "Circuito 15": {
+   "P": {
+    "km": 25.55,
+    "cuadras": 225
+   },
+   "C": {
+    "km": 8.62,
+    "cuadras": 77
+   },
+   "R": {
+    "km": 0.7,
+    "cuadras": 10
+   }
+  },
+  "Circuito 7A": {
+   "P": {
+    "km": 13.5,
+    "cuadras": 89
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 7": {
+   "P": {
+    "km": 13.46,
+    "cuadras": 97
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 8": {
+   "P": {
+    "km": 11.32,
+    "cuadras": 88
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 8A": {
+   "P": {
+    "km": 17.39,
+    "cuadras": 135
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Circuito 19": {
+   "P": {
+    "km": 30.71,
+    "cuadras": 284
+   },
+   "C": {
+    "km": 4.85,
+    "cuadras": 37
+   },
+   "R": {
+    "km": 0.85,
+    "cuadras": 5
+   }
+  },
+  "Circuito 19A": {
+   "P": {
+    "km": 7.96,
+    "cuadras": 73
+   },
+   "C": {
+    "km": 17.59,
+    "cuadras": 155
+   },
+   "R": {
+    "km": 0.31,
+    "cuadras": 3
+   }
+  },
+  "Circuito 15B": {
+   "P": {
+    "km": 47.74,
+    "cuadras": 454
+   },
+   "C": {
+    "km": 6.88,
+    "cuadras": 67
+   },
+   "R": {
+    "km": 5.57,
+    "cuadras": 52
+   }
+  },
+  "Circuito 16": {
+   "P": {
+    "km": 37.0,
+    "cuadras": 309
+   },
+   "C": {
+    "km": 3.68,
+    "cuadras": 13
+   },
+   "R": {
+    "km": 0.29,
+    "cuadras": 1
+   }
+  },
+  "Circuito 16A": {
+   "P": {
+    "km": 30.48,
+    "cuadras": 287
+   },
+   "C": {
+    "km": 0.58,
+    "cuadras": 5
+   },
+   "R": {
+    "km": 0.8,
+    "cuadras": 10
+   }
+  },
+  "Circuito 17A": {
+   "P": {
+    "km": 43.94,
+    "cuadras": 390
+   },
+   "C": {
+    "km": 2.14,
+    "cuadras": 21
+   },
+   "R": {
+    "km": 0.91,
+    "cuadras": 6
+   }
+  },
+  "Circuito 17": {
+   "P": {
+    "km": 38.97,
+    "cuadras": 314
+   },
+   "C": {
+    "km": 0.07,
+    "cuadras": 1
+   },
+   "R": {
+    "km": 0.27,
+    "cuadras": 4
+   }
+  },
+  "Circuito 18": {
+   "P": {
+    "km": 46.79,
+    "cuadras": 410
+   },
+   "C": {
+    "km": 0.32,
+    "cuadras": 3
+   },
+   "R": {
+    "km": 0.17,
+    "cuadras": 2
+   }
+  },
+  "Circuito 18A": {
+   "P": {
+    "km": 11.33,
+    "cuadras": 84
+   },
+   "C": {
+    "km": 1.23,
+    "cuadras": 17
+   },
+   "R": {
+    "km": 2.52,
+    "cuadras": 17
+   }
+  },
+  "Circuito 18B": {
+   "P": {
+    "km": 21.87,
+    "cuadras": 199
+   },
+   "C": {
+    "km": 6.05,
+    "cuadras": 53
+   },
+   "R": {
+    "km": 2.92,
+    "cuadras": 13
+   }
+  },
+  "Circuito 18F": {
+   "P": {
+    "km": 3.96,
+    "cuadras": 38
+   },
+   "C": {
+    "km": 7.56,
+    "cuadras": 80
+   },
+   "R": {
+    "km": 5.02,
+    "cuadras": 35
+   }
+  },
+  "Circuito 18C": {
+   "P": {
+    "km": 12.49,
+    "cuadras": 129
+   },
+   "C": {
+    "km": 5.18,
+    "cuadras": 23
+   },
+   "R": {
+    "km": 2.23,
+    "cuadras": 18
+   }
+  },
+  "Circuito 18D": {
+   "P": {
+    "km": 9.14,
+    "cuadras": 95
+   },
+   "C": {
+    "km": 1.38,
+    "cuadras": 12
+   },
+   "R": {
+    "km": 0.11,
+    "cuadras": 3
+   }
+  },
+  "Circuito 18E": {
+   "P": {
+    "km": 12.33,
+    "cuadras": 131
+   },
+   "C": {
+    "km": 8.98,
+    "cuadras": 30
+   },
+   "R": {
+    "km": 1.96,
+    "cuadras": 23
+   }
+  },
+  "Circuito 18G": {
+   "P": {
+    "km": 46.64,
+    "cuadras": 240
+   },
+   "C": {
+    "km": 19.36,
+    "cuadras": 137
+   },
+   "R": {
+    "km": 10.62,
+    "cuadras": 57
+   }
+  },
+  "Distrito 1": {
+   "P": {
+    "km": 40.08,
+    "cuadras": 398
+   },
+   "C": {
+    "km": 1.62,
+    "cuadras": 15
+   },
+   "R": {
+    "km": 3.04,
+    "cuadras": 25
+   }
+  },
+  "Distrito 2": {
+   "P": {
+    "km": 38.16,
+    "cuadras": 341
+   },
+   "C": {
+    "km": 3.03,
+    "cuadras": 32
+   },
+   "R": {
+    "km": 2.52,
+    "cuadras": 29
+   }
+  },
+  "Distrito 3": {
+   "P": {
+    "km": 29.13,
+    "cuadras": 252
+   },
+   "C": {
+    "km": 6.48,
+    "cuadras": 38
+   },
+   "R": {
+    "km": 0.82,
+    "cuadras": 8
+   }
+  },
+  "Distrito 4": {
+   "P": {
+    "km": 48.51,
+    "cuadras": 423
+   },
+   "C": {
+    "km": 14.96,
+    "cuadras": 137
+   },
+   "R": {
+    "km": 1.07,
+    "cuadras": 15
+   }
+  },
+  "Distrito 5": {
+   "P": {
+    "km": 48.22,
+    "cuadras": 407
+   },
+   "C": {
+    "km": 0.31,
+    "cuadras": 2
+   },
+   "R": {
+    "km": 0.43,
+    "cuadras": 6
+   }
+  },
+  "Distrito 6": {
+   "P": {
+    "km": 38.84,
+    "cuadras": 290
+   },
+   "C": {
+    "km": 0.33,
+    "cuadras": 3
+   },
+   "R": {
+    "km": 0.32,
+    "cuadras": 3
+   }
+  },
+  "Distrito 7": {
+   "P": {
+    "km": 20.22,
+    "cuadras": 214
+   },
+   "C": {
+    "km": 25.25,
+    "cuadras": 209
+   },
+   "R": {
+    "km": 16.78,
+    "cuadras": 84
+   }
+  },
+  "Distrito 8": {
+   "P": {
+    "km": 39.61,
+    "cuadras": 326
+   },
+   "C": {
+    "km": 3.13,
+    "cuadras": 34
+   },
+   "R": {
+    "km": 7.12,
+    "cuadras": 34
+   }
+  },
+  "Distrito 9": {
+   "P": {
+    "km": 136.37,
+    "cuadras": 1153
+   },
+   "C": {
+    "km": 2.54,
+    "cuadras": 25
+   },
+   "R": {
+    "km": 1.65,
+    "cuadras": 13
+   }
+  },
+  "Distrito 10": {
+   "P": {
+    "km": 149.21,
+    "cuadras": 1020
+   },
+   "C": {
+    "km": 0.0,
+    "cuadras": 0
+   },
+   "R": {
+    "km": 0.0,
+    "cuadras": 0
+   }
+  },
+  "Distrito 11": {
+   "P": {
+    "km": 54.1,
+    "cuadras": 405
+   },
+   "C": {
+    "km": 7.77,
+    "cuadras": 50
+   },
+   "R": {
+    "km": 2.53,
+    "cuadras": 28
+   }
+  },
+  "Distrito 12": {
+   "P": {
+    "km": 32.88,
+    "cuadras": 281
+   },
+   "C": {
+    "km": 7.3,
+    "cuadras": 70
+   },
+   "R": {
+    "km": 5.3,
+    "cuadras": 30
+   }
+  },
+  "Distrito 13": {
+   "P": {
+    "km": 35.24,
+    "cuadras": 366
+   },
+   "C": {
+    "km": 15.66,
+    "cuadras": 66
+   },
+   "R": {
+    "km": 4.31,
+    "cuadras": 44
+   }
+  },
+  "Distrito 14": {
+   "P": {
+    "km": 45.82,
+    "cuadras": 413
+   },
+   "C": {
+    "km": 24.08,
+    "cuadras": 205
+   },
+   "R": {
+    "km": 7.31,
+    "cuadras": 54
+   }
+  },
+  "Distrito 16": {
+   "P": {
+    "km": 40.68,
+    "cuadras": 379
+   },
+   "C": {
+    "km": 21.07,
+    "cuadras": 176
+   },
+   "R": {
+    "km": 8.68,
+    "cuadras": 62
+   }
+  },
+  "Distrito 17": {
+   "P": {
+    "km": 15.0,
+    "cuadras": 139
+   },
+   "C": {
+    "km": 20.41,
+    "cuadras": 179
+   },
+   "R": {
+    "km": 13.79,
+    "cuadras": 80
+   }
+  },
+  "Distrito 18": {
+   "P": {
+    "km": 41.41,
+    "cuadras": 162
+   },
+   "C": {
+    "km": 9.82,
+    "cuadras": 68
+   },
+   "R": {
+    "km": 9.37,
+    "cuadras": 70
+   }
+  },
+  "Distrito 20": {
+   "P": {
+    "km": 15.07,
+    "cuadras": 149
+   },
+   "C": {
+    "km": 11.42,
+    "cuadras": 101
+   },
+   "R": {
+    "km": 17.0,
+    "cuadras": 89
+   }
+  },
+  "Distrito 19": {
+   "P": {
+    "km": 15.24,
+    "cuadras": 143
+   },
+   "C": {
+    "km": 8.48,
+    "cuadras": 52
+   },
+   "R": {
+    "km": 6.49,
+    "cuadras": 46
+   }
+  },
+  "Distrito 15": {
+   "P": {
+    "km": 73.36,
+    "cuadras": 673
+   },
+   "C": {
+    "km": 8.89,
+    "cuadras": 90
+   },
+   "R": {
+    "km": 3.92,
+    "cuadras": 44
+   }
+  }
+ }
+}

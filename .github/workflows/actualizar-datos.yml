@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Instalar Pillow (achica las fotos de los refugios)
+        run: pip install pillow
+
       - name: Descargar intervenciones
         env:
           GEOGESTION_CUIL: ${{ secrets.GEOGESTION_CUIL }}
@@ -36,7 +39,8 @@ jobs:
 
       - name: Guardar cambios
         run: |
-          git add data/intervenciones.csv data/actualizacion.json data/presupuesto-participativo-*.json
+          mkdir -p img/fotos
+          git add data/intervenciones.csv data/actualizacion.json data/presupuesto-participativo-*.json img/fotos
           if git diff --cached --quiet; then
             echo "Sin cambios en los datos."
             exit 0
