@@ -82,6 +82,20 @@ window.APP_CONFIG = {
     verdes: ["#1b5e20", "#4caf50", "#9ccc65", "#00897b", "#827717", "#80cbc4", "#33691e"]
   },
 
+  // Motivo puntual de una ficha: se muestra en la hoja de contextualización y destaca el barrio en el plano.
+  // Se borra cuando ya no hace falta.
+  fichaMotivos: {
+    "Circuito 18F": {
+      titulo: "¿Por qué se elabora esta ficha del circuito?",
+      parrafos: [
+        "Esta ficha se elabora con motivo de la inauguración de la pavimentación de 19 cuadras en el barrio Elena White, el martes 3 de noviembre a las 17 h, en López Pandal y Coronel Olleros.",
+        "Reúne lo que el municipio realizó en el circuito 18F para poner esa obra en contexto: qué otras intervenciones llegaron a sus barrios, cómo está hoy la red vial y qué proyecto eligieron los vecinos en Presupuesto Participativo."
+      ],
+      imagen: "img/motivos/inauguracion-elena-white.jpg",
+      barrio: "ELENA WHITE"
+    }
+  },
+
   // Títulos de la hoja de cada intervención en la ficha ({zona} = circuito o distrito)
   fichaTitulos: {
     "Pavimentación": "Pavimentación realizada en el {zona}",
