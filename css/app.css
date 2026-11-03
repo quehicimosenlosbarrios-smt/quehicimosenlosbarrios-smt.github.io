@@ -384,3 +384,59 @@ table.t.bysub .bn { max-width: none; }
 .sh-h3.dot-blue::before { background: #0b63f6; opacity: .55; }
 .sh-h3.dot-red::before { background: #e4002b; }
 .blist li::marker { color: var(--paper-ink); }
+
+/* indicadores con ícono (síntesis) */
+.tiles.kpi .tile.ic { display: grid; grid-template-columns: 40px 1fr; column-gap: 11px; align-items: center; padding: 12px 14px; }
+.tile.ic .kic { grid-row: 1 / span 2; width: 40px; height: 40px; border-radius: 50%; background: #ffffff; color: var(--paper-blue); display: flex; align-items: center; justify-content: center; align-self: start; }
+.tile.ic .kic svg { width: 24px; height: 24px; display: block; }
+.tile.ic:first-child .kic { background: rgba(255,255,255,.18); color: #ffffff; }
+.tile.ic span { margin-top: 3px; font-size: 11.5px; line-height: 1.3; }
+.tile.ic b { font-size: 27px; }
+/* Fuerza Republicana en morado */
+.el-row.fr { border-left-color: #7b2d8e; background: #f5edf8; }
+.el-row.fr .el-pos, .el-row.fr .el-v b, .cc-row.fr .el-pos, .cc-row.fr .cc-v b { color: #7b2d8e; }
+.el-row.fr .el-bar { background: #eadcf0; }
+.el-row.fr .el-bar i { background: #7b2d8e; }
+.cc-row.fr { background: #f5edf8; border-radius: 4px; }
+/* Presupuesto Participativo: proyectos más votados */
+.pp-votes { display: grid; gap: 6px; }
+.pv-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) 170px 78px; gap: 10px; align-items: center; font-size: 12.5px; }
+.pv-pos { font-weight: 700; font-size: 15px; color: var(--paper-muted); }
+.pv-t { line-height: 1.25; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pv-t em { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #5c4d00; background: #fff3a6; border-radius: 999px; padding: 1px 7px; }
+.pv-bar { height: 14px; background: #eef1f3; border-radius: 4px; overflow: hidden; }
+.pv-bar i { display: block; height: 100%; background: #9fb4c7; border-radius: 4px; }
+.pv-row.win .pv-bar i { background: var(--paper-blue); }
+.pv-row.win .pv-pos { color: var(--paper-blue); }
+.pv-v { text-align: right; white-space: nowrap; color: var(--paper-muted); }
+.pv-v b { color: var(--paper-ink); font-size: 14px; }
+/* red vial */
+.pp-legend .lg-rv { width: 20px; height: 4px; border-radius: 2px; }
+.rv-cols { display: grid; grid-template-columns: 318px 1fr; gap: 22px; }
+.rv-cols canvas { display: block; }
+table.t.rv-t td, table.t.rv-t th { padding-left: 4px; padding-right: 4px; }
+.rv-sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.findings.rv-f li { grid-template-columns: 10px 1fr; font-size: 13px; padding: 4px 12px; }
+.rv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--paper-blue); margin-top: 6px; }
+/* contextualización */
+.ctx-intro { background: var(--paper-soft); border-left: 4px solid var(--paper-yellow); border-radius: 0 14px 14px 0; padding: 11px 16px; }
+.ctx-intro p { margin: 0; font-size: 13.5px; line-height: 1.5; }
+.ctx-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; counter-reset: ctx; }
+.ctx-grid li { counter-increment: ctx; display: grid; grid-template-columns: 24px 1fr; column-gap: 8px; padding: 7px 9px; border: 1px solid var(--paper-line); border-radius: 10px; }
+.ctx-grid li::before { content: counter(ctx); grid-row: 1 / span 2; width: 24px; height: 24px; border-radius: 50%; background: var(--paper-blue); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.ctx-grid b { font-size: 13px; line-height: 1.3; }
+.ctx-grid span { font-size: 11.5px; line-height: 1.35; color: var(--paper-muted); }
+table.t.ctx-t { font-size: 12.5px; }
+table.t.ctx-t td { padding: 4px 6px; }
+table.t.ctx-t td:first-child { width: 36%; }
+.ctx-crit { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12.5px; line-height: 1.4; }
+.ctx-crit li::marker { color: var(--paper-blue); }
+/* fotos (refugios) */
+.foto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px 12px; }
+.foto { margin: 0; border: 1px solid var(--paper-line); border-radius: 10px; overflow: hidden; }
+.foto .ph { position: relative; height: 138px; background: var(--paper-soft); }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto .ftag { position: absolute; left: 6px; top: 6px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.foto figcaption { padding: 6px 9px 7px; }
+.foto figcaption b { display: block; font-size: 12px; line-height: 1.3; }
+.foto figcaption small { display: block; font-size: 11px; color: var(--paper-muted); }

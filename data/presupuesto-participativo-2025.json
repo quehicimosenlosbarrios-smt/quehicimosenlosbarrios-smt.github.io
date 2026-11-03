@@ -2,7 +2,7 @@
  "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
  "edicion": 2025,
  "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
- "descargado": "2026-11-02",
+ "descargado": "2026-11-03",
  "ganadores": {
   "1": {
    "distrito": 1,
@@ -40,7 +40,27 @@
    "actualizado": "16 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $237.780.853,33. Plazo de obra: tres meses.",
    "presupuesto_oficial": "237.780.853,33",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17359/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-gruta-de-"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17359/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-gruta-de-",
+   "mas_votados": [
+    {
+     "titulo": "Puesta en Valor de la Gruta de la Virgen del Rosario de San Nicolás",
+     "barrio": "Oeste II",
+     "votos": 35,
+     "ganador": true
+    },
+    {
+     "titulo": "Puesta en Valor Plaza America",
+     "barrio": "América",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Puesta en Valor de la Plaza Martín Miguel Campero - Barrio Tarcos II",
+     "barrio": "Los Tarcos II",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "2": {
    "distrito": 2,
@@ -73,7 +93,21 @@
    "actualizado": "20 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $263.239.466,60. Plazo de obra: tres meses.",
    "presupuesto_oficial": "263.239.466,60",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17433/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-plaza-dem"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17433/presupuesto-participativo-licitan-el-proyecto-de-puesta-en-valor-de-la-plaza-dem",
+   "mas_votados": [
+    {
+     "titulo": "Puesta en Valor Plaza Democracia- Barrio Casino-Zenón Santillan",
+     "barrio": "Casino (Zenón Santillan)",
+     "votos": 25,
+     "ganador": true
+    },
+    {
+     "titulo": "Centro Vecinal Deportivo,Social y Cultural Bº Kennedy",
+     "barrio": "Kennedy",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "3": {
    "distrito": 3,
@@ -110,7 +144,27 @@
    "actualizado": "22 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $260.402.522,16. Plazo de obra: tres meses.",
    "presupuesto_oficial": "260.402.522,16",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17473/presupuesto-participativo-licitan-el-proyecto-de-construccion-de-un-playon-depor"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17473/presupuesto-participativo-licitan-el-proyecto-de-construccion-de-un-playon-depor",
+   "mas_votados": [
+    {
+     "titulo": "Playón deportivo para \"Plaza Lozano Munoz\" en B° Echeverria",
+     "barrio": "Echeverria",
+     "votos": 49,
+     "ganador": true
+    },
+    {
+     "titulo": "Puesta en Valor Plaza Barrio Jardín",
+     "barrio": "Jardín",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Puesta en Valor Plaza Eva Perón",
+     "barrio": "Jardín",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "4": {
    "distrito": 4,
@@ -147,7 +201,27 @@
    "actualizado": "16 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $111.872.656,40. Plazo de obra: tres meses.",
    "presupuesto_oficial": "111.872.656,40",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17362/presupuesto-participativo-licitan-obras-de-puesta-en-valor-de-la-plaza-curva-del"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17362/presupuesto-participativo-licitan-obras-de-puesta-en-valor-de-la-plaza-curva-del",
+   "mas_votados": [
+    {
+     "titulo": "Puesta en Valor Plaza Curva Barrio Juan Pablo II",
+     "barrio": "Juan Pablo II",
+     "votos": 172,
+     "ganador": true
+    },
+    {
+     "titulo": "Playón Deportivo Comunitario \"por los Niños y los Jóvenes\" Barrio Vial",
+     "barrio": "Vial",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Puesta en valor de la Plaza Barrio ATSA",
+     "barrio": "ATSA",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "5": {
    "distrito": 5,
@@ -179,12 +253,26 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Espacio Deportivo -Cultural-Club Sargento Cabral-Villa Urquiza",
+     "barrio": "Villa Urquiza",
+     "votos": 282,
+     "ganador": true
+    },
+    {
+     "titulo": "Playón Deportivo Comunitario \"Plaza Casero\"",
+     "barrio": "Villa Urquiza",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "6": {
    "distrito": 6,
@@ -217,7 +305,21 @@
    "actualizado": "26 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación de la primera etapa. Presupuesto oficial: $238.720.890,80. Plazo de obra: 90 días.",
    "presupuesto_oficial": "238.720.890,80",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17533/presupuesto-participativo-licitan-la-primera-etapa-de-obras-de-recuperacion-inte"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17533/presupuesto-participativo-licitan-la-primera-etapa-de-obras-de-recuperacion-inte",
+   "mas_votados": [
+    {
+     "titulo": "Recuperación Integral del Complejo General Muñoz- Villa 9 de Julio",
+     "barrio": "Villa 9 de Julio",
+     "votos": 89,
+     "ganador": true
+    },
+    {
+     "titulo": "Revalorización del entorno del Club Atlético de Tucumán como polo Turístico y Comercial",
+     "barrio": "Villa 9 de Julio",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "7": {
    "distrito": 7,
@@ -260,7 +362,21 @@
    "actualizado": "20 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $264.615.099,56. Plazo de obra: tres meses.",
    "presupuesto_oficial": "264.615.099,56",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17429/presupuesto-participativo-licitan-las-obras-de-puesta-en-valor-de-la-plaza-activ"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17429/presupuesto-participativo-licitan-las-obras-de-puesta-en-valor-de-la-plaza-activ",
+   "mas_votados": [
+    {
+     "titulo": "Plaza Activa – B° Sitravi",
+     "barrio": null,
+     "votos": 118,
+     "ganador": true
+    },
+    {
+     "titulo": "Playón Deportivo Barrio 260 Viviendas",
+     "barrio": null,
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "8": {
    "distrito": 8,
@@ -297,7 +413,27 @@
    "actualizado": "28 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $261.922.047,31. Plazo de obra: tres meses.",
    "presupuesto_oficial": "261.922.047,31",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17580/presupuesto-participativo-licitan-el-proyecto-de-creacion-de-un-playon-deportivo"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17580/presupuesto-participativo-licitan-el-proyecto-de-creacion-de-un-playon-deportivo",
+   "mas_votados": [
+    {
+     "titulo": "Playón deportivo comunitario \"Plaza Viluco\"",
+     "barrio": null,
+     "votos": 137,
+     "ganador": true
+    },
+    {
+     "titulo": "Puesta en Valor espacio verde barrancas del Salì",
+     "barrio": "AGET II",
+     "votos": 6,
+     "ganador": false
+    },
+    {
+     "titulo": "Plaza Barrancas del Salí- Barrio AGEF I y II",
+     "barrio": "AGEF I y II",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "9": {
    "distrito": 9,
@@ -329,12 +465,26 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Puesta en Valor de la Plaza Pedro Cossio Paz de Barrio Padilla",
+     "barrio": null,
+     "votos": 26,
+     "ganador": true
+    },
+    {
+     "titulo": "Puesta en Valor Plaza Puiyama- Barrio Sitravi I",
+     "barrio": "Sitravi I",
+     "votos": 8,
+     "ganador": false
+    }
+   ]
   },
   "10": {
    "distrito": 10,
@@ -359,7 +509,15 @@
    "actualizado": "28 de octubre de 2026",
    "novedad": "La obra empezó el 19 de agosto de 2026 y lleva cerca de un 20% de avance, con demoras por las lluvias. Se prevé terminarla en marzo de 2027.",
    "presupuesto_oficial": null,
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17581/la-intendente-chahla-superviso-las-obras-de-renovacion-de-plaza-urquiza-donde-av"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17581/la-intendente-chahla-superviso-las-obras-de-renovacion-de-plaza-urquiza-donde-av",
+   "mas_votados": [
+    {
+     "titulo": "Revalorización y renovación de la Plaza Urquiza",
+     "barrio": null,
+     "votos": 0,
+     "ganador": true
+    }
+   ]
   },
   "11": {
    "distrito": 11,
@@ -391,12 +549,26 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Playón deportivo comunitario \"Cancha Ex Aeropuerto\"",
+     "barrio": "Ex-Aeropuerto",
+     "votos": 231,
+     "ganador": true
+    },
+    {
+     "titulo": "Inclusion y Bienestar a través del Ciclismo Adaptado",
+     "barrio": "Parque 9 de Julio",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "12": {
    "distrito": 12,
@@ -428,12 +600,26 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "El Arte Popular en la Plaza Los Platanos",
+     "barrio": "Los Plátanos",
+     "votos": 192,
+     "ganador": true
+    },
+    {
+     "titulo": "Tu Primer Empleo - Formación y Futuro",
+     "barrio": "Nueva Vida",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "13": {
    "distrito": 13,
@@ -465,12 +651,20 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Plaza de Juegos y Pista de Salud \"Barrio Lincoln\"",
+     "barrio": "Lincoln",
+     "votos": 49,
+     "ganador": true
+    }
+   ]
   },
   "14": {
    "distrito": 14,
@@ -502,12 +696,32 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "CAC N° 11 Inclusivo",
+     "barrio": "Victoria",
+     "votos": 40,
+     "ganador": true
+    },
+    {
+     "titulo": "Paseo Alem- 11 de Marzo",
+     "barrio": "11 de Marzo",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Puesta en Valor Plaza Almirante Brown",
+     "barrio": "Victoria",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "15": {
    "distrito": 15,
@@ -544,7 +758,27 @@
    "actualizado": "22 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $259.457.528,63. Plazo de obra: seis meses.",
    "presupuesto_oficial": "259.457.528,63",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17472/presupuesto-participativo-licitan-obras-de-construccion-de-un-centro-cultural-y-"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17472/presupuesto-participativo-licitan-obras-de-construccion-de-un-centro-cultural-y-",
+   "mas_votados": [
+    {
+     "titulo": "Centro Cultural y Comunitario DIZA",
+     "barrio": null,
+     "votos": 67,
+     "ganador": true
+    },
+    {
+     "titulo": "Puesta en valor y mejora integral de la Plaza Leandro N. Alem- Villa Alem",
+     "barrio": "Villa Alem",
+     "votos": 4,
+     "ganador": false
+    },
+    {
+     "titulo": "Centro Vecinal Cultural y Deportivo -Villa Alem",
+     "barrio": "Villa Alem",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "16": {
    "distrito": 16,
@@ -576,12 +810,32 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Proyecto de Puesta en Valor Club Social y Deportivo Barrio 20 de Junio",
+     "barrio": null,
+     "votos": 186,
+     "ganador": true
+    },
+    {
+     "titulo": "\"Micro Complejo Deportivo Papa Francisco\" Cancha multiuso y equipamiento deportivo para el Distrito 16",
+     "barrio": "Barrios D 16",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Micro Complejo Deportivo Pedro G. Sal",
+     "barrio": "Cooperativa 19 de Marzo",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "17": {
    "distrito": 17,
@@ -607,12 +861,32 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Revalorización de la Plaza del Barrio San Miguel",
+     "barrio": "San Miguel",
+     "votos": 28,
+     "ganador": true
+    },
+    {
+     "titulo": "Caminería Segura- Veredas Sanas- Barrio San Miguel",
+     "barrio": "San Miguel",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Puesta en Valor Plaza 240 viviendas",
+     "barrio": "San Gabriel y entorno",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "18": {
    "distrito": 18,
@@ -649,7 +923,27 @@
    "actualizado": "26 de octubre de 2026",
    "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $103.467.181,61. Plazo de obra: dos meses.",
    "presupuesto_oficial": "103.467.181,61",
-   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17532/presupuesto-participativo-licitan-la-creacion-de-un-espacio-deportivo-comunitari"
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17532/presupuesto-participativo-licitan-la-creacion-de-un-espacio-deportivo-comunitari",
+   "mas_votados": [
+    {
+     "titulo": "Espacio Deportivo Comunitario en Plaza de Chañaritos",
+     "barrio": null,
+     "votos": 58,
+     "ganador": true
+    },
+    {
+     "titulo": "Complejo Polideportivo Municipal Inclusivo",
+     "barrio": "Manantial Sur",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "Escuela Formativa Defensores del Sur",
+     "barrio": "Manantial Sur",
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   },
   "19": {
    "distrito": 19,
@@ -681,12 +975,26 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Playón Deportivo Vestuarios para el Club San Alberto",
+     "barrio": "San Alberto",
+     "votos": 210,
+     "ganador": true
+    },
+    {
+     "titulo": "Playón deportivo para el B° Crucero Belgrano",
+     "barrio": null,
+     "votos": 21,
+     "ganador": false
+    }
+   ]
   },
   "20": {
    "distrito": 20,
@@ -718,12 +1026,32 @@
      ]
     }
    ],
-   "etapa": "Sin información todavía",
+   "etapa": "Sin avance",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
    "presupuesto_oficial": null,
-   "nota_prensa": null
+   "nota_prensa": null,
+   "mas_votados": [
+    {
+     "titulo": "Centro Deportivo San Miguel- Barrio CGT",
+     "barrio": "CGT",
+     "votos": 75,
+     "ganador": true
+    },
+    {
+     "titulo": "Espacio Deportivo Cultural Barrio Rosas del Sur",
+     "barrio": "Rosas del Sur",
+     "votos": 1,
+     "ganador": false
+    },
+    {
+     "titulo": "La Inclusión No se Promete, se Diseña- Recuperación y Rediseño de una Plaza Inclusiva-Bº Lapacho Sur",
+     "barrio": null,
+     "votos": 1,
+     "ganador": false
+    }
+   ]
   }
  }
 }

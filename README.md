@@ -14,6 +14,8 @@ App publicada: https://quehicimosenlosbarrios-smt.github.io
 | Distritos de Presupuesto Participativo | `data/distritos.geojson` | No, es fijo |
 | Cruce circuitos × distritos | `data/circuito-distrito.json` (`scripts/cruce_distritos.py`) | Solo si cambia un mapa |
 | Ganadores de Presupuesto Participativo | `data/presupuesto-participativo-2025.json`, descargado de presupuestoparticipativo.smt.gob.ar | Sí, se actualiza todos los días (etapa de la obra) |
+| Red vial por material | `data/red-vial.geojson` y `data/red-vial-zonas.json`, de la hoja "Red vial de la ciudad" del Power BI de la Subsecretaría | No: si cambia, correr `python scripts/red_vial.py archivo.pbix` |
+| Fotos de los refugios | `img/fotos/`, bajadas de GeoGestión y achicadas a 640 px | Sí, con la descarga diaria (solo las nuevas) |
 
 Mientras `data/intervenciones.csv` no exista, la app muestra datos de ejemplo (`data/ejemplo-intervenciones-smt.csv`).
 
