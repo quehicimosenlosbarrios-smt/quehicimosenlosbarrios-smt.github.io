@@ -33,7 +33,7 @@ window.APP_CONFIG = {
     "Pavimentación":         { color: "#1b6e2e", icono: "img/iconos/pavimentacion.png" },
     "Repavimentación":       { color: "#7cb342", icono: "img/iconos/repavimentacion.png" },
     "Semáforos":             { color: "#d32f2f", icono: "img/iconos/semaforos.png" },
-    "Alumbrado público":     { color: "#f2c500", icono: "img/iconos/alumbrado.png" },
+    "Alumbrado público":     { color: "#f5a300", icono: "img/iconos/alumbrado-naranja.png" },
     "Refugios":              { color: "#3aa9e6", dibujo: "refugio", subgrupos: {
       "Inteligentes":        { color: "#3aa9e6", icono: "img/iconos/refugios-inteligentes.png" },
       "Comunes":             { color: "#ffa600", icono: "img/iconos/refugios-comunes.png" } } },
