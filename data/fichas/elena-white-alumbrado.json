@@ -1,0 +1,1320 @@
+{
+ "_ayuda": "Alumbrado público en el barrio Elena White (recambios a LED y mantenimiento general), del informe operativo compartido por la Subsecretaría. Solo para la ficha del Circuito 18F.",
+ "titulo": "Alumbrado público en el barrio Elena White",
+ "recambios": [
+  {
+   "pedido": "260225006",
+   "fecha": "2026-02-25",
+   "direccion": "Magallanes 4500 Entre López Pandal y 43/86",
+   "lat": -26.847382,
+   "lon": -65.269856,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "94450",
+   "fecha": "2026-03-06",
+   "direccion": "Pasaje Ingeniero Farias y Benigno Vallejo .barrio Elena White",
+   "lat": -26.851292,
+   "lon": -65.272051,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "98405",
+   "fecha": "2026-04-06",
+   "direccion": "Pasaje Benigno Vallejos 4300",
+   "lat": -26.852204,
+   "lon": -65.267239,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "109235",
+   "fecha": "2026-06-25",
+   "direccion": "C. Coronel Olleros 4699 (4778)",
+   "lat": -26.8487,
+   "lon": -65.272845,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "260710010",
+   "fecha": "2026-07-10",
+   "direccion": "Pasaje 4390 Entre Farias y López Pondal_ Manzana C Lote 7",
+   "lat": -26.84826,
+   "lon": -65.269798,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "260715008",
+   "fecha": "2026-07-15",
+   "direccion": "Lopez Pondal y Eudoro Araoz",
+   "lat": -26.850378,
+   "lon": -65.270446,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "260718022",
+   "fecha": "2026-07-18",
+   "direccion": "49/90 So Entre Lopez Pondal e Ingeniero Farias",
+   "lat": -26.852161,
+   "lon": -65.270614,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "260730032",
+   "fecha": "2026-07-30",
+   "direccion": "Huemul 2100",
+   "lat": -26.847635,
+   "lon": -65.266778,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029004",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz T Lote 18",
+   "lat": -26.844736,
+   "lon": -65.26724,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029007",
+   "fecha": "2026-10-29",
+   "direccion": "Benigno Vallejo Entre Alberto Farias y 90/45 S.o",
+   "lat": -26.851693,
+   "lon": -65.269807,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "261029009",
+   "fecha": "2026-10-29",
+   "direccion": "90/45 S.o Casi Esquina Pasaje. Benigno Vallejo",
+   "lat": -26.851507,
+   "lon": -65.270097,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "261029010",
+   "fecha": "2026-10-29",
+   "direccion": "Pasaje. Benigno Vallejo Esquina 90/45 S.o",
+   "lat": -26.851683,
+   "lon": -65.270154,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "261029011",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz O Lote 9",
+   "lat": -26.849414,
+   "lon": -65.269182,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029012",
+   "fecha": "2026-10-29",
+   "direccion": "Pasaje Benigno Vallejo Casi Esquina Lopez Pondal",
+   "lat": -26.851557,
+   "lon": -65.270569,
+   "retirada": "MBA"
+  },
+  {
+   "pedido": "261029013",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz O Lote 6",
+   "lat": -26.849345,
+   "lon": -65.269523,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029014",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz O Lote 3",
+   "lat": -26.849257,
+   "lon": -65.269789,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029015",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz K Lote 8",
+   "lat": -26.849305,
+   "lon": -65.27087,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "261029016",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Elena White Mz L Lote 13",
+   "lat": -26.850209,
+   "lon": -65.2711,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029017",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Elena White Mz J Lote 10",
+   "lat": -26.850256,
+   "lon": -65.270308,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029018",
+   "fecha": "2026-10-29",
+   "direccion": "Eudoro Araoz Entre Lopez Pondal y 90/45 S.o",
+   "lat": -26.850286,
+   "lon": -65.270063,
+   "retirada": "RS (Sodio)"
+  },
+  {
+   "pedido": "261029021",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Elena White Mz F Lote 20",
+   "lat": -26.850452,
+   "lon": -65.269528,
+   "retirada": "NC4V"
+  },
+  {
+   "pedido": "261029022",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Elena White Mz F Lote 19",
+   "lat": -26.850497,
+   "lon": -65.26932,
+   "retirada": "RS (Sodio)"
+  }
+ ],
+ "mantenimientos": [
+  {
+   "pedido": "123445",
+   "fecha": "2026-10-31",
+   "direccion": "Manzana C3 Lote 2 Ampliación Elena White",
+   "lat": -26.846638,
+   "lon": -65.26757,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "261030004",
+   "fecha": "2026-10-30",
+   "direccion": "Ing Farias y Eudoro Araoz",
+   "lat": -26.850381,
+   "lon": -65.269156,
+   "falla": "POSTE (NUEVA)"
+  },
+  {
+   "pedido": "261029005",
+   "fecha": "2026-10-29",
+   "direccion": "Barrio Ampliacion Elena White Mz T Lote 21",
+   "lat": -26.84491,
+   "lon": -65.266835,
+   "falla": "LUMINARIA (CAIDA)"
+  },
+  {
+   "pedido": "261028028",
+   "fecha": "2026-10-28",
+   "direccion": "Beningo Vallejo Esquina Lopez Pondal",
+   "lat": -26.851632,
+   "lon": -65.270887,
+   "falla": "PUNTO LUMINICO (NUEVA)"
+  },
+  {
+   "pedido": "261028031",
+   "fecha": "2026-10-28",
+   "direccion": "Lopez Pondal y Pasaje Benigno Vallejo",
+   "lat": -26.851331,
+   "lon": -65.270785,
+   "falla": "PUNTO LUMINICO (NUEVA)"
+  },
+  {
+   "pedido": "122863",
+   "fecha": "2026-10-27",
+   "direccion": "B° Elena White, Olleros 4610",
+   "lat": -26.849242,
+   "lon": -65.270505,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261027032",
+   "fecha": "2026-10-27",
+   "direccion": "Pasaje 90/45 Al 2100 - Barrio Elena White",
+   "lat": -26.849855,
+   "lon": -65.269772,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261027033",
+   "fecha": "2026-10-27",
+   "direccion": "Lopez Pondal 2100 - Barrio Elena White",
+   "lat": -26.84986,
+   "lon": -65.270313,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261027035",
+   "fecha": "2026-10-28",
+   "direccion": "43/90 So Entre Boyaca y Lopez Pondal - Barrio Elena White",
+   "lat": -26.848439,
+   "lon": -65.270713,
+   "falla": "POSTE (DAÑADA)"
+  },
+  {
+   "pedido": "261023010",
+   "fecha": "2026-10-26",
+   "direccion": "Pasaje Boyaca y Coronel Olleros Por Sobre el Pasaje",
+   "lat": -26.848885,
+   "lon": -65.271254,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261022015",
+   "fecha": "2026-10-26",
+   "direccion": "Barrio Ampleacion Elena White - Manzana J Lote 4",
+   "lat": -26.845692,
+   "lon": -65.265277,
+   "falla": "CABLEADO (CAIDA)"
+  },
+  {
+   "pedido": "261022032",
+   "fecha": "2026-10-26",
+   "direccion": "Olleros 4699",
+   "lat": -26.848751,
+   "lon": -65.271279,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261020014",
+   "fecha": "2026-10-22",
+   "direccion": "Boyaca y Olleros",
+   "lat": -26.848674,
+   "lon": -65.271161,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "121123",
+   "fecha": "2026-10-15",
+   "direccion": "Huemul 1999",
+   "lat": -26.847728,
+   "lon": -65.266698,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261007045",
+   "fecha": "2026-10-15",
+   "direccion": "Lopez Pondal Entre Olleros y Eudoro Araoz",
+   "lat": -26.849738,
+   "lon": -65.270299,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "120390",
+   "fecha": "2026-10-13",
+   "direccion": "Manz B Lote 4 Sobre Pasaje 23/90 S.o del Barrio Ampliacion Elena White , Alt Boyaca 2700",
+   "lat": -26.847822,
+   "lon": -65.271729,
+   "falla": "POSTE (DAÑADA)"
+  },
+  {
+   "pedido": "261002006",
+   "fecha": "2026-10-13",
+   "direccion": "Boyaca Entre Magallanes y 43/86 S.o",
+   "lat": -26.847357,
+   "lon": -65.270946,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "120387",
+   "fecha": "2026-10-08",
+   "direccion": "B Ampliacion Elena White Mz A Casa 17",
+   "lat": -26.847731,
+   "lon": -65.271829,
+   "falla": "POSTE (DAÑADA)"
+  },
+  {
+   "pedido": "261001014",
+   "fecha": "2026-10-01",
+   "direccion": "Barrio Ampliacion Elena White Mz A Lote 7 Altura Olleros 4700",
+   "lat": -26.848447,
+   "lon": -65.271412,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "261001019",
+   "fecha": "2026-10-02",
+   "direccion": "Olleros 4778",
+   "lat": -26.84909,
+   "lon": -65.271964,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "119872",
+   "fecha": "2026-10-02",
+   "direccion": "Ampliación Elena White Mza D2 Lote 10(magallanes y Boyacá)",
+   "lat": -26.832679,
+   "lon": -65.266128,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260930020",
+   "fecha": "2026-10-01",
+   "direccion": "Pasaje Benigno Vallejo Entre Ing Alberto Farias y 90/45 S.o",
+   "lat": -26.851819,
+   "lon": -65.269717,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "119376",
+   "fecha": "2026-09-23",
+   "direccion": "Eudoro Araoz 4501 Bº Elena White",
+   "lat": -26.850124,
+   "lon": -65.270563,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "119373",
+   "fecha": "2026-09-23",
+   "direccion": "Olleros 4550 Lopez Pondar y Eudoro Araoz .barrio:elena Witte",
+   "lat": -26.849055,
+   "lon": -65.270325,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260917003",
+   "fecha": "2026-09-18",
+   "direccion": "Ingeniero Alberto Farias y Ezequiel Colombres",
+   "lat": -26.846283,
+   "lon": -65.268094,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "118666",
+   "fecha": "2026-09-17",
+   "direccion": "Alberto Farias 2247",
+   "lat": -26.850056,
+   "lon": -65.269187,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260915013",
+   "fecha": "2026-09-15",
+   "direccion": "43/86 S.o",
+   "lat": -26.847905,
+   "lon": -65.269176,
+   "falla": "LUMINARIA (ENCENDIDA)"
+  },
+  {
+   "pedido": "260915018",
+   "fecha": "2026-09-16",
+   "direccion": "43/86 S.o y Lopez Pondal",
+   "lat": -26.847903,
+   "lon": -65.269748,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260915021",
+   "fecha": "2026-09-15",
+   "direccion": "B° Elena White Mz G Lote 10",
+   "lat": -26.8511,
+   "lon": -65.264813,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "118184",
+   "fecha": "2026-09-14",
+   "direccion": "Olleros 4500 Mc1 Lote 21 Esquina López Pondal",
+   "lat": -26.849505,
+   "lon": -65.270095,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "116735",
+   "fecha": "2026-09-02",
+   "direccion": "Pasaje Benigno Vallejos e Ingeniero Alberto Farías ( En la Misma Esquina )",
+   "lat": -26.851827,
+   "lon": -65.269433,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "116602",
+   "fecha": "2026-09-01",
+   "direccion": "Avenida Ingeniero Alberto Farias y Benigno Vallejo",
+   "lat": -26.851827,
+   "lon": -65.269433,
+   "falla": "ZONA (VANDALISMO)"
+  },
+  {
+   "pedido": "260901034",
+   "fecha": "2026-09-02",
+   "direccion": "Coronel Olleros 4775 Barrio Elena White",
+   "lat": -26.84827,
+   "lon": -65.272505,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260831009",
+   "fecha": "2026-08-31",
+   "direccion": "43/86 S.o y Boyaca",
+   "lat": -26.847724,
+   "lon": -65.271068,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260828015",
+   "fecha": "2026-08-31",
+   "direccion": "Pasaje Magallanes y Lopez Pandal",
+   "lat": -26.847147,
+   "lon": -65.269724,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260824034",
+   "fecha": "2026-08-24",
+   "direccion": "Pasaje 92/45 Suroeste y Eudoro Araoz",
+   "lat": -26.850166,
+   "lon": -65.27129,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260822007",
+   "fecha": "2026-08-22",
+   "direccion": "Ingeniero Farias y Lavaisse",
+   "lat": -26.84445,
+   "lon": -65.267809,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260822019",
+   "fecha": "2026-08-24",
+   "direccion": "Barrio Elena White Manzana K Lote 4 Olleros 4600",
+   "lat": -26.848997,
+   "lon": -65.271945,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "115313",
+   "fecha": "2026-08-21",
+   "direccion": "Barrio Elena White, Sobre Ing Farias Casi Olleros",
+   "lat": -26.84982,
+   "lon": -65.26905,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "115114",
+   "fecha": "2026-08-21",
+   "direccion": "Ingeniero Farias 2247",
+   "lat": -26.850056,
+   "lon": -65.269187,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260820008",
+   "fecha": "2026-08-29",
+   "direccion": "Benigno Vallejo y Pasaje 86/49 Suroeste",
+   "lat": -26.852184,
+   "lon": -65.267115,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260819012",
+   "fecha": "2026-08-20",
+   "direccion": "Pasaje Magallane 4300 y Huemul -ampliación Elena White",
+   "lat": -26.847781,
+   "lon": -65.266858,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260819019",
+   "fecha": "2026-08-20",
+   "direccion": "Pasaje Magallanes y Lopez Pondal",
+   "lat": -26.847724,
+   "lon": -65.270075,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260810017",
+   "fecha": "2026-08-11",
+   "direccion": "43/86 S.o Entre Alberto Farias y Huemul",
+   "lat": -26.848476,
+   "lon": -65.268261,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260730002",
+   "fecha": "2026-07-30",
+   "direccion": "Magallanes 4300 Barrio Ampliacion Elena White",
+   "lat": -26.848252,
+   "lon": -65.26735,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260728046",
+   "fecha": "2026-07-29",
+   "direccion": "Magallanes 4500 Entre Alberto Farias y Lopez Pondal. Ubi Base",
+   "lat": -26.847517,
+   "lon": -65.269148,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260727008",
+   "fecha": "2026-07-29",
+   "direccion": "López Pondal 2150",
+   "lat": -26.848735,
+   "lon": -65.269897,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260726010",
+   "fecha": "2026-07-29",
+   "direccion": "90/45 S.o Casi Esquina Eudoro Araoz",
+   "lat": -26.850318,
+   "lon": -65.269722,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260724012",
+   "fecha": "2026-07-25",
+   "direccion": "Magallanes Al 3400 - Barrio Ampliación Elena White",
+   "lat": -26.850185,
+   "lon": -65.256632,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "111743",
+   "fecha": "2026-07-26",
+   "direccion": "Barrio Elena White, Olleros 4610",
+   "lat": -26.849264,
+   "lon": -65.270364,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260719005",
+   "fecha": "2026-07-20",
+   "direccion": "41/86 Suroeste Entre Huemul y Alberto Farias. Ubi Base",
+   "lat": -26.84694,
+   "lon": -65.2676,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260717042",
+   "fecha": "2026-07-19",
+   "direccion": "Barrio Ampliacion Elena White Mz K Lote 16",
+   "lat": -26.846022,
+   "lon": -65.266589,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "110685",
+   "fecha": "2026-07-14",
+   "direccion": "Barrio Elena Withe M F Lote 9 (entre Ing. Alberto Fariaz y Olleros 4550)",
+   "lat": -26.849466,
+   "lon": -65.269039,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260713015",
+   "fecha": "2026-07-13",
+   "direccion": "Lopez Pondal y Eudoro Araoz",
+   "lat": -26.849716,
+   "lon": -65.27028,
+   "falla": "POSTE (INCLINADO)"
+  },
+  {
+   "pedido": "260711013",
+   "fecha": "2026-07-12",
+   "direccion": "Inca Garcilaso de la Vega Entre Huemul y 88/37 So",
+   "lat": -26.845759,
+   "lon": -65.266088,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260709007",
+   "fecha": "2026-07-10",
+   "direccion": "López Pondal Entre Pasaje 4390 y Pasaje 4386- Barrio Ampliacion Helena White",
+   "lat": -26.848165,
+   "lon": -65.269841,
+   "falla": "POSTE (NUEVA)"
+  },
+  {
+   "pedido": "260709008",
+   "fecha": "2026-07-09",
+   "direccion": "Mz C. En Calle Pondal. Barrio Ampliacion Helena White",
+   "lat": -26.8484,
+   "lon": -65.270121,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "110366",
+   "fecha": "2026-07-09",
+   "direccion": "Barrio Ampliación Elena White Mz B1 Lote 10",
+   "lat": -26.846638,
+   "lon": -65.26757,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260625023",
+   "fecha": "2026-06-28",
+   "direccion": "Barrio Elena White Olleros 4778",
+   "lat": -26.848815,
+   "lon": -65.273069,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260616017",
+   "fecha": "2026-06-19",
+   "direccion": "Barrio Ampliación Elena White - Mzna D Lote 1 Sobre el Pasaje Americo Vespucio",
+   "lat": -26.847113,
+   "lon": -65.266771,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "2606160231",
+   "fecha": "2026-06-19",
+   "direccion": "43/86 So Entre Ing Farias y Lopez Pandal - A 40 Metros de la Teniente Faria Por el Pasaje Magallanes",
+   "lat": -26.847992,
+   "lon": -65.269008,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260609013",
+   "fecha": "2026-06-09",
+   "direccion": "Ingeniero Farias 1999",
+   "lat": -26.845942,
+   "lon": -65.268226,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "107568",
+   "fecha": "2026-06-09",
+   "direccion": "Olleros 4700",
+   "lat": -26.848427,
+   "lon": -65.272107,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260608009",
+   "fecha": "2026-06-11",
+   "direccion": "43/90 S.o. y Lopez Pondal",
+   "lat": -26.848341,
+   "lon": -65.270632,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260607016",
+   "fecha": "2026-06-08",
+   "direccion": "Magallanes 4483 Esquina Lopez Pandal. Ubi Base",
+   "lat": -26.847339,
+   "lon": -65.269328,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "106918",
+   "fecha": "2026-06-05",
+   "direccion": "Olleros 4620, Elena White",
+   "lat": -26.849055,
+   "lon": -65.270415,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260602030",
+   "fecha": "2026-06-05",
+   "direccion": "Magallanes e Ingeniero Farias",
+   "lat": -26.847606,
+   "lon": -65.268439,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260518054",
+   "fecha": "2026-05-18",
+   "direccion": "Juan Padros y López Pondal",
+   "lat": -26.852316,
+   "lon": -65.27129,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260516028",
+   "fecha": "2026-05-16",
+   "direccion": "Barrio Ampliación Elena White - Pasaje 43/90 So Entre Lopez Pondal y Boyaca",
+   "lat": -26.848049,
+   "lon": -65.270319,
+   "falla": "POSTE (CAIDA)"
+  },
+  {
+   "pedido": "260510001",
+   "fecha": "2026-05-18",
+   "direccion": "Juan Padros y Lopez Pondal",
+   "lat": -26.852373,
+   "lon": -65.271172,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260506020",
+   "fecha": "2026-05-25",
+   "direccion": "Barrio Ampliación Elena White Manzana B 1 Casa 7",
+   "lat": -26.848116,
+   "lon": -65.270405,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "103284",
+   "fecha": "2026-05-06",
+   "direccion": "Elena White Manz I Lote 5",
+   "lat": -26.846638,
+   "lon": -65.26757,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260505013",
+   "fecha": "2026-05-05",
+   "direccion": "Magallanes 4300 Barrio Ampliacion Elena White",
+   "lat": -26.848252,
+   "lon": -65.26735,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260505015",
+   "fecha": "2026-05-05",
+   "direccion": "Magallanes Esquina Ingeniero Farias",
+   "lat": -26.847419,
+   "lon": -65.268404,
+   "falla": "COLUMNA (VANDALISMO)"
+  },
+  {
+   "pedido": "102899",
+   "fecha": "2026-05-04",
+   "direccion": "Coronel Olleros y Boyacá En la Misma Esquina",
+   "lat": -26.849108,
+   "lon": -65.271388,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260504021",
+   "fecha": "2026-06-05",
+   "direccion": "Barrio Ampliación Elena White Manzana B 1 Casa 7",
+   "lat": -26.848164,
+   "lon": -65.270384,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260428010",
+   "fecha": "2026-04-28",
+   "direccion": "Magallanes 4300",
+   "lat": -26.84838,
+   "lon": -65.267278,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "102299",
+   "fecha": "2026-04-28",
+   "direccion": "Ampliación Elena White Altura Lavaise y Pasaje Japón Al 4250",
+   "lat": -26.847887,
+   "lon": -65.238457,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260428015",
+   "fecha": "2026-04-29",
+   "direccion": "Inca Garcilazo Entre 88/37 So y Huemul",
+   "lat": -26.84583,
+   "lon": -65.266088,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260423042",
+   "fecha": "2026-04-29",
+   "direccion": "43/86 S.o Entre Huemul y Alberto Farias",
+   "lat": -26.848535,
+   "lon": -65.267643,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260420021",
+   "fecha": "2026-04-22",
+   "direccion": "Huemul y Pasaje Inca Garcilazo - Huemul y Lavaisse",
+   "lat": -26.845825,
+   "lon": -65.266073,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "100845",
+   "fecha": "2026-04-17",
+   "direccion": "Pasaje 43/90 S.o. Barrio Ampliación Elena White Manzana C Lote 10 Pasaje Paralelo A Olleros Altura 4.500",
+   "lat": -26.849284,
+   "lon": -65.270096,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "99938",
+   "fecha": "2026-05-02",
+   "direccion": "Boyacá 2700",
+   "lat": -26.847956,
+   "lon": -65.270795,
+   "falla": "OBRA (NUEVA)"
+  },
+  {
+   "pedido": "260410019",
+   "fecha": "2026-04-11",
+   "direccion": "Huemul y Pasaje 4986 Suroeste.",
+   "lat": -26.852418,
+   "lon": -65.268463,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260410034",
+   "fecha": "2026-04-17",
+   "direccion": "Malabia 4500- Barrio Ampliacion Elena White",
+   "lat": -26.844615,
+   "lon": -65.267965,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "99359",
+   "fecha": "2026-04-09",
+   "direccion": "Pasaje Japon 4477 Ampliacion Elena White",
+   "lat": -26.847875,
+   "lon": -65.238336,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "98426",
+   "fecha": "2026-04-06",
+   "direccion": "Ingeniero Farias y Magallanes",
+   "lat": -26.847457,
+   "lon": -65.268447,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260402019",
+   "fecha": "2026-04-11",
+   "direccion": "Ingeniero Farias 1950. Ubi Base",
+   "lat": -26.848256,
+   "lon": -65.268927,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260331016",
+   "fecha": "2026-04-02",
+   "direccion": "Barrio Elena White- Olleros y Lopez Pondal Altura Olleros 4500",
+   "lat": -26.84947,
+   "lon": -65.27006,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260330008",
+   "fecha": "2026-04-11",
+   "direccion": "41/86 So Entre Lopez Pondal e Ing Alberto Farias",
+   "lat": -26.846818,
+   "lon": -65.268488,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260328011",
+   "fecha": "2026-04-02",
+   "direccion": "43/86 S.o Casi Esquina Huemul",
+   "lat": -26.848551,
+   "lon": -65.266705,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260326022",
+   "fecha": "2026-03-27",
+   "direccion": "Boyaca Casi Esquina Olleros",
+   "lat": -26.848832,
+   "lon": -65.271203,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "96511",
+   "fecha": "2026-03-27",
+   "direccion": "Lavaisse 4400",
+   "lat": -26.846682,
+   "lon": -65.267082,
+   "falla": "LUMINARIA (NUEVA)"
+  },
+  {
+   "pedido": "260319001",
+   "fecha": "2026-03-24",
+   "direccion": "Ampliación Elena White Mz L Lote 19 Entre Ingenieros Farias y. Pasaje Huemul",
+   "lat": -26.831412,
+   "lon": -65.262274,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260319002",
+   "fecha": "2026-03-19",
+   "direccion": "43/86 S.o Entre Boyaca y Lopez Pondal",
+   "lat": -26.847745,
+   "lon": -65.270441,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260319003",
+   "fecha": "2026-03-21",
+   "direccion": "Inca Garcilazo 4389 Casi Ing Farias",
+   "lat": -26.845439,
+   "lon": -65.26802,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260318006",
+   "fecha": "2026-03-21",
+   "direccion": "43/86 S.o Entre Lopez Pondal y Boyaca",
+   "lat": -26.847893,
+   "lon": -65.270582,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260318009",
+   "fecha": "2026-03-21",
+   "direccion": "88/37 S.o Entre Inca Garcilazo de la Vega y Lavaisse",
+   "lat": -26.845307,
+   "lon": -65.266641,
+   "falla": "LUMINARIA (RECAMBIO)"
+  },
+  {
+   "pedido": "96005",
+   "fecha": "2026-03-21",
+   "direccion": "Olleros y 90/45 S.o",
+   "lat": -26.849386,
+   "lon": -65.269557,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260318014",
+   "fecha": "2026-03-21",
+   "direccion": "B°ampliacion Elena White Mt Lote 25 Altura Malabia 4300",
+   "lat": -26.84512,
+   "lon": -65.26681,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260318029",
+   "fecha": "2026-03-21",
+   "direccion": "Barrio Elena White Mza C Lote 22 (calle 4790 Suroeste,entre Eudoro Aráoz y Venigno Vallejo) Altura Ingeniero Alberto Farías 3000",
+   "lat": -26.851068,
+   "lon": -65.268497,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260316006",
+   "fecha": "2026-03-18",
+   "direccion": "Calle 4790 Suroeste y Alberto Farias",
+   "lat": -26.851177,
+   "lon": -65.269241,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260312017",
+   "fecha": "2026-03-15",
+   "direccion": "Ingeniero Farias Entre Olleros y Eudoro Araoz",
+   "lat": -26.849829,
+   "lon": -65.269075,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260312035",
+   "fecha": "2026-03-15",
+   "direccion": "Eudoro Araoz 4250",
+   "lat": -26.850664,
+   "lon": -65.267383,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260311011",
+   "fecha": "2026-03-15",
+   "direccion": "43/90 So y Boyaca",
+   "lat": -26.847549,
+   "lon": -65.270635,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "94905",
+   "fecha": "2026-03-15",
+   "direccion": "Magallanes 4600",
+   "lat": -26.847288,
+   "lon": -65.270834,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260310026",
+   "fecha": "2026-03-14",
+   "direccion": "Lavaisse Esquina Ingeniero Farias",
+   "lat": -26.844575,
+   "lon": -65.267712,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260307023",
+   "fecha": "2026-03-10",
+   "direccion": "Ampl Elena White y Ollero 4300",
+   "lat": -26.848392,
+   "lon": -65.266709,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260307007",
+   "fecha": "2026-03-07",
+   "direccion": "Ingeniero Farias 1950",
+   "lat": -26.848424,
+   "lon": -65.268455,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260306023",
+   "fecha": "2026-03-10",
+   "direccion": "Magallanes 4300",
+   "lat": -26.848481,
+   "lon": -65.266846,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260305027",
+   "fecha": "2026-03-07",
+   "direccion": "Lavaisse y 88/37 So Mza T Lote 23 Ubi Base",
+   "lat": -26.844895,
+   "lon": -65.266652,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260224005",
+   "fecha": "2026-02-25",
+   "direccion": "Barrio Ampliación Elena Whitthe Mza B Lote 6 Altura Olleros 4300",
+   "lat": -26.848362,
+   "lon": -65.266766,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260224009",
+   "fecha": "2026-02-25",
+   "direccion": "Ingeniero Farias y Pasaje López Pondal",
+   "lat": -26.846523,
+   "lon": -65.26856,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260223031",
+   "fecha": "2026-02-25",
+   "direccion": "Barrio Ampliacion Elena White Mz Z Casa 12",
+   "lat": -26.842678,
+   "lon": -65.267423,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260220026",
+   "fecha": "2026-02-20",
+   "direccion": "Pasaje Magallanes 4250",
+   "lat": -26.847968,
+   "lon": -65.266707,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260219051",
+   "fecha": "2026-02-23",
+   "direccion": "Barrio Elena White, Pasaje Japon 4400. Altura Malabia 4400",
+   "lat": -26.843402,
+   "lon": -65.267439,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "91350",
+   "fecha": "2026-02-22",
+   "direccion": "Barrio Ampliación Elena White Mza B Lote 6 Altura Olleros 4300",
+   "lat": -26.848576,
+   "lon": -65.266893,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260218019",
+   "fecha": "2026-02-23",
+   "direccion": "Barrio Ampliación Elena White Mt Lote 25",
+   "lat": -26.845273,
+   "lon": -65.26671,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "90682",
+   "fecha": "2026-02-13",
+   "direccion": "Lavaisse 4300",
+   "lat": -26.846463,
+   "lon": -65.266754,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "89531",
+   "fecha": "2026-02-06",
+   "direccion": "• Lavaisse 4301",
+   "lat": -26.846311,
+   "lon": -65.266945,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260203008",
+   "fecha": "2026-02-04",
+   "direccion": "Lavaisse 4301- 4320 Barrio Ampliacion Elena White",
+   "lat": -26.844833,
+   "lon": -65.266487,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260202003",
+   "fecha": "2026-02-03",
+   "direccion": "Magallanes 4250 Barrio Ampliación Elena White",
+   "lat": -26.847576,
+   "lon": -65.268568,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260131015",
+   "fecha": "2026-02-01",
+   "direccion": "Barrio Elena White Mz L Casa 10 Altura Olleros 4600",
+   "lat": -26.848957,
+   "lon": -65.272499,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260130022",
+   "fecha": "2026-01-30",
+   "direccion": "Magallanes 4600",
+   "lat": -26.847049,
+   "lon": -65.270727,
+   "falla": "ZONA (APAGADA)"
+  },
+  {
+   "pedido": "260124009",
+   "fecha": "2026-01-24",
+   "direccion": "Calle Americo Vespucio 4400 y Cura Brochero, En Barrio Ampliación Elena White",
+   "lat": -26.849071,
+   "lon": -65.25475,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260123024",
+   "fecha": "2026-01-23",
+   "direccion": "Barrio Helena White Manzana L Lote 7",
+   "lat": -26.850699,
+   "lon": -65.271098,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "87396",
+   "fecha": "2026-01-22",
+   "direccion": "Pasaje Japon 4250 Manzana U Casa 22 Barrio Ampliación Elena White",
+   "lat": -26.847944,
+   "lon": -65.238543,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260126016",
+   "fecha": "2026-01-28",
+   "direccion": "C. Inca Garcilaso de la Vega Entre 88/37 S.o e Ing. Alberto Farias",
+   "lat": -26.845605,
+   "lon": -65.267506,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260119024",
+   "fecha": "2026-01-20",
+   "direccion": "Barrio Helena White Manzana L Lote 7",
+   "lat": -26.850699,
+   "lon": -65.271098,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260115006",
+   "fecha": "2026-01-19",
+   "direccion": "Eudoro Araoz y Lopez Pondal",
+   "lat": -26.850255,
+   "lon": -65.27024,
+   "falla": "POSTE (INCLINADO)"
+  },
+  {
+   "pedido": "260115010",
+   "fecha": "2026-01-20",
+   "direccion": "Pasaje 90/45sur Oeste Mansana F Casa 7",
+   "lat": -26.850123,
+   "lon": -65.269826,
+   "falla": "LUMINARIA (MANTENIMIENTO)"
+  },
+  {
+   "pedido": "260113017",
+   "fecha": "2026-01-13",
+   "direccion": "Olleros 4550, Barrio Elena Whitte Manz: L Lote:12 Altura Olleros Al 4550",
+   "lat": -26.849409,
+   "lon": -65.270128,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260113019",
+   "fecha": "2026-01-13",
+   "direccion": "Eudoro Araoz y Lopez Pondal",
+   "lat": -26.850255,
+   "lon": -65.27024,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260113022",
+   "fecha": "2026-01-13",
+   "direccion": "Pasaje 90/45sur Oeste",
+   "lat": -26.850209,
+   "lon": -65.269848,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260113023",
+   "fecha": "2026-01-13",
+   "direccion": "Pasaje 90/45sur Oeste Mansana F Casa 7",
+   "lat": -26.850305,
+   "lon": -65.270019,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260110025",
+   "fecha": "2026-01-10",
+   "direccion": "Olleros 4550, Barrio Elena Whitte Manz: L Lote:12 Altura Olleros Al 4550",
+   "lat": -26.849409,
+   "lon": -65.270128,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "85626",
+   "fecha": "2026-01-12",
+   "direccion": "Magallanes 4600",
+   "lat": -26.847077,
+   "lon": -65.270791,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260109018",
+   "fecha": "2026-01-09",
+   "direccion": "B Elena White- Mz L, Lote 12 Altura Olleros 4500",
+   "lat": -26.849275,
+   "lon": -65.270128,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260108002",
+   "fecha": "2026-01-09",
+   "direccion": "Magallanes 4300 Barrio Ampliacion Elena White",
+   "lat": -26.848252,
+   "lon": -65.26735,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "85014",
+   "fecha": "2026-01-09",
+   "direccion": "Pasaje 49/90 So",
+   "lat": -26.8521,
+   "lon": -65.26985,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "260106017",
+   "fecha": "2026-01-09",
+   "direccion": "Batalla de Boyaca 2150 Altura Olleros 4700",
+   "lat": -26.848361,
+   "lon": -65.271314,
+   "falla": "LUMINARIA (APAGADA)"
+  },
+  {
+   "pedido": "92448",
+   "fecha": "2026-02-24",
+   "direccion": "Elena White (sin dirección exacta)",
+   "lat": null,
+   "lon": null,
+   "falla": "LUMINARIA (APAGADA)"
+  }
+ ]
+}

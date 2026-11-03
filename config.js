@@ -92,7 +92,9 @@ window.APP_CONFIG = {
         "Reúne lo que el municipio realizó en el circuito 18F para poner esa obra en contexto: qué otras intervenciones llegaron a sus barrios, cómo está hoy la red vial y qué proyecto eligieron los vecinos en Presupuesto Participativo."
       ],
       imagen: "img/motivos/inauguracion-elena-white.jpg",
-      barrio: "ELENA WHITE"
+      barrio: "ELENA WHITE",
+      // hoja extra después de Alumbrado público, con el informe operativo del barrio
+      alumbrado: "data/fichas/elena-white-alumbrado.json"
     }
   },
 

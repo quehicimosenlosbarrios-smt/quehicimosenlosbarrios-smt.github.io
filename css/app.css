@@ -446,11 +446,11 @@ table.t.ctx-t td:first-child { width: 36%; }
 .pg-head .ph-sec small { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-muted); }
 .pg-head .ph-sec .ph-zone { margin-top: 3px; font-family: var(--f-display); font-size: 22px; font-weight: 800; color: var(--paper-blue); }
 /* motivo de la ficha (contextualización) */
-.ctx-mot { display: grid; grid-template-columns: 1fr 148px; gap: 18px; align-items: start; background: var(--paper-soft); border-left: 4px solid var(--paper-blue); border-radius: 0 14px 14px 0; padding: 14px 16px; }
+.ctx-mot { display: grid; grid-template-columns: 1fr 138px; gap: 16px; align-items: start; background: var(--paper-soft); border-left: 4px solid var(--paper-blue); border-radius: 0 14px 14px 0; padding: 11px 14px; }
 .ctx-mot.noimg { grid-template-columns: 1fr; }
-.ctx-mot p { margin: 0 0 10px; font-size: 14px; line-height: 1.55; }
+.ctx-mot p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.5; }
 .ctx-mot p:first-child { font-weight: 600; }
-.ctx-mot img { display: block; width: 148px; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.ctx-mot img { display: block; width: 138px; height: auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
 .blist li.hl { font-weight: 800; color: #0033aa; }
 /* red vial: límite gris oscuro y comparación destacada */
 .pp-legend .lg-circ.dark { border-color: #3a3a3a; }
@@ -460,3 +460,12 @@ table.t.ctx-t td:first-child { width: 36%; }
 .foto .ph { height: 218px; }
 .foto figcaption b { font-size: 13.5px; }
 .foto figcaption small { font-size: 12px; }
+/* alumbrado del barrio destacado */
+.pp-legend .lg-led { width: 13px; height: 13px; border-radius: 50%; background: #f5a300; border: 1.5px solid #fff; box-shadow: 0 0 0 1px #f5a300; }
+.pp-legend .lg-man { width: 9px; height: 9px; border-radius: 50%; background: #0b63f6; }
+.pp-legend .lg-bar { width: 18px; height: 12px; border: 2px dashed #0033aa; background: rgba(0,51,170,.08); border-radius: 2px; }
+.tiles.tec .tile.txt b { font-size: 16px; line-height: 1.25; }
+.tiles.tec .tile.txt b small { font-size: 12px; }
+.alum-cols { display: grid; grid-template-columns: 1fr 336px; gap: 18px; align-items: start; }
+.alum-cols .pp-legend { flex-direction: column; gap: 4px; }
+.alum-cols canvas[data-chart] { display: block; }
