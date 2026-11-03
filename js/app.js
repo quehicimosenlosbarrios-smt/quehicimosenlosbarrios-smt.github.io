@@ -673,7 +673,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
   if (opts.numbered) {
     ctx.save(); tracePolys(ctx, P, district.polys); ctx.clip("evenodd");
     // todos los barrios en celeste claro con transparencia: los separa la línea punteada
-    district.barrios.forEach(function (b) { tracePolys(ctx, P, b.polys); ctx.fillStyle = "rgba(11,99,246,.13)"; ctx.fill("evenodd"); });
+    district.barrios.forEach(function (b) { tracePolys(ctx, P, b.polys); ctx.fillStyle = b === opts.highlight ? "rgba(0,51,170,.55)" : "rgba(11,99,246,.13)"; ctx.fill("evenodd"); });
     ctx.restore();
   }
   ctx.setLineDash([4, 4]); ctx.strokeStyle = PAPER.barrio; ctx.lineWidth = opts.numbered ? 1.2 : 0.8;
@@ -682,7 +682,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
   ctx.restore();
   ctx.setLineDash([]);
   if (opts.before) { opts.before(ctx, P); ctx.setLineDash([]); }
-  tracePolys(ctx, P, district.polys); ctx.strokeStyle = PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
+  tracePolys(ctx, P, district.polys); ctx.strokeStyle = opts.outline || PAPER.district; ctx.lineWidth = 2.5; ctx.stroke();
   // ficha por distrito: los circuitos electorales que caen en él
   if (opts.overlay) {
     ctx.save(); tracePolys(ctx, P, district.polys); ctx.clip("evenodd");
@@ -694,7 +694,7 @@ function paintMap(c, P, district, pts, opts, tiles) {
     // se escriben después de los números de barrio, corridos para no taparlos
     var circLabels = opts.overlay.filter(function (o) { return lab[o.key]; }).map(function (o) { return { q: P(lab[o.key]), t: "C. " + o.name.replace(/^circuito\s*/i, "") }; });
   } else if (opts.numbered && district.kind === "circuito") {
-    circLabels = [{ q: P(district.label), t: "Circuito " + district.name.replace(/^circuito\s*/i, ""), big: true }];
+    circLabels = [{ q: P(district.label), t: "Circuito " + district.name.replace(/^circuito\s*/i, ""), big: !opts.highlight, solid: true }];
   }
   ctx.font = "600 " + (opts.labelSize || 12) + "px Poppins, Arial, sans-serif"; ctx.textAlign = "center"; ctx.lineJoin = "round";
   // nombres de barrios debajo de las intervenciones, así las marcas quedan siempre a la vista
@@ -703,16 +703,26 @@ function paintMap(c, P, district, pts, opts, tiles) {
     ctx.textBaseline = "middle"; ctx.font = "700 14px Poppins, Arial, sans-serif";
     var taken = [];
     district.barrios.forEach(function (b, i) {
+      if (b === opts.highlight) return;
       var q = P(b.labels[district.id] || b.label), n = String(i + 1);
       ctx.strokeStyle = "rgba(255,255,255,.95)"; ctx.lineWidth = 4; ctx.strokeText(n, q[0], q[1]);
       ctx.fillStyle = PAPER.navy; ctx.fillText(n, q[0], q[1]);
       taken.push({ x: q[0], y: q[1], w: 12 + 8 * n.length, h: 20 });
     });
+    if (opts.highlight) {
+      // el barrio destacado lleva su nombre en lugar del número
+      var hb = opts.highlight, hq = P(hb.labels[district.id] || hb.label), ht = hb.name.toUpperCase();
+      ctx.font = "800 15px Poppins, Arial, sans-serif";
+      var hw = ctx.measureText(ht).width + 20;
+      ctx.beginPath(); ctx.roundRect(hq[0] - hw / 2, hq[1] - 13, hw, 26, 6); ctx.fillStyle = "#0033aa"; ctx.fill(); ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = "#ffffff"; ctx.fillText(ht, hq[0], hq[1] + 1);
+      taken.push({ x: hq[0], y: hq[1], w: hw + 10, h: 34 });
+    }
     if (circLabels) {
       // cada circuito en una etiqueta blanca con borde rojo, en el primer lugar libre cerca de su centro
       ctx.font = "700 12px Poppins, Arial, sans-serif";
       var hit = function (a, b) { return Math.abs(a.x - b.x) * 2 < a.w + b.w && Math.abs(a.y - b.y) * 2 < a.h + b.h; };
-      var offs = [[0, 0], [0, 20], [0, -20], [34, 0], [-34, 0], [0, 38], [0, -38], [30, 22], [-30, 22], [30, -22], [-30, -22], [0, 56], [0, -56]];
+      var offs = [[0, 0], [0, 20], [0, -20], [34, 0], [-34, 0], [0, 38], [0, -38], [30, 22], [-30, 22], [30, -22], [-30, -22], [0, 56], [0, -56], [70, 0], [-70, 0], [0, 76], [0, -76], [80, 40], [-80, 40], [80, -40], [-80, -40], [0, 100], [0, -100]];
       circLabels.forEach(function (c) {
         ctx.font = "700 " + (c.big ? 14 : 12) + "px Poppins, Arial, sans-serif";
         var hh = c.big ? 24 : 18, w = ctx.measureText(c.t).width + (c.big ? 18 : 12), box = null;
@@ -724,8 +734,9 @@ function paintMap(c, P, district, pts, opts, tiles) {
         taken.push(box);
         ctx.beginPath(); ctx.roundRect(box.x - w / 2, box.y - hh / 2, w, hh, hh / 2);
         // el del propio circuito va lleno de rojo; los de los circuitos dentro de un distrito, blancos con borde rojo
-        ctx.fillStyle = c.big ? "#e4002b" : "#ffffff"; ctx.fill(); ctx.strokeStyle = c.big ? "#ffffff" : "#e4002b"; ctx.lineWidth = c.big ? 2 : 1.2; ctx.stroke();
-        ctx.fillStyle = c.big ? "#ffffff" : "#e4002b"; ctx.fillText(c.t, box.x, box.y + 1);
+        var solid = c.big || c.solid;
+        ctx.fillStyle = solid ? "#e4002b" : "#ffffff"; ctx.fill(); ctx.strokeStyle = solid ? "#ffffff" : "#e4002b"; ctx.lineWidth = solid ? 2 : 1.2; ctx.stroke();
+        ctx.fillStyle = solid ? "#ffffff" : "#e4002b"; ctx.fillText(c.t, box.x, box.y + 1);
       });
     }
     ctx.textBaseline = "alphabetic";
@@ -866,7 +877,7 @@ function titleCase(t) { return String(t).toLowerCase().replace(/(^|[\s(."'-])(\S
 function planoPage(d) {
   var nb = d.barrios.length, c = CONCEJALES[d.key];
   if (d.kind === "distrito") c = null;
-  var blist = '<ol class="blist' + (nb > 24 ? ' c3' : nb > 8 ? ' c2' : '') + '">' + d.barrios.map(function (b) { return '<li>' + esc(b.name) + '</li>'; }).join("") + '</ol>';
+  var blist = '<ol class="blist' + (nb > 24 ? ' c3' : nb > 8 ? ' c2' : '') + '">' + d.barrios.map(function (b) { return '<li' + (b === barrioDestacado(d) ? ' class="hl"' : '') + '>' + esc(b.name) + '</li>'; }).join("") + '</ol>';
   var elec = c ? '<div class="elec">' + c.listas.map(function (l, i) {
     var pct = l.votos / c.total * 100;
     return '<div class="el-row' + frCls(l) + '"><span class="el-pos">' + (i + 1) + '°</span><div class="el-main"><b>' + esc(l.nombre) + '</b><small>Lista ' + esc(l.lista) + ' · ' + esc(titleCase(l.candidato)) + '</small><div class="el-bar"><i style="width:' + (pct / (c.listas[0].votos / c.total * 100) * 100).toFixed(1) + '%"></i></div></div>' +
@@ -1044,10 +1055,10 @@ function redPage(d) {
   return '<!--fuente:Red vial de la ciudad por material (Power BI de la Subsecretaría de Gestión Estratégica).-->' +
     band(d, 'Caracterización de la red vial del ' + z, 'Material de las calles de ' + esc(d.name) + ' · ' + fmt.format(s.cuadras) + ' cuadras · ' + kmTxt(s.km) + ' km') +
     '<div class="body"><div><div class="sh-map"><canvas data-map="red" width="1372" height="900"></canvas></div>' +
-    '<div class="sh-legend pp-legend">' + RV_ORDEN.map(function (k) { return '<span><i class="lg-rv" style="background:' + rvMat(k).color + '"></i>' + rvMat(k).nombre + '</span>'; }).join("") + '<span><i class="lg-circ"></i>Límite del ' + z + '</span></div></div>' +
-    '<div class="rv-cols"><div><h3 class="sh-h3">Red vial según material</h3><canvas data-chart="red" width="318" height="168"></canvas><p class="tnote">Porcentaje de los km de calles. En color, el ' + z + '; en gris, la ciudad.</p></div>' +
+    '<div class="sh-legend pp-legend">' + RV_ORDEN.map(function (k) { return '<span><i class="lg-rv" style="background:' + rvMat(k).color + '"></i>' + rvMat(k).nombre + '</span>'; }).join("") + '<span><i class="lg-circ dark"></i>Límite del ' + z + '</span></div></div>' +
+    '<div class="rv-cols"><div><h3 class="sh-h3">Red vial según material</h3><canvas data-chart="red" width="318" height="168"></canvas><p class="tnote">Porcentaje de los km de calles del ' + z + '.</p></div>' +
     '<div><h3 class="sh-h3">Cantidades</h3>' + table + '</div></div>' +
-    '<div><h3 class="sh-h3">Análisis</h3><ul class="findings rv-f">' + findings.map(function (f) { return '<li><span class="rv-dot"></span><span>' + f + '</span></li>'; }).join("") + '</ul>' +
+    '<div><h3 class="sh-h3">Análisis</h3><div class="rv-comp">' + esc(d.name) + ' ' + findings[3].replace('<b>Comparación:</b> ', '') + '</div>' +
     '<p class="tnote">Km medidos recortando cada cuadra con el límite del ' + z + '; cada cuadra se cuenta donde cae su punto medio.</p></div></div>';
 }
 function paintRed(ctx, P, d) {
@@ -1066,12 +1077,12 @@ function paintRed(ctx, P, d) {
   ctx.restore();
 }
 function chartRed(canvas, d) {
-  var s = rvStats(RV.zonas[rvKey(d)]), city = rvCiudad();
+  var s = rvStats(RV.zonas[rvKey(d)]);
   charts.push(new Chart(canvas, {
     type: "bar",
     data: { labels: RV_ORDEN.map(function (k) { return rvMat(k).nombre; }), datasets: [
       { label: d.name, data: RV_ORDEN.map(function (k) { return Math.round(s[k].pct * 10) / 10; }), backgroundColor: RV_ORDEN.map(function (k) { return rvMat(k).color; }) },
-      { label: "Ciudad", data: RV_ORDEN.map(function (k) { return Math.round(city[k].pct * 10) / 10; }), backgroundColor: "#c9d3d8" }] },
+] },
     options: {
       indexAxis: "y", responsive: false, animation: false, devicePixelRatio: 2,
       datasets: { bar: { barPercentage: 0.9, categoryPercentage: 0.8, maxBarThickness: 16 } },
@@ -1091,6 +1102,91 @@ function chartRed(canvas, d) {
 }
 
 /* ---------- Hoja de contextualización ---------- */
+// motivo puntual de una ficha (config.js: fichaMotivos, por nombre de circuito o distrito)
+function barrioDestacado(d) { var m = motivoDe(d); return m && m.barrio ? d.barrios.filter(function (b) { return norm(b.name) === norm(m.barrio); })[0] || null : null; }
+// datos puntuales de una ficha (p. ej. el informe de alumbrado del barrio destacado), por archivo
+var EXTRA = {};
+function loadExtras() {
+  var m = CFG.fichaMotivos || {}, urls = {};
+  Object.keys(m).forEach(function (k) { if (m[k].alumbrado) urls[m[k].alumbrado] = 1; });
+  return Promise.all(Object.keys(urls).filter(function (u) { return !EXTRA[u]; }).map(function (u) {
+    return fetch(rel(u)).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { if (j) EXTRA[u] = j; }).catch(function () {});
+  }));
+}
+var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+function fallaTxt(f) { f = String(f).toLowerCase(); return f.charAt(0).toUpperCase() + f.slice(1); }
+// hoja extra después de Alumbrado público: recambios a LED y mantenimientos del barrio destacado
+function extraPages(d) {
+  var m = motivoDe(d), x = m && m.alumbrado && EXTRA[m.alumbrado];
+  var t = TYPES.filter(function (y) { return y.name === "Alumbrado público"; })[0];
+  if (!x || !t) return [];
+  var rec = x.recambios, man = x.mantenimientos, tec = {};
+  rec.forEach(function (r) { tec[r.retirada] = (tec[r.retirada] || 0) + 1; });
+  var fechas = rec.concat(man).map(function (r) { return r.fecha; }).filter(Boolean).sort();
+  var f0 = fechas[0].split("-"), f1 = fechas[fechas.length - 1].split("-");
+  var periodo = (f0[0] === f1[0] ? MESES[+f0[1] - 1] + ' a ' + MESES[+f1[1] - 1] + ' de ' + f1[0] : MESES[+f0[1] - 1] + ' de ' + f0[0] + ' a ' + MESES[+f1[1] - 1] + ' de ' + f1[0]);
+  var hb = barrioDestacado(d);
+  var sinPt = man.filter(function (r) { return r.lat == null; }).length, lejos = man.filter(function (r) { return r.lat != null && !cerca(r, hb); }).length;
+  var nF = Object.keys(fallasDe(x)).length;
+  return ['<!--fuente:informe operativo de Alumbrado Público (recambios a LED y mantenimiento general).-->' +
+    band(d, x.titulo, 'Recambio a LED y mantenimiento general · ' + periodo, { type: t }) +
+    '<div class="body">' + tiles([
+      { v: fmt.format(rec.length + man.length), l: "Intervenciones de alumbrado en el barrio" },
+      { v: fmt.format(rec.length), l: "Luminarias cambiadas a LED" },
+      { v: fmt.format(man.length), l: "Mantenimientos realizados" },
+      { v: Object.keys(tec).sort(function (a, b) { return tec[b] - tec[a]; }).map(function (k) { return tec[k] + ' <small>' + esc(k) + '</small>'; }).join('<br>'), l: "Tecnología retirada", txt: true }], "tec") +
+    '<div class="alum-cols"><div><div class="sh-map"><canvas data-alum="1" width="720" height="1380"></canvas></div>' +
+    '<div class="sh-legend pp-legend"><span><i class="lg-led"></i>Recambio a LED (' + rec.length + ')</span><span><i class="lg-man"></i>Mantenimiento (' + (man.length - sinPt - lejos) + ')</span>' + (hb ? '<span><i class="lg-bar"></i>Barrio ' + esc(titleCase(hb.name)) + '</span>' : '') + '</div></div>' +
+    '<div><h3 class="sh-h3">Mantenimientos por tipo de falla</h3><canvas data-chart="falla" width="336" height="' + (nF * 22 + 40) + '"></canvas>' +
+    '<p class="tnote">Fuente: informe operativo de Alumbrado Público.' + (sinPt + lejos ? ' No figuran en el plano ' + (sinPt + lejos) + ' mantenimientos: ' + [sinPt ? sinPt + ' sin coordenadas' : '', lejos ? lejos + ' con coordenadas a más de 400 m del barrio' : ''].filter(Boolean).join(' y ') + '; sí se cuentan en los totales.' : '') + '</p></div></div></div>'];
+}
+// el plano se centra en el barrio: lo que tiene coordenadas a más de 400 m (probablemente mal cargadas) queda afuera
+function cerca(r, hb) { return r.lat != null && (!hb || inFeature([r.lon, r.lat], hb) || distToFeature([r.lon, r.lat], hb) <= 400); }
+function fallasDe(x) { var n = {}; x.mantenimientos.forEach(function (r) { n[r.falla] = (n[r.falla] || 0) + 1; }); return n; }
+function chartFallas(canvas, x) {
+  var n = fallasDe(x), keys = Object.keys(n).sort(function (a, b) { return n[b] - n[a] || a.localeCompare(b, "es"); });
+  charts.push(new Chart(canvas, {
+    type: "bar",
+    data: { labels: keys.map(function (k) { var t = fallaTxt(k); return t.length > 22 ? t.replace(" (", "\n(").split("\n") : t; }), datasets: [{ data: keys.map(function (k) { return n[k]; }), backgroundColor: "#0b63f6", maxBarThickness: 11 }] },
+    options: {
+      indexAxis: "y", responsive: false, animation: false, devicePixelRatio: 2, layout: { padding: { right: 34 } },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: {
+        x: { beginAtZero: true, grid: { color: PAPER.line }, border: { display: false }, ticks: { color: PAPER.muted, precision: 0, font: { size: 11, family: "Poppins, Arial" } } },
+        y: { grid: { display: false }, border: { color: PAPER.ink }, ticks: { color: PAPER.ink, autoSkip: false, padding: 4, font: { size: 10.5, family: "Poppins, Arial", weight: 500 } } }
+      }
+    },
+    plugins: [{ id: "valores", afterDatasetsDraw: function (ch) {
+      var ctx = ch.ctx; ctx.save(); ctx.font = "700 11px Poppins, Arial"; ctx.textBaseline = "middle"; ctx.textAlign = "left"; ctx.fillStyle = PAPER.ink;
+      ch.getDatasetMeta(0).data.forEach(function (b, j) { ctx.fillText(fmt.format(ch.data.datasets[0].data[j]), b.x + 5, b.y); });
+      ctx.restore();
+    } }]
+  }));
+}
+function drawAlumMap(canvas, d, x) {
+  var c = prepCanvas(canvas), hb = barrioDestacado(d), bb = (hb || d).bbox.slice();
+  var pts = x.recambios.concat(x.mantenimientos).filter(function (r) { return cerca(r, hb); });
+  pts.forEach(function (r) { bb = [Math.min(bb[0], r.lon), Math.min(bb[1], r.lat), Math.max(bb[2], r.lon), Math.max(bb[3], r.lat)]; });
+  var P = projector(bb, c.W, c.H, 34);
+  function paint(tiles) {
+    paintMap(c, P, d, [], { noLabels: true }, tiles);
+    var ctx = c.ctx;
+    if (hb) { tracePolys(ctx, P, hb.polys); ctx.fillStyle = "rgba(0,51,170,.08)"; ctx.fill("evenodd"); ctx.strokeStyle = "#0033aa"; ctx.lineWidth = 2; ctx.setLineDash([6, 4]); ctx.stroke(); ctx.setLineDash([]); }
+    x.mantenimientos.forEach(function (r) {
+      if (!cerca(r, hb)) return;
+      var q = P([r.lon, r.lat]); ctx.beginPath(); ctx.arc(q[0], q[1], 4.2, 0, Math.PI * 2); ctx.fillStyle = "rgba(11,99,246,.85)"; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+    });
+    x.recambios.forEach(function (r) {
+      if (!cerca(r, hb)) return;
+      var q = P([r.lon, r.lat]), rr = 9.5;
+      ctx.beginPath(); ctx.arc(q[0], q[1], rr, 0, Math.PI * 2); ctx.fillStyle = "#f5a300"; ctx.fill(); ctx.lineWidth = 1.6; ctx.strokeStyle = "#ffffff"; ctx.stroke();
+      var k = (rr * 1.32) / 24; ctx.save(); ctx.translate(q[0] - 12 * k, q[1] - 12 * k); ctx.scale(k, k); ctx.fillStyle = "#ffffff"; ctx.fill(new Path2D(ICONS.luz), "evenodd"); ctx.restore();
+    });
+  }
+  paint(null);
+  return loadBasemap(P, c.W, c.H).then(function (tiles) { if (tiles) paint(tiles); }).catch(function () {});
+}
+function motivoDe(d) { return (CFG.fichaMotivos || {})[d.name] || null; }
 function contextPage(d, hasRed, hasPP) {
   var z = zw(d), isD = d.kind === "distrito";
   var quien = isD ? 'el ' + esc(d.name) + ' de Presupuesto Participativo' : 'el ' + esc(d.name).replace(/^Circuito/, 'circuito electoral');
@@ -1110,24 +1206,21 @@ function contextPage(d, hasRed, hasPP) {
     ['Concejales', 'Elecciones municipales 2023, por circuito']
   ];
   if (hasRed) fuentes.splice(1, 0, ['Red vial', 'Power BI de la Subsecretaría (red vial por material)']);
-  var criterios = [
-    'Cada intervención se ubica en su barrio y su ' + z + ' por sus coordenadas; si cae sobre una avenida, se asigna al más cercano.',
-    'Un barrio que cruza el límite del ' + z + ' cuenta solo con las intervenciones que caen dentro.',
-    'Pavimentación se cuenta por cuadras; El gas llega a tu casa, por domicilios; EDUCÁ, por instituciones visitadas.',
-    isD ? 'Electores y escuelas del distrito se estiman según la parte de cada circuito que cae dentro.'
-        : 'Presupuesto Participativo: se muestra el ganador del distrito que comparte más superficie con el circuito.'
-  ];
+  var mm = motivoDe(d);
+  if (mm && mm.alumbrado && EXTRA[mm.alumbrado]) fuentes.push(['Alumbrado en ' + titleCase(mm.barrio || ''), 'Informe operativo de Alumbrado Público']);
+  var mot = motivoDe(d);
   return '<!--fuente:ver el cuadro "Fuentes de información" de esta hoja.-->' +
-    band(d, 'Contextualización de la Ficha Técnica', 'Qué es esta ficha, de dónde salen los datos y cómo leerla') +
-    '<div class="body"><div class="ctx-intro"><p>Esta ficha técnica reúne en un solo documento las intervenciones que la ' + esc(CFG.organismo) + ' registró en ' + quien +
-    ', organizadas por barrio y por tipo de intervención. Es una herramienta de la Subsecretaría de Gestión Estratégica para conocer el territorio, dar cuenta de lo realizado y acompañar la planificación.</p></div>' +
+    band(d, 'Contextualización de la Ficha Técnica', 'Qué es esta ficha, qué contiene y de dónde salen los datos') +
+    '<div class="body"><div class="ctx-intro"><p>La Ficha Técnica es un informe interno elaborado por la Subsecretaría de Gestión Estratégica de la ' + esc(CFG.organismo) +
+    '. Reúne las intervenciones que el municipio realizó en ' + quien + ', organizadas por barrio y por tipo, y permite dimensionar su impacto en el territorio: qué se hizo, dónde se hizo y a qué barrios alcanzó.</p></div>' +
     '<div><h3 class="sh-h3">Qué contiene</h3><ol class="ctx-grid">' + parts.map(function (x) { return '<li><b>' + x[0] + '</b><span>' + x[1] + '</span></li>'; }).join("") + '</ol></div>' +
     '<div><h3 class="sh-h3">Fuentes de información</h3><table class="t ctx-t"><tbody>' + fuentes.map(function (f) { return '<tr><td><b>' + f[0] + '</b></td><td>' + esc(f[1]) + '</td></tr>'; }).join("") + '</tbody></table></div>' +
-    '<div><h3 class="sh-h3">Criterios de lectura</h3><ul class="ctx-crit">' + criterios.map(function (c) { return '<li>' + c + '</li>'; }).join("") + '</ul></div></div>';
+    (mot ? '<div><h3 class="sh-h3">' + esc(mot.titulo || '¿Por qué se elabora esta ficha?') + '</h3><div class="ctx-mot' + (mot.imagen ? '' : ' noimg') + '"><div>' + (mot.parrafos || []).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join("") + '</div>' +
+      (mot.imagen ? '<img src="' + esc(mot.imagen) + '" alt="">' : '') + '</div></div>' : '') + '</div>';
 }
 
 // fotos de GeoGestión (p. ej. de cada refugio), con la dirección debajo: 12 por hoja
-var FOTOS_POR_HOJA = 12;
+var FOTOS_POR_HOJA = 6;
 function fotoPages(d, t, fotos) {
   if (!fotos.length) return [];
   var list = fotos.slice().sort(function (a, b) {
@@ -1205,8 +1298,11 @@ function buildFicha() {
     '<div><h3 class="sh-h3">Intervenciones por tipo</h3><table class="t"><thead><tr><th>Tipo</th><th></th><th class="r">Cantidad</th><th class="r">Barrios</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
     '</div>');
 
-  // 2. Una página por tipo (+ listado)
+  // 2. Una página por tipo (+ listado); la hoja extra de alumbrado del barrio destacado va en el lugar de Alumbrado público
+  var ord = (CFG.ordenIntervenciones || []).map(norm), rk = function (n) { var i = ord.indexOf(norm(n)); return i < 0 ? ord.length : i; };
+  var extra = extraPages(d), extraAt = rk("Alumbrado público");
   types.forEach(function (t) {
+    if (extra.length && rk(t.name === (CFG.fichaJuntas || {}).nombre ? CFG.fichaJuntas.tipos[0] : t.name) > extraAt) { pages.push.apply(pages, extra); extra = []; }
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t);
     var m = tp.reduce(function (a, p) { return a + (p.m || 0); }, 0);
     var byB = countBy(tp).filter(function (x) { return x.n; }), top = byB[0], shown = byB.slice(0, MAXROWS);
@@ -1270,6 +1366,8 @@ function buildFicha() {
     pages.push.apply(pages, fotoPages(d, t, fotos));
   });
 
+  if (extra.length) pages.push.apply(pages, extra);
+
   // 3. Síntesis ejecutiva (va como segunda hoja)
   var nBefore = pages.length;
   var tot = countBy(dpts), topB = tot.filter(function (x) { return x.n; }).slice(0, MAXBARS);
@@ -1323,7 +1421,7 @@ function buildFicha() {
   $("viewer-title").textContent = "Ficha técnica · " + d.name;
 
   // con letra más grande algunas hojas no entran: el mapa se achica lo justo para que la hoja no se corte
-  $("sheets").querySelectorAll(".sheet canvas[data-map], .sheet canvas[data-pp]").forEach(function (cv) {
+  $("sheets").querySelectorAll(".sheet canvas[data-map], .sheet canvas[data-pp], .sheet canvas[data-alum]").forEach(function (cv) {
     var sh = cv.closest(".sheet"), foot = sh.querySelector(".foot");
     var bottom = Math.max.apply(null, Array.prototype.map.call(sh.querySelectorAll(".body > *"), function (e) { return e.getBoundingClientRect().bottom; }));
     var over = bottom - foot.getBoundingClientRect().top;
@@ -1335,8 +1433,8 @@ function buildFicha() {
   var draws = [];
   $("sheets").querySelectorAll("canvas[data-map]").forEach(function (cv) {
     var k = cv.getAttribute("data-map"), t = TYPE_BY[k];
-    if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4, overlay: d.kind === "distrito" ? ZONES.circuito : null })); return; }
-    if (k === "red") { draws.push(drawMap(cv, d, [], { noLabels: true, before: function (ctx, P) { paintRed(ctx, P, d); } })); return; }
+    if (k === "plano") { draws.push(drawMap(cv, d, [], { numbered: true, radius: 7, lineW: 4, overlay: d.kind === "distrito" ? ZONES.circuito : null, highlight: barrioDestacado(d) })); return; }
+    if (k === "red") { draws.push(drawMap(cv, d, [], { noLabels: true, outline: "#3a3a3a", before: function (ctx, P) { paintRed(ctx, P, d); } })); return; }
     var tps = k === "all" ? dpts : dpts.filter(function (p) { return p.type === k; });
     draws.push(drawMap(cv, d, tps, { radius: k === "all" ? 7 : 9.5, lineW: k === "all" ? 4 : 6, labelSize: k === "all" ? 10 : 12, colorOf: t && t.subs ? subColor : null, onlyBarrios: k === "all" ? null : new Set(tps.map(function (p) { return p.barrio; })) }));
   });
@@ -1344,6 +1442,9 @@ function buildFicha() {
   fichaReady = Promise.all(draws);
   $("sheets").querySelectorAll("canvas[data-locator]").forEach(function (cv) { drawLocator(cv, d); });
   var cv = $("sheets").querySelector('canvas[data-chart="stack"]');
+  $("sheets").querySelectorAll("canvas[data-alum]").forEach(function (c) { draws.push(drawAlumMap(c, d, EXTRA[motivoDe(d).alumbrado])); });
+  var fc = $("sheets").querySelector('canvas[data-chart="falla"]');
+  if (fc) chartFallas(fc, EXTRA[motivoDe(d).alumbrado]);
   var rc = $("sheets").querySelector('canvas[data-chart="red"]');
   if (rc) chartRed(rc, d);
   if (cv) chartStack(cv, topB.map(function (x) { return x.b.name; }), types.map(function (t) { return { label: t.name, backgroundColor: t.color, data: topB.map(function (x) { return dpts.filter(function (p) { return p.barrio === x.b.id && p.type === t.id; }).length; }) }; }));
@@ -1356,7 +1457,7 @@ function initViewer() {
     $("viewer").hidden = false;
     // los mapas y gráficos de la ficha escriben con Poppins: esperar a que esté cargada
     var fonts = document.fonts ? Promise.all(["400 12px Poppins", "500 12px Poppins", "600 12px Poppins", "700 12px Poppins", "800 12px Poppins"].map(function (f) { return document.fonts.load(f); })).catch(function () {}) : Promise.resolve();
-    Promise.all([fonts, preloadIcons(), loadRedVial()]).then(function () { buildFicha(); $("sheets").scrollTop = 0; });
+    Promise.all([fonts, preloadIcons(), loadRedVial(), loadExtras()]).then(function () { buildFicha(); $("sheets").scrollTop = 0; });
   });
   $("btn-close").addEventListener("click", function () { $("viewer").hidden = true; });
   $("opt-list").addEventListener("change", buildFicha);
