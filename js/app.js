@@ -1133,8 +1133,7 @@ function extraPages(d) {
     '<div class="body">' + tiles([
       { v: fmt.format(rec.length + man.length), l: "Intervenciones de alumbrado en el barrio" },
       { v: fmt.format(rec.length), l: "Luminarias cambiadas a LED" },
-      { v: fmt.format(man.length), l: "Mantenimientos realizados" },
-      { v: Object.keys(tec).sort(function (a, b) { return tec[b] - tec[a]; }).map(function (k) { return tec[k] + ' <small>' + esc(k) + '</small>'; }).join('<br>'), l: "Tecnología retirada", txt: true }], "tec") +
+      { v: fmt.format(man.length), l: "Mantenimientos realizados" }]) +
     '<div class="alum-cols"><div><div class="sh-map"><canvas data-alum="1" width="720" height="1380"></canvas></div>' +
     '<div class="sh-legend pp-legend"><span><i class="lg-led"></i>Recambio a LED (' + rec.length + ')</span><span><i class="lg-man"></i>Mantenimiento (' + (man.length - sinPt - lejos) + ')</span>' + (hb ? '<span><i class="lg-bar"></i>Barrio ' + esc(titleCase(hb.name)) + '</span>' : '') + '</div></div>' +
     '<div><h3 class="sh-h3">Mantenimientos por tipo de falla</h3><canvas data-chart="falla" width="336" height="' + (nF * 22 + 40) + '"></canvas>' +
