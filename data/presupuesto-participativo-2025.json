@@ -2,7 +2,7 @@
  "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
  "edicion": 2025,
  "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
- "descargado": "2026-11-03",
+ "descargado": "2026-11-05",
  "ganadores": {
   "1": {
    "distrito": 1,
@@ -492,8 +492,8 @@
    "barrio": null,
    "categoria": "Espacio socio ambiental",
    "votos": null,
-   "lat": null,
-   "lon": null,
+   "lat": -26.8199,
+   "lon": -65.2066,
    "ubicacion_aproximada": false,
    "url": "https://presupuestoparticipativo.smt.gob.ar/proyectos/revalorizacion-y-renovacion-de-la-plaza-urquiza?edicion=2025",
    "descripcion": [
