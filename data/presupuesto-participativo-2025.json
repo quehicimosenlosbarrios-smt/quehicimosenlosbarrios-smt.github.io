@@ -2,7 +2,7 @@
  "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
  "edicion": 2025,
  "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
- "descargado": "2026-11-05",
+ "descargado": "2026-11-07",
  "ganadores": {
   "1": {
    "distrito": 1,
@@ -253,12 +253,12 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
-   "nota_prensa": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "4 de noviembre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $183.896.152,54. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "183.896.152,54",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17775/presupuesto-participativo-licitan-obras-de-construccion-de-un-espacio-deportivo-",
    "mas_votados": [
     {
      "titulo": "Espacio Deportivo -Cultural-Club Sargento Cabral-Villa Urquiza",
@@ -600,12 +600,12 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
-   "nota_prensa": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "30 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $241.103.553,22. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "241.103.553,22",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17644/presupuesto-participativo-licitan-la-obra-de-construccion-de-un-anfiteatro-de-us",
    "mas_votados": [
     {
      "titulo": "El Arte Popular en la Plaza Los Platanos",
@@ -975,12 +975,12 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
-   "nota_prensa": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "4 de noviembre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $198.816.773,08. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "198.816.773,08",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17769/presupuesto-participativo-licitan-el-proyecto-de-construccion-de-un-playon-depor",
    "mas_votados": [
     {
      "titulo": "Playón Deportivo Vestuarios para el Club San Alberto",
