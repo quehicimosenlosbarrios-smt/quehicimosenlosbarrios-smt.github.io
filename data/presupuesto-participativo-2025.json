@@ -2,7 +2,7 @@
  "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
  "edicion": 2025,
  "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
- "descargado": "2026-11-07",
+ "descargado": "2026-11-12",
  "ganadores": {
   "1": {
    "distrito": 1,
@@ -465,7 +465,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -549,7 +549,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -651,7 +651,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -696,7 +696,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -810,7 +810,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -861,7 +861,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
@@ -1026,7 +1026,7 @@
      ]
     }
    ],
-   "etapa": "Sin avance",
+   "etapa": "En confección de expediente",
    "paso": 0,
    "actualizado": null,
    "novedad": null,
