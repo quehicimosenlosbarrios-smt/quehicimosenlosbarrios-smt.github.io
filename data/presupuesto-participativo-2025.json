@@ -2,7 +2,7 @@
  "_ayuda": "Proyectos ganadores de Presupuesto Participativo, uno por distrito. Generado por scripts/descargar_presupuesto_participativo.py.",
  "edicion": 2025,
  "fuente": "https://presupuestoparticipativo.smt.gob.ar/transparencia?edicion=2025",
- "descargado": "2026-11-12",
+ "descargado": "2026-11-14",
  "ganadores": {
   "1": {
    "distrito": 1,
@@ -465,11 +465,11 @@
      ]
     }
    ],
-   "etapa": "En confección de expediente",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "30 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $215.733.316,31. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "215.733.316,31",
    "nota_prensa": null,
    "mas_votados": [
     {
@@ -651,11 +651,11 @@
      ]
     }
    ],
-   "etapa": "En confección de expediente",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "28 de octubre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $261.895.281,71. Plazo de obra: tres meses.",
+   "presupuesto_oficial": "261.895.281,71",
    "nota_prensa": null,
    "mas_votados": [
     {
@@ -696,12 +696,12 @@
      ]
     }
    ],
-   "etapa": "En confección de expediente",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
-   "nota_prensa": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "11 de noviembre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación, que incluye la revalorización de la Plaza Almirante Brown, contigua al CAC. Presupuesto oficial: $413.321.062,34. Plazo de obra: cuatro meses.",
+   "presupuesto_oficial": "413.321.062,34",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17933/presupuesto-participativo-licitan-obras-de-revalorizacion-del-cac-n-11-y-de-la-p",
    "mas_votados": [
     {
      "titulo": "CAC N° 11 Inclusivo",
@@ -1026,12 +1026,12 @@
      ]
     }
    ],
-   "etapa": "En confección de expediente",
-   "paso": 0,
-   "actualizado": null,
-   "novedad": null,
-   "presupuesto_oficial": null,
-   "nota_prensa": null,
+   "etapa": "En licitación",
+   "paso": 1,
+   "actualizado": "11 de noviembre de 2026",
+   "novedad": "Se abrieron los sobres de la licitación. Presupuesto oficial: $159.916.963,08. Plazo de obra: dos meses.",
+   "presupuesto_oficial": "159.916.963,08",
+   "nota_prensa": "https://comunicacionsmt.gob.ar/contenido/17929/presupuesto-participativo-licitan-la-creacion-de-un-espacio-deportivo-en-la-plaz",
    "mas_votados": [
     {
      "titulo": "Centro Deportivo San Miguel- Barrio CGT",
