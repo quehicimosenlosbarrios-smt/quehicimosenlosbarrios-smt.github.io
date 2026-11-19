@@ -5,9 +5,10 @@ data/panos-hormigon.csv con las mismas columnas que data/intervenciones.csv,
 más la columna m2 (superficie de hormigón de cada registro).
 
 La app la suma a las intervenciones de GeoGestión como "Paños de hormigón".
-Para que la descarga funcione, la planilla tiene que estar compartida como
-"Cualquier persona con el enlace: Lector". Si no se puede descargar, el
-archivo anterior queda como está.
+La planilla está cerrada (no se cargan más obras): data/panos-hormigon.csv
+quedó guardado en el repositorio y la actualización diaria no lo toca.
+Este script queda para regenerarlo si alguna vez cambia, desde una copia
+.xlsx de la planilla o desde Google si se comparte con enlace.
 
 Uso:
   python scripts/descargar_panos_hormigon.py               (descarga de Google)

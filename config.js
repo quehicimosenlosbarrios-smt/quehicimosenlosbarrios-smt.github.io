@@ -10,7 +10,7 @@ window.APP_CONFIG = {
   // "Actualizar datos desde GeoGestión". Si todavía no existe se usa la planilla de ejemplo.
   planillaCSV: "data/intervenciones.csv",
   // planillas que se suman a la de GeoGestión, con las mismas columnas
-  // (paños de hormigón: los descarga scripts/descargar_panos_hormigon.py)
+  // (paños de hormigón: planilla cerrada, la generó scripts/descargar_panos_hormigon.py)
   planillasExtra: ["data/panos-hormigon.csv"],
   // fuente que se muestra en las hojas de esos tipos y en la contextualización
   fuentesPorTipo: { "Paños de hormigón": "Planilla «Georreferencia Paños Hormigón» (Google Drive)" },
