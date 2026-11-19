@@ -58,7 +58,7 @@ window.APP_CONFIG = {
     "EDUCÁ":                 { color: "#0f8b8d", dibujo: "libro", unidad: "instituciones visitadas" },
     "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel", unidad: "murales" },
     // la planilla trae la superficie (m2): la ficha la suma y estima los paños de 12 m²
-    "Paños de hormigón":     { color: "#546e7a", dibujo: "panos" }
+    "Paños de hormigón":     { color: "#546e7a", dibujo: "panos", unidad: "frentes de obra" }
   },
 
   // Presupuesto Participativo: proyecto ganador de cada distrito (lo descarga

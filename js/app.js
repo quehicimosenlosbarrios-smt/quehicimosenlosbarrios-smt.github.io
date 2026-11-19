@@ -1298,9 +1298,10 @@ function buildFicha() {
   // 1. Portada / resumen
   var maxT = Math.max.apply(null, types.map(function (t) { return dpts.filter(function (p) { return p.type === t.id; }).length; }).concat([1]));
   var rows = types.map(function (t) {
+    var m2r = dpts.reduce(function (a, p) { return a + (p.type === t.id ? p.m2 || 0 : 0); }, 0);
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t);
     var subs = t.subs ? '<div class="subline">' + t.subs.map(function (x) { var n = tp.filter(function (p) { return p.sub === x.name; }).length; return n ? '<span><i style="background:' + x.color + '"></i>' + esc(x.name) + ' ' + n + '</span>' : ''; }).join("") + '</div>' : '';
-    return '<tr><td><span class="tcell">' + badge(t, 20) + '<span>' + esc(t.name) + subs + '</span></span></td><td class="barcell"><div class="hbar" style="width:' + (tp.length / maxT * 100) + '%;background:' + t.color + '"></div></td><td class="r nw"><b>' + fmt.format(tp.length) + '</b>' + (line || t.unidad ? ' <small>' + unitOf(t, line) + '</small>' : '') + '</td><td class="r">' + barriosDe(tp) + '/' + nb + '</td></tr>';
+    return '<tr><td><span class="tcell">' + badge(t, 20) + '<span>' + esc(t.name) + subs + '</span></span></td><td class="barcell"><div class="hbar" style="width:' + (tp.length / maxT * 100) + '%;background:' + t.color + '"></div></td><td class="r nw"><b>' + fmt.format(tp.length) + '</b>' + (line || t.unidad ? ' <small>' + unitOf(t, line) + '</small>' : '') + (m2r ? '<div class="eqp one">≈ ' + fmt.format(Math.round(m2r / 12)) + ' paños de 12 m²</div>' : '') + '</td><td class="r">' + barriosDe(tp) + '/' + nb + '</td></tr>';
   }).join("");
   pages.push(band(d, 'Resumen del ' + zw(d), nb + (nb === 1 ? ' barrio · ' : ' barrios · ') + fmt.format(dpts.length) + ' intervenciones municipales registradas') +
     '<div class="body">' +
@@ -1336,7 +1337,7 @@ function buildFicha() {
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
-        : m2 ? [{ v: fmt.format(tp.length), l: "Lugares intervenidos" }, { v: fmt.format(Math.round(m2)) + '<small> m²</small>', l: "Superficie de hormigón" }, { v: '<small>≈ </small>' + fmt.format(Math.round(m2 / 12)), l: "Paños (12 m² cada uno)" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
+        : m2 ? [{ v: fmt.format(tp.length), l: cap(unitOf(t, false)) }, { v: fmt.format(Math.round(m2)) + '<small> m²</small>', l: "Superficie de hormigón" }, { v: '<small>≈ </small>' + fmt.format(Math.round(m2 / 12)), l: "Paños (12 m² cada uno)" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
         : [{ v: fmt.format(tp.length), l: cap(unitOf(t, false)) }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
       '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
@@ -1438,7 +1439,7 @@ function buildFicha() {
     var sh = cv.closest(".sheet"), foot = sh.querySelector(".foot");
     var bottom = Math.max.apply(null, Array.prototype.map.call(sh.querySelectorAll(".body > *"), function (e) { return e.getBoundingClientRect().bottom; }));
     var over = bottom - foot.getBoundingClientRect().top;
-    if (over > 0) cv.height = Math.max(360, cv.height - Math.ceil(over * cv.width / cv.getBoundingClientRect().width) - 8);
+    if (over > 0) cv.height = Math.max(cv.getAttribute("data-map") === "all" ? 280 : 360, cv.height - Math.ceil(over * cv.width / cv.getBoundingClientRect().width) - 8);
   });
   // si para que entre la descripción el mapa de Presupuesto Participativo queda muy chico, la descripción pasa a otra hoja
   var ppc = $("sheets").querySelector("canvas[data-pp]");

@@ -469,3 +469,7 @@ table.t.ctx-t td:first-child { width: 36%; }
 .alum-cols { display: grid; grid-template-columns: 1fr 336px; gap: 18px; align-items: start; }
 .alum-cols .pp-legend { flex-direction: column; gap: 4px; }
 .alum-cols canvas[data-chart] { display: block; }
+
+/* equivalencia en paños debajo de la cantidad (paños de hormigón) */
+.eqp { white-space: normal; font-size: 11px; line-height: 1.3; font-weight: 500; color: var(--paper-muted); max-width: 150px; margin: 2px 0 0 auto; }
+.eqp.one { white-space: nowrap; max-width: none; margin-top: 0; }
