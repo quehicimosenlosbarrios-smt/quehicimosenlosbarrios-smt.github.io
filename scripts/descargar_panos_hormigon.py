@@ -17,6 +17,7 @@ Uso:
 import csv
 import io
 import os
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -88,7 +89,8 @@ def convertir(filas):
         m2 = numero(campo(f, "N° PAÑOS", "N° PANOS"))
         out.append({
             "intervencion": NOMBRE, "programa": NOMBRE, "indicador": NOMBRE,
-            "direccion": calle + (" (entre " + entre + ")" if entre and entre.lower() != "none" else ""),
+            # "ENTRE CALLES" a veces trae solo la altura (un número): ahí no se agrega
+            "direccion": calle + (" (entre " + entre + ")" if re.search(r"[A-Za-zÁÉÍÓÚáéíóúñÑ]", entre) and entre.lower() != "none" else ""),
             "barrio": str(campo(f, "Barrio")).strip(),
             "latitud": round(lat, 6), "longitud": round(lon, 6),
             "id_geogestion": str(campo(f, "Id-paño", "Id-pano")).strip(),
