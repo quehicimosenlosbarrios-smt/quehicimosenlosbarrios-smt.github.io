@@ -9,6 +9,11 @@ window.APP_CONFIG = {
   // Archivo con las intervenciones. Lo actualiza todos los días la Action
   // "Actualizar datos desde GeoGestión". Si todavía no existe se usa la planilla de ejemplo.
   planillaCSV: "data/intervenciones.csv",
+  // planillas que se suman a la de GeoGestión, con las mismas columnas
+  // (paños de hormigón: planilla cerrada, la generó scripts/descargar_panos_hormigon.py)
+  planillasExtra: ["data/panos-hormigon.csv"],
+  // fuente que se muestra en las hojas de esos tipos y en la contextualización
+  fuentesPorTipo: { "Paños de hormigón": "Planilla «Georreferencia Paños Hormigón» (Google Drive)" },
   planillaEjemplo: "data/ejemplo-intervenciones-smt.csv",
 
   // Orden en que aparecen las intervenciones en el panel y en la ficha (prioridad).
@@ -18,6 +23,7 @@ window.APP_CONFIG = {
     "Repavimentación",
     "Semáforos",
     "Plan veredas sanas",
+    "Paños de hormigón",
     "El gas llega a tu casa",
     "Refugios",
     "Plazas revalorizadas",
@@ -50,7 +56,9 @@ window.APP_CONFIG = {
     // "tinta": color del dibujo sobre el círculo (blanco si falta); en amarillo se lee mejor oscuro
     "El gas llega a tu casa": { color: "#ffd60a", tinta: "#5c4300", dibujo: "llama", unidad: "domicilios" },
     "EDUCÁ":                 { color: "#0f8b8d", dibujo: "libro", unidad: "instituciones visitadas" },
-    "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel" }
+    "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel" },
+    // la planilla trae la superficie (m2): la ficha la suma y estima los paños de 12 m²
+    "Paños de hormigón":     { color: "#546e7a", dibujo: "panos" }
   },
 
   // Presupuesto Participativo: proyecto ganador de cada distrito (lo descarga
@@ -120,6 +128,7 @@ window.APP_CONFIG = {
     latitud: ["latitud", "lat", "y"],
     longitud: ["longitud", "long", "lng", "lon", "x"],
     cuadra: ["id cuadra", "id_cuadra", "idcuadra", "cuadra", "id de cuadra"],
-    foto: ["foto", "imagen", "img"]
+    foto: ["foto", "imagen", "img"],
+    m2: ["m2", "superficie m2", "superficie"]
   }
 };
