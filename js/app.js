@@ -35,6 +35,7 @@ var ICONS = {
   casas:   "M1 21.5V10l7-5.5 7 5.5v11.5h-4.6v-5.8H5.6v5.8zM16.6 21.5V9.3L11.5 5.3 14 3.3l8.5 6.6v11.6z",
   urna:    "M18 13h-.68l-2 2h1.91L19 17H5l1.78-2h2.05l-2-2H6l-3 3v4c0 1.1.89 2 1.99 2H19c1.1 0 2-.89 2-2v-4l-3-3zm-1-5.05l-4.95 4.95-3.54-3.54 4.95-4.95L17 7.95zm-4.24-5.66L6.39 8.66c-.39.39-.39 1.02 0 1.41l4.95 4.95c.39.39 1.02.39 1.41 0l6.36-6.36c.39-.39.39-1.02 0-1.41L14.16 2.3c-.38-.4-1.01-.4-1.4-.01z",
   escuela: "M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z",
+  panos:   "M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z",
   pin:     "M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 4.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4z"
 };
 var RULES = [
@@ -234,7 +235,7 @@ function buildItems(rows, headers) {
     var tk = norm(tname);
     if (!typeSeen[tk]) { typeSeen[tk] = tname; typeNames.push(tname); }
     var sc = SPLIT[tk] ? findCol(headers, [SPLIT[tk]]) : null;
-    var row = { tname: typeSeen[tk], sub: sc ? String(r[sc] || "").trim() || "Sin especificar" : "", foto: C.foto ? String(r[C.foto] || "").trim() : "", dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat] };
+    var row = { tname: typeSeen[tk], sub: sc ? String(r[sc] || "").trim() || "Sin especificar" : "", foto: C.foto ? String(r[C.foto] || "").trim() : "", dir: C.direccion ? String(r[C.direccion] || "").trim() : "", barrioText: C.barrio ? r[C.barrio] : "", pt: [lng, lat], m2: C.m2 ? num(r[C.m2]) : NaN };
     var cid = C.cuadra ? String(r[C.cuadra] || "").trim() : "";
     if (cid) { (lines[cid] = lines[cid] || []).push(row); } else items.push(row);
   });
@@ -253,7 +254,7 @@ function buildItems(rows, headers) {
     var loc = locate(it.pt, it.barrioText);
     if (!loc.district) { unlocated++; return; }
     var zd = ZONES.distrito.length ? featureAt(it.pt, ZONES.distrito, 500) : null;
-    ITEMS.push({ id: id++, type: nameToType[it.tname], sub: it.sub, foto: it.foto || "", dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, zc: loc.district.id, zd: zd ? zd.id : null, district: MODE === "distrito" ? (zd ? zd.id : null) : loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
+    ITEMS.push({ m2: isFinite(it.m2) ? it.m2 : 0, id: id++, type: nameToType[it.tname], sub: it.sub, foto: it.foto || "", dir: it.dir, barrio: loc.barrio ? loc.barrio.id : null, zc: loc.district.id, zd: zd ? zd.id : null, district: MODE === "distrito" ? (zd ? zd.id : null) : loc.district.id, lng: it.pt[0], lat: it.pt[1], coords: it.coords, cuadra: it.cuadra, m: it.m });
   });
   SOURCE.skipped = skipped; SOURCE.unlocated = unlocated;
   // subgrupos de cada tipo, de mayor a menor; el primero conserva el color del tipo
@@ -343,6 +344,15 @@ async function loadAll() {
     if (!csv || !csv.data.length) { csv = null; SOURCE.sample = true; }
   }
   if (!csv) csv = await loadCSV(rel(CFG.planillaEjemplo));
+  else {
+    // planillas que se suman (p. ej. paños de hormigón), con las mismas columnas más las propias
+    var extras = await Promise.all((CFG.planillasExtra || []).map(function (u) { return loadCSV(rel(u) + "?t=" + Date.now()).catch(function () { return null; }); }));
+    extras.forEach(function (x) {
+      if (!x || !x.data.length) return;
+      csv.data = csv.data.concat(x.data);
+      (x.meta.fields || []).forEach(function (f) { if (csv.meta.fields.indexOf(f) < 0) csv.meta.fields.push(f); });
+    });
+  }
   buildItems(csv.data, csv.meta.fields || []);
   // planilla real sin ninguna fila utilizable: mejor el ejemplo que un mapa vacío
   if (!SOURCE.sample && !ITEMS.length) {
@@ -1205,6 +1215,7 @@ function contextPage(d, hasRed, hasPP) {
     ['Concejales', 'Elecciones municipales 2023, por circuito']
   ];
   if (hasRed) fuentes.splice(1, 0, ['Red vial', 'Power BI de la Subsecretaría (red vial por material)']);
+  Object.keys(CFG.fuentesPorTipo || {}).forEach(function (n) { if (TYPES.some(function (t) { return t.name === n && ITEMS.some(function (p) { return p.type === t.id && p.district === d.id; }); })) fuentes.splice(1, 0, [n, CFG.fuentesPorTipo[n]]); });
   var mm = motivoDe(d);
   if (mm && mm.alumbrado && EXTRA[mm.alumbrado]) fuentes.push(['Alumbrado en ' + titleCase(mm.barrio || ''), 'Informe operativo de Alumbrado Público']);
   var mot = motivoDe(d);
@@ -1304,6 +1315,7 @@ function buildFicha() {
     if (extra.length && rk(t.name === (CFG.fichaJuntas || {}).nombre ? CFG.fichaJuntas.tipos[0] : t.name) > extraAt) { pages.push.apply(pages, extra); extra = []; }
     var tp = dpts.filter(function (p) { return p.type === t.id; }), line = isLine(t);
     var m = tp.reduce(function (a, p) { return a + (p.m || 0); }, 0);
+    var m2 = tp.reduce(function (a, p) { return a + (p.m2 || 0); }, 0);
     var byB = countBy(tp).filter(function (x) { return x.n; }), top = byB[0], shown = byB.slice(0, MAXROWS);
     var maxB = top ? top.n : 1;
     var subs = t.subs ? t.subs.filter(function (x) { return tp.some(function (p) { return p.sub === x.name; }); }) : null;
@@ -1319,10 +1331,12 @@ function buildFicha() {
       : '<th>Barrio</th><th></th><th class="r">' + (line || t.unidad ? cap(unitOf(t, line)) : 'Cantidad') + '</th>' + (line ? '<th class="r">Metros</th>' : '') + '<th class="r">Participación</th>';
     var legend = subs ? '<div class="sh-legend sub-legend"><b>' + sublabel + ':</b>' + subs.map(function (u) { return '<span><i style="background:' + u.color + '"></i>' + esc(u.name) + ' (' + tp.filter(function (p) { return p.sub === u.name; }).length + ')</span>'; }).join("") + '</div>' : '';
     var mapH = shown.length > 8 ? 570 : shown.length > 4 ? 720 : 855;
-    pages.push(band(d, typeTitle(t, d), 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
+    var fuenteT = (CFG.fuentesPorTipo || {})[t.name] ? '<!--fuente:' + CFG.fuentesPorTipo[t.name] + '.-->' : '';
+    pages.push(fuenteT + band(d, typeTitle(t, d), 'Intervenciones de este tipo en ' + esc(d.name), { type: t }) +
       '<div class="body">' +
       tiles(line
         ? [{ v: fmt.format(tp.length), l: "Cuadras" }, { v: km(m) + '<small> km</small>', l: "Extensión" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
+        : m2 ? [{ v: fmt.format(tp.length), l: "Lugares intervenidos" }, { v: fmt.format(Math.round(m2)) + '<small> m²</small>', l: "Superficie de hormigón" }, { v: '<small>≈ </small>' + fmt.format(Math.round(m2 / 12)), l: "Paños (12 m² cada uno)" }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]
         : [{ v: fmt.format(tp.length), l: cap(unitOf(t, false)) }, { v: top ? esc(top.b.name) : "–", l: "Mayor concentración", txt: true }]) +
       '<div class="sh-map"><canvas data-map="' + t.id + '" width="1372" height="' + mapH + '"></canvas></div>' + legend +
       '<div><h3 class="sh-h3">Ranking de barrios</h3><table class="t' + (subs ? ' bysub' : '') + '"><thead><tr>' + thead + '</tr></thead><tbody>' + trows + '</tbody></table>' +
@@ -1360,7 +1374,7 @@ function buildFicha() {
         }).join("") + '</tbody></table>';
       });
       var part = nPages > 1 ? ' (' + (i / 2 + 1) + ' de ' + nPages + ')' : '';
-      pages.push(band(d, (t.name === "Refugios" ? typeTitle(t, d) : t.name) + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body lbody">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
+      pages.push(fuenteT + band(d, (t.name === "Refugios" ? typeTitle(t, d) : t.name) + ' · listado' + part, null, { type: t, cls: 'slim' }) + '<div class="body lbody">' + legend + '<div class="list-cols">' + html.join("") + '</div></div>');
     }
     pages.push.apply(pages, fotoPages(d, t, fotos));
   });
