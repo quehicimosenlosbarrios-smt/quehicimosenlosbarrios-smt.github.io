@@ -56,7 +56,7 @@ window.APP_CONFIG = {
     // "tinta": color del dibujo sobre el círculo (blanco si falta); en amarillo se lee mejor oscuro
     "El gas llega a tu casa": { color: "#ffd60a", tinta: "#5c4300", dibujo: "llama", unidad: "domicilios" },
     "EDUCÁ":                 { color: "#0f8b8d", dibujo: "libro", unidad: "instituciones visitadas" },
-    "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel" },
+    "Pintemos la ciudad":    { color: "#e64980", dibujo: "pincel", unidad: "murales" },
     // la planilla trae la superficie (m2): la ficha la suma y estima los paños de 12 m²
     "Paños de hormigón":     { color: "#546e7a", dibujo: "panos" }
   },
